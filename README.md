@@ -12,113 +12,113 @@ There are also utilities and testing methods to make programming simpler and mor
 ## Methods grouped by purpose
 
 ### Music performance
-  |arpeggiate|plays a given chord/scale/array/ring in sequence, with the timing you specify  |
-  |arrange|play multiple musical voices, each with their own rhythm, melody, etc. The mothership of all methods. 
-  |funkify|plays a given synth/sample in a randomly generated funky rhythm for the specified amount of time.   |
-  |playdegreematrix|play melodies in a scale by specifying scale degrees (:i, :ii, etc., or 1, 2, etc.)  |
-  |playline|simplified wrapper for arrange, plays one instrument line. Threaded by default.   |
-  |strum|strums the chord passed in. Convenience wrapper for arpeggiate.  |
-  |stuttersample|plays a sample, chopping it up and stuttering/reversing sections.  |
-  |transposesample|transposes a sample, hiding the nasty math involved in pitch_stretch and rpitch. | 
+   | arpeggiate | plays a given chord/scale/array/ring in sequence, with the timing you specify   | 
+   | arrange | play multiple musical voices, each with their own rhythm, melody, etc. The mothership of all methods. 
+   | funkify | plays a given synth/sample in a randomly generated funky rhythm for the specified amount of time.    | 
+   | playdegreematrix | play melodies in a scale by specifying scale degrees (:i, :ii, etc., or 1, 2, etc.)   | 
+   | playline | simplified wrapper for arrange, plays one instrument line. Threaded by default.    | 
+   | strum | strums the chord passed in. Convenience wrapper for arpeggiate.   | 
+   | stuttersample | plays a sample, chopping it up and stuttering/reversing sections.   | 
+   | transposesample | transposes a sample, hiding the nasty math involved in pitch_stretch and rpitch.  |  
 
 ### Sound manipulation
-|env|apply an envelope to any sliding param for any synth or sample. |  
-|lfo|apply an lfo/mseg to any sliding param for any synth or sample. |  
-|trancegate|apply a polyrhythmic trancegate to any synth or sample.  | 
+ | env | apply an envelope to any sliding param for any synth or sample.  |   
+ | lfo | apply an lfo/mseg to any sliding param for any synth or sample.  |   
+ | trancegate | apply a polyrhythmic trancegate to any synth or sample.   |  
 
 
 ### Melody/rhythm manipulation
-|convertdrumnotation -- converts drum notation ("x---x---x---x---") to note-type notation ("q,q,q,q").  |
-|cooktime|converts notation ("q") to time duration (1.0).|
-|cooktimes|converts a sequence of notation ("q, dq, dq") to an array of time durations [1, 1.5, 1.5]. | 
-|degreestoabsolutenotes|converts scale degrees to absolute notes.|
-|euclidiate|applies euclidean rhythms to generate metrical sequence, in notation ([1.5, 1.5, 1]).      Convenience wrapper for spreadtobeats.   |
-|funkyrandom|generates a random funky rhythm, returned as an array of times. | 
-|humanize|applies a random amount of humanization to a given time array. |  
-|spreadtobeats|turns a spread into notation for rhythm. Euclidiate wraps this in a friendlier interface.  | 
-|swing|converts straight rhythms to swing rhythms. Supports oddball swings (7, 5.3, etc.).  |
-|tuples|generates tuples of any time amount. Returns notation if possible.   |
+ | convertdrumnotation -- converts drum notation ("x---x---x---x---") to note-type notation ("q,q,q,q").   | 
+ | cooktime | converts notation ("q") to time duration (1.0). | 
+ | cooktimes | converts a sequence of notation ("q, dq, dq") to an array of time durations [1, 1.5, 1.5].  |  
+ | degreestoabsolutenotes | converts scale degrees to absolute notes. | 
+ | euclidiate | applies euclidean rhythms to generate metrical sequence, in notation ([1.5, 1.5, 1]).      Convenience wrapper for spreadtobeats.    | 
+ | funkyrandom | generates a random funky rhythm, returned as an array of times.  |  
+ | humanize | applies a random amount of humanization to a given time array.  |   
+ | spreadtobeats | turns a spread into notation for rhythm. Euclidiate wraps this in a friendlier interface.   |  
+ | swing | converts straight rhythms to swing rhythms. Supports oddball swings (7, 5.3, etc.).   | 
+ | tuples | generates tuples of any time amount. Returns notation if possible.    | 
 
 ### Array/hash/ring manipulation
-|argstohash|converts an argument string ("amp: 2, cutoff: 60") to a hash. |  
-|argstostring|converts an argument hash ({amp: 2, cutoff: 60}) to a string. |  
-|arrayhashtohasharray|converts a hash of arrays to an array of hashes.  | 
-|cleanchordorscale|turns a chord or scale into a flat array. | 
-|paddedrowstocolumns|transforms an array of arrays, pivoting rows to columns and padding short arrays by repeating values.  |
-|rowstocolumns|transforms an array of arrays, pivoting rows to columns, but padding short arrays with nils. | 
-|setarg|set arguments in an argument hash.   |
-|tickargs|if argument values are specified as arrays, will tick through individual values on consecutive calls.  |
-|striptrailingnils|strips trailing nils from an array. Useful with rowstocolumns.  | 
-|stripval|deletes all items from an array matching the value. |  
+ | argstohash | converts an argument string ("amp: 2, cutoff: 60") to a hash.  |   
+ | argstostring | converts an argument hash ({amp: 2, cutoff: 60}) to a string.  |   
+ | arrayhashtohasharray | converts a hash of arrays to an array of hashes.   |  
+ | cleanchordorscale | turns a chord or scale into a flat array.  |  
+ | paddedrowstocolumns | transforms an array of arrays, pivoting rows to columns and padding short arrays by repeating values.   | 
+ | rowstocolumns | transforms an array of arrays, pivoting rows to columns, but padding short arrays with nils.  |  
+ | setarg | set arguments in an argument hash.    | 
+ | tickargs | if argument values are specified as arrays, will tick through individual values on consecutive calls.   | 
+ | striptrailingnils | strips trailing nils from an array. Useful with rowstocolumns.   |  
+ | stripval | deletes all items from an array matching the value.  |   
 
 ### Tests and comparisons
 
-|boolish|test for values that are kinda false, e.g., "", [], 0, etc. |  
-|divisibleby|tests whether one number is evenly divisible by another.  |
-|equalish|tests for approximate equality. Useful for comparing floats, e.g. triplets.  |
-|listorring|tests whether a value is an array, hash or ring.   |
-|ringorlist|same as listorring  |
-|samplebpm|returns the bpm of a given sample. | 
-|tickable|same as listorring | 
+ | boolish | test for values that are kinda false, e.g., "", [], 0, etc.  |   
+ | divisibleby | tests whether one number is evenly divisible by another.   | 
+ | equalish | tests for approximate equality. Useful for comparing floats, e.g. triplets.   | 
+ | listorring | tests whether a value is an array, hash or ring.    | 
+ | ringorlist | same as listorring   | 
+ | samplebpm | returns the bpm of a given sample.  |  
+ | tickable | same as listorring  |  
 
 
 ### Utilities
 
-|debugprint|prints anything to stdout, optionally logging to a file, optionally expanding arrays and hashes.  |
-|overridekwargs|used to support passing named parameters to methods.   |
-|stripparams|used to strip parameters from kwargs that match method params. Useful for collecting params to pass to methods like play or sample.   |
-|yummyhelp|print help info to stdout for methods herein.   |
-|yh|wrapper for yummyhelp | 
+ | debugprint | prints anything to stdout, optionally logging to a file, optionally expanding arrays and hashes.   | 
+ | overridekwargs | used to support passing named parameters to methods.    | 
+ | stripparams | used to strip parameters from kwargs that match method params. Useful for collecting params to pass to methods like play or sample.    | 
+ | yummyhelp | print help info to stdout for methods herein.    | 
+ | yh | wrapper for yummyhelp  |  
 
 
 
 ## Alphabetic list of methods
 
-|Method|Arguments|
-|---|---|
-|argstohash |args, \*\*kwargs|
-|argstostring |args, \*\*kwargs|
-|arpeggiate  |thesenotes, thesedelays, \*\*synthdefaults|
-|arrange  |arrangement, repetitions=1, defaults=nil, effects=nil, envelopes=nil, lfos=nil, trancegates=nil, notedensities=nil, phrasedensities=nil, tickorchoose=["tick","choose"], humanizeamt=0.0, \*\*kwargs|
-|arrayhashtohasharray  |arrayhash, makering=true|
-|boolish  |testvalue, falsies=[nil, false, 0, 0.0, "", "0", [], [].ring, {}], \*\*kwargs|
-|cleanchordorscale  |myitem|
-|convertdrumnotation  |drumnotation, barlength = 4.0, baseamp=1.0, maxamp=2.0, restchar="-", brackets="[]", \*\*kwargs|
-|cooktime  |timestring, humanizeamt=0.0|
-|cooktimes  |timestring, delimiter=",", humanizeamt=0.0, \*\*kwargs|
-|debugprint  |label, value=nil, expandlist=false, indents=0, indenttext="  ", logtofile=false, filename="c:/users/harry/desktop/scripting/sonicpi/debuglog.txt", \*\*kwargs|
-|degreestoabsolutenotes  |thisarrangement, thiskey=:c4, thisscale=:major, \*\*kwargs|
-|divisibleby  |numerator, denominator|
-|env  |handle, param, attack=0.25, decay=0, sustain=1, release=0.25, startlevel=0, peaklevel=1, sustainlevel=0.5, \*\*kwargs|
-|equalish  |value1, value2, roundingerror =0.00000001, \*\*kwargs|
-|euclidiate  |beats,duration,rotations=0,beatvalue=sixteenth, notes=nil, \*\*kwargs|
-|funkyrandom  |totaltime=16, shortestbeat=0.25, restodds=8, \*\*kwargs|
-|funkify  |thissound, totaltime=16, shortestbeat=sixteenth, thesenotes=[:c4], densities=[1], tickorchoose="tick", \*\*kwargs|
-|humanize do |thesebeats, humanizeamt=0.5, \*\*kwargs|
-|listorring  |thisitem|
-|lfo  |handle, param, duration, period=[0.5], span=(ring 0, 1), lfotype="triangle",  delay=0, rampupperiods=0, rampdowntime=0, lfocurve=0, \*\*kwargs|
-|overridekwargs  |kwargs, params, ignorenewargs=true, arglistname="kwargs"|
-|paddedrowstocolumns |\*thesearrays|
-|playdegreematrix  |thiskey, thisscale, degreematrix, \*\*kwargs |
-|playline |synthorsample, notation, threaded=true, \*\*kwargs|
-|rowstocolumns  |*thesearrays|
-|ringorlist  |thisitem|
-|samplebpm  |thissample, beats=4|
-|setarg |arg, val, args, \*\*kwargs|
-|spreadtobeats  |thisspread, beatvalue=sixteenth, notes=nil, \*\*kwargs|
-|stripparams  |kwargs, params|
-|striptrailingnils  |thisarray, \*\*kwargs|
-|stripval |thisarray, val, \*\*kwargs|
-|strum  |thesenotes, totaltime=1, strumspeed=0.05, \*\*kwargs|
-|stuttersample  |thissample, stutters=[1], beatspersample=1.0, reverses=[false], \*\*kwargs|
-|swing  |straightbeats, swingseed=6.0, humanizeamt=0.0, \*\*kwargs|
-|tickable  |thisitem|
-|tickargs do |args, \*\*kwargs|
-|trancegate  |handle, duration, period=[0.5], gutter=[0.1], delay=0, maxvol= [1], minvol=[0], lfotype="square",  curve=0, \*\*kwargs|
-|transposesample  |thissample, pitch_stretch=16, rpitch=0, time_dis=0.01, window_size=0.1, pitch_dis=0.01, \*\*kwargs|
-|tuples |howmanytuples, beatsize|
-|yummyhelp  |helpitem=nil, \*\*kwargs|
-|yh  |helpitem=nil, \*\*kwargs|
+ | Method | Arguments | 
+ | --- | --- | 
+ | argstohash  | args, \*\*kwargs | 
+ | argstostring  | args, \*\*kwargs | 
+ | arpeggiate   | thesenotes, thesedelays, \*\*synthdefaults | 
+ | arrange   | arrangement, repetitions=1, defaults=nil, effects=nil, envelopes=nil, lfos=nil, trancegates=nil, notedensities=nil, phrasedensities=nil, tickorchoose=["tick","choose"], humanizeamt=0.0, \*\*kwargs | 
+ | arrayhashtohasharray   | arrayhash, makering=true | 
+ | boolish   | testvalue, falsies=[nil, false, 0, 0.0, "", "0", [], [].ring, {}], \*\*kwargs | 
+ | cleanchordorscale   | myitem | 
+ | convertdrumnotation   | drumnotation, barlength = 4.0, baseamp=1.0, maxamp=2.0, restchar="-", brackets="[]", \*\*kwargs | 
+ | cooktime   | timestring, humanizeamt=0.0 | 
+ | cooktimes   | timestring, delimiter=",", humanizeamt=0.0, \*\*kwargs | 
+ | debugprint   | label, value=nil, expandlist=false, indents=0, indenttext="  ", logtofile=false, filename="c:/users/harry/desktop/scripting/sonicpi/debuglog.txt", \*\*kwargs | 
+ | degreestoabsolutenotes   | thisarrangement, thiskey=:c4, thisscale=:major, \*\*kwargs | 
+ | divisibleby   | numerator, denominator | 
+ | env   | handle, param, attack=0.25, decay=0, sustain=1, release=0.25, startlevel=0, peaklevel=1, sustainlevel=0.5, \*\*kwargs | 
+ | equalish   | value1, value2, roundingerror =0.00000001, \*\*kwargs | 
+ | euclidiate   | beats,duration,rotations=0,beatvalue=sixteenth, notes=nil, \*\*kwargs | 
+ | funkyrandom   | totaltime=16, shortestbeat=0.25, restodds=8, \*\*kwargs | 
+ | funkify   | thissound, totaltime=16, shortestbeat=sixteenth, thesenotes=[:c4], densities=[1], tickorchoose="tick", \*\*kwargs | 
+ | humanize do  | thesebeats, humanizeamt=0.5, \*\*kwargs | 
+ | listorring   | thisitem | 
+ | lfo   | handle, param, duration, period=[0.5], span=(ring 0, 1), lfotype="triangle",  delay=0, rampupperiods=0, rampdowntime=0, lfocurve=0, \*\*kwargs | 
+ | overridekwargs   | kwargs, params, ignorenewargs=true, arglistname="kwargs" | 
+ | paddedrowstocolumns  | \*thesearrays | 
+ | playdegreematrix   | thiskey, thisscale, degreematrix, \*\*kwargs  | 
+ | playline  | synthorsample, notation, threaded=true, \*\*kwargs | 
+ | rowstocolumns   | *thesearrays | 
+ | ringorlist   | thisitem | 
+ | samplebpm   | thissample, beats=4 | 
+ | setarg  | arg, val, args, \*\*kwargs | 
+ | spreadtobeats   | thisspread, beatvalue=sixteenth, notes=nil, \*\*kwargs | 
+ | stripparams   | kwargs, params | 
+ | striptrailingnils   | thisarray, \*\*kwargs | 
+ | stripval  | thisarray, val, \*\*kwargs | 
+ | strum   | thesenotes, totaltime=1, strumspeed=0.05, \*\*kwargs | 
+ | stuttersample   | thissample, stutters=[1], beatspersample=1.0, reverses=[false], \*\*kwargs | 
+ | swing   | straightbeats, swingseed=6.0, humanizeamt=0.0, \*\*kwargs | 
+ | tickable   | thisitem | 
+ | tickargs do  | args, \*\*kwargs | 
+ | trancegate   | handle, duration, period=[0.5], gutter=[0.1], delay=0, maxvol= [1], minvol=[0], lfotype="square",  curve=0, \*\*kwargs | 
+ | transposesample   | thissample, pitch_stretch=16, rpitch=0, time_dis=0.01, window_size=0.1, pitch_dis=0.01, \*\*kwargs | 
+ | tuples  | howmanytuples, beatsize | 
+ | yummyhelp   | helpitem=nil, \*\*kwargs | 
+ | yh   | helpitem=nil, \*\*kwargs | 
 
 The last param \*\*kwargs allows support for params to be named as well as positional 
 (e.g. "strum thesenotes, strumspeed: 0.1"). See overridekwargs for details. 
@@ -691,8 +691,8 @@ spreadtobeats spread(3, 8, 2), 0.5
   Example:  
 ```
   mysample = "D:/Loops/Afroplug - Soul and Jazz Guitar Loops/looperman-l-6258600-0353860-spilled-coffee.wav"
-  [90, 120, 150].each do |thisbpm|
-    [0, -5, 3, 7].each do |thispitch|
+  [90, 120, 150].each do  | thisbpm | 
+    [0, -5, 3, 7].each do  | thispitch | 
       use_bpm thisbpm
       transposesample mysample, 16, thispitch
       sleep 16
