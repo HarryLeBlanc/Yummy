@@ -9,11 +9,11 @@ There are methods providing envelopes, lfos, trancegates, stutter effects, arpeg
 orchestration of multiple voices, swinging rhythms, euclidean rhythms, etc. 
 There are also utilities and testing methods to make programming simpler and more readable. 
 
-##Methods grouped by purpose
+## Methods grouped by purpose
 
-| |### Music performance|
+### Music performance
   |arpeggiate|plays a given chord/scale/array/ring in sequence, with the timing you specify  |
-  |arrange|play multiple musical voices, each with their own rhythm, melody, etc. The mothership of all methods. | 
+  |arrange|play multiple musical voices, each with their own rhythm, melody, etc. The mothership of all methods. 
   |funkify|plays a given synth/sample in a randomly generated funky rhythm for the specified amount of time.   |
   |playdegreematrix|play melodies in a scale by specifying scale degrees (:i, :ii, etc., or 1, 2, etc.)  |
   |playline|simplified wrapper for arrange, plays one instrument line. Threaded by default.   |
@@ -21,13 +21,13 @@ There are also utilities and testing methods to make programming simpler and mor
   |stuttersample|plays a sample, chopping it up and stuttering/reversing sections.  |
   |transposesample|transposes a sample, hiding the nasty math involved in pitch_stretch and rpitch. | 
 
-| |### Sound manipulation|
-  env -- apply an envelope to any sliding param for any synth or sample.   
-  lfo -- apply an lfo/mseg to any sliding param for any synth or sample.   
-  trancegate -- apply a polyrhythmic trancegate to any synth or sample.   
+### Sound manipulation
+|env|apply an envelope to any sliding param for any synth or sample. |  
+|lfo|apply an lfo/mseg to any sliding param for any synth or sample. |  
+|trancegate|apply a polyrhythmic trancegate to any synth or sample.  | 
 
 
-| |### Melody/rhythm manipulation|
+### Melody/rhythm manipulation
 |convertdrumnotation -- converts drum notation ("x---x---x---x---") to note-type notation ("q,q,q,q").  |
 |cooktime|converts notation ("q") to time duration (1.0).|
 |cooktimes|converts a sequence of notation ("q, dq, dq") to an array of time durations [1, 1.5, 1.5]. | 
@@ -39,7 +39,7 @@ There are also utilities and testing methods to make programming simpler and mor
 |swing|converts straight rhythms to swing rhythms. Supports oddball swings (7, 5.3, etc.).  |
 |tuples|generates tuples of any time amount. Returns notation if possible.   |
 
-| |### Array/hash/ring manipulation
+### Array/hash/ring manipulation
 |argstohash|converts an argument string ("amp: 2, cutoff: 60") to a hash. |  
 |argstostring|converts an argument hash ({amp: 2, cutoff: 60}) to a string. |  
 |arrayhashtohasharray|converts a hash of arrays to an array of hashes.  | 
@@ -53,23 +53,22 @@ There are also utilities and testing methods to make programming simpler and mor
 
 ### Tests and comparisons
 
-  boolish -- test for values that are kinda false, e.g., "", [], 0, etc.   
-  divisibleby -- tests whether one number is evenly divisible by another.  
-  equalish -- tests for approximate equality. Useful for comparing floats, e.g. triplets.  
-  listorring -- tests whether a value is an array, hash or ring.   
-  ringorlist -- same as listorring  
-  samplebpm -- returns the bpm of a given sample.  
-  tickable -- same as listorring  
+|boolish|test for values that are kinda false, e.g., "", [], 0, etc. |  
+|divisibleby|tests whether one number is evenly divisible by another.  |
+|equalish|tests for approximate equality. Useful for comparing floats, e.g. triplets.  |
+|listorring|tests whether a value is an array, hash or ring.   |
+|ringorlist|same as listorring  |
+|samplebpm|returns the bpm of a given sample. | 
+|tickable|same as listorring | 
 
 
 ### Utilities
 
-  debugprint -- prints anything to stdout, optionally logging to a file, optionally expanding arrays and hashes.  
-  overridekwargs -- used to support passing named parameters to methods.   
-  stripparams -- used to strip parameters from kwargs that match method params.
-  Useful for collecting params to pass to methods like play or sample.   
-  yummyhelp -- print help info to stdout for methods herein.   
-  yh -- wrapper for yummyhelp  
+|debugprint|prints anything to stdout, optionally logging to a file, optionally expanding arrays and hashes.  |
+|overridekwargs|used to support passing named parameters to methods.   |
+|stripparams|used to strip parameters from kwargs that match method params. Useful for collecting params to pass to methods like play or sample.   |
+|yummyhelp|print help info to stdout for methods herein.   |
+|yh|wrapper for yummyhelp | 
 
 
 
