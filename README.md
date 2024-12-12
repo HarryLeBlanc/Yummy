@@ -11,7 +11,7 @@ There are also utilities and testing methods to make programming simpler and mor
 
 ##Methods grouped by purpose
 
-|### Music performance|
+| |### Music performance|
 |---|
   |arpeggiate|plays a given chord/scale/array/ring in sequence, with the timing you specify  |
   |arrange|play multiple musical voices, each with their own rhythm, melody, etc. The mothership of all methods. | 
@@ -22,27 +22,28 @@ There are also utilities and testing methods to make programming simpler and mor
   |stuttersample|plays a sample, chopping it up and stuttering/reversing sections.  |
   |transposesample|transposes a sample, hiding the nasty math involved in pitch_stretch and rpitch. | 
 
-### Sound manipulation
-
+| |### Sound manipulation|
+|---|
   env -- apply an envelope to any sliding param for any synth or sample.   
   lfo -- apply an lfo/mseg to any sliding param for any synth or sample.   
   trancegate -- apply a polyrhythmic trancegate to any synth or sample.   
 
-### Melody/rhythm manipulation
 
-  convertdrumnotation -- converts drum notation ("x---x---x---x---") to note-type notation ("q,q,q,q").  
-  cooktime  -- converts notation ("q") to time duration (1.0).
-  cooktimes -- converts a sequence of notation ("q, dq, dq") to an array of time durations [1, 1.5, 1.5].  
-  degreestoabsolutenotes -- converts scale degrees to absolute notes.
-  euclidiate -- applies euclidean rhythms to generate metrical sequence, in notation ([1.5, 1.5, 1]).      Convenience wrapper for spreadtobeats.   
-  funkyrandom -- generates a random funky rhythm, returned as an array of times.  
-  humanize -- applies a random amount of humanization to a given time array.   
-  spreadtobeats -- turns a spread into notation for rhythm. Euclidiate wraps this in a friendlier interface.   
-  swing -- converts straight rhythms to swing rhythms. Supports oddball swings (7, 5.3, etc.).  
-  tuples -- generates tuples of any time amount. Returns notation if possible.   
+| |### Melody/rhythm manipulation|
+|---|
+|convertdrumnotation -- converts drum notation ("x---x---x---x---") to note-type notation ("q,q,q,q").  |
+|cooktime|converts notation ("q") to time duration (1.0).|
+|cooktimes|converts a sequence of notation ("q, dq, dq") to an array of time durations [1, 1.5, 1.5]. | 
+|degreestoabsolutenotes|converts scale degrees to absolute notes.|
+|euclidiate|applies euclidean rhythms to generate metrical sequence, in notation ([1.5, 1.5, 1]).      Convenience wrapper for spreadtobeats.   |
+|funkyrandom|generates a random funky rhythm, returned as an array of times. | 
+|humanize|applies a random amount of humanization to a given time array. |  
+|spreadtobeats|turns a spread into notation for rhythm. Euclidiate wraps this in a friendlier interface.  | 
+|swing|converts straight rhythms to swing rhythms. Supports oddball swings (7, 5.3, etc.).  |
+|tuples|generates tuples of any time amount. Returns notation if possible.   |
 
-### Array/hash/ring manipulation
-
+| |### Array/hash/ring manipulation
+|---|
   argstohash -- converts an argument string ("amp: 2, cutoff: 60") to a hash.   
   argstostring -- converts an argument hash ({amp: 2, cutoff: 60}) to a string.   
   arrayhashtohasharray -- converts a hash of arrays to an array of hashes.   
