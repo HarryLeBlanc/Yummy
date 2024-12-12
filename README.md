@@ -13,14 +13,14 @@ There are also utilities and testing methods to make programming simpler and mor
 
 ### Music performance
 
-| arpeggiate       | plays a given chord/scale/array/ring in sequence, with the timing you specify    | 
-| arrange          | play multiple musical voices, each with their own rhythm, melody, etc.           |
-| funkify          | plays a given synth/sample in a randomly generated funky rhythm                  | 
-| playdegreematrix | play melodies in a scale by specifying scale degrees                             | 
-| playline         | simplified wrapper for arrange, plays one instrument line. Threaded by default.  | 
-| strum            | strums the chord passed in. Convenience wrapper for arpeggiate.                  | 
-| stuttersample    | plays a sample, chopping it up and stuttering/reversing sections.                | 
-| transposesample  | transposes a sample, hiding the nasty math involved in pitch_stretch and rpitch. |  
+| arpeggiate       | plays a given chord/scale/array/ring in sequence, with the timing you specify    |  
+| arrange          | play multiple musical voices, each with their own rhythm, melody, etc.           |  
+| funkify          | plays a given synth/sample in a randomly generated funky rhythm                  |   
+| playdegreematrix | play melodies in a scale by specifying scale degrees                             |   
+| playline         | simplified wrapper for arrange, plays one instrument line. Threaded by default.  |   
+| strum            | strums the chord passed in. Convenience wrapper for arpeggiate.                  |   
+| stuttersample    | plays a sample, chopping it up and stuttering/reversing sections.                |   
+| transposesample  | transposes a sample, hiding the nasty math involved in pitch_stretch and rpitch. |    
 
 ### Sound manipulation
 
