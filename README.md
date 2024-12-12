@@ -11,7 +11,7 @@ There are also utilities and testing methods to make programming simpler and mor
 
 ##Methods grouped by purpose
 
-###Music performance
+### Music performance
 
   arpeggiate  -- plays a given chord/scale/array/ring in sequence, with the timing you specify  
   arrange -- play multiple musical voices, each with their own rhythm, melody, etc. The mothership of all methods.  
@@ -22,13 +22,13 @@ There are also utilities and testing methods to make programming simpler and mor
   stuttersample -- plays a sample, chopping it up and stuttering/reversing sections.  
   transposesample -- transposes a sample, hiding the nasty math involved in pitch_stretch and rpitch.  
 
-###Sound manipulation
+### Sound manipulation
 
   env -- apply an envelope to any sliding param for any synth or sample.   
   lfo -- apply an lfo/mseg to any sliding param for any synth or sample.   
   trancegate -- apply a polyrhythmic trancegate to any synth or sample.   
 
-###Melody/rhythm manipulation
+### Melody/rhythm manipulation
 
   convertdrumnotation -- converts drum notation ("x---x---x---x---") to note-type notation ("q,q,q,q").  
   cooktime  -- converts notation ("q") to time duration (1.0).
@@ -41,7 +41,7 @@ There are also utilities and testing methods to make programming simpler and mor
   swing -- converts straight rhythms to swing rhythms. Supports oddball swings (7, 5.3, etc.).  
   tuples -- generates tuples of any time amount. Returns notation if possible.   
 
-###Array/hash/ring manipulation
+### Array/hash/ring manipulation
 
   argstohash -- converts an argument string ("amp: 2, cutoff: 60") to a hash.   
   argstostring -- converts an argument hash ({amp: 2, cutoff: 60}) to a string.   
@@ -57,7 +57,7 @@ There are also utilities and testing methods to make programming simpler and mor
   striptrailingnils -- strips trailing nils from an array. Useful with rowstocolumns.   
   stripval -- deletes all items from an array matching the value.   
 
-###Tests and comparisons
+### Tests and comparisons
 
   boolish -- test for values that are kinda false, e.g., "", [], 0, etc.   
   divisibleby -- tests whether one number is evenly divisible by another.  
@@ -68,7 +68,7 @@ There are also utilities and testing methods to make programming simpler and mor
   tickable -- same as listorring  
 
 
-###Utilities
+### Utilities
 
   debugprint -- prints anything to stdout, optionally logging to a file, optionally expanding arrays and hashes.  
   overridekwargs -- used to support passing named parameters to methods.   
@@ -79,7 +79,7 @@ There are also utilities and testing methods to make programming simpler and mor
 
 
 
-##Alphabetic list of methods
+## Alphabetic list of methods
 
 |Method|Arguments|
 |---|---|
@@ -131,21 +131,21 @@ The last param \*\*kwargs allows support for params to be named as well as posit
 (e.g. "strum thesenotes, strumspeed: 0.1"). See overridekwargs for details. 
 
 
-##Detailed documentation of each method
+## Detailed documentation of each method
 
-####argstohash  
+#### argstohash  
 
   converts a comma-delimited string of arg: value pairs into a hash. 
   Useful for constructing command strings to feed into eval.  
   args: the arguments to turn into a hash.  If anything but a string, will return args unprocessed.  
 
-####argstostring
+#### argstostring
 
   Converts a has of arg/value pairs into a comma delimited string (arg1: val1, arg2: val2, etc)
   Useful for constructing command strings to feed into eval.  
   args: the arguments to turn into a hash.  If anything but a string, will return args unprocessed.  
 
-####arpeggiate
+#### arpeggiate
 
   A method to sequentially play the chord or scale or array/ring of notes passed in.
   Args:  
@@ -158,7 +158,7 @@ The last param \*\*kwargs allows support for params to be named as well as posit
   arpeggiate (chord :c4, "m7"), [0.1, 0.1, 0.1, 0.7], amp: 1.5, duration: [0.1, 0.1, 0.1, 0.7]
   ```
 
-####arrange
+#### arrange
 
   allows user to arrange multiple samples/synths to play in time with each other in a single function
   uses a hashtable where the key is the sample/synth and the value is a comma-delimited list of times/notes/chords/modes.  
@@ -260,7 +260,7 @@ The last param \*\*kwargs allows support for params to be named as well as posit
   end
 ```
 
-####arrayhashtohasharray
+#### arrayhashtohasharray
 
   A utility function that converts a hash of arrays to an array of hashes.
   The array length will be the length of the longest array in the hash,
@@ -270,19 +270,19 @@ The last param \*\*kwargs allows support for params to be named as well as posit
   arrayhash: the hash of arrays (e.g. { amp: [1, 2, 3], duration: [1, 2]})  
   makering: if true, forces the return value to a ring, not an array. Defaults to true.  
 
-####boolish 
+#### boolish 
 
   a looser version of getting a boolean from a value -- more perlish.   
   args:  
   testvalue -- the value to treat as a boolean   
   falsies -- a list of values that evaluate to false. Defaults to [nil, false, 0, "", [], {}]
 
-####cleanchordorscale
+#### cleanchordorscale
 
   turns a chord or scale into a plain array.   
   myitem: item to clean.  
 
-####convertdrumnotation
+#### convertdrumnotation
 
   converts notation like this "x---x---x---x---" to this: "q,q,q,q"  
   args:  
@@ -306,7 +306,7 @@ The last param \*\*kwargs allows support for params to be named as well as posit
   You can also specify multiple comma-delimited bars, e.g.: "x[x[xx]],x--x---x,x[x[xx]],x--x--x-"  
   if you pass in non-drumnotation (e.g., "dq,dq,q"), it is returned unchanged, with an amplist of all ones
 
-####cooktime 
+#### cooktime 
 
   args:   
   timestring: the string to cook into times.  
@@ -325,7 +325,7 @@ The last param \*\*kwargs allows support for params to be named as well as posit
   dots and triplets apply to the entire time, not just to the last letter.   
   returns 2 values: a duration (float), and a boolean indicating whether or not it's a rest. 
 
-####cooktimes 
+#### cooktimes 
 
   transform a delimited string of time expressions into an array of numbers   
   args:  
@@ -334,7 +334,7 @@ The last param \*\*kwargs allows support for params to be named as well as posit
   delimiter: what separates items in the list. Defaults to ","  
   cooktimes "e,q,e" returns [0.5, 1, 0.5]
 
-####debugprint
+#### debugprint
 
   a utility function to optionally print out debugging messages,
   controlled by the debugmode variable. If not set, defaults to false and prints nothing.  
@@ -346,7 +346,7 @@ The last param \*\*kwargs allows support for params to be named as well as posit
   logtofile: set to true if you wish to log to a text file. Defaults to false
   filename: the name of the file to log to. Will append if it exists, create it if it does not.   
 
-####degreestoabsolutenotes
+#### degreestoabsolutenotes
 
   takes an arrangement using degrees instead of absolute notes, and converts them to degrees.  
   Used to feed into arrange.    
@@ -355,12 +355,12 @@ The last param \*\*kwargs allows support for params to be named as well as posit
   thiskey: the musical key. Defaults to :c4.   
   thisscale: the musical scale: defalts to major.  
 
-####divisibleby
+#### divisibleby
 
   tests whether the numerator is evenly divisible by the deominator.   
   args: numerator, denominator -- both numbers
 
-####env 
+#### env 
 
   applies an adsr envelope to any slideable param on any synth note or sample.
   best results when you set the sample/note's modulated value to the startlevel when playing the sample/note,
@@ -383,7 +383,7 @@ The last param \*\*kwargs allows support for params to be named as well as posit
   env(handle, "drive", 1, 1, 3, 3, 0, 5, 3)
 ```
 
-####equalish
+#### equalish
 
   determines whether two numbers (promoted to floats) are equal within a rounding error.    
   value1: first value to compare  
@@ -391,7 +391,7 @@ The last param \*\*kwargs allows support for params to be named as well as posit
   roundingerror: the rounding error within which it counts as equalish. Defaults to 0.00000001.   
   Useful for comparing computed floats (e.g. triplets).  
 
-####eucliciate
+#### eucliciate
 
   a utility function wrapping spreadtobeats, bypasses need to create spread.  
   beats: how many beats to play.   
@@ -404,7 +404,7 @@ The last param \*\*kwargs allows support for params to be named as well as posit
   euclidiate 3, 8, 2, 0.5 
 ```
 
-####funkyrandom
+#### funkyrandom
 
   randomly generates a funky rhythm, 
   returned as a string of notations (bwhqestdr) suitable for feeding into cooknotes or arrange.   
@@ -414,7 +414,7 @@ The last param \*\*kwargs allows support for params to be named as well as posit
   shortestbeat must be one of: sixteenth, eighth, quarter, half, whole (0.25, 0.5, 1, 2, 4)  
   restodds: the odds of a rest, using one_in. Defaults to 8.
    
- ####funkify
+ #### funkify
 
   A method to play a sound in a funky, random manner for a specified period of time.  
   thissound: a synth or sample. Can also be an array or list of synths or samples.  
@@ -424,14 +424,14 @@ The last param \*\*kwargs allows support for params to be named as well as posit
   densities: a list or ring of densities, applied per note/sleep.  
   tickorchoose: tick or choose. Used to define how to traverse densities and thesenotes .
 
-####humanize
+#### humanize
 
   add some looseness to a beat. 
   A wrapper for swing with a swingseed of 8.   
   thesebeats: an array of time values defining the beat.   
   humanizeamt: the amount of looseness. Defaults to 0.5.  
 
-####lfo
+#### lfo
 
   provides an all-purpose lfo for any slideable param for any synth or sample.  
   Really, it's a full-fledged mseg generator, since you can specify different curves and levels per cycle. 
@@ -479,7 +479,7 @@ The last param \*\*kwargs allows support for params to be named as well as posit
   lfo handle, "amp", 4, "e,e,s,s,s,s", "0,1,0,0.5,0,0.5", "square"
 ```
 
-####overridekwargs
+#### overridekwargs
 
   a useful method to help emulate the native ruby ability to specify params by either position or name.   
   kwargs: the hash of named params specified by the user.  
@@ -494,15 +494,15 @@ The last param \*\*kwargs allows support for params to be named as well as posit
   See also stripparams, which is useful for stripping out method-related params, 
   leaving only params which are suitable to pass to play or sample.   
 
-####paddedrowstocolumns
+#### paddedrowstocolumns
 
   pads all arrays to the same length, repeating values in shorter arrays,
   then passes the arrays to rowstocolumns.   
   \*thesearrays: the arrays to pad
 
-####playdegreematrix
+#### playdegreematrix
 
-  plays a melody from degrees of a scale passsed in.   
+  plays a melody from degrees of a scale passed in.   
   args:  
   thiskey: the root note of the key to be played, e.g., :c4 or 60.   
   thisscale: the scale to be played.   
@@ -514,7 +514,7 @@ The last param \*\*kwargs allows support for params to be named as well as posit
   Easiest to use rowstocolumns, feeding it 3 arrays for each of the above values. 
   You can optionally pass in parameters to control the sound, e.g., amp, cutoff, etc. 
 
-####playline 
+#### playline 
 
   Easy-to-use wrapper for arrange, allowing user to play one instrument. 
   Supports optional threading, which makes it useful for building a drum part from multiple samples (kick, snare, etc).each  
@@ -536,20 +536,20 @@ The last param \*\*kwargs allows support for params to be named as well as posit
   end
 ```
 
-####rowstocolumns
+#### rowstocolumns
 
   takes an array of arrays, and transforms rows to columns. Can take any number of arrays.    
   \*thesearrays: the arrays to flip  
   if arrays are of unequal length, values will be filled with nils
   if you want to pad the shorter arrays, use paddedrowstocolumns instead.
 
-####ringorlist
+#### ringorlist
 
   simple utility function to test whether an item is a ring or a list.
   true if either, false if anything else.
   Added a couple of synonyms, listorring and tickable. 
 
-####samplebpm
+#### samplebpm
 
   utility to return the bpm of any sample loop.  
   thissample: the sample to extract the bpm from.  
@@ -560,7 +560,7 @@ The last param \*\*kwargs allows support for params to be named as well as posit
   puts samplebpm :loop_amen_full, 16
 ```
 
-####setarg 
+#### setarg 
 
   sets an arg to a val in args.  
   Useful for constructing command strings to feed to eval.    
@@ -571,7 +571,7 @@ The last param \*\*kwargs allows support for params to be named as well as posit
   args: the string or hash containing all the args. 
   returns args as a hash.
 
-####spreadtobeats
+#### spreadtobeats
 
 a utility function designed to take a spread, 
 and convert it to a string of comma-delimited beat values to feed into arrange.  
@@ -584,7 +584,7 @@ Example:
 spreadtobeats spread(3, 8, 2), 0.5 
 ```
 
-####stripparams
+#### stripparams
 
   a utility function to delete params from kwargs.
   Useful for passing args to nested method calls.  
@@ -595,19 +595,19 @@ spreadtobeats spread(3, 8, 2), 0.5
   cleanargs = stripparams kwargs, method(__method__).parameters
 ```
 
-####striptrailingnils
+#### striptrailingnils
 
   strips all trailing nil values in the given array    
   thisarray: the array to strip
 
-####stripval
+#### stripval
 
   strips all items in an array that match the value.  
   thisarray: the array to strip.    
   val: the value to strip.    
   returns: stripped array. 
 
-####strum 
+#### strum 
 
   A convenience method wrapping arpeggiate to simplify strumming chords.     
   thesenotes: the notes to strum.
@@ -616,7 +616,7 @@ spreadtobeats spread(3, 8, 2), 0.5
   strumspeed: how long (in beats) to sleep for all notes except the last one. 
   Used to calculate how long the last note should sleep. Defaults to 0.05. 
 
-####stuttersample  
+#### stuttersample  
 
   play a sample, slicing it into chunks and applying densities to each chunk for a stutter-type effect.   
   args:  
@@ -639,7 +639,7 @@ spreadtobeats spread(3, 8, 2), 0.5
   stuttersample :loop_amen_full, [1, 2, 4, 2, 1, 4, 3, 2], [false, true, false, false, true, false, false, false], [0, 0, 7, 3, 2, 4, 5, 1], 16
 ```
 
-####swing
+#### swing
 
   add swing to a straight beat.    
   args:  
@@ -649,17 +649,17 @@ spreadtobeats spread(3, 8, 2), 0.5
   humanizeamt: how much humanizing to add in. Defaults to 0. 
   
 
-####tickable
+#### tickable
 
  wrapper for ringorlist
 
-####tickargs
+#### tickargs
 
   Returns a string of args, with all array values ticked.    
   args: a Hash of args, where all items whose values are arrays return ticked values.    
   Useful for constructing command strings to feed to eval.  
 
-####trancegate 
+#### trancegate 
 
   a trancegate that manipulates the volume up and down. 
   Defaults to square wave, but you can use other lfo shapes.
@@ -684,7 +684,7 @@ spreadtobeats spread(3, 8, 2), 0.5
   trancegate handle, 16, euclidiate("s", 16, 5)
 ```
 
-####transposesample
+#### transposesample
 
   transposes a sample up or down by specified rpitch, while pitch_stretching to keep tempo.  
   args:  
@@ -709,7 +709,7 @@ spreadtobeats spread(3, 8, 2), 0.5
   Code returns a handle (node) for further manipulation, e.g. lfos, envelopes, trancegates. 
 ```
 
-####tuples
+#### tuples
 
   returns an array of times (floats) based on tupling the specified beats.  
   args:   
@@ -720,13 +720,13 @@ spreadtobeats spread(3, 8, 2), 0.5
   tuples(5, 2) returns [1.6, 1.6, 1.6, 1.6, 1.6]
 ```
 
-####yummyhelp
+#### yummyhelp
 
   provide quick docs for yummyfillings.  
   helptopic: a string for the help topic. If nil, returns a list of methods. 
   Use the method name for detailed help.  
   Uses debugprint to return a string with help text. 
 
-####yh
+#### yh
 
   wrapper for yummyhelp
