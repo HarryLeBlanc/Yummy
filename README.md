@@ -36,7 +36,7 @@ There are also utilities and testing methods to make programming simpler and mor
 
  | Method Name | Description |  
 | --- | --- |
-| convertdrumnotation -- converts drum notation ("x---x---x---x---") to note-type notation ("q,q,q,q").   | 
+| convertdrumnotation | converts drum notation ("x---x---x---x---") to note-type notation ("q,q,q,q").   | 
  | cooktime | converts notation ("q") to time duration (1.0). | 
  | cooktimes | converts a sequence of notation ("q, dq, dq") to an array of time durations [1, 1.5, 1.5].  |  
  | degreestoabsolutenotes | converts scale degrees to absolute notes. | 
