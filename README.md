@@ -12,7 +12,8 @@ There are also utilities and testing methods to make programming simpler and mor
 ## Methods grouped by purpose
 
 ### Music performance
-
+| Method Name | Description |  
+| --- | --- |
 | arpeggiate       | plays a given chord/scale/array/ring in sequence, with the timing you specify    |  
 | arrange          | play multiple musical voices, each with their own rhythm, melody, etc.           |  
 | funkify          | plays a given synth/sample in a randomly generated funky rhythm                  |   
