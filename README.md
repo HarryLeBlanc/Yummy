@@ -12,7 +12,6 @@ There are also utilities and testing methods to make programming simpler and mor
 ##Methods grouped by purpose
 
 | |### Music performance|
-|---|
   |arpeggiate|plays a given chord/scale/array/ring in sequence, with the timing you specify  |
   |arrange|play multiple musical voices, each with their own rhythm, melody, etc. The mothership of all methods. | 
   |funkify|plays a given synth/sample in a randomly generated funky rhythm for the specified amount of time.   |
@@ -23,14 +22,12 @@ There are also utilities and testing methods to make programming simpler and mor
   |transposesample|transposes a sample, hiding the nasty math involved in pitch_stretch and rpitch. | 
 
 | |### Sound manipulation|
-|---|
   env -- apply an envelope to any sliding param for any synth or sample.   
   lfo -- apply an lfo/mseg to any sliding param for any synth or sample.   
   trancegate -- apply a polyrhythmic trancegate to any synth or sample.   
 
 
 | |### Melody/rhythm manipulation|
-|---|
 |convertdrumnotation -- converts drum notation ("x---x---x---x---") to note-type notation ("q,q,q,q").  |
 |cooktime|converts notation ("q") to time duration (1.0).|
 |cooktimes|converts a sequence of notation ("q, dq, dq") to an array of time durations [1, 1.5, 1.5]. | 
@@ -43,20 +40,16 @@ There are also utilities and testing methods to make programming simpler and mor
 |tuples|generates tuples of any time amount. Returns notation if possible.   |
 
 | |### Array/hash/ring manipulation
-|---|
-  argstohash -- converts an argument string ("amp: 2, cutoff: 60") to a hash.   
-  argstostring -- converts an argument hash ({amp: 2, cutoff: 60}) to a string.   
-  arrayhashtohasharray -- converts a hash of arrays to an array of hashes.   
-  cleanchordorscale -- turns a chord or scale into a flat array.  
-  paddedrowstocolumns -- transforms an array of arrays,   
-    pivoting rows to columns and padding short arrays by repeating values.  
-  rowstocolumns  transforms an array of arrays,  
-    pivoting rows to columns, but padding short arrays with nils.  
-  setarg -- set arguments in an argument hash.   
-  tickargs -- if argument values are specified as arrays,   
-    will tick through individual values on consecutive calls.  
-  striptrailingnils -- strips trailing nils from an array. Useful with rowstocolumns.   
-  stripval -- deletes all items from an array matching the value.   
+|argstohash|converts an argument string ("amp: 2, cutoff: 60") to a hash. |  
+|argstostring|converts an argument hash ({amp: 2, cutoff: 60}) to a string. |  
+|arrayhashtohasharray|converts a hash of arrays to an array of hashes.  | 
+|cleanchordorscale|turns a chord or scale into a flat array. | 
+|paddedrowstocolumns|transforms an array of arrays, pivoting rows to columns and padding short arrays by repeating values.  |
+|rowstocolumns|transforms an array of arrays, pivoting rows to columns, but padding short arrays with nils. | 
+|setarg|set arguments in an argument hash.   |
+|tickargs|if argument values are specified as arrays, will tick through individual values on consecutive calls.  |
+|striptrailingnils|strips trailing nils from an array. Useful with rowstocolumns.  | 
+|stripval|deletes all items from an array matching the value. |  
 
 ### Tests and comparisons
 
