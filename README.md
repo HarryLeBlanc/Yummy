@@ -25,14 +25,18 @@ There are also utilities and testing methods to make programming simpler and mor
 
 ### Sound manipulation
 
- | env | apply an envelope to any sliding param for any synth or sample.  |   
+ | Method Name | Description |  
+| --- | --- |
+| env | apply an envelope to any sliding param for any synth or sample.  |   
  | lfo | apply an lfo/mseg to any sliding param for any synth or sample.  |   
  | trancegate | apply a polyrhythmic trancegate to any synth or sample.   |  
 
 
 ### Melody/rhythm manipulation
 
- | convertdrumnotation -- converts drum notation ("x---x---x---x---") to note-type notation ("q,q,q,q").   | 
+ | Method Name | Description |  
+| --- | --- |
+| convertdrumnotation -- converts drum notation ("x---x---x---x---") to note-type notation ("q,q,q,q").   | 
  | cooktime | converts notation ("q") to time duration (1.0). | 
  | cooktimes | converts a sequence of notation ("q, dq, dq") to an array of time durations [1, 1.5, 1.5].  |  
  | degreestoabsolutenotes | converts scale degrees to absolute notes. | 
@@ -45,7 +49,9 @@ There are also utilities and testing methods to make programming simpler and mor
 
 ### Array/hash/ring manipulation
 
- | argstohash | converts an argument string ("amp: 2, cutoff: 60") to a hash.  |   
+ | Method Name | Description |  
+| --- | --- |
+| argstohash | converts an argument string ("amp: 2, cutoff: 60") to a hash.  |   
  | argstostring | converts an argument hash ({amp: 2, cutoff: 60}) to a string.  |   
  | arrayhashtohasharray | converts a hash of arrays to an array of hashes.   |  
  | cleanchordorscale | turns a chord or scale into a flat array.  |  
@@ -58,7 +64,9 @@ There are also utilities and testing methods to make programming simpler and mor
 
 ### Tests and comparisons
 
- | boolish     | test for values that are kinda false, e.g., "", [], 0, etc.                   |   
+ | Method Name | Description |  
+| --- | --- |
+| boolish     | test for values that are kinda false, e.g., "", [], 0, etc.                   |   
  | divisibleby | tests whether one number is evenly divisible by another.                      | 
  | equalish    | tests for approximate equality. Useful for comparing floats, e.g. triplets.   | 
  | listorring  | tests whether a value is an array, hash or ring.                              | 
@@ -69,7 +77,9 @@ There are also utilities and testing methods to make programming simpler and mor
 
 ### Utilities
 
- | debugprint | prints anything to stdout, optionally logging to a file, optionally expanding arrays and hashes.   | 
+ | Method Name | Description |  
+| --- | --- |
+| debugprint | prints anything to stdout, optionally logging to a file, optionally expanding arrays and hashes.   | 
  | overridekwargs | used to support passing named parameters to methods.    | 
  | stripparams | used to strip parameters from kwargs that match method params. Useful for collecting params to pass to methods like play or sample.    | 
  | yummyhelp | print help info to stdout for methods herein.    | 
