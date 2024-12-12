@@ -60,7 +60,6 @@ There are also utilities and testing methods to make programming simpler and mor
  | setarg | set arguments in an argument hash.    | 
  | tickargs | if argument values are specified as arrays, will tick through individual values on consecutive calls.   | 
  | striptrailingnils | strips trailing nils from an array. Useful with rowstocolumns.   |  
- | stripval | deletes all items from an array matching the value.  |   
 
 ### Tests and comparisons
 
@@ -123,7 +122,6 @@ There are also utilities and testing methods to make programming simpler and mor
  | spreadtobeats   | thisspread, beatvalue=sixteenth, notes=nil, \*\*kwargs | 
  | stripparams   | kwargs, params | 
  | striptrailingnils   | thisarray, \*\*kwargs | 
- | stripval  | thisarray, val, \*\*kwargs | 
  | strum   | thesenotes, totaltime=1, strumspeed=0.05, \*\*kwargs | 
  | stuttersample   | thissample, stutters=[1], beatspersample=1.0, reverses=[false], \*\*kwargs | 
  | swing   | straightbeats, swingseed=6.0, humanizeamt=0.0, \*\*kwargs | 
@@ -607,13 +605,6 @@ spreadtobeats spread(3, 8, 2), 0.5
 
   strips all trailing nil values in the given array    
   thisarray: the array to strip
-
-#### stripval
-
-  strips all items in an array that match the value.  
-  thisarray: the array to strip.    
-  val: the value to strip.    
-  returns: stripped array. 
 
 #### strum 
 

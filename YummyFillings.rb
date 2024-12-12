@@ -2722,23 +2722,6 @@ define  :stuttersample do |thissample, stutters=[1], reverses=[false], stutterch
 end #define stuttersample
 
 
-# stripval
-# strips all items in an array that match the value.
-# thisarray: the array to strip.  
-# val: the value to strip.  
-# returns: stripped array. 
-
-define  :stripval do |thisarray, val, **kwargs|
-  eval overridekwargs(kwargs, method(__method__).parameters)
-  cleanargs = stripparams kwargs, method(__method__).parameters
-  #debugprint "top of striparray"
-  deletelist = []
-  thisarray.each_index do |i| deletelist << i if thisarray[i] == val  end  
-  deletelist.reverse!
-  deletelist.each do |i| thisarray.delete_at i end  
- 
-  thisarray #return value
-end #define stripval
 
 ##| arrange
 ##| allows user to arrange multiple samples/synths to play in time with each other in a single function
@@ -3046,7 +3029,7 @@ define :arrange do |arrangement, repetitions=1, defaults=nil, effects=nil, envel
     #debugprint "synthorsample ", synthorsample.to_s
     #debugprint "instr_times before: ", instr_times.to_s
     instr_times, instr_amps = convertdrumnotation instr_times
-    instr_amps = stripval instr_amps, 0
+    instr_amps = instr_amps.delete_if do |item| item == 0 end  
     #debugprint "instr_times after: ", instr_times
     #debugprint "instr_amps: ", instr_amps
     #debugprint "defaults[synthorsample] before: ", defaults[synthorsample]
@@ -3385,7 +3368,6 @@ define  :yummyhelp do |helptopic=nil|
   paddedrowstocolumns |*thesearrays|
   playdegreematrix  |thiskey, thisscale, degreematrix, **kwargs |
   playline |synthorsample, notation, threaded=true, **kwargs|
-
   rowstocolumns  |*thesearrays|
   ringorlist  |thisitem|
   samplebpm  |thissample, beats=4|
@@ -3393,7 +3375,6 @@ define  :yummyhelp do |helptopic=nil|
   spreadtobeats  |thisspread, beatvalue=sixteenth, notes=nil, **kwargs|
   stripparams  |kwargs, params|
   striptrailingnils  |thisarray, **kwargs|
-  stripval |thisarray, val, **kwargs|
   strum  |thesenotes, totaltime=1, strumspeed=0.05, **kwargs|
   stuttersample  |thissample, stutters=[1], beatspersample=1.0, reverses=[false], **kwargs|
   swing  |straightbeats, swingseed=6.0, humanizeamt=0.0, **kwargs|
@@ -3854,13 +3835,6 @@ cleanargs = stripparams kwargs, method(__method__).parameters
 striptrailingnils
 strips all trailing nil values in the given array  
 thisarray: the array to strip
-)
-    helplist["stripval"] = %q(
-stripval
-strips all items in an array that match the value.
-thisarray: the array to strip.  
-val: the value to strip.  
-returns: stripped array. 
 )
     helplist["strum"] = %q(
 strum 
