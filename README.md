@@ -13,7 +13,7 @@ There are also utilities and testing methods to make programming simpler and mor
 
 ### Music performance
    | arpeggiate | plays a given chord/scale/array/ring in sequence, with the timing you specify   | 
-   | arrange | play multiple musical voices, each with their own rhythm, melody, etc. The mothership of all methods. 
+   | arrange | play multiple musical voices, each with their own rhythm, melody, etc. The mothership of all methods. |
    | funkify | plays a given synth/sample in a randomly generated funky rhythm for the specified amount of time.    | 
    | playdegreematrix | play melodies in a scale by specifying scale degrees (:i, :ii, etc., or 1, 2, etc.)   | 
    | playline | simplified wrapper for arrange, plays one instrument line. Threaded by default.    | 
@@ -53,13 +53,13 @@ There are also utilities and testing methods to make programming simpler and mor
 
 ### Tests and comparisons
 
- | boolish | test for values that are kinda false, e.g., "", [], 0, etc.  |   
- | divisibleby | tests whether one number is evenly divisible by another.   | 
- | equalish | tests for approximate equality. Useful for comparing floats, e.g. triplets.   | 
- | listorring | tests whether a value is an array, hash or ring.    | 
- | ringorlist | same as listorring   | 
- | samplebpm | returns the bpm of a given sample.  |  
- | tickable | same as listorring  |  
+ | boolish     | test for values that are kinda false, e.g., "", [], 0, etc.                   |   
+ | divisibleby | tests whether one number is evenly divisible by another.                      | 
+ | equalish    | tests for approximate equality. Useful for comparing floats, e.g. triplets.   | 
+ | listorring  | tests whether a value is an array, hash or ring.                              | 
+ | ringorlist  | same as listorring                                                            | 
+ | samplebpm   | returns the bpm of a given sample.                                            |  
+ | tickable    | same as listorring                                                            |  
 
 
 ### Utilities
