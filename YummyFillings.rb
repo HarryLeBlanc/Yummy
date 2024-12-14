@@ -3,6 +3,7 @@
 ##| Harry LeBlanc 2024, gnu public license
 ##| HarryLeBlancLPCC@gmail.com
 ##| version 1.0.0, 12/12/24
+##| 1.0.1, fixed 2 bugs in convertdrumnotation
 ##| Use eval_file to load these method definitions, not load!
 
 
@@ -42,7 +43,7 @@ end
 ##|   logtofile: set to true if you wish to log to a text file
 ##|   filename: the name of the file to log to. Will append if it exists, create it if it does not. 
 
-define :debugprint do |label, value=nil, expandlist=false, indents=0, indenttext="  ", logtofile=false, filename="c:/users/harry/desktop/scripting/sonicpi/debuglog.txt", **kwargs|
+define :#debugprint do |label, value=nil, expandlist=false, indents=0, indenttext="  ", logtofile=false, filename="c:/users/harry/desktop/scripting/sonicpi/debuglog.txt", **kwargs|
   eval overridekwargs(kwargs, method(__method__).parameters)
  
   if current_debug
@@ -2141,7 +2142,7 @@ end
 
 
 
-define  :findclosingbracket do |drumnotation, brackets, **kwargs|
+define  :findclosingbracket do |drumnotation, brackets="[]", **kwargs|
   eval overridekwargs(kwargs, method(__method__).parameters)
   cleanargs = stripparams kwargs, method(__method__).parameters
   # #debugprint "top of findclosingbracket"
@@ -2157,7 +2158,7 @@ define  :findclosingbracket do |drumnotation, brackets, **kwargs|
   #code assumes that string starts with open bracket
   drumnotation.chars.each_with_index do |thischar, i|
     # #debugprint "thischar: ", thischar
-    # #debugprint "i: ", i
+    #debugprint "i: ", i
 
     if thischar == openbracket
       # #debugprint "got an open bracket"
@@ -2174,6 +2175,8 @@ define  :findclosingbracket do |drumnotation, brackets, **kwargs|
   position #return value
 end #define findclosingbracket
 
+
+
 define  :splitbracketchunks do |drumnotation, brackets="[]", **kwargs|
   eval overridekwargs(kwargs, method(__method__).parameters)
   #debugprint "top of splitbracketchunks"
@@ -2183,10 +2186,10 @@ define  :splitbracketchunks do |drumnotation, brackets="[]", **kwargs|
 
   return [] if !boolish drumnotation 
 
-if drumnotation.count(brackets[0]) != drumnotation.count(brackets[1])
-  #debugprint "ERROR: unbalanced brackets"
-  return []
-end if #unbalanced brackets
+  if drumnotation.count(brackets[0]) != drumnotation.count(brackets[1])
+    #debugprint "ERROR: unbalanced brackets"
+    return []
+  end if #unbalanced brackets
 
 
   chunks  = []
@@ -2200,11 +2203,11 @@ end if #unbalanced brackets
       #debugprint "chunks: ", chunks
       drumnotation = drumnotation.slice(bracketspot, drumnotation.length + 1)
       #debugprint "drumnotation: ", drumnotation
-      chunks << drumnotation.slice(0, findclosingbracket(drumnotation, brackets) + 1)
-      drumnotation = drumnotation.slice(findclosingbracket(drumnotation, brackets) + 1, drumnotation.length + 1)
-      #debugprint "drumnotation: ", drumnotation
-      #debugprint "chunks: ", chunks
     end # if bracketspot > 0
+    chunks << drumnotation.slice(0, findclosingbracket(drumnotation, brackets) + 1)
+    drumnotation = drumnotation.slice(findclosingbracket(drumnotation, brackets) + 1, drumnotation.length + 1)
+    #debugprint "drumnotation: ", drumnotation
+    #debugprint "chunks: ", chunks
   end #while drumnotation.include? openbracket
   chunks << drumnotation  if boolish drumnotation  
   #debugprint "chunks: ", chunks
@@ -3589,8 +3592,8 @@ delimiter: defaults to ","
 e.g.: 
 cooktimes "e,q,e" returns [0.5, 1, 0.5]
   )
-    helplist["debugprint"] = %q(
-debugprint
+    helplist["#debugprint"] = %q(
+#debugprint
   a utility function to optionally print out debugging messages,
   controlled by the debugmode variable. If not set, defaults to false and prints nothing.
   label: a text string to explain what the value means.
