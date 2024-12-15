@@ -9,6 +9,13 @@ There are methods providing envelopes, lfos, trancegates, stutter effects, arpeg
 orchestration of multiple voices, swinging rhythms, euclidean rhythms, etc. 
 There are also utilities and testing methods to make programming simpler and more readable. 
 
+## Version history: 
+
+1.0.1, fixed 2 bugs in convertdrumnotation
+
+1.0.2, fixed bug in samplebpm
+
+
 ## Methods grouped by purpose
 
 ### Music performance
