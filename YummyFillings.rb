@@ -4,6 +4,7 @@
 ##| HarryLeBlancLPCC@gmail.com
 ##| version 1.0.0, 12/12/24
 ##| 1.0.1, fixed 2 bugs in convertdrumnotation
+##| 1.0.2, fixed bug in samplebpm
 ##| Use eval_file to load these method definitions, not load!
 
 
@@ -292,20 +293,25 @@ end #define funkify
 
 
 
+
+
+
+
 ##| samplebpm -- utility to return the bpm of any sample loop.
 ##|   thissample: the sample to extract the bpm from.
-##|   beats: the number of beats used to calculate bpm. Defaults to 4
+##|   num_beats: the number of beats used to calculate bpm. Defaults to 4
 ##| example:
 ##| puts samplebpm :loop_amen
 ##| puts samplebpm :loop_amen_full, 16
 
 
 
-define :samplebpm do |thissample, beats=4|
+define :samplebpm do |thissample, beats=4.0, **kwargs|
+  eval overridekwargs(kwargs, method(__method__).parameters, false)
   with_sample_bpm thissample, num_beats: beats do
     current_bpm
-  end
-end
+  end #with_sample_bpm
+end #define :samplebpm
 
 # formattedsamplename  
 # Utility that provides either a leading colon or embedded quotes, depending on if it's a symbol or string (path). 
