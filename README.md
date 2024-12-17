@@ -36,8 +36,8 @@ There are also utilities and testing methods to make programming simpler and mor
 
  | Method Name | Description |  
 | --- | --- |
-| env | apply an envelope to any sliding param for any synth or sample.  |   
- | lfo | apply an lfo/mseg to any sliding param for any synth or sample.  |   
+| env | apply an envelope to any sliding param for any synth, sample or effect.  |   
+ | lfo | apply an lfo/mseg to any sliding param for any synth, sample or effect.  |   
  | trancegate | apply a polyrhythmic trancegate to any synth or sample.   |  
 
 
@@ -377,7 +377,7 @@ The last param \*\*kwargs allows support for params to be named as well as posit
 
 #### env 
 
-env -- applies an adsr envelope to any slideable param on any synth note or sample.  
+env -- applies an adsr envelope to any slideable param on any synth, sample or effect..  
 best results when you set the sample/note's modulated value to the startlevel when playing the sample/note,
 otherwise you'll hear an audible glitch at the beginning of the sound.  
 handle -- the node returned by sample/play commands.  
@@ -457,7 +457,7 @@ env(handle, "drive", 1, 1, 3, 3, 0, 5, 3)
 
 #### lfo
 
-  provides an all-purpose lfo for any slideable param for any synth or sample.  
+  provides an all-purpose lfo for any slideable param for any synth, sample or effect.  
   Really, it's a full-fledged mseg generator, since you can specify different curves and levels per cycle. 
   best results when you set the sample/note's modulated value to the startlevel when playing the sample/note,
   otherwise you'll hear an audible glitch at the beginning of the sound.  
