@@ -584,7 +584,7 @@ end
 
 
 
-define :env do |handle, param, attack=0.25, decay=0, sustain=1, release=0.25, startlevel=0, peaklevel=1, sustainlevel=0.5, asdr=nil, levels=nil, **kwargs|
+define :env do |handle, param, attack=0.25, decay=0, sustain=1, release=0.25, startlevel=0, peaklevel=1, sustainlevel=0.5, adsr=nil, levels=nil, **kwargs|
   eval overridekwargs(kwargs, method(__method__).parameters)
 
   debugprint ""
@@ -594,15 +594,25 @@ define :env do |handle, param, attack=0.25, decay=0, sustain=1, release=0.25, st
   param = param.to_s
   param = param.gsub ":", ""
   param = param.gsub " ", ""
-  if asdr 
-    debugprint "got an asdr"
-    attack = asdr[0]
-    decay=asdr[1]
-    sustain=asdr[2]
-    release=asdr[3]
+  if adsr 
+    debugprint "got an adsr"
+    attack = adsr[0]
+    decay=adsr[1]
+    sustain=adsr[2]
+    release=adsr[3]
   else
-    debugprint "no asdr"
+    debugprint "no adsr"
   end
+
+  debugprint "attack: ", attack
+  debugprint "decay: ", decay
+  debugprint "sustain: ", sustain
+  debugprint "release: ", release
+  debugprint "startlevel: ", startlevel
+  debugprint "peaklevel: ", peaklevel
+  debugprint "sustainlevel: ", sustainlevel
+
+
 
   if levels
     debugprint "got levels"
