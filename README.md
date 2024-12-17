@@ -15,6 +15,8 @@ There are also utilities and testing methods to make programming simpler and mor
 
 1.0.2, fixed bug in samplebpm
 
+1.0.3, added adsr & levels args to env
+
 
 ## Methods grouped by purpose
 
@@ -110,7 +112,7 @@ There are also utilities and testing methods to make programming simpler and mor
  | debugprint   | label, value=nil, expandlist=false, indents=0, indenttext="  ", logtofile=false, filename="c:/users/harry/desktop/scripting/sonicpi/debuglog.txt", \*\*kwargs | 
  | degreestoabsolutenotes   | thisarrangement, thiskey=:c4, thisscale=:major, \*\*kwargs | 
  | divisibleby   | numerator, denominator | 
- | env   | handle, param, attack=0.25, decay=0, sustain=1, release=0.25, startlevel=0, peaklevel=1, sustainlevel=0.5, \*\*kwargs | 
+ | env   | handle, param, attack=0.25, decay=0, sustain=1, release=0.25, startlevel=0, peaklevel=1, sustainlevel=0.5, asdr=nil, levels=nil, \*\*kwargs | 
  | equalish   | value1, value2, roundingerror =0.00000001, \*\*kwargs | 
  | euclidiate   | beats,duration,rotations=0,beatvalue=sixteenth, notes=nil, \*\*kwargs | 
  | funkyrandom   | totaltime=16, shortestbeat=0.25, restodds=8, \*\*kwargs | 
@@ -375,25 +377,34 @@ The last param \*\*kwargs allows support for params to be named as well as posit
 
 #### env 
 
-  applies an adsr envelope to any slideable param on any synth note or sample.
-  best results when you set the sample/note's modulated value to the startlevel when playing the sample/note,
-  otherwise you'll hear an audible glitch at the beginning of the sound.  
-  handle -- the node returned by sample/play commands.  
-  param -- the parameter being modulated by the envelope.  
-  attack -- attack time, in beats.  
-  decay -- decay time, in beats.  
-  sustain -- sustain time, in beats.  
-  relase -- release time, in beats.  
-  startlevel -- the level at the bottom of the attack phase. Scaled to what the param expects.  
-  peaklevel -- the level reached at the top of the attack phase, before gliding down to the sustain phase.  
-  sustainlevel -- the level sustained during the sustain phase  
+env -- applies an adsr envelope to any slideable param on any synth note or sample.  
+best results when you set the sample/note's modulated value to the startlevel when playing the sample/note,
+otherwise you'll hear an audible glitch at the beginning of the sound.  
+handle -- the node returned by sample/play commands.  
+param -- the parameter being modulated by the envelope.  
+attack -- attack time, in beats.  
+decay -- decay time, in beats.  
+sustain -- sustain time, in beats.  
+relase -- release time, in beats.  
+startlevel -- the level at the bottom of the attack phase. Scaled to what the param expects.  
+peaklevel -- the level reached at the top of the attack phase, before gliding down to the sustain phase.  
+sustainlevel -- the level sustained during the sustain phase  
+adsr -- an array containing attack, decay, sustain and release times. Overrides specific values. Defaults to nil.  
+levels -- an array containing startlevel, peaklevel and sustainlevel. Overrides specific values. Defaults to nil.  
+asdr and levels enable a more concise syntax.   
+Example:  
+use_bpm 60  
+use_synth :bass_highend  
+handle = play 60, sustain: 8, decay: 8,res: 0.7  
+puts "handle: " + handle.to_s  
+env(handle, "drive", 1, 1, 3, 3, 0, 5, 3)  
   Example:  
 ```
   use_bpm 60
   use_synth :bass_highend
   handle = play 60, sustain: 8, decay: 8,res: 0.7
   puts "handle: " + handle.to_s
-  env(handle, "drive", 1, 1, 3, 3, 0, 5, 3)
+  env(handle, "drive", asdr=[1, 1, 3, 3], levels=[0, 5, 3])
 ```
 
 #### equalish
