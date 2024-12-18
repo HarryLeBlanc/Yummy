@@ -45,7 +45,7 @@ end
 ##|   logtofile: set to true if you wish to log to a text file
 ##|   filename: the name of the file to log to. Will append if it exists, create it if it does not. 
 
-define :debugprint do |label, value=nil, expandlist=false, indents=0, indenttext="  ", logtofile=true, filename="c:/users/harry/desktop/scripting/sonicpi/debuglog.txt", **kwargs|
+define :debugprint do |label, value=nil, expandlist=false, indents=0, indenttext="  ", logtofile=false, filename="c:/users/harry/desktop/scripting/sonicpi/debuglog.txt", **kwargs|
   eval overridekwargs(kwargs, method(__method__).parameters)
  
   if current_debug
