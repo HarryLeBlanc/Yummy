@@ -1,4 +1,4 @@
-# YummyFillings.rb
+c# YummyFillings.rb
 
 Yummy fillings for sonic pi developers/performers. Yes, it's a silly pun. 
 
@@ -26,33 +26,44 @@ There are also utilities and testing methods to make programming simpler and mor
 | arpeggiate       | plays a given chord/scale/array/ring in sequence, with the timing you specify    |  
 | arrange          | play multiple musical voices, each with their own rhythm, melody, etc.           |  
 | funkify          | plays a given synth/sample in a randomly generated funky rhythm                  |   
+| killslidingbpm   | kills the thread managing sliding bpm; see slidebpm                              |
 | playdegreematrix | play melodies in a scale by specifying scale degrees                             |   
-| playline         | simplified wrapper for arrange, plays one instrument line. Threaded by default.  |   
+| playline         | simplified wrapper for arrange, plays one instrument line. Threaded by default.  | 
+| portamentomelody | plays a portamento melody with a single synth voice.                             |
+| slidebpm         | slides the bpm for accelerando / ritardo effects                                 |
+| slidemelody      | alias for portamentomelody.                                                      |  
 | strum            | strums the chord passed in. Convenience wrapper for arpeggiate.                  |   
-| stuttersample    | plays a sample, chopping it up and stuttering/reversing sections.                |   
+| stuttersample    | plays a sample, chopping it up and stuttering/reversing sections.                |
+| synctoslidingbpm | syncs current thread to the thread managing sliding bpm; see slidebpm            |   
 | transposesample  | transposes a sample, hiding the nasty math involved in pitch_stretch and rpitch. |    
 
 ### Sound manipulation
 
- | Method Name | Description |  
+| Method Name | Description |  
 | --- | --- |
-| env | apply an envelope to any sliding param for any synth, sample or effect.  |   
- | lfo | apply an lfo/mseg to any sliding param for any synth, sample or effect.  |   
- | trancegate | apply a polyrhythmic trancegate to any synth or sample.   |  
+| env | apply an envelope to any sliding param for any synth, sample or effect.  | 
+| lfo | apply an lfo/mseg to any sliding param for any synth, sample or effect.  |   
+| trancegate | apply a polyrhythmic trancegate to any synth or sample.   |  
 
 
 ### Melody/rhythm manipulation
 
  | Method Name | Description |  
 | --- | --- |
+| closestnote | for a given note, finds the closest note in a given scale. Useful for fitting random notes to scale. |
 | convertdrumnotation | converts drum notation ("x---x---x---x---") to note-type notation ("q,q,q,q").   | 
  | cooktime | converts notation ("q") to time duration (1.0). | 
  | cooktimes | converts a sequence of notation ("q, dq, dq") to an array of time durations [1, 1.5, 1.5].  |  
  | degreestoabsolutenotes | converts scale degrees to absolute notes. | 
  | euclidiate | applies euclidean rhythms to generate metrical sequence, in notation ([1.5, 1.5, 1]).      Convenience wrapper for spreadtobeats.    | 
  | funkyrandom | generates a random funky rhythm, returned as an array of times.  |  
+ | harmonic | generates a midi note corresponding to a specified harmonic of another note. |
  | humanize | applies a random amount of humanization to a given time array.  |   
+ | killslidingbpm | kills the thread managing sliding bpm. |  
+ | notetodegree | converts midi note to scale degree for given scale |
+ | slidebpm | gradually (or stepwise) change bpm, for accelerando / ritardo / little nash rambler effect. |
  | spreadtobeats | turns a spread into notation for rhythm. Euclidiate wraps this in a friendlier interface.   |  
+ | synctoslidingbpm | allows threads to sync to the sliding bpm. |
  | swing | converts straight rhythms to swing rhythms. Supports oddball swings (7, 5.3, etc.).   | 
  | tuples | generates tuples of any time amount. Returns notation if possible.    | 
 
@@ -64,6 +75,7 @@ There are also utilities and testing methods to make programming simpler and mor
  | argstostring | converts an argument hash ({amp: 2, cutoff: 60}) to a string.  |   
  | arrayhashtohasharray | converts a hash of arrays to an array of hashes.   |  
  | cleanchordorscale | turns a chord or scale into a flat array.  |  
+ | clonekeys | clones key/val pairs in a hash. Useful for layering synths. |
  | paddedrowstocolumns | transforms an array of arrays, pivoting rows to columns and padding short arrays by repeating values.   | 
  | rowstocolumns | transforms an array of arrays, pivoting rows to columns, but padding short arrays with nils.  |  
  | setarg | set arguments in an argument hash.    | 
@@ -88,7 +100,10 @@ There are also utilities and testing methods to make programming simpler and mor
  | Method Name | Description |  
 | --- | --- |
 | debugprint | prints anything to stdout, optionally logging to a file, optionally expanding arrays and hashes.   | 
+ | inttoroman | converts an integer to a roman numeral. Useful for playing with scale degrees. |
  | overridekwargs | used to support passing named parameters to methods.    | 
+ | randomseed | generates a random random seed seed. Say that three times fast! |
+ | romantoint | converts roman numeral to integer. Useful for playing with scale degrees. |
  | stripparams | used to strip parameters from kwargs that match method params. Useful for collecting params to pass to methods like play or sample.    | 
  | yummyhelp | print help info to stdout for methods herein.    | 
  | yh | wrapper for yummyhelp  |  
@@ -102,10 +117,12 @@ There are also utilities and testing methods to make programming simpler and mor
  | argstohash  | args, \*\*kwargs | 
  | argstostring  | args, \*\*kwargs | 
  | arpeggiate   | thesenotes, thesedelays, \*\*synthdefaults | 
- | arrange   | arrangement, repetitions=1, defaults=nil, effects=nil, envelopes=nil, lfos=nil, trancegates=nil, notedensities=nil, phrasedensities=nil, tickorchoose=["tick","choose"], humanizeamt=0.0, \*\*kwargs | 
+ | arrange   | arrangement, repetitions=1, defaults=nil, effects=nil, envelopes=nil, lfos=nil, trancegates=nil, notedensities=nil, phrasedensities=nil, tickorchoose=["tick","choose"], humanizeamt=0.0, currentroot=:c4, currentscale=:major, synthlayers=[[]], \*\*kwargs | 
  | arrayhashtohasharray   | arrayhash, makering=true | 
  | boolish   | testvalue, falsies=[nil, false, 0, 0.0, "", "0", [], [].ring, {}], \*\*kwargs | 
  | cleanchordorscale   | myitem | 
+ | clonekeys | thishash, keystoclone, falseflag=true, \*\*kwargs |
+ | closestnote | thisnote, thisscale |
  | convertdrumnotation   | drumnotation, barlength = 4.0, baseamp=1.0, maxamp=2.0, restchar="-", brackets="[]", \*\*kwargs | 
  | cooktime   | timestring, humanizeamt=0.0 | 
  | cooktimes   | timestring, delimiter=",", humanizeamt=0.0, \*\*kwargs | 
@@ -117,27 +134,38 @@ There are also utilities and testing methods to make programming simpler and mor
  | euclidiate   | beats,duration,rotations=0,beatvalue=sixteenth, notes=nil, \*\*kwargs | 
  | funkyrandom   | totaltime=16, shortestbeat=0.25, restodds=8, \*\*kwargs | 
  | funkify   | thissound, totaltime=16, shortestbeat=sixteenth, thesenotes=[:c4], densities=[1], tickorchoose="tick", \*\*kwargs | 
+ | genchord | lastroot=:c4, lastchord=:major, lastscale=:ionian, lastshift=:diatonic, \*\*kwargs |
+ | harmonic | thisnote, thisharmonic |
  | humanize do  | thesebeats, humanizeamt=0.5, \*\*kwargs | 
+ | killslidingbpm | killswitch=:killslidingbpm, **kwargs |
+ | inttoroman | num | 
  | listorring   | thisitem | 
  | lfo   | handle, param, duration, period=[0.5], span=(ring 0, 1), lfotype="triangle",  delay=0, rampupperiods=0, rampdowntime=0, lfocurve=0, \*\*kwargs | 
+ | notetodegree | thisnote, rootnote=:c4, thisscale=:major, **kwargs |
  | overridekwargs   | kwargs, params, ignorenewargs=true, arglistname="kwargs" | 
  | paddedrowstocolumns  | \*thesearrays | 
  | playdegreematrix   | thiskey, thisscale, degreematrix, \*\*kwargs  | 
- | playline  | synthorsample, notation, threaded=true, \*\*kwargs | 
- | rowstocolumns   | *thesearrays | 
+ | playline  | synthorsample, notation, threaded=true, \*\*kwargs |
+ | portamentomelody | thisarrangement, thissynth = :sine, note_slide = 0.0625, \*\*kwargs |
+ | randomseed | modulo=65536, \*\*kwargs |
  | ringorlist   | thisitem | 
+ | romantoint | thisroman |
+ | rowstocolumns   | *thesearrays | 
  | samplebpm   | thissample, beats=4 | 
  | setarg  | arg, val, args, \*\*kwargs | 
+ | slidebpm | targetbpm, slidetime=16, steptime=0.0625, startbpm=nil, cuename=:bpmsync, setname=:slidingbpm, killswitch=:killslidingbpm, **kwargs |
  | spreadtobeats   | thisspread, beatvalue=sixteenth, notes=nil, \*\*kwargs | 
+ | stringtonestedarray | thisstring, delims=", ", \*\*kwargs |
  | stripparams   | kwargs, params | 
  | striptrailingnils   | thisarray, \*\*kwargs | 
  | strum   | thesenotes, totaltime=1, strumspeed=0.05, \*\*kwargs | 
  | stuttersample   | thissample, stutters=[1], beatspersample=1.0, reverses=[false], \*\*kwargs | 
  | swing   | straightbeats, swingseed=6.0, humanizeamt=0.0, \*\*kwargs | 
+ | synctoslidingbpm | cuename=:bpmsync, setname=:slidingbpm, **kwargs |
  | tickable   | thisitem | 
  | tickargs do  | args, \*\*kwargs | 
  | trancegate   | handle, duration, period=[0.5], gutter=[0.1], delay=0, maxvol= [1], minvol=[0], lfotype="square",  curve=0, \*\*kwargs | 
- | transposesample   | thissample, pitch_stretch=16, rpitch=0, time_dis=0.01, window_size=0.1, pitch_dis=0.01, \*\*kwargs | 
+ | transposesample   | thissample, rpitch=0, autostretch=true, \*\*kwargs | 
  | tuples  | howmanytuples, beatsize | 
  | yummyhelp   | helpitem=nil, \*\*kwargs | 
  | yh   | helpitem=nil, \*\*kwargs | 
@@ -216,10 +244,12 @@ The last param \*\*kwargs allows support for params to be named as well as posit
     By default, ticks through a list, supporting (e.g.) linear drum patterns, but 2nd level nestings are chosen randomly (round robins).  
   humanizeamt: either a float, or a hash of floats per instrument. 
   Sets the amount (in beats) to provide range for humanizing times. Defaults to 0.0. A good value is 0.5.     
-    While, in theory, there's no limit to how many instruments you can arrange,
-    in practice you'll get lags and dropouts with too many. 
-    Try using with_sched_ahead_time or use_sched_ahead_time if you experience this.  
-    Here's a code example, illustrating all the features available (this will almost certainly lag in playback):
+  currentroot: the root note used to cook degree symbols into absolute pitches.   
+  currentscale: the scale used to cook detree symbols into absolute pitches.   
+  While, in theory, there's no limit to how many instruments you can arrange,
+  in practice you'll get lags and dropouts with too many. 
+  Try using with_sched_ahead_time or use_sched_ahead_time if you experience this.  
+  Here's a code example, illustrating all the features available (this will almost certainly lag in playback):
 ```
   bass = :bass_foundation
   blade = :blade
@@ -271,7 +301,7 @@ The last param \*\*kwargs allows support for params to be named as well as posit
   densitystretchmode = {tabla => "pitch"}
   use_sample_bpm amen, num_beats: 16
   with_sched_ahead_time 1.5 do
-    arrange verse, 2, defaults , effects , envelopes , lfos, trancegates, phrasedensities: phrasedensities, notedensities: notedensities, humanizeamt: humanizeamt
+   arrange verse, 2, defaults , effects , envelopes , lfos, trancegates, phrasedensities: phrasedensities, notedensities: notedensities, humanizeamt: humanizeamt, currentroot: :c4, currentscale: :minor, synthlayers: [[:bass_foundation, :pluck]]
   end
 ```
 
@@ -296,6 +326,44 @@ The last param \*\*kwargs allows support for params to be named as well as posit
 
   turns a chord or scale into a plain array.   
   myitem: item to clean.  
+
+
+#### clonekeys 
+
+clonekeys    
+duplicate key/val pairs in a hash to match a master key.     
+args:    
+thishash: the hash to add cloned key/val pairs to.    
+keystoclone: an array of keys. The first key that has a non-nil, non-false value paired to it     
+will be treated as the master key.    
+Can also be an array of arrays. If so, each array will be processed separately.   
+falseflag: boolean flag (defaulting to true), indicating whether to purge keys whose paired value is false.   
+This supports not cloning certain values by pre-loading the hash with key/false pairs. Such keys will not be cloned.  
+In turn, this supports layering synth voices in arrange.   
+Example code:  
+```
+clonekeys {1 => false, 2=> :foo 5=> :bar}, [1, 2, 3, 4]
+returns: {2=> :foo, 3 => :foo, 4=> :foo, 5 => :bar}
+clonekeys {1 => false, 2=> :foo}, [1, 2, 3, 4], false
+returns: {1=> false, 2=> :foo, 3 => :foo, 4=> :foo, 5=> :bar}
+clonekeys {1 => false, 2=> :foo, 5=> :bar}, [[1, 2, 3, 4], [5, 6, 7]]
+returns: {2 => :foo, 3=> :foo, 4 => :foo, 5=> :bar, 6=> :bar, 7=> :bar}
+```
+
+#### closestnote 
+
+finds the note closest to the given note in the given scale.    
+args:  
+thisnote: the note to start with.    
+thisscale: the scale to search.    
+Example code:   
+```
+use_random_seed Time.now.to_i  
+thisnote = rand_i(89) #full piano range  
+debugprint "thisnote: ", thisnote  
+debugprint "closestnote: ",  closestnote(thisnote, thisscale)  
+```
+
 
 #### convertdrumnotation
 
@@ -448,12 +516,199 @@ env(handle, "drive", 1, 1, 3, 3, 0, 5, 3)
   densities: a list or ring of densities, applied per note/sleep.  
   tickorchoose: tick or choose. Used to define how to traverse densities and thesenotes .
 
+#### genchord 
+
+genchord  
+generates chords and scales generatively, utilizing neo-reimannian theory.  
+args:  
+lastroot: the root note last used for chords & scales; defaults to :c4
+lastchord: the chord name last used; defaults to :major 
+lastscale: the scale name last used; defaults to :ionian
+lastshift: the shift last used; defaults to :diatonic. Valid values:  
+:diatonic -- stays within the scale mode we started in.  
+:blue -- shifts to the parallel minor (e.g., from :c4 :major to :ds4 :major, :c4 :minor, etc)
+in other words, :blue shifts add 3 flats to the scale.
+:yellow -- shifts to the parallel major of the relative minor (e.g., from :c4 :major to :a3 :major, :cs4 :minor, etc)
+in other words, :yellow shifts add 3 sharps to the scale. 
+return value: an array with 4 values:  
+[thisroot, thischord, thisscale, thisshift]
+On iterative calls, keep passing these values back in to generate the chords and scales.  
+sample code: 
+```
+bar = 16.0
+whole = 4.0
+half =2.0
+quarter =1.0
+eighth =0.5
+sixteenth =0.25
+dotted =1.5
+triplet =2.0 / 3
+halftone = 1
+second = 2
+wholetone = 2
+min3 = 3
+maj3 = 4
+fourth = 5
+tritone = 6
+fifth = 7
+min6 = 8
+maj6 = 9
+min7 = 10
+maj7 = 11
+octave = 12
+set :thisroot, :c4
+set :firstroot, :c4
+set :thischord, :major
+set :thisscale, :ionian
+set :thisshift, :diatonic
+set :thispent, (get[:thischord].to_s + "_pentatonic").to_sym
+live_loop :manage, delay: 0.01 do
+  sleep bar * 3.99
+  debugprint "resetting chord and scale values"
+  thisroot, thischord, thisscale, thisshift = genchord get[:thisroot], get[:thischord], get[:thisscale], get[:thisshift]
+  thisroot -= octave if thisroot > get[:firstroot] + fifth #to keep from drifting ever upward
+  set :thisroot, thisroot
+  set :thischord, thischord
+  set :thisscale, thisscale
+  set :thisshift, thisshift
+  set :thispent, (thischord.to_s + "_pentatonic").to_sym
+  sleep bar * 0.01
+end
+with_synth :fm do
+  live_loop :sheen, sync: :manage do
+    leadroot = get[:thisroot] + octave + octave
+    ##| debugprint "leadroot: ", leadroot
+    [:i, :iii, :v, :vii].shuffle.each do |thisdegree|
+      thisnote = degree thisdegree, leadroot, get[:thisscale]
+      mydivisor = (midi_to_hz get[:thisroot]) / (midi_to_hz thisnote)
+      play thisnote, amp: 0.3, duration: half, divisor: mydivisor, attack: sixteenth, decay: sixteenth, depth: 2
+      sleep half
+    end
+  end
+end
+with_synth :bass_foundation do
+  live_loop :bass, sync: :manage do
+    bassroot = get[:thisroot] + (octave * -2)
+    ##| debugprint "bassroot: ", bassroot
+    [:i, :iii, :v, :vi].each do |thisdegree|
+      play (degree thisdegree, bassroot, get[:thisscale]), duration: whole * 2, attack: sixteenth
+      sleep whole * 2
+    end
+  end
+end
+with_fx :echo, phase: eighth * dotted, decay: whole do
+  with_fx :panslicer, phase: sixteenth do
+    with_synth :pluck do
+      live_loop :pluck, sync: :manage do
+        pluckroot = get[:thisroot] + octave
+        ##| debugprint "pluckroot: ", pluckroot
+        ##| debugprint "thispent: ", get[:thispent]
+        play (scale pluckroot, get[:thispent]).choose, amp: 1.5
+        sleep quarter
+      end
+    end
+  end
+end
+with_synth :zawa do
+  live_loop :piano, sync: :manage do
+    pianoroot = get[:thisroot]
+    with_fx :nlpf, cutoff: :e2 do
+      with_fx :nlpf, cutoff: pianoroot + octave + fifth do
+        ##| debugprint "pianoroot: ", pianoroot
+        [:viii, :vii, :vi, :v, :vi, :v, :iv, :iii, :vii, :vi, :v, :iv, :v, :iv, :iii, :ii, :ix, :viii, :vii, :vi, :vii, :vi, :v, :iv, :viii, :vii, :vi, :v, :vi, :v, :iv, :iii].each do |thisdegree|
+          play (degree thisdegree, pianoroot, get[:thisscale]),  amp: 4
+          sleep quarter
+        end
+      end
+    end
+  end
+end
+with_fx :flanger, phase: 2 do
+  with_fx :echo, phase: half * dotted, decay: bar * 2 do
+    with_synth :winwood_lead do
+      live_loop :chord do
+        chordroot = get[:thisroot]
+        [:i, :iii, :v, :vi].each do |thisdegree|
+          1.times do
+            play_chord (chord_degree thisdegree, chordroot, get[:thisscale], 4), duration: half , amp: 0.4
+            sleep whole * 2
+          end
+        end
+      end
+    end
+  end
+end
+live_loop :whoosh, sync: :manage, delay: sixteenth do
+  sample :ambi_dark_woosh, amp: 1
+  sleep [half * dotted, half * dotted, half].tick
+end
+live_loop :cymbal, sync: :manage do
+  sample :drum_splash_hard, rate: -1, beat_stretch: half, amp: 0.5
+  sleep [whole * dotted, whole * dotted, whole].tick
+end
+live_loop :kick, sync: :manage do
+  [sixteenth, quarter, quarter, quarter, eighth, sixteenth, eighth * dotted, eighth * dotted, eighth * dotted, eighth * dotted, eighth, eighth].each do |thismuch|
+    sample :bd_808, amp: 6
+    sleep thismuch
+  end
+end
+```
+
+#### harmonic 
+
+  calculates the midi note corresponding to the harmonic provided.   
+  args:  
+  thisnote: the midi note with the fundamental  
+  thisharmonic: the harmonic to calculate. Can be fractional!  
+  returns: midi note corresponding to the harmonic.   
+  example: 
+  ```
+harmonics = [7, 9, 11, 13, 15, 17, 19, 21]
+rootnotes = [:c3, :c2, :c1, :c0].reverse
+4.times do
+  with_fx :flanger, phase: 4, wave: 0, mix: 0.25 do
+    with_fx :krush, mix: 0.25 do
+      with_synth_defaults amp: 0.5, attack: 0.125, duration: 0.25, release: 0.125 do
+        with_synth  :beep do
+          rootnotes.each do |rootnote|
+            harmonics.each do |harm|
+              #play rootnote
+              play :c4
+              play :g4
+              play :c5
+              play (harmonic rootnote, harm)
+              sleep 0.125
+            end
+          end
+        end
+      end
+    end
+  end
+end
+```
+
 #### humanize
 
   add some looseness to a beat. 
   A wrapper for swing with a swingseed of 8.   
   thesebeats: an array of time values defining the beat.   
   humanizeamt: the amount of looseness. Defaults to 0.5.  
+
+#### inttoroman 
+
+converts an integer to a roman number string.    
+args:    
+num: the number to convert     
+
+
+
+#### killslidingbpm 
+
+kills the thread managing the sliding bpm.   
+Warning: if it's not called in the thread, it will execute a naked stop, which will kill your playback.    
+args:   
+killswitch: the name of the flag variable used with set/get to pass the kill message. Defaults to :killslidingbpm.    
+
 
 #### lfo
 
@@ -502,6 +757,17 @@ env(handle, "drive", 1, 1, 3, 3, 0, 5, 3)
   handle = sample :ambi_drone, pitch_stretch: 4
   lfo handle, "amp", 4, "e,e,s,s,s,s", "0,1,0,0.5,0,0.5", "square"
 ```
+
+#### notetodegree 
+
+converts a midi note to the scale degree in the given scale.    
+args:  
+thisnote: the note to convert to a degree.    
+rootnote: the root of the scale; defaults to :c4  
+thisscale: the name of the scale; defaults to :major    
+returns: a scale degree, as symbol (e.g. :ii, :av, :dix), or nil if not found.    
+
+
 
 #### overridekwargs
 
@@ -559,6 +825,28 @@ env(handle, "drive", 1, 1, 3, 3, 0, 5, 3)
     sleep 4
   end
 ```
+#### portamentomelody 
+
+play a melody on a synth portamento, by manipulating the pitch over time.    
+args:   
+thisarrangement: the melody in mini-notation (see arrange for details); e.g.: "qd :c5, qd :ds5, q :g5"  
+thissynth: the name of the synth to play the note; defaults to :sine.    
+note_slide: the portamento time; if set to longer than the shortest note, will be length of shortest note.    
+
+#### randomseed 
+
+generate a random random seed seed.  Say that three times fast!  
+args:  
+modulo: the number to use in modulo math; defaults to 65536 (64k).   
+
+
+#### romantoint 
+
+turns a roman numeral into an integer.    
+args:   
+thisroman: the roman numeral to change to int; a string.   
+returns: an int. If the roman numeral is garbage, returns 0.    
+
 
 #### rowstocolumns
 
@@ -566,6 +854,13 @@ env(handle, "drive", 1, 1, 3, 3, 0, 5, 3)
   \*thesearrays: the arrays to flip  
   if arrays are of unequal length, values will be filled with nils
   if you want to pad the shorter arrays, use paddedrowstocolumns instead.
+
+#### randomseed 
+
+generate a random random seed seed.  Say that three times fast!    
+args:  
+modulo: the number to use in modulo math; defaults to 65536 (64k).   
+
 
 #### ringorlist
 
@@ -595,6 +890,24 @@ env(handle, "drive", 1, 1, 3, 3, 0, 5, 3)
   args: the string or hash containing all the args. 
   returns args as a hash.
 
+#### slidebpm 
+
+changes bpm gradually or stepwise over time, e.g., accelerando or ritardo.   
+args:  
+targetpbm: the bpm(s) you want to end up at. Can be an array, and it will do them sequentially.    
+slidetime: how long it takes to get to each targetbpm, in beats.    
+steptime: how long each step is. Small numbers makes the transition smoother,   
+larger numbers give you the "little nash rambler" effect.    
+startbpm: the starting bpm. If not supplied, defaults to whatever the current bpm is.   
+cuename: the name of the cue for other threads to sync to; defaults to :bpmsync  
+setname: flag for other threads to snif to see if we're sliding; defaults to :slidingbpm  
+killswitch: flag to see if we need to kill the thread; defaults to :killslidingbpm   
+
+#### slidemelody 
+
+wrapper for portamentomelody
+
+
 #### spreadtobeats
 
 a utility function designed to take a spread, 
@@ -607,6 +920,22 @@ Example:
 ```
 spreadtobeats spread(3, 8, 2), 0.5 
 ```
+
+#### stringtonestedarray
+
+stringtonestedarray    
+takes a string with nested delimiters, and transforms it into a nested array.    
+Useful for parsing mini-notation.
+args:    
+thisstring: the string to transform.    
+delims: the delimiters, either in a string or array; defaults to ", ". If in a string, each char is a separate delimiter.    
+example code:   
+``` 
+stringtonestedarray "qd :c4, qd :ds4, :q :g4"  
+#returns: [["qd", ":c4"], ["qd", ":ds4"], ["qd", ":g4"]] 
+``` 
+
+
 
 #### stripparams
 
@@ -666,6 +995,15 @@ spreadtobeats spread(3, 8, 2), 0.5
   humanizeamt: how much humanizing to add in. Defaults to 0. 
   
 
+#### synctoslidingbpm 
+
+syncs current thread to sliding bpm managed by slidebpm.   
+args:  
+cuename: the syncing cue managed by slidebpm, defaults to :bpmsync  
+setname: the set flag managed by slidebpm, defaults to :slidingbpm. Only syncs when not nil/false.   
+
+
+
 #### tickable
 
  wrapper for ringorlist
@@ -703,28 +1041,25 @@ spreadtobeats spread(3, 8, 2), 0.5
 
 #### transposesample
 
-  transposes a sample up or down by specified rpitch, while pitch_stretching to keep tempo.  
-  args:  
-  thissample: the sample to transpose.   
-  pitch_stretch: Number of beats to stretch the sample to, defaults to 16.   
-  rpitch: relative pitch to transpose to, defaults to 0.   
-  time_dis: defaults to 0.01. See docs for sample.   
-  window_size: defaults to 0.1. See docs for sample.    
-  pitch_dis: defaults to 0.01. See docs for sample.
-  You may need to fiddle with time_dis, window_size and pitch_dis to tweak the sound.  
-  Example:  
+transposesample  
+transposes a sample up or down by specified rpitch, while pitch_stretching to keep tempo.  
+args:  
+thissample: the sample to transpose.   
+autostretch: whether to apply any pitch_stretch to the sample. Defaults to true.   
+It is your responsibility to provide options for pitch_stretch, time_dis, etc.   
+You may need to fiddle with time_dis, window_size and pitch_dis to tweak the sound.  
+example:  
 ```
-  mysample = "D:/Loops/Afroplug - Soul and Jazz Guitar Loops/looperman-l-6258600-0353860-spilled-coffee.wav"
-  [90, 120, 150].each do  | thisbpm | 
-    [0, -5, 3, 7].each do  | thispitch | 
-      use_bpm thisbpm
-      transposesample mysample, 16, thispitch
-      sleep 16
-    end
-    sleep 2
+mysample = :bass_hit_c
+  [0, 3, 7, -2].each do |thispitch|
+    use_bpm thisbpm
+    handle = transposesample mysample, thispitch, autostretch=false
+    sleep 16
   end
-  Code returns a handle (node) for further manipulation, e.g. lfos, envelopes, trancegates. 
+  sleep 2
+end
 ```
+Code returns a handle (node) for further manipulation, e.g. lfos, envelopes, trancegates.   
 
 #### tuples
 

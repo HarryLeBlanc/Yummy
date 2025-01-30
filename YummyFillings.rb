@@ -30,11 +30,11 @@ debugmode = true
 #scrub
 #small utility function to clean nils with the specified value (defaults to "")
 define :scrub do |value, cleanvalue = ""|
-  value || cleanvalue
+  (value == nil ? cleanvalue : value )
 end
 
 
-##| debugprint
+##| ##debugprint
 ##|   a utility function to optionally print out debugging messages,
 ##|   controlled by the debugmode variable. If not set, defaults to false and prints nothing.
 ##|   label: a text string to explain what the value means.
@@ -45,69 +45,304 @@ end
 ##|   logtofile: set to true if you wish to log to a text file
 ##|   filename: the name of the file to log to. Will append if it exists, create it if it does not. 
 
-define :debugprint do |label, value=nil, expandlist=false, indents=0, indenttext="  ", logtofile=false, filename="c:/users/harry/desktop/scripting/sonicpi/debuglog.txt", **kwargs|
-  eval overridekwargs(kwargs, method(__method__).parameters)
+define :debugprint do |label, value="tricksy hobbit!", expandlist=false, indents=0, indenttext="  ", logtofile=false, filename="e:/yummy/debuglog.txt", **kwargs|
  
+  eval overridekwargs(kwargs, method(__method__).parameters) #if boolish kwargs
+  fakenil = "tricksy hobbit!"
+ 
+  #puts "got to ##debugprint"
   if current_debug
-    # debugprint  "debugmode is active" + "\n"
-    # debugprint  "label: " + label.to_s  + "\n"
-    # debugprint  "value: " + scrub(value).to_s   + "\n"
-    # debugprint  "label class: " + label.class.to_s   + "\n"
-    # debugprint  "value class: " + scrub(value).class.to_s   + "\n"
+    # puts  "debugmode is active" + "\n"
+    # puts  "label: " + label.to_s  + "\n"
+    # puts  "value: " + scrub(value).to_s   + "\n"
+    # puts  "label class: " + label.class.to_s   + "\n"
+    # puts  "value class: " + scrub(value).class.to_s   + "\n"
+
+    #stringify nils for pretty printing
+    if value == "tricksy hobbit!" && label == nil  
+      label = "nil " 
+      value = nil
+    elsif label == nil && value == nil  
+      label = "nil "
+    elsif value == nil  
+      # puts "pretty nil value"
+      value = "nil "
+      # puts value  
+    elsif value == "tricksy hobbit!" 
+      value = nil
+    end #if label == nil  
+    # puts "label: "
+    # puts label  
+    # puts "value: "
+    # puts value  
+
     if expandlist 
       # puts  "in expandlist mode"  + "\n"
       if label.is_a? Hash  
-        # debugprint  "label is a hash" + "\n"
-        debugprint "hash: ", nil, expandlist, indents, indenttext, logtofile, filename
+        # puts  "label is a hash" + "\n"
+        ##debugprint "hash: ", nil, expandlist, indents, indenttext, logtofile, filename
         indents += 1
         label.each do |hkey, hval|
-          debugprint "key: ", nil, expandlist, indents, indenttext, logtofile, filename
-          debugprint hkey,  nil, expandlist, indents + 1, indenttext, logtofile, filename
-          debugprint "value: ", nil, expandlist, indents, indenttext, logtofile, filename
-          debugprint hval,  nil, expandlist, indents + 1, indenttext, logtofile, filename
+          ##debugprint "key: ", fakenil, expandlist, indents, indenttext, logtofile, filename
+          ##debugprint hkey,  fakenil, expandlist, indents + 1, indenttext, logtofile, filename
+          ##debugprint "value: ", fakenil, expandlist, indents, indenttext, logtofile, filename
+          ##debugprint hval,  fakenil, expandlist, indents + 1, indenttext, logtofile, filename
         end
+        # puts "after hash label"
+        ##debugprint value, fakenil, expandlist, indents, indenttext, logtofile, filename  
       elsif ringorlist label 
-        # debugprint  "ringorlist label"  + "\n"
+        # puts  "ringorlist label"  + "\n"
+        if label.is_a? Array
+          ##debugprint "array: " 
+        else  
+          ##debugprint "ring: " 
+        end #if array or ring
+        # puts "after conditional print"
         label.each do |nestedlabel|
-          debugprint nestedlabel, value, expandlist, indents + 1, indenttext, logtofile, filename
+          ##debugprint nestedlabel, value, expandlist, indents + 1, indenttext, logtofile, filename
         end #each label item
       elsif value.is_a? Hash  
-        # debugprint  "value is a hash" + "\n"
-        debugprint "hash: ", nil, expandlist, indents, indenttext, logtofile, filename
+        # puts  "value is a hash" + "\n"
+        ##debugprint label if label != nil  
+        ##debugprint "hash: "
         indents += 1
-        label.each do |hkey, hval|
-          debugprint "key: ", nil, expandlist, indents, indenttext, logtofile, filename
-          debugprint hkey,  nil, expandlist, indents + 1, indenttext, logtofile, filename
-          debugprint "value: ", nil, expandlist, indents, indenttext, logtofile, filename
-          debugprint hval,  nil, expandlist, indents + 1, indenttext, logtofile, filename
+        value.each do |hkey, hval|
+          ##debugprint "key: ", fakenil, expandlist, indents, indenttext, logtofile, filename
+          ##debugprint hkey,  fakenil, expandlist, indents + 1, indenttext, logtofile, filename
+          ##debugprint "value: ", fakenil, expandlist, indents, indenttext, logtofile, filename
+          ##debugprint hval,  fakenil, expandlist, indents + 1, indenttext, logtofile, filename
         end
       elsif ringorlist value  
-        # debugprint  "ringorlist value" + "\n"
+        # puts  "ringorlist value" + "\n"
         if label != nil  
-          debugprint label, nil, expandlist, indents, indenttext, logtofile, filename
+          ##debugprint label, fakenil, expandlist, indents, indenttext, logtofile, filename
         end #if label not nil
+        if value.is_a? Array
+          ##debugprint "array: " 
+        else  
+          ##debugprint "ring: " 
+        end #if array or ring
+
         value.each do |nestedvalue|
-          debugprint nil, nestedvalue, expandlist, indents + 1, indenttext, logtofile, filename
+          ##debugprint nestedvalue, fakenil, expandlist, indents + 1, indenttext, logtofile, filename
         end #each label item
       else 
-        # debugprint  "bottom of recursion" + "\n"
+        # puts  "bottom of recursion" + "\n"
         #bottom of recursion, ready to actually print 
-        puts (indenttext * indents) + scrub(label).to_s  + scrub(value).to_s + "\n"
+        outputstring = (indenttext * indents) + symbolwithcolon(label)  + symbolwithcolon(value) + "\n"
+         puts outputstring
         if logtofile
-          File.write(filename, (indenttext * indents) + scrub(label).to_s  + scrub(value).to_s + "\n", mode: "a")
+          # puts "logging to file"
+          File.write(filename, outputstring, mode: "a")
         end #if logging
       end #if got lists
     else 
-      # debugprint  "no expandlist" + "\n"
-      puts (indenttext * indents) + scrub(label).to_s  + scrub(value).to_s + "\n"
+      # puts  "no expandlist" + "\n"
+      # puts "label: "
+      # puts label  
+      # puts "value: "
+      # puts value  
+      outputstring = (indenttext * indents) + symbolwithcolon(label)  + symbolwithcolon(value) + "\n"
+       puts outputstring
       if logtofile
-        # debugprint "about to log to file"
-        File.write(filename, (indenttext * indents) + scrub(label).to_s  + scrub(value).to_s + "\n", mode: "a")
+        # puts "logging to file"
+        File.write(filename, outputstring, mode: "a")
       end #if logging
     end #if expandlist
+  else 
+    # puts "not debug mode"
   end #if debug
+  # puts "end of ##debugprint"
 end #define
 
+
+
+# symbolcolon 
+# provides conditional colon for pretty symbol printing.
+# args:  
+# thisvalue: the value to test.  
+# returns: ":" if a symbol, "" if not.  
+
+define  :symbolcolon do |thisvalue, **kwargs|
+ if thisvalue == nil   
+    return ""
+  elsif thisvalue.is_a? Symbol  
+    return ":"
+  else
+    return ""
+  end #if
+end #define symbolcolon
+
+
+# symbolwithcolon
+# wrapper to simplify. 
+
+define  :symbolwithcolon do |thisvalue|
+  thisvalue ||= ""
+  thisvalue = symbolcolon(thisvalue) + thisvalue.to_s
+  thisvalue #return value
+end #define symbolwithcolon
+
+
+
+# clonekeys  
+# duplicate key/val pairs in a hash to match a master key.   
+# args:  
+# thishash: the hash to add cloned key/val pairs to.  
+# keystoclone: an array of keys. The first key that has a non-nil, non-false value paired to it   
+# will be treated as the master key.  
+# Can also be an array of arrays. If so, each array will be processed separately. 
+# falseflag: boolean flag (defaulting to true), indicating whether to purge keys whose paired value is false. 
+# This supports not cloning certain values by pre-loading the hash with key/false pairs. Such keys will not be cloned.
+# In turn, this supports layering synth voices in arrange. 
+# Example code:  
+# clonekeys {1 => false, 2=> :foo 5=> :bar}, [1, 2, 3, 4]
+# returns: {2=> :foo, 3 => :foo, 4=> :foo, 5 => :bar}
+# clonekeys {1 => false, 2=> :foo}, [1, 2, 3, 4], false
+# returns: {1=> false, 2=> :foo, 3 => :foo, 4=> :foo, 5=> :bar}
+# clonekeys {1 => false, 2=> :foo, 5=> :bar}, [[1, 2, 3, 4], [5, 6, 7]]
+# returns: {2 => :foo, 3=> :foo, 4 => :foo, 5=> :bar, 6=> :bar, 7=> :bar}
+
+
+define  :clonekeys do |thishash, keystoclone, falseflag=true, **kwargs|
+  eval overridekwargs(kwargs, method(__method__).parameters)
+  cleanargs = stripparams kwargs, method(__method__).parameters
+  ##debugprint "top of clonekeys"
+  ##debugprint "thishash: ", thishash
+  ##debugprint "keystoclone: ", keystoclone
+  ##debugprint "falseflag: ", falseflag
+
+  if !keystoclone[0].is_a? Array  #no nested array
+    ##debugprint "no nested array, wrapping keystoclone"
+    keystoclone = [keystoclone]
+  end #if need array wrapper
+
+  keystoclone.each do |thislist|
+    ##debugprint "thislist: ", thislist
+    mainkey = nil  
+    secondarykeys = []
+    thislist.each do |thiskey|
+      if !mainkey 
+        ##debugprint "looking for main key"
+        ##debugprint "thiskey: ", thiskey
+        ##debugprint "thishash.keys: ", thishash.keys
+        ##debugprint "thishash[thiskey]: ", thishash[thiskey]
+        ##debugprint "thishash.keys.include? thiskey: ", (thishash.keys.include? thiskey)
+        ##debugprint "thishash[thiskey] != false: ", (thishash[thiskey] != false)
+        if (thishash.keys.include? thiskey) && (thishash[thiskey] != false) 
+          ##debugprint "found mainkey: ", thiskey  
+          mainkey = thiskey  
+        elsif thishash[thiskey]
+          ##debugprint "not a main key, adding to secondary keys: ", thiskey
+          secondarykeys << thiskey
+        else
+          ##debugprint "thishash[thiskey] is false or nil"
+        end #if got content for thiskey  
+      else 
+        ##debugprint "got a main key, looking for secondary keys"
+        if !thishash.keys.include? thiskey 
+          ##debugprint "adding to secondary keys: ", thiskey
+          secondarykeys << thiskey  
+        else 
+          ##debugprint "already in thishash, skipping key ", thiskey 
+        end #if don't already have key in hash
+      end # if no mainkey
+    end
+
+    if mainkey 
+      ##debugprint "got a mainkey: ", mainkey
+      secondarykeys.each do |thiskey|
+        ##debugprint "cloning thiskey: ", thiskey
+        thishash[thiskey] = thishash[mainkey]
+      end #each secondary key
+    else
+      ##debugprint "no mainkey, doing nothing"
+    end #if got a main key
+  end #each thislist
+
+  if falseflag
+    ##debugprint "got false flag, purging false keys"
+    thishash.delete_if {|key, val| val == false}
+  end #if falseflag
+
+
+  ##debugprint "thishash: ", thishash
+  thishash #return value
+end #define clonekeys
+
+
+
+
+
+# portamentomelody  
+# play a melody on a synth portamento, by manipulating the pitch over time.  
+# args: 
+# thisarrangement: the melody in mini-notation (see arrange for details); e.g.: "qd :c5, qd :ds5, q :g5"
+# thissynth: the name of the synth to play the note; defaults to :sine.  
+# note_slide: the portamento time; if set to longer than the shortest note, will be length of shortest note.  
+
+define  :portamentomelody do |thisarrangement, thissynth = :sine, note_slide = 0.0625, **kwargs|
+  eval overridekwargs(kwargs, method(__method__).parameters)
+  cleanargs = stripparams kwargs, method(__method__).parameters
+  ##debugprint "top of portamentomelody"
+  ##debugprint "thissynth: ", thissynth
+  ##debugprint "thisarrangement: ", thisarrangement
+  ##debugprint "note_slide: ", note_slide
+
+  twoarrays = rowstocolumns (stringtonestedarray thisarrangement)
+  ##debugprint "twoarrays: ", twoarrays
+  timearray = rowstocolumns(cooktimes twoarrays[0].join(","))[0]
+  notearray = []
+  twoarrays[1].each do |thisnote|
+    ##debugprint "thisnote: ", thisnote
+    if thisnote.downcase =~ /[:abcdefg]/
+      ##debugprint "note is a symbol"
+      notearray << thisnote.delete_prefix(":").to_sym.to_i
+    elsif thisnote =~ /^[\d\.\s]*$/ #digits and dots and whitespace
+      ##debugprint "note is a number"
+      notearray << thisnote.to_f 
+    else 
+      ##debugprint "note is garbage, skipping"
+    end #if note is symbol or number
+  end #each note
+  ##debugprint "notearray: ", notearray
+ totaltime = timearray.sum  
+ ##debugprint "totaltime: ", totaltime
+  if note_slide > timearray.min  
+    ##debugprint "note_slide too long, adjusting"
+    note_slide = timearray.min  
+  end #if slide too long
+
+  ##debugprint "note_slide: ", note_slide
+  ##debugprint "timearray: ", timearray
+  ##debugprint "notearray: ", notearray
+
+  with_synth thissynth do 
+    ##debugprint "playing note ", notearray[0]
+    handle = play notearray.delete_at(0), sustain: totaltime, note_slide: note_slide, **cleanargs
+    ##debugprint "sleeping:: ", timearray[0]
+    sleep timearray.delete_at(0)
+    ##debugprint "notearray: ", notearray
+    ##debugprint "timearray: ", timearray
+    notearray.length.times do  
+      ##debugprint "playing note ", notearray[0]
+      control handle, note: notearray.delete_at(0)
+      ##debugprint "sleeping:: ", timearray[0]
+      sleep timearray.delete_at(0)
+      ##debugprint "notearray: ", notearray
+      ##debugprint "timearray: ", timearray
+    end #traversing notearray
+  end #with thissynth
+
+  nil #return value
+end #define portamentomelody
+
+
+# slidemelody: alias for portamentomelody  
+
+define :slidemelody do |thisarrangement, thissynth = :sine, note_slide = 0.0625, **kwargs|
+  portamentomelody thisarrangement, thissynth, note_slide, **kwargs  
+end  
 
 
 ##| ringorlist -- simple utility function to test whether an item is a ring or a list.
@@ -140,24 +375,27 @@ end
 ##| leaving only params which are suitable to pass to play or sample. 
 
 define :overridekwargs do |kwargs, params, ignorenewargs=true, arglistname="kwargs"|
-  kwargs ||= {} 
-  params.collect! {|x| x=x[1]} #params is an array of arrays, with the name as the 2nd item in each nested array. This strips & flattens
-  #debugprint "params: ", params
 
-  #debugprint "kwargs: ", kwargs
+  # ##debugprint "kwargs before defaulting: "  + kwargs.to_s
+
+  kwargs ||= {} 
+  # ##debugprint "kwargs after defaulting: "  + kwargs.to_s
+  params.collect! {|x| x=x[1]} #params is an array of arrays, with the name as the 2nd item in each nested array. This strips & flattens
+  # ##debugprint "params: ", params
+
   kwargcmdlist = ""
   kwargs.each do |argname|
-    #debugprint  "argname: " + argname[0].to_s
-    #debugprint "params include argname? " + (params.include? argname[0]).to_s
-    #debugprint "ignore new? " + ignorenewargs.to_s
+    # ##debugprint  "argname: " + argname[0].to_s
+    # ##debugprint "params include argname? " + (params.include? argname[0]).to_s
+    # ##debugprint "ignore new? " + ignorenewargs.to_s
     if params.include? argname[0] or params.include? argname[0].to_s  or params.include? argname[0].to_sym or !ignorenewargs
-      kwargcmdlist += argname[0].to_s + " = " + arglistname.to_s + "[:" + argname[0].to_s + "] if " + arglistname.to_s + "[:" + argname[0].to_s + "]\n"
+      kwargcmdlist += argname[0].to_s + " = " + arglistname.to_s + "[:" + argname[0].to_s + "]\n" 
     else
-      debugprint argname[0].to_s + " is not a valid param -- did you make a typo?"
+      # ##debugprint argname[0].to_s + " is not a valid param -- did you make a typo?"
     end
     
   end
-  #debugprint "kwargcmdlist", kwargcmdlist
+  # ##debugprint "kwargcmdlist", kwargcmdlist
   kwargcmdlist
 end
 
@@ -173,14 +411,15 @@ end
 
 
 define :stripparams do |kwargs, params|
-  # debugprint "kwargs: ", kwargs
-  # debugprint "params ", params
+  # ##debugprint "kwargs: ", kwargs
+  # ##debugprint "params ", params
+  tempargs = kwargs.clone
   params.each do |thisparam|
-    # debugprint "about to delete thisparam[1]: ", thisparam[1]
-    kwargs.delete(thisparam[1])
+    # ##debugprint "about to delete thisparam[1]: ", thisparam[1]
+    tempargs.delete(thisparam[1])
   end
-  # debugprint "kwargs after stripping: ", kwargs
-  kwargs #return value
+  # ##debugprint "kwargs after stripping: ", kwargs
+  tempargs #return value
 end #define
 
 
@@ -194,9 +433,9 @@ end #define
 # restodds: the odds of a rest, using one_in. Defaults to 8. 
 
 define  :funkyrandom do |totaltime=16, shortestbeat=0.25, restodds=8, **kwargs|
-  eval overridekwargs(kwargs, method(__method__).parameters)
+  eval overridekwargs(kwargs, method(__method__).parameters) if boolish kwargs
   cleanargs = stripparams kwargs, method(__method__).parameters
-  debugprint "top of funkyrandom"
+  ##debugprint "top of funkyrandom"
 
   randomfunk = []
   funkpatterns = {}
@@ -207,32 +446,32 @@ define  :funkyrandom do |totaltime=16, shortestbeat=0.25, restodds=8, **kwargs|
   funkpatterns[half] = ["h", "w", "wh"]
   funkpatterns[whole] = ["w", "ww", "www"]
   thispattern = funkpatterns[shortestbeat]
-  debugprint "thispattern: ", thispattern
+  ##debugprint "thispattern: ", thispattern
 
   while totaltime > 0
     thisbeat = thispattern.choose 
-    debugprint "thisbeat: ", thisbeat
+    ##debugprint "thisbeat: ", thisbeat
     thistime = cooktime(thisbeat)[0] 
-    debugprint "thistime: ", thistime
+    ##debugprint "thistime: ", thistime
     if thistime > totaltime 
-      debugprint "thistime > totaltime"
+      ##debugprint "thistime > totaltime"
       thistime = totaltime 
-      debugprint "thistime: ", thistime
+      ##debugprint "thistime: ", thistime
       thisbeat = funkpatterns[thistime][0]
-      debugprint "thisbeat: ", thisbeat
+      ##debugprint "thisbeat: ", thisbeat
     end #if thistime > totaltime
     if one_in restodds
-      debugprint "got a rest"
+      ##debugprint "got a rest"
       thisbeat = "r" + thisbeat
-      debugprint "thisbeat: ", thisbeat
+      ##debugprint "thisbeat: ", thisbeat
     end #if got a rest
     randomfunk << thisbeat 
-    debugprint "randomfunk: ", randomfunk
+    ##debugprint "randomfunk: ", randomfunk
 
     totaltime -= thistime  
   end #while totaltime > 0
   randomfunk = randomfunk.join(",") #convert to comma-delimited string
-  debugprint "randomfunk: ", randomfunk
+  ##debugprint "randomfunk: ", randomfunk
   randomfunk #return value
 end #define funkyrandom
 
@@ -248,42 +487,42 @@ end #define funkyrandom
 
 
 define :funkify do |thissound, totaltime=16, shortestbeat=sixteenth, thesenotes=[:c4], densities=[1], tickorchoose="tick", **kwargs|
-  eval overridekwargs(kwargs, method(__method__).parameters)
+  eval overridekwargs(kwargs, method(__method__).parameters) if boolish kwargs
   cleanargs = stripparams kwargs, method(__method__).parameters
   
   
-  debugprint "top of funkify"
-  debugprint "thissound: ", thissound
-  debugprint "totaltime: ", totaltime
-  debugprint "shortestbeat: ", shortestbeat
-  debugprint "thesenotes: ", thesenotes
-  debugprint "densities: ", densities
-  debugprint "tickorchoose: ", tickorchoose
-  debugprint "kwargs: ", kwargs
+  ##debugprint "top of funkify"
+  ##debugprint "thissound: ", thissound
+  ##debugprint "totaltime: ", totaltime
+  ##debugprint "shortestbeat: ", shortestbeat
+  ##debugprint "thesenotes: ", thesenotes
+  ##debugprint "densities: ", densities
+  ##debugprint "tickorchoose: ", tickorchoose
+  ##debugprint "kwargs: ", kwargs
   
   sleepytime = 0
   thisdensity = 1
   thisnote = 0
   cooktimes(funkyrandom totaltime, shortestbeat).each do |timeandrest|
     sleepytime = timeandrest[0]
-    debugprint "sleepytime: ", sleepytime
+    ##debugprint "sleepytime: ", sleepytime
     isarest = timeandrest[1]
-    debugprint "isarest: ", isarest
+    ##debugprint "isarest: ", isarest
     thisdensity = ( tickorchoose = "tick" ? densities.tick : densities.choose )
-    debugprint "thisdensity: ", thisdensity
+    ##debugprint "thisdensity: ", thisdensity
     
     thisnote = (tickorchoose == "tick" ? thesenotes.tick : thesenotes.choose )
-    debugprint "thisnote: ", thisnote
+    ##debugprint "thisnote: ", thisnote
     
     density thisdensity do
       if !isarest
         if synth_names.to_a.include? thissound
           with_synth thissound do
-            debugprint "it's a synth: ", thissound
+            ##debugprint "it's a synth: ", thissound
             play thisnote, **cleanargs
           end #with_synth
         else
-          debugprint "it's a sample: ", thissound
+          ##debugprint "it's a sample: ", thissound
           sample thissound, **cleanargs
         end #if synth or sample
       end #if not a rest
@@ -308,7 +547,7 @@ end #define funkify
 
 
 define :samplebpm do |thissample, beats=4.0, **kwargs|
-  eval overridekwargs(kwargs, method(__method__).parameters, false)
+  eval overridekwargs(kwargs, method(__method__).parameters, false) if boolish kwargs if boolish kwargs
   with_sample_bpm thissample, num_beats: beats do
     current_bpm
   end #with_sample_bpm
@@ -319,27 +558,31 @@ end #define :samplebpm
 # Used for command string evaluation.
 
 define  :formattedsamplename do |thissample|
-  debugprint "top of formattedsamplename"
-  debugprint "thissample: ", thissample
+  # ##debugprint "top of formattedsamplename"
+  # ##debugprint "thissample: ", thissample
   cleanname = thissample.to_s  
   cleanname = cleanname.to_s.sub(":", "") if cleanname.to_s[0] != "["
-  debugprint "cleanname before: ", cleanname
+  # ##debugprint "cleanname before: ", cleanname
   singlequote = '"'
-  debugprint "singlequote: ", singlequote
+  # ##debugprint "singlequote: ", singlequote
 
   if all_sample_names.to_a.include? cleanname.to_sym  
-    debugprint "got a sample from the list"
+    # ##debugprint "got a sample from the list"
     cleanname.prepend( ":")
   elsif cleanname[0] == "["
-    debugprint "got a list, leaving bare: ", cleanname
+    # ##debugprint "got a list, leaving bare: ", cleanname
   else
-    debugprint "not a sample in the list"
+    # ##debugprint "not a sample in the list"
     cleanname = singlequote + thissample.to_s + singlequote  
     cleanname = cleanname.gsub('""', '"') #to clean up repeated quotes
   end
-  debugprint "cleanname after: ", cleanname
+  # ##debugprint "cleanname after: ", cleanname
   return cleanname
 end #define formattedsamplename
+
+
+
+
 
 
 
@@ -349,18 +592,14 @@ end #define formattedsamplename
 ##| transposes a sample up or down by specified rpitch, while pitch_stretching to keep tempo.
 ##| args:
 ##| thissample: the sample to transpose. 
-##| pitch_stretch: Number of beats to stretch the sample to, defaults to 16. 
-##| rpitch: relative pitch to transpose to, defaults to 0. 
-##| time_dis: defaults to 0.01. See docs for sample. 
-##| window_size: defaults to 0.1. See docs for sample.  
-##| pitch_dis: defaults to 0.01. See docs for sample.
+##| autostretch: whether to apply any pitch_stretch to the sample. Defaults to true. 
+##| It is your responsibility to provide options for pitch_stretch, time_dis, etc. 
 ##| You may need to fiddle with time_dis, window_size and pitch_dis to tweak the sound.
 ##| example:
-##| mysample = "D:\\Loops\\Afroplug - Soul and Jazz Guitar Loops\\looperman-l-6258600-0353860-spilled-coffee.wav"
-##| [90, 120, 150].each do |thisbpm|
-##|   [0, -5, 3, 7].each do |thispitch|
+##| mysample = :bass_hit_c
+##|   [0, 3, 7, -2].each do |thispitch|
 ##|     use_bpm thisbpm
-##|     transposesample mysample, 16, thispitch
+##|     handle = transposesample mysample, thispitch, autostretch=false
 ##|     sleep 16
 ##|   end
 ##|   sleep 2
@@ -368,44 +607,48 @@ end #define formattedsamplename
 ##| Code returns a handle (node) for further manipulation, e.g. lfos, envelopes, trancegates. 
 
 
-define :transposesample do |thissample, pitch_stretch=16, rpitch=0, time_dis=0.01, window_size=0.1, pitch_dis=0.01, **kwargs|
-  eval overridekwargs(kwargs, method(__method__).parameters, false)
+define :transposesample do |thissample, rpitch=0, autostretch=true, **kwargs|
+  eval overridekwargs(kwargs, method(__method__).parameters, false) 
   cleanargs = stripparams kwargs, method(__method__).parameters
-
+  autostretch = boolish autostretch #force boolean
+  handle = nil  
+  
+  # ##debugprint "top of transposesample"
+  # ##debugprint "thissample: ", thissample
+  # ##debugprint "rpitch: ", rpitch
+  # ##debugprint "autostretch: ", autostretch
+  # ##debugprint "kwargs: ", kwargs
+  # ##debugprint "cleanargs: ", cleanargs
 
   ratio = midi_to_hz(60 + rpitch) / midi_to_hz(60)
-  debugprint "ratio: ",  ratio. to_s
-  debugprint "thissample: ", thissample
-  debugprint "pitch_stretch: ", pitch_stretch
-  debugprint "rpitch: ", rpitch
-  debugprint "time_dis: ", time_dis
-  debugprint "window_size: ", window_size
-  debugprint "pitch_dis: ", pitch_dis
-  debugprint "kwargs: ", kwargs
-  debugprint "cleanargs: ", cleanargs
+  # ##debugprint "ratio: ",  ratio
 
-  # cmd = "sample " + symbolcolon(thissample) + thissample.to_s
+
   cmd = "handle = sample " + formattedsamplename(thissample)
-  debugprint "cmd: ", cmd
-  cmd += ", pitch_stretch: " + (pitch_stretch * ratio).to_s  
-  debugprint "cmd: ", cmd
-  cmd += ", rpitch: " + rpitch.to_s  
-  debugprint "cmd: ", cmd
-  cmd += ", time_dis: " + time_dis.to_s  
-  debugprint "cmd: ", cmd
-  cmd += ", window_size: " + window_size.to_s  
-  debugprint "cmd: ", cmd
-  cmd += ", pitch_dis: " + pitch_dis.to_s  
-  debugprint "cmd: ", cmd
-  cleanargs.each do |key, val|
-    debugprint "key: ", key
-    debugprint "val: ", val
-    cmd += ", " + key.to_s + ": " + val.to_s  
-    debugprint "cmd: ", cmd
-  end #each key, val
-  debugprint "cmd: ", cmd
+  # ##debugprint "cmd: ", cmd
+  if rpitch != 0  
+    # ##debugprint "got a nonzero rpitch"
+    cmd += ", rpitch: " + rpitch.to_s  
+    # ##debugprint "cmd: ", cmd
+  end #if got an rpitch
+  if autostretch   
+    # ##debugprint "autostretch mode, defaulting pitch stretch"
+    cleanargs[:pitch_stretch] ||= (sample_duration thissample) * ratio.to_f 
+    cleanargs[:window_size] ||= 0.2  
+    cleanargs[:pitch_dis] ||= 0.001  
+    cleanargs[:time_dis] ||= 0.001  
+  else 
+    # ##debugprint "not in autostretch mode, deleting stretch-related settings"
+    cleanargs.delete(:pitch_stretch)
+    cleanargs.delete(:window_size) 
+    cleanargs.delete(:pitch_dis) 
+    cleanargs.delete(:time_dis)
+  end #if not autostretch
+  cmd += tickargs cleanargs 
+  # ##debugprint "cmd: ", cmd
   eval cmd  
-
+  # ##debugprint "handle: ", handle
+  handle #return handle
 end #transposesample
 
   
@@ -457,20 +700,57 @@ end #define
 # turns a chord or scale into a plain array.  
 
 define :cleanchordorscale do |myitem|
-  debugprint "top of cleanchordorscale"
-  debugprint "myitem: ", myitem
-  debugprint "myitem.class: ", myitem.class
+  # ##debugprint "top of cleanchordorscale"
+  # ##debugprint "myitem: ", myitem
+  # ##debugprint "myitem.class: ", myitem.class
   cleanitem = nil
   if myitem.is_a? SonicPi::Chord or myitem.is_a? SonicPi::Scale or ringorlist myitem
-    debugprint "got a scale or chord or ring"
+    # ##debugprint "got a scale or chord or ring"
     cleanitem = []
     myitem.each do |x| cleanitem << x end
   else 
-    debugprint "no scale or chord or ring"
+    # ##debugprint "no scale or chord or ring"
     cleanitem = myitem
   end
   cleanitem ##return value
 end
+
+# closestnote
+# finds the note closest to the given note in the given scale.  
+# args:
+# thisnote: the note to start with.  
+# thisscale: the scale to search.  
+# Example code: 
+# use_random_seed Time.now.to_i
+# thisnote = rand_i(89) #full piano range
+# ##debugprint "thisnote: ", thisnote
+# ##debugprint "closestnote: ",  closestnote(thisnote, thisscale)
+
+
+
+define :closestnote do |thisnote, thisscale, **kwargs|
+  eval overridekwargs(kwargs, method(__method__).parameters)  if boolish kwargs
+  thisscale = cleanchordorscale thisscale
+  ###debugprint thisscale
+  foundnote = nil
+  thisstep = 0
+  thisneg = true
+  while !foundnote
+    thissign = (thisneg ? -1 : 1)
+    ###debugprint "test value: ", thisnote + (thisstep * thissign)
+    if thisscale.include? thisnote + (thisstep * thissign)
+      ###debugprint "got a match!"
+      foundnote = thisnote + (thisstep * thissign)
+    elsif thisneg
+      ###debugprint "got a negative, incrementing step"
+      thisstep += 1
+      ###debugprint "thisstep: :", thisstep
+    end #if foundnote or thisneg
+    thisneg = !thisneg
+    ###debugprint "thisneg: ", thisneg
+  end #while
+  return foundnote
+end #define closestnote
 
 
 ##| arpeggiate
@@ -486,34 +766,34 @@ end
 
 
 define :arpeggiate do |thesenotes, thesedelays, **synthdefaults|
-  debugprint "top of arpeggiate"
-  debugprint "remapping synth defaults"
+  ##debugprint "top of arpeggiate"
+  ##debugprint "remapping synth defaults"
   if synthdefaults == nil  
     synthdefaultarray = [nil].ring
   else
     synthdefaultarray = arrayhashtohasharray synthdefaults
   end
-  debugprint "testing for singleton delays"
+  ##debugprint "testing for singleton delays"
   if !ringorlist thesedelays
     thesedelays = [thesedelays].ring
   end
   
-  debugprint "main loop"
+  ##debugprint "main loop"
   thesenotes.length.times do |i|
-    debugprint "synthdefaultarray[i]: ", synthdefaultarray[i]
-    debugprint "thesedelays.ring[i]: ", thesedelays.ring[i]
+    ##debugprint "synthdefaultarray[i]: ", synthdefaultarray[i]
+    ##debugprint "thesedelays.ring[i]: ", thesedelays.ring[i]
     if synthdefaultarray[i] == nil 
-     debugprint "playing note raw"
+     ##debugprint "playing note raw"
       play thesenotes.ring[i]
     else
-      debugprint "playing note with synth defaults"
+      ##debugprint "playing note with synth defaults"
       with_synth_defaults synthdefaultarray[i] do
-        debugprint "playing note"
+        ##debugprint "playing note"
         play thesenotes.ring[i]
       end #synth defaults
     end #if got synth defaults
 
-    debugprint "sleeping"
+    ##debugprint "sleeping"
     sleep thesedelays.ring[i]
   end #loop
 end #define
@@ -531,27 +811,27 @@ end #define
 
 
 define :strum do |thesenotes, totaltime=1, strumspeed=0.05, **kwargs|
-  eval overridekwargs(kwargs, method(__method__).parameters)  
-  debugprint "top of strum"
-  debugprint "strumspeed: ", strumspeed
+  eval overridekwargs(kwargs, method(__method__).parameters)  if boolish kwargs
+  ##debugprint "top of strum"
+  ##debugprint "strumspeed: ", strumspeed
   thesenotes = cleanchordorscale thesenotes
-  debugprint "clean version of thesenotes: ", thesenotes
+  ##debugprint "clean version of thesenotes: ", thesenotes
   thesedelays = []
   finaldelay = totaltime
   if !ringorlist strumspeed
     strumspeed = [strumspeed]
   end
   strumspeed = strumspeed.ring 
-  debugprint "strumspeed: ", strumspeed
+  ##debugprint "strumspeed: ", strumspeed
   
   thesenotes.each_index do |i|
     thesedelays[i] = strumspeed.tick
     finaldelay -= strumspeed.look
   end  
   thesedelays[-1] = finaldelay  
-  debugprint "thesedelays: ", thesedelays
+  ##debugprint "thesedelays: ", thesedelays
   
-  debugprint "final version of thesedelays: ", thesedelays
+  ##debugprint "final version of thesedelays: ", thesedelays
   
   arpeggiate thesenotes, thesedelays, **kwargs
   sleep totaltime
@@ -585,110 +865,110 @@ end
 
 
 define :env do |handle, param, attack=0.25, decay=0, sustain=1, release=0.25, startlevel=0, peaklevel=1, sustainlevel=0.5, adsr=nil, levels=nil, **kwargs|
-  eval overridekwargs(kwargs, method(__method__).parameters)
+  eval overridekwargs(kwargs, method(__method__).parameters) if boolish kwargs
 
-  debugprint ""
-  debugprint ""
-  debugprint "top of env"
+  ##debugprint ""
+  ##debugprint ""
+  ##debugprint "top of env"
 
   param = param.to_s
   param = param.gsub ":", ""
   param = param.gsub " ", ""
   if adsr 
-    debugprint "got an adsr"
+    ##debugprint "got an adsr"
     attack = adsr[0]
     decay=adsr[1]
     sustain=adsr[2]
     release=adsr[3]
   else
-    debugprint "no adsr"
+    ##debugprint "no adsr"
   end
 
-  debugprint "attack: ", attack
-  debugprint "decay: ", decay
-  debugprint "sustain: ", sustain
-  debugprint "release: ", release
-  debugprint "startlevel: ", startlevel
-  debugprint "peaklevel: ", peaklevel
-  debugprint "sustainlevel: ", sustainlevel
+  ##debugprint "attack: ", attack
+  ##debugprint "decay: ", decay
+  ##debugprint "sustain: ", sustain
+  ##debugprint "release: ", release
+  ##debugprint "startlevel: ", startlevel
+  ##debugprint "peaklevel: ", peaklevel
+  ##debugprint "sustainlevel: ", sustainlevel
 
 
 
   if levels
-    debugprint "got levels"
+    ##debugprint "got levels"
     startlevel = levels[0]
     peaklevel = levels[1]
     sustainlevel = levels[2]
   else 
-    debugprint "no levels"
+    ##debugprint "no levels"
   end 
 
-  debugprint "param: ", param
+  ##debugprint "param: ", param
 
   slideparam = ", " + param + "_slide: "
   shapeparam = ", " + param + "_slide_shape: 1"
   param += ": " 
-  debugprint "slideparam: ", slideparam
-  debugprint "shapeparam: ", shapeparam
-  debugprint "param: ", param
+  ##debugprint "slideparam: ", slideparam
+  ##debugprint "shapeparam: ", shapeparam
+  ##debugprint "param: ", param
 
 
 
 
   in_thread do
     #attack phase
-    debugprint "#attack phase"
+    ##debugprint "#attack phase"
     cmd = "control handle, " + param + peaklevel.to_s + slideparam + attack.to_s #+ shapeparam
-    debugprint " "
-    debugprint  cmd
+    ##debugprint " "
+    ##debugprint  cmd
     eval cmd
-    debugprint "sleep ", attack
+    ##debugprint "sleep ", attack
     sleep attack
     
     #decay phase
-    debugprint "#decay phase"
+    ##debugprint "#decay phase"
     if decay > 0
-      debugprint "#got decay time"
+      ##debugprint "#got decay time"
       
       cmd = "control handle, " + param + sustainlevel.to_s + slideparam + decay.to_s #+ shapeparam
-      debugprint cmd
+      ##debugprint cmd
       eval cmd
-      debugprint "sleep ", decay
+      ##debugprint "sleep ", decay
       sleep decay
    end #if decay > 0
     
     #sustain phase
-    debugprint "#sustain phase"
+    ##debugprint "#sustain phase"
     cmd = "control handle, " + param + sustainlevel.to_s
-    debugprint cmd
+    ##debugprint cmd
     eval cmd
-    debugprint "sleep ", sustain
+    ##debugprint "sleep ", sustain
     sleep sustain
 
     
     #release phase
-    debugprint "#decay phase"
+    ##debugprint "#decay phase"
     cmd = "control handle, " + param + sustainlevel.to_s + slideparam + release.to_s #+  shapeparam
-    debugprint cmd
+    ##debugprint cmd
     eval cmd
-    debugprint "sleep ", release
+    ##debugprint "sleep ", release
     sleep release
 
     
     #post-release phase
-    debugprint "#post-decay phase"
+    ##debugprint "#post-decay phase"
     cmd = "control handle, " +  param + startlevel.to_s
-    debugprint cmd
+    ##debugprint cmd
     eval cmd
     # sleep release
-    # debugprint "sleep ", release
+    # ##debugprint "sleep ", release
     
     stop 
   end #thread
   
-  debugprint "bottom of env"
-  debugprint ""
-  debugprint ""
+  ##debugprint "bottom of env"
+  ##debugprint ""
+  ##debugprint ""
 
 
 end #define envelope
@@ -742,16 +1022,16 @@ end #define envelope
 
 
 define :lfo do |handle, param, duration, period=[0.5], span=(ring 0, 1), lfotype="triangle",  delay=0, rampupperiods=0, rampdowntime=0, lfocurve=0, **kwargs|
-  eval overridekwargs(kwargs, method(__method__).parameters)
-  debugprint ""
-  debugprint ""
-  debugprint "top of lfo"
+  eval overridekwargs(kwargs, method(__method__).parameters) if boolish kwargs
+  ##debugprint ""
+  ##debugprint ""
+  ##debugprint "top of lfo"
   #force args to rings
   lfotype = [lfotype].flatten.ring
   lfocurve = [lfocurve].flatten.ring
-  debugprint "span: ",  span
-  debugprint "lfotype: ",  lfotype 
-  debugprint "lfocurve: ",  lfocurve
+  ##debugprint "span: ",  span
+  ##debugprint "lfotype: ",  lfotype 
+  ##debugprint "lfocurve: ",  lfocurve
   
   slideparam = param + "_slide"
   shapeparam = slideparam + "_shape"
@@ -764,89 +1044,89 @@ define :lfo do |handle, param, duration, period=[0.5], span=(ring 0, 1), lfotype
   
   
   if period.is_a? String
-    debugprint "period is a string"
+    ##debugprint "period is a string"
     mylist = []
     period.split(",").each do |item|
-      debugprint "item: ", item
+      ##debugprint "item: ", item
       triplet = 1
       dots = 1
       thisnumber = ""
       notetime = 0
       restsign = 1
       item.chars.each do |letter|
-        debugprint "letter: ", letter
+        ##debugprint "letter: ", letter
         case letter
         when "r"
           restsign = -1
         when "w"
           notetime += 4.0
-          debugprint "w ", notetime
+          ##debugprint "w ", notetime
         when "h"
           notetime += 2.0
-          debugprint "h ", notetime
+          ##debugprint "h ", notetime
         when "q"
           notetime += 1.0
-          debugprint "q ", notetime
+          ##debugprint "q ", notetime
         when "e"
           notetime += 0.5
-          debugprint "e ", notetime
+          ##debugprint "e ", notetime
         when "s"
           notetime += 0.25
-          debugprint "s ", notetime
+          ##debugprint "s ", notetime
         when "d"
           dots *= 1.5
-          debugprint "d ", dots
+          ##debugprint "d ", dots
         when "t"
           triplet = 2.0 / 3
-          debugprint "t ", triplet
+          ##debugprint "t ", triplet
         when /\d/, "."
           thisnumber = thisnumber + letter
-          debugprint "thisnumber: " + thisnumber
+          ##debugprint "thisnumber: " + thisnumber
         else
-          debugprint "garbage letter, ignoring"
+          ##debugprint "garbage letter, ignoring"
         end #case letter
       end #each letter
       notetime *= restsign
-      debugprint "notetime: " , notetime
-      debugprint "thisnumber: " , thisnumber
-      debugprint "triplet: " ,triplet
-      debugprint "dots: ", dots
+      ##debugprint "notetime: " , notetime
+      ##debugprint "thisnumber: " , thisnumber
+      ##debugprint "triplet: " ,triplet
+      ##debugprint "dots: ", dots
       thisnumber = ( thisnumber == "" ? 1 : thisnumber.to_f )
       notetime *= dots * triplet * thisnumber
-      debugprint "final notetime: " , notetime
+      ##debugprint "final notetime: " , notetime
       mylist << notetime
-      debugprint "mylist: ", mylist
+      ##debugprint "mylist: ", mylist
       
     end #each item
     period = mylist.ring
-    debugprint "period: ", period
+    ##debugprint "period: ", period
     
   else
-    debugprint "period is not a string"
+    ##debugprint "period is not a string"
     period = [period].flatten.ring
   end #if period is a string
-  debugprint "period: ", period
+  ##debugprint "period: ", period
   
   if span.is_a? String
-    debugprint "span is a string"
+    ##debugprint "span is a string"
     mylist = []
     span.split(",").each do |item|
       mylist << item.to_f
     end #each item
     span = mylist.ring
   else
-    debugprint "gutter is not a string"
+    ##debugprint "gutter is not a string"
     span = [span].flatten.ring
   end #if span a string
-  debugprint "span ", span
+  ##debugprint "span ", span
   
   
   if rampdowntime > 0
-    debugprint "calculating ramp ratio"
+    ##debugprint "calculating ramp ratio"
     tempduration = duration
     tempperiod = period.to_a.ring #to force new object
     while tempduration > 0 do
-      debugprint "tempduration: ",  tempduration
+      ##debugprint "tempduration: ",  tempduration
       if tempduration <= rampdowntime
         timetorampdown -= tempperiod.tick
         downramp += 1
@@ -868,35 +1148,35 @@ define :lfo do |handle, param, duration, period=[0.5], span=(ring 0, 1), lfotype
     duration -= delay
     while duration > 0 do
       print "loop " + loops.to_s
-      debugprint "look: ", look
+      ##debugprint "look: ", look
       
       case lfotype.look[0..2].downcase
       when "tri"
-        debugprint "triangle"
+        ##debugprint "triangle"
         shape = 1 #linear
       when "saw"
-        debugprint "saw"
+        ##debugprint "saw"
         shape = 1 #linear
       when "sin"
-        debugprint "sine"
+        ##debugprint "sine"
         shape = 3 #sine
       when "smo"
-        debugprint "smooth random"
+        ##debugprint "smooth random"
         shape = 3 #sine
       when "ran"
-        debugprint "random"
+        ##debugprint "random"
         shape = 3 #sine
       when "ste"
-        debugprint "step random"
+        ##debugprint "step random"
         shape = 0 #step
       when "squ"
-        debugprint "square"
+        ##debugprint "square"
         shape = 0 #step
       when "cus"
-        debugprint "custom"
+        ##debugprint "custom"
         shape = 5 #custom
       else
-        debugprint "garbage, defaulting to triangle"
+        ##debugprint "garbage, defaulting to triangle"
         shape = 1 #for garbage
       end
       
@@ -909,7 +1189,7 @@ define :lfo do |handle, param, duration, period=[0.5], span=(ring 0, 1), lfotype
       end #if rampup
       
       if duration <= rampdowntime
-        debugprint "time to ramp down"
+        ##debugprint "time to ramp down"
         rampratio = downramp * rampdownratio
         downramp -= 1
       end #if ramping down
@@ -917,33 +1197,33 @@ define :lfo do |handle, param, duration, period=[0.5], span=(ring 0, 1), lfotype
       
       case lfotype.look[0..2].downcase
       when "ran", "smo", "ste"
-        debugprint "random style lfo"
+        ##debugprint "random style lfo"
         thisvalue = rrand(lastspan, span.look)
       else
-        debugprint "toggle style lfo"
+        ##debugprint "toggle style lfo"
         thisvalue = span.look
       end #case lfo type
-      debugprint "thisvalue: ", thisvalue
-      debugprint "rampratio: ", rampratio
+      ##debugprint "thisvalue: ", thisvalue
+      ##debugprint "rampratio: ", rampratio
       
       
       thisvalue *= rampratio
-      debugprint "adjusted thisvalue: ", thisvalue
-      debugprint "this period: ", period.look
+      ##debugprint "adjusted thisvalue: ", thisvalue
+      ##debugprint "this period: ", period.look
       
       cmd = "control handle, " + slideparam + ": " + period.look.to_s + ", " + shapeparam + ": " + shape.to_s + ", " + param + ": " + thisvalue.to_s + ", " + curveparam + ": " + lfocurve.look.to_s
-      debugprint cmd
+      ##debugprint cmd
       eval cmd
       
       if lfotype.look == "saw"
-        debugprint "saw, jumping to next span"
+        ##debugprint "saw, jumping to next span"
         cmd = "control handle, " + slideparam + ": " + period.tick.to_s + ", " + shapeparam + ": 0, " + param + ": " + span.tick.to_s + ", " + curveparam + ": " + lfocurve.look.to_s
-        debugprint cmd
+        ##debugprint cmd
         eval cmd
       else
-        debugprint "not saw"
+        ##debugprint "not saw"
       end #if saw
-      debugprint "about to sleep " + period.look.to_s
+      ##debugprint "about to sleep " + period.look.to_s
       sleep period[loops -3]
       
       
@@ -951,16 +1231,16 @@ define :lfo do |handle, param, duration, period=[0.5], span=(ring 0, 1), lfotype
       duration -= period[loops -3]
       loops += 1
       tick
-      debugprint "bottom of while loop"
+      ##debugprint "bottom of while loop"
     end #while
 
     stop
     
   end #thread
 
-  debugprint "bottom of lfo"
-  debugprint ""
-  debugprint ""
+  ##debugprint "bottom of lfo"
+  ##debugprint ""
+  ##debugprint ""
   
 end #define lfo
 
@@ -977,34 +1257,34 @@ end #define lfo
 
 
 define :spreadtobeats do |thisspread, beatvalue=sixteenth, notes=nil, **kwargs|
-  eval overridekwargs(kwargs, method(__method__).parameters)
-  debugprint ""
-  debugprint ""
-  debugprint "top of spreadtobeats"
+  eval overridekwargs(kwargs, method(__method__).parameters) if boolish kwargs
+  ##debugprint ""
+  ##debugprint ""
+  ##debugprint "top of spreadtobeats"
 
 
-  debugprint "thisspread: ", thisspread
-  debugprint "beatvalue: ", beatvalue
+  ##debugprint "thisspread: ", thisspread
+  ##debugprint "beatvalue: ", beatvalue
   beats = ""
   isnote = false
   duration = 0
   comma=""
-  debugprint "comma: ", comma
+  ##debugprint "comma: ", comma
   notemode = false 
   if ! [nil, "", []].include? notes 
     notemode = true  
   end #if got no notes
-  debugprint "notemode: ", notemode
+  ##debugprint "notemode: ", notemode
   if notemode
     if notes.is_a? String 
-      debugprint "notes is a comma-delimited string"
+      ##debugprint "notes is a comma-delimited string"
       notes = notes.split(",", -1).ring #-1 allows null strings after comma split
     else
-      debugprint "notes is a list or ring"
+      ##debugprint "notes is a list or ring"
       notes = notes.ring 
     end #if notes is a string
   end #if notemode
-  debugprint "notes: ", notes
+  ##debugprint "notes: ", notes
 
   
   #quadrupled values -- it's a hack to make modulo easier
@@ -1014,116 +1294,116 @@ define :spreadtobeats do |thisspread, beatvalue=sixteenth, notes=nil, **kwargs|
   myeighth =2.0
   mysixteenth =1.0 
   firstrest = true
-  debugprint "beatvalue: ", beatvalue
-  debugprint "mysixteenth: ", sixteenth
+  ##debugprint "beatvalue: ", beatvalue
+  ##debugprint "mysixteenth: ", sixteenth
   chunk = (beatvalue * 4.0 ).to_i
-  debugprint"chunk: ", chunk
+  ##debugprint"chunk: ", chunk
   
   
   thisspread.each do |thisoneisnote|
-    debugprint "thisoneisnote: ", thisoneisnote
+    ##debugprint "thisoneisnote: ", thisoneisnote
     if thisoneisnote #got a new note, finish old note
-      debugprint "got a new note"
+      ##debugprint "got a new note"
       duration *= chunk #in case overrode beatvalue
-      debugprint "adjusted chunk: ", chunk
+      ##debugprint "adjusted chunk: ", chunk
       if duration > 0
-        debugprint "duration > 0"
+        ##debugprint "duration > 0"
         beats += comma
         comma = ","
         if firstrest
-          debugprint "first rest"
+          ##debugprint "first rest"
           beats += "r"
         else
-          debugprint "no first rest"
+          ##debugprint "no first rest"
         end
         {mywhole=>"w", myhalf=>"h", myquarter=>"q", myeighth=>"e", mysixteenth=>"s"}.each do |size,code|
-          debugprint "size: ",size
-          debugprint "code: ",code
-          debugprint "duration: ", duration
+          ##debugprint "size: ",size
+          ##debugprint "code: ",code
+          ##debugprint "duration: ", duration
           (duration / size).times do #integer math
             beats += code
           end #looping on size
           duration = duration % size
-          debugprint "beats: ", beats
+          ##debugprint "beats: ", beats
         end #each beat size
         if notemode && !firstrest
-          debugprint "note mode"
+          ##debugprint "note mode"
           thisnote = notes.tick
           if thisnote != ""
-            debugprint "got note ", thisnote
+            ##debugprint "got note ", thisnote
             beats += " " + thisnote
           else
-            debugprint "no note to add"
+            ##debugprint "no note to add"
           end #if thisnote <> ""
-          debugprint "beats: ", beats
-          debugprint "clearing first rest"
+          ##debugprint "beats: ", beats
+          ##debugprint "clearing first rest"
           firstrest = false
 
         else
-          debugprint "not note mode"
+          ##debugprint "not note mode"
         end #if notemode
 
 
       end #if duration > 0
-      debugprint "resetting duration"
+      ##debugprint "resetting duration"
       firstrest = false
       duration = 0
     else 
-      debugprint "not a note, duration = 0"
+      ##debugprint "not a note, duration = 0"
     end #if got a new note
     
     duration += 1
-    debugprint "bottom of each loop, duration: ", duration
+    ##debugprint "bottom of each loop, duration: ", duration
   end #each note
 
 
 
   #now process leftovers of last beat
-  debugprint "processing leftovers"
+  ##debugprint "processing leftovers"
   if duration > 0
-    debugprint "got leftovers: ", duration
+    ##debugprint "got leftovers: ", duration
     duration *= chunk #in case overrode beatvalue
-    debugprint "adding comma"
+    ##debugprint "adding comma"
     beats += comma
-    debugprint "beats: ", beats
+    ##debugprint "beats: ", beats
     # if firstrest
-    #   debugprint "first rest"
+    #   ##debugprint "first rest"
     #   beats += "r"
-    #   debugprint "beats: ", beats
+    #   ##debugprint "beats: ", beats
     # end
 
     
-    debugprint "duration: ", duration
+    ##debugprint "duration: ", duration
     {mywhole=>"w", myhalf=>"h", myquarter=>"q", myeighth=>"e", mysixteenth=>"s"}.each do |size,code|
-      debugprint "size: ",size
-      debugprint "code: ",code
-      debugprint "duration: ", duration
+      ##debugprint "size: ",size
+      ##debugprint "code: ",code
+      ##debugprint "duration: ", duration
       (duration / size).times do
         beats += code
       end #looping on size
       duration = duration % size
-      debugprint "beats: ", beats
+      ##debugprint "beats: ", beats
     end #each beat size
 
     if notemode
-      debugprint "note mode"
+      ##debugprint "note mode"
       thisnote = notes.tick
       if thisnote != ""
-        debugprint "got note ", thisnote
+        ##debugprint "got note ", thisnote
         beats += " " + thisnote
       else
-        debugprint "no note to add"
+        ##debugprint "no note to add"
       end #if thisnote <> ""
-      debugprint "beats: ", beats
+      ##debugprint "beats: ", beats
     else
-      debugprint "not note mode"
+      ##debugprint "not note mode"
     end #if notemode
 
   end #if got a last note
 
-  debugprint "bottom of spreadtobeats"
-  debugprint ""
-  debugprint ""
+  ##debugprint "bottom of spreadtobeats"
+  ##debugprint ""
+  ##debugprint ""
 
   beats
 
@@ -1141,13 +1421,13 @@ end #define
 
 
 define :euclidiate do |beats,duration,rotations=0,beatvalue=sixteenth, notes=nil, **kwargs|
-  eval overridekwargs(kwargs, method(__method__).parameters)
-  debugprint "top of euclidiate"
-  debugprint "beats: ", beats  
-  debugprint "duration: ", duration 
-  debugprint "rotations: ", rotations
-  debugprint "beatvalue: ", beatvalue 
-  debugprint "notes: ", notes
+  eval overridekwargs(kwargs, method(__method__).parameters) if boolish kwargs
+  ##debugprint "top of euclidiate"
+  ##debugprint "beats: ", beats  
+  ##debugprint "duration: ", duration 
+  ##debugprint "rotations: ", rotations
+  ##debugprint "beatvalue: ", beatvalue 
+  ##debugprint "notes: ", notes
   spreadtobeats spread(beats,duration).rotate(rotations), beatvalue, notes
 end
 
@@ -1175,139 +1455,139 @@ end
 ##| trancegate handle, 16, euclidiate("s", 16, 5)
 
 define :trancegate do |handle, duration, period=[0.5], gutter=[0.1], delay=0, maxvol= [1], minvol=[0], lfotype="square",  curve=0, **kwargs|
-  eval overridekwargs(kwargs, method(__method__).parameters)
+  eval overridekwargs(kwargs, method(__method__).parameters) if boolish kwargs
    
-  debugprint ""
-  debugprint ""
-  debugprint "top of trancegates"
+  ##debugprint ""
+  ##debugprint ""
+  ##debugprint "top of trancegates"
  
   #cook args to rings
   
-  debugprint "handle: ", handle
-  debugprint " duration: " , duration
-  debugprint "period: ", period
-  debugprint "delay: ", delay
-  debugprint "maxvol: ", maxvol
-  debugprint "minvol: ", minvol
-  debugprint "lfotype: " , lfotype
-  debugprint "curve: " , curve
+  ##debugprint "handle: ", handle
+  ##debugprint " duration: " , duration
+  ##debugprint "period: ", period
+  ##debugprint "delay: ", delay
+  ##debugprint "maxvol: ", maxvol
+  ##debugprint "minvol: ", minvol
+  ##debugprint "lfotype: " , lfotype
+  ##debugprint "curve: " , curve
   
-  debugprint "top of trancegate function, cooking args"
+  ##debugprint "top of trancegate function, cooking args"
   debugmode = true
-  debugprint "are we printing in debug?"
+  ##debugprint "are we printing in debug?"
   if period.is_a? String
-    debugprint "period is a string"
+    ##debugprint "period is a string"
     mylist = []
     period.split(",").each do |item|
-      debugprint "item: ", item
+      ##debugprint "item: ", item
       triplet = 1
       dots = 1
       thisnumber = ""
       notetime = 0
       restsign = 1
       item.chars.each do |letter|
-        debugprint "letter: ", letter
+        ##debugprint "letter: ", letter
         case letter
         when "r"
           restsign = -1
         when "w"
           notetime += 4.0
-          debugprint "w ", notetime
+          ##debugprint "w ", notetime
         when "h"
           notetime += 2.0
-          debugprint "h ", notetim
+          ##debugprint "h ", notetim
         when "q"
           notetime += 1.0
-          debugprint "q ", notetime
+          ##debugprint "q ", notetime
         when "e"
           notetime += 0.5
-          debugprint "e ", notetime
+          ##debugprint "e ", notetime
         when "s"
           notetime += 0.25
-          debugprint "s ", notetime
+          ##debugprint "s ", notetime
         when "d"
           dots *= 1.5
-          debugprint "d ", dots
+          ##debugprint "d ", dots
         when "t"
           triplet = 2.0 / 3
-          debugprint "t ", triplet
+          ##debugprint "t ", triplet
         when /\d/, "."
           thisnumber = thisnumber + letter
-          debugprint "thisnumber: " + thisnumber
+          ##debugprint "thisnumber: " + thisnumber
         else
-          debugprint "garbage letter, ignoring"
+          ##debugprint "garbage letter, ignoring"
         end #case letter
       end #each letter
       notetime *= restsign
-      debugprint "notetime: " , notetime
-      debugprint "thisnumber: " , thisnumber
-      debugprint "triplet: " ,triplet
-      debugprint "dots: ", dots
+      ##debugprint "notetime: " , notetime
+      ##debugprint "thisnumber: " , thisnumber
+      ##debugprint "triplet: " ,triplet
+      ##debugprint "dots: ", dots
       thisnumber = ( thisnumber == "" ? 1 : thisnumber.to_f )
       notetime *= dots * triplet * thisnumber
-      debugprint "final notetime: " , notetime
+      ##debugprint "final notetime: " , notetime
       mylist << notetime
-      debugprint "mylist: ", mylist
+      ##debugprint "mylist: ", mylist
       
     end #each item
     period = mylist.ring
-    debugprint "period: ", period
+    ##debugprint "period: ", period
     
   else
-    debugprint "period is not a string"
+    ##debugprint "period is not a string"
     period = [period].flatten.ring
   end #if period is a string
-  debugprint "period: ", period
+  ##debugprint "period: ", period
   
   if gutter.is_a? String
-    debugprint "gutter is a string"
+    ##debugprint "gutter is a string"
     mylist = []
     gutter.split(",").each do |item|
       mylist << item.to_f
     end #each item
     gutter = mylist.ring
   else
-    debugprint "gutter is not a string"
+    ##debugprint "gutter is not a string"
     gutter = [gutter].flatten.ring
   end #if span a string
-  debugprint "gutter ", gutter
+  ##debugprint "gutter ", gutter
   
   if maxvol.is_a? String
-    debugprint "maxvol is string"
+    ##debugprint "maxvol is string"
     maxvol = maxvol.split(",").map do |x| x.to_f end
   else
-    debugprint "maxvol not a string"
+    ##debugprint "maxvol not a string"
     maxvol = maxvol.flatten.ring
   end #if maxvols is string
-  debugprint "maxvol: ", maxvol
+  ##debugprint "maxvol: ", maxvol
   
   if minvol.is_a? String
-    debugprint "minvol is string"
+    ##debugprint "minvol is string"
     minvol = minvol.split(",").map do |x| x.to_f end
   else
-    debugprint "minvol not a string"
+    ##debugprint "minvol not a string"
     minvol = minvol.flatten.ring
   end #if maxvols is string
-  debugprint "maxvol: ", maxvol
+  ##debugprint "maxvol: ", maxvol
   
   
   if lfotype.is_a? String
-    debugprint "lfotype is a string"
+    ##debugprint "lfotype is a string"
     lfotype = lfotype.split(",").ring
   else
-    debugprint "lfotype not a string"
+    ##debugprint "lfotype not a string"
     lfotype = [lfotype].flatten.ring
   end #if lfotype a string
-  debugprint "lfotype: ",lfotype
+  ##debugprint "lfotype: ",lfotype
   
   if curve.is_a? String
-    debugprint "curve is a string"
+    ##debugprint "curve is a string"
     curve = curve.split(",").ring
   else
-    debugprint "curve not a string"
+    ##debugprint "curve not a string"
     curve = [curve].flatten.ring
   end #if lfocurve a string
-  debugprint "curve ", curve
+  ##debugprint "curve ", curve
   slideparam = "amp_slide"
   shapeparam = "amp_shape"
   curveparam = "amp_curve"
@@ -1321,7 +1601,7 @@ define :trancegate do |handle, duration, period=[0.5], gutter=[0.1], delay=0, ma
     duration -= delay
     
     while duration > 0 do
-      debugprint "top of while loop, duration ", duration
+      ##debugprint "top of while loop, duration ", duration
       tick
       
       if period.look > 0
@@ -1330,50 +1610,50 @@ define :trancegate do |handle, duration, period=[0.5], gutter=[0.1], delay=0, ma
         
         case lfotype.look[0..2].downcase
         when "tri"
-          debugprint "triangle"
+          ##debugprint "triangle"
           shape = 1 #linear
         when "saw"
-          debugprint "saw"
+          ##debugprint "saw"
           shape = 1 #linear
         when "sin"
-          debugprint "sine"
+          ##debugprint "sine"
           shape = 3 #sine
         when "smo"
-          debugprint "smooth random"
+          ##debugprint "smooth random"
           shape = 3 #sine
         when "ran"
-          debugprint "random"
+          ##debugprint "random"
           shape = 3 #sine
         when "ste"
-          debugprint "step random"
+          ##debugprint "step random"
           shape = 0 #step
         when "squ"
-          debugprint "square"
+          ##debugprint "square"
           shape = 0 #step
         when "cus"
           puts "custom"
           shape = 5 #custom
         else
-          debugprint "garbage, defaulting to square"
+          ##debugprint "garbage, defaulting to square"
           shape = 0 #step
         end
         
-        debugprint "maxvol: ", maxvol.look
-        debugprint "period: ", period.look
-        debugprint "gutter: ", gutter.look
-        debugprint "shape: ", shape
-        debugprint "curve: ", curve
+        ##debugprint "maxvol: ", maxvol.look
+        ##debugprint "period: ", period.look
+        ##debugprint "gutter: ", gutter.look
+        ##debugprint "shape: ", shape
+        ##debugprint "curve: ", curve
         
         
         
         
         cmd = "control handle, amp: " + maxvol.look.to_s + ", amp_slide: " + (period.look - gutter.look).to_s + ", amp_slide_shape: " + shape.to_s +  ", amp_slide_curve: " + curve.look.to_s
-        debugprint "up cmd: ", cmd
+        ##debugprint "up cmd: ", cmd
         eval cmd
         sleep period.look - (gutter.look)
         
         cmd = "control handle, amp: " + minvol.look.to_s + ", amp_slide: " + (gutter.look).to_s + ", amp_slide_shape: " + shape.to_s +  ", amp_slide_curve: " + curve.look.to_s
-        debugprint "down cmd: ", cmd
+        ##debugprint "down cmd: ", cmd
         eval cmd
         sleep gutter.look
         
@@ -1384,17 +1664,17 @@ define :trancegate do |handle, duration, period=[0.5], gutter=[0.1], delay=0, ma
       end #if period is positive
       
       duration -= (period.look.abs + gutter.look)
-      debugprint "bottom of while loop"
-      debugprint "duration: ", duration
+      ##debugprint "bottom of while loop"
+      ##debugprint "duration: ", duration
     end #while
 
     stop
     
   end #thread
 
-  debugprint "bottom of trancegate"
-  debugprint ""
-  debugprint ""
+  ##debugprint "bottom of trancegate"
+  ##debugprint ""
+  ##debugprint ""
   
 end #define trancegate
 
@@ -1406,14 +1686,14 @@ end #define trancegate
 
 
 define  :striptrailingnils do |thisarray, **kwargs|
-  eval overridekwargs(kwargs, method(__method__).parameters)
+  eval overridekwargs(kwargs, method(__method__).parameters)  if boolish kwargs
   cleanargs = stripparams kwargs, method(__method__).parameters
 
   while thisarray[-1] == nil do 
-    debugprint "deleting trailing nil"
+    ##debugprint "deleting trailing nil"
     thisarray.delete_at(-1)
   end
-  debugprint "clean array: ", thisarray
+  ##debugprint "clean array: ", thisarray
   thisarray #return value
 
 end #define striptrailingnils
@@ -1422,18 +1702,18 @@ end #define striptrailingnils
 # takes an arrangement using degrees instead of absolute notes, and converts them to degrees.  
 # Used to feed into arrange.  
 # args:
-# thisarrangement:arrangement fed into arrange -- see docs for arrange for details
+# thisarrangement: arrangement fed into arrange -- see docs for arrange for details
 # thiskey: the musical key. Defaults to :c4. 
 # thisscale: the musical scale: defalts to major.
 
 
 
 define  :degreestoabsolutenotes do |thisarrangement, thiskey=:c4, thisscale=:major, **kwargs|
-  eval overridekwargs(kwargs, method(__method__).parameters)
+  eval overridekwargs(kwargs, method(__method__).parameters) if boolish kwargs
   cleanargs = stripparams kwargs, method(__method__).parameters
 
   thisarrangement = rowstocolumns thisarrangement.split(",").map {|x| x = x.split(" ")}
-  debugprint "thisarrangement: ", thisarrangement
+  ##debugprint "thisarrangement: ", thisarrangement
 
   thisarrangement[1].map do |thisdegree|
     thisdegree = degree thisdegree, thiskey, thisscale
@@ -1441,7 +1721,7 @@ define  :degreestoabsolutenotes do |thisarrangement, thiskey=:c4, thisscale=:maj
 
   thisarrangement = rowstocolumns thisarrangement
   thisarrangement.each do |nestedarray|
-    debugprint "nestedarray: ", nestedarray
+    ##debugprint "nestedarray: ", nestedarray
     nestedarray = striptrailingnils thisarray
   
   end #each nestedarray
@@ -1461,13 +1741,13 @@ end #define degreestoabsolutenotes
 
 
 define  :swing do |straightbeats, swingseed=6.0, humanizeamt=0.0, **kwargs|
-  eval overridekwargs(kwargs, method(__method__).parameters)
+  eval overridekwargs(kwargs, method(__method__).parameters) if boolish kwargs
 
   swingseed = (swingseed ||= 6.0).to_f
   humanize = (humanize ||= 0.0).to_f
 
-  debugprint "top of swing"
-  debugprint "straightbeats: ", straightbeats
+  ##debugprint "top of swing"
+  ##debugprint "straightbeats: ", straightbeats
   swingbeats = []
   leftover = 0 
   addin = 0  
@@ -1475,27 +1755,27 @@ define  :swing do |straightbeats, swingseed=6.0, humanizeamt=0.0, **kwargs|
     straightbeat += addin
     addin = 0
     humanseed = swingseed + rrand(-humanizeamt, humanizeamt)
-    debugprint "straightbeat: ", straightbeat
+    ##debugprint "straightbeat: ", straightbeat
     straightbeat -= leftover  
-    debugprint "straightbeat - leftover: ", straightbeat
-    debugprint "straightbeat * humanseed: ", straightbeat * humanseed
+    ##debugprint "straightbeat - leftover: ", straightbeat
+    ##debugprint "straightbeat * humanseed: ", straightbeat * humanseed
     swingbeat = (straightbeat * humanseed).round(0, half: :up) / humanseed  
-    debugprint "swingbeat: ", swingbeat
+    ##debugprint "swingbeat: ", swingbeat
     leftover = swingbeat - straightbeat  
-    debugprint "leftover: ", leftover
+    ##debugprint "leftover: ", leftover
     if i == straightbeats.length
-      debugprint "last beat, adding leftovers"
+      ##debugprint "last beat, adding leftovers"
       swingbeat += leftover 
     end #if last beat
     if swingbeat > 0  
-      debugprint "writing swingbeat"
+      ##debugprint "writing swingbeat"
       swingbeats << swingbeat 
     else 
-      debugprint "setting addin to swingbeat"
+      ##debugprint "setting addin to swingbeat"
       addin = swingbeat
     end #if time to write beat
   end #each straightbeat
-  debugprint "swingbeats: ", swingbeats
+  ##debugprint "swingbeats: ", swingbeats
   swingbeats #return value
 end #define swing
 
@@ -1507,56 +1787,190 @@ end #define swing
 # humanizeamt: the amount of looseness. Defaults to 0.5.  
 
 define  :humanize do |thesebeats, humanizeamt=0.5, **kwargs|
-  eval overridekwargs(kwargs, method(__method__).parameters)
-  debugprint "top of humanize"
+  eval overridekwargs(kwargs, method(__method__).parameters) if boolish kwargs
+  ##debugprint "top of humanize"
 
   swing thesebeats, 8.0, humanizeamt #return value
 end #define humanize
+
+# harmonic
+# calculate the midi note corresponding to the harmonic provided. 
+# args:
+# thisnote: the midi note with the fundamental
+# thisharmonic: the harmonic to calculate. Can be fractional!
+# returns: midi note corresponding to the harmonic. 
+# example: 
+# harmonics = [7, 9, 11, 13, 15, 17, 19, 21]
+# rootnotes = [:c3, :c2, :c1, :c0].reverse
+# 4.times do
+#   with_fx :flanger, phase: 4, wave: 0, mix: 0.25 do
+#     with_fx :krush, mix: 0.25 do
+#       with_synth_defaults amp: 0.5, attack: 0.125, duration: 0.25, release: 0.125 do
+#         with_synth  :beep do
+#           rootnotes.each do |rootnote|
+#             harmonics.each do |harm|
+#               #play rootnote
+#               play :c4
+#               play :g4
+#               play :c5
+#               play (harmonic rootnote, harm)
+#               sleep 0.125
+#             end
+#           end
+#         end
+#       end
+#     end
+#   end
+# end
+
+
+define  :harmonic do |thisnote, thisharmonic, **kwargs|
+  eval overridekwargs(kwargs, method(__method__).parameters)
+  cleanargs = stripparams kwargs, method(__method__).parameters
+  ##debugprint "top of harmonic"
+  ##debugprint "thisnote: ", thisnote
+  ##debugprint "thisharmonic: ", thisharmonic
+
+  harmonicnote = hz_to_midi ((midi_to_hz thisnote) * thisharmonic)
+
+  ##debugprint "harmonicnote: ", harmonicnote
+
+  harmonicnote #return value
+end #define harmonic
+
+# stringtonestedarray  
+# takes a string with nested delimiters, and transforms it into a nested array.  
+# Useful for parsing mini-notation,
+# args:  
+# thisstring: the string to transform.  
+# delims: the delimiters, either in a string or array; defaults to ", ". If in a string, each char is a separate delimiter.  
+# example code:  
+# stringtonestedarray "qd :c4, qd :ds4, :q :g4"
+# returns: [["qd", ":c4"], ["qd", ":ds4"], ["qd", ":g4"]]
+
+define  :stringtonestedarray do |thisstring, delims=", ", **kwargs|
+  eval overridekwargs(kwargs, method(__method__).parameters)
+  cleanargs = stripparams kwargs, method(__method__).parameters
+  ##debugprint "top of stringtonestedarrays"
+  ##debugprint "thisstring: ", thisstring
+  if delims.is_a? String  
+    ##debugprint "delims is a string, splitting"
+    delims = delims.split("") 
+  end #if delims is a string
+  ##debugprint "delims: ", delims
+
+  resultarray = []
+
+  ##debugprint "got delims ", delims  
+  delim = delims.delete_at(0)
+  ##debugprint "delim: ", delim
+  ##debugprint "delims: ", delims
+  workingarray = thisstring.split(delim)
+  ##debugprint "workingarray: ", workingarray
+  if boolish delims 
+    ##debugprint "got another delim, recursing"
+    workingarray.each  do |thisitem| 
+      ##debugprint "thisitem: ", thisitem
+      thisitem = stringtonestedarray thisitem, delims  
+      ##debugprint "thisitem after processing: ", thisitem
+      resultarray << thisitem
+      ##debugprint "resultarray: ", resultarray
+    end #each thisitem 
+    ##debugprint "final resultarray: ", resultarray
+  else
+    ##debugprint "no more delims, using workingarray"
+    resultarray = workingarray
+  end #if boolish delims after initial split
+  ##debugprint "returning resultarray: ", resultarray
+  resultarray #return value
+end #define stringtonestedarrays
+
+
+
+
+define  :nestedarraytostring do |thisarray, delims = ", ", **kwargs|
+  eval overridekwargs(kwargs, method(__method__).parameters)
+  cleanargs = stripparams kwargs, method(__method__).parameters
+  ##debugprint "top of nestedarraytostring"
+  ##debugprint "thisarray: ", thisarray
+  if delims.is_a? String 
+    ##debugprint "delims is a string, splitting"
+    delims = delims.split("")
+  end #if delims is a string
+  ##debugprint "delims: ", delims
+
+  thisstring = ""
+
+  if boolish delims 
+    ##debugprint "got delims, processing"
+    delim = delims.delete_at(0)
+    ##debugprint "delim: ", delim
+    ##debugprint "delims: ", delims
+
+    thisarray.each do |thisitem|
+      ##debugprint "thisitem: ", thisite
+      if thisitem.is_a? Array  
+        ##debugprint "thisitem is an array"
+        thisitem = nestedarraytostring thisitem, delims  
+      elsif thisitem.is_a? String  
+        ##debugprint "thisitem is a string, leaving alone"
+      else 
+        ##debugprint "thisitem is garbage, forcing string"
+        thisitem = (thisitem || "").to_s  
+      end #if thisitem is array or string  
+
+      thisstring += thisitem  
+    end #each thisitem
+  end #if boolish delims
+  thisstring #return value
+end #define nestedarraytostring
+
+
 
 
 
 # => executecmdlist
 # => internal function to generate command list to perform all or part of an arrangement.
 # => not for general use
-define :executecmdlist do |mytimeline, mymelody, myextraargs, thatphrasedensity=0, defaults=nil, effects=nil, envelopes=nil, lfos=nil, trancegates=nil, notedensities=nil, tickorchoose=["tick","choose"], **kwargs|
-  eval overridekwargs(kwargs, method(__method__).parameters)
+define :executecmdlist do |mytimeline, mymelody, myextraargs, thatphrasedensity=0, defaults=nil, effects=nil, envelopes=nil, lfos=nil, trancegates=nil, notedensities=nil, tickorchoose=["tick","choose"], currentroot=:c4, currentscale=:major, **kwargs|
+  eval overridekwargs(kwargs, method(__method__).parameters) if boolish kwargs
 
   #now traverse keys of the timeline, which are times, in order, and play samples at that time_warp
-  debugprint " "
-  debugprint " "
-  debugprint " "
-  debugprint " "
-  debugprint "top of executecmdlist"
-  debugprint "mytimeline: ", mytimeline
-  debugprint "mymelody: ", mymelody
-  debugprint "myextraargs: ", myextraargs
-  debugprint "thatphrasedensity: ", thatphrasedensity ||=  0
-  debugprint "effects: ", effects
-  debugprint "envelopes: ", envelopes
-  debugprint "lfos: ", lfos
-  debugprint "notedensities: ", notedensities ||=  {}
-  debugprint "tickorchoose: ", tickorchoose
+  ##debugprint " "
+  ##debugprint " "
+  ##debugprint " "
+  ##debugprint " "
+  ##debugprint "top of executecmdlist"
+  ##debugprint "mytimeline: ", mytimeline
+  ##debugprint "mymelody: ", mymelody
+  ##debugprint "myextraargs: ", myextraargs
+  ##debugprint "thatphrasedensity: ", thatphrasedensity ||=  0
+  ##debugprint "effects: ", effects
+  ##debugprint "envelopes: ", envelopes
+  ##debugprint "lfos: ", lfos
+  ##debugprint "notedensities: ", notedensities ||=  {}
+  ##debugprint "tickorchoose: ", tickorchoose
 
   defaults ||= {}
   # defaults.map do |key, value|
   #   if value[0] != ","
-  #     debugprint "adding comma to ", value
+  #     ##debugprint "adding comma to ", value
   #     value = ", " + value
   #     defaults[key] = value
   #   else 
-  #     debugprint "no comma needed for", value
+  #     ##debugprint "no comma needed for", value
   #   end #if
   # end #each default
 
   defaults.each do |key, val|
-    debugprint "key: ", key
-    debugprint "val: ", val
+    ##debugprint "key: ", key
+    ##debugprint "val: ", val
     if val.is_a? String  
-      debugprint "defaults are string, converting to hash"
-      defaults.key = argstohash val  
+      ##debugprint "defaults are string, converting to hash"
+      defaults[key] = argstohash val  
     end #if val is a string
   end #each key, val for defaults
-  debugprint "defaults: ", defaults
+  ##debugprint "defaults: ", defaults
 
 
 
@@ -1564,242 +1978,257 @@ define :executecmdlist do |mytimeline, mymelody, myextraargs, thatphrasedensity=
 
 
   cmd = ""
-  thatcmdlist = []
+  thatcmdlist = ["synctoslidingbpm"]
   enchiladalist = []
   notedensitymode = false
   effectivesound = nil #dynamic expression for chosensound, e.g. "[:sound1, :sound2].choose"
  
   if thatphrasedensity > 1  
-    debugprint "got a phrase density, setting up thread and opening density"
+    ##debugprint "got a phrase density, setting up thread and opening density"
     thatcmdlist << "in_thread do"
     thatcmdlist << "density " + thatphrasedensity.to_s + " do "
   # elsif notedensities != nil
-  #   debugprint "got note densities, setting up thread"
+  #   ##debugprint "got note densities, setting up thread"
   #   thatcmdlist << "in_thread do"
   else
-    debugprint "no density"
+    ##debugprint "no density"
   end #if thatphrasedensity
   
-  debugprint "timeline keys sorted: ", mytimeline.keys.sort
-  debugprint "mymelody: ", mymelody
+  ##debugprint "mytimeline: ", mytimeline
+  ##debugprint "timeline keys sorted: ", mytimeline.keys.sort
+  ##debugprint "mymelody: ", mymelody
   nextloop = 0
   maxtime = 0
+  ##debugprint "about to sleep ", mytimeline.keys.sort[0]
   sleep mytimeline.keys.sort[0] #in case first time > 0, to create initial rest
   mytimeline.keys.sort.each do |thatkey|
-    debugprint "top of thatkey loop"
-    debugprint "thatkey: ", thatkey.to_s
+    ##debugprint "top of thatkey loop"
+    ##debugprint "thatkey: ", thatkey.to_s
     nextloop = nextloop + 1
-    debugprint "next loop: ", nextloop.to_s 
-    debugprint "timeline length: ", mytimeline.length.to_s
+    ##debugprint "next loop: ", nextloop.to_s 
+    ##debugprint "timeline length: ", mytimeline.length.to_s
     # needsleep = false
     sleepytime = 0
     if mytimeline.length > nextloop then
       sleepytime = mytimeline.keys.sort[nextloop] - thatkey
-      debugprint "not last loop."
-      debugprint "next key: ", mytimeline.keys.sort[nextloop]
-      debugprint "sleepytime: ", sleepytime
+      ##debugprint "not last loop."
+      ##debugprint "next key: ", mytimeline.keys.sort[nextloop]
+      ##debugprint "sleepytime: ", sleepytime
       #the amount to rest is the duration between that time and next time
       #that even accounts for triplets vs 4s vs dots
     else
-      debugprint "last loop"
+      ##debugprint "last loop"
     end #if
     
     
     thattime = mytimeline[thatkey]
-    debugprint "processing time array, thattime: ", thattime
+    ##debugprint "processing time array, thattime: ", thattime
     maxtime = 0
+    gotanonrest = false  
     thattime.each do |thatsound|
 
-      debugprint "top of thatsound loop"
-      debugprint  "thatsound: ", thatsound
-      debugprint"thatsound[0]: ", thatsound[0]
-      debugprint"notedensities: ", notedensities
-      debugprint "notedensities[thatsound[0]]: ", notedensities[thatsound[0]]
+      ##debugprint "top of thatsound loop"
+      ##debugprint  "thatsound: ", thatsound
+      ##debugprint"thatsound[0]: ", thatsound[0]
+      ##debugprint"notedensities: ", notedensities
+      ##debugprint "notedensities[thatsound[0]]: ", notedensities[thatsound[0]]
 
-      debugprint "traversing thattime list"
-      debugprint "thatsound[0]: ", thatsound[0]
+      ##debugprint "traversing thattime list"
+      ##debugprint "thatsound[0]: ", thatsound[0]
       chosensound = thatsound[0]
-      debugprint "chosensound: ", chosensound
-      # effectivesound = symbolcolon(chosensound) + chosensound.to_s
+      ##debugprint "chosensound: ", chosensound
       effectivesound = formattedsamplename(chosensound)
-      debugprint "effectivesound: ", effectivesound
+      ##debugprint "effectivesound: ", effectivesound
       if ringorlist(chosensound)
-        debugprint "it's a ring or list"
+        ##debugprint "it's a ring or list"
         if tickorchoose[0].downcase == "c" #choose
-          debugprint "choose mode"
+          ##debugprint "choose mode"
           chosensound = chosensound.choose
         else
-          debugprint "tick mode"
+          ##debugprint "tick mode"
           chosensound = chosensound.tick 
         end #if tick or choose top level
-        # effectivesound = symbolcolon(chosensound) + chosensound.to_s
         effectivesound = formattedsamplename(chosensound)
 
 
-        debugprint "chosensound: ", chosensound
-        debugprint "tickorchoose: ", tickorchoose
+        ##debugprint "chosensound: ", chosensound
+        ##debugprint "tickorchoose: ", tickorchoose
         if ringorlist(chosensound)
-          debugprint "still a ring or list"
+          ##debugprint "still a ring or list"
           if tickorchoose[1][0].downcase == "c"
-            debugprint "choose mode 2nd level"
+            ##debugprint "choose mode 2nd level"
             effectivesound = chosensound.to_s + ".choose"
             chosensound = chosensound.choose 
           else
-            debugprint "tick mode 2nd level"
+            ##debugprint "tick mode 2nd level"
             effectivesound = chosensound.to_s + ".tick"
             chosensound = chosensound.tick 
           end #if tick or choose level 2
         end #if ring or array level 2
       else
-        debugprint "not a ring or list"
+        ##debugprint "not a ring or list"
       end #if ring or array
-      debugprint "chosensound: ",chosensound
-      debugprint "effectivesound: ", effectivesound
+      ##debugprint "chosensound: ",chosensound
+      ##debugprint "effectivesound: ", effectivesound
 
       duration = thatsound[1]
-      debugprint "duration: ", duration
+      ##debugprint "duration: ", duration
       
       handle = nil #init here so it's scoped to be visible where needed
       
       thatnote = mymelody[thatsound[0]]
+      ##debugprint "thatnote before testing: ", thatnote
 
-      if thatnote != :rest
-        debugprint "not a rest, playing the sound"
+      if (thatnote || ["tricksy hobbit!"])[0] != :rest  #kludge to deal with nil thatnote
+        ##debugprint "not a rest, playing the sound"
+        gotanonrest = true  
 
         tempdensity = 0
 
         if synth_names.to_a.include? chosensound
-          debugprint "synth mode, getting note to play"
+          ##debugprint "synth mode, getting note to play"
           thatnote = mymelody[thatsound[0]]
-          debugprint "thatnote: ", thatnote
-          debugprint "mymelody[thatsound[0]]: ", mymelody[thatsound[0]]
+          ##debugprint "thatnote: ", thatnote
+          ##debugprint "mymelody[thatsound[0]]: ", mymelody[thatsound[0]]
           mymelody[thatsound[0]] = mymelody[thatsound[0]].rotate #rotate note just played
-          debugprint "thatnote: ", thatnote
-          debugprint "thatnote[0]: ", thatnote[0]
+          ##debugprint "thatnote: ", thatnote
+          ##debugprint "thatnote[0]: ", thatnote[0]
           if thatnote[0].is_a? String
-            debugprint "thatnote[0] is a string"
+            ##debugprint "thatnote[0] is a string"
             if thatnote[0] =~ /:.*/
-              debugprint "got a colon, turning to symbol"
-              thatnote[0].delete_prefix(":").to_sym
-              cooknote = thatnote[0]
-              debugprint "thatnote: ", thatnote
-              debugprint "cooknote:", cooknote
+              ##debugprint "got a colon, turning to symbol"
+              if thatnote[0].downcase =~ /[ixv]/ #degree symbol, e.g. :iii, :ix, etc  
+                ##debugprint "degree symbol processing"
+                cooknote = degree thatnote[0].delete_prefix(":").to_sym, currentroot, currentscale
+              else
+                ##debugprint "normal note processing"
+                cooknote = thatnote[0].delete_prefix(":").to_sym
+              end #if degree or normal note
+              ##debugprint "cooknote:", cooknote
+            elsif thatnote[0].downcase =~ /[ixv]/ #degree symbol, e.g. :iii, :ix, etc
+              ##debugprint "degree symbol processing, no colon"
+              cooknote = degree thatnote[0].delete_prefix(":").to_sym, currentroot, currentscale
             else
-              debugprint "no colon, turning to int"
+              ##debugprint "no colon, turning to int"
               cooknote = thatnote[0]
-              debugprint "cooknote: ", cooknote
+              ##debugprint "cooknote: ", cooknote
             end
+          elsif thatnote[0] == :rest  
+            ##debugprint "got a rest"
+            cooknote = ":rest"
           else
-            debugprint "thatnote[0] is a list/ring"
+            ##debugprint "thatnote[0] is a list/ring"
             cooknote = thatnote[0]
           end #if thatnote[0] is a string
           
-          debugprint "converted thatnote: ", thatnote
-          debugprint "cooknote: ", cooknote
+          ##debugprint "converted thatnote: ", thatnote
+          ##debugprint "cooknote: ", cooknote
 
-          cmd = "handle = play " + cooknote.to_s + ", duration: " + duration.to_s 
+          cmd = "handle = play " + symbolwithcolon(cooknote) + ", duration: " + duration.to_s 
           cmd += tickargs defaults[thatsound[0]]
           cmd += (myextraargs[thatsound] || "")
           cmd = "with_synth " + effectivesound + " do " + cmd + " end "
-          debugprint "cmd: ", cmd
+          ##debugprint "cmd: ", cmd
 
 
 
-          debugprint "testing for effects"
+          ##debugprint "testing for effects"
           if effects[thatsound[0]] != nil
-            debugprint "got effects for ", thatsound[0]
+            ##debugprint "got effects for ", thatsound[0]
             if !effects[thatsound[0]].is_a? String
-              debugprint "effects are in a list or ring, converted to semicolon-delimited string"
+              ##debugprint "effects are in a list or ring, converted to semicolon-delimited string"
               effects[thatsound[0]] = effects[thatsound[0]].join(";")
             end
 
 
             effects[thatsound[0]].split(";").each do |effect|
-              debugprint "adding effect ", effect
+              ##debugprint "adding effect ", effect
               cmd = "with_fx " + effect + " do " + cmd + " end "
             end #each effect
           else
-            debugprint "no effects"
+            ##debugprint "no effects"
           end #if effects
 
-          debugprint "cmd: ", cmd
+          ##debugprint "cmd: ", cmd
           #eval cmd
           
         else
-          debugprint "sample mode"
-          debugprint "mymelody: ", mymelody
-          debugprint "thatsound: ", thatsound
-          debugprint "mymelody[thatsound[0]]: ", mymelody[thatsound[0]]
+          ##debugprint "sample mode"
+          ##debugprint "mymelody: ", mymelody
+          ##debugprint "thatsound: ", thatsound
+          ##debugprint "mymelody[thatsound[0]]: ", mymelody[thatsound[0]]
           if mymelody[thatsound[0]] != nil
             # TODO: add logic to test for note 0
-            debugprint "got a melody, picking thatnote"
+            ##debugprint "got a melody, picking thatnote"
             thatnote = mymelody[thatsound[0]]
-            debugprint "thatnote: ", thatnote
-            debugprint "mymelody[thatsound[0]]: ", mymelody[thatsound[0]]
+            ##debugprint "thatnote: ", thatnote
+            ##debugprint "mymelody[thatsound[0]]: ", mymelody[thatsound[0]]
             mymelody[thatsound[0]] = mymelody[thatsound[0]].rotate #rotate note just played
             #need to add smarts for rings with fewer entries than notes played
-            debugprint "thatnote: ", thatnote
-            debugprint "thatnote[0]: ", thatnote[0]
+            ##debugprint "thatnote: ", thatnote
+            ##debugprint "thatnote[0]: ", thatnote[0]
             
             
-            if thatnote[0].is_a? String
-              debugprint "thatnote[0] is a string"
+            if thatnote[0].is_a? String  
+              ##debugprint "thatnote[0] is a string or symbol"
+              thatnote[0] = thatnote[0].to_s #force to string  
               if thatnote[0] =~ /:.*/
-                debugprint "got a colon, turning to symbol"
+                ##debugprint "got a colon, turning to symbol"
                 thatnote = thatnote[0].delete_prefix(":").to_sym
               else
-                debugprint "no colon, turning to int"
+                ##debugprint "no colon, turning to int"
                 thatnote = thatnote[0].to_i
               end
               
-              pitch_stretch_ratio = midi_to_hz(60 + thatnote) / midi_to_hz(60)
-              debugprint "formattedsamplename(effectivesound): ", formattedsamplename(effectivesound)
-              debugprint "thatsound[1]: ", thatsound[1]
-              debugprint "thatsound[1].to_i * pitch_stretch_ratio: ", thatsound[1].to_i * pitch_stretch_ratio
-              cmd = "handle = sample "+ formattedsamplename(effectivesound) + ", pitch_stretch: "  + (thatsound[1].to_i * pitch_stretch_ratio).to_s + ", rpitch: " + thatnote.to_s + (mymelody[thatsound] || "")
+              ##debugprint "formattedsamplename(effectivesound): ", formattedsamplename(effectivesound)
+              ##debugprint "thatsound[1]: ", thatsound[1]
+              cmd = "handle = transposesample "+ formattedsamplename(effectivesound) + ", pitch_stretch: "  + thatsound[1].to_s + ", rpitch: " + thatnote.to_s + (mymelody[thatsound] || "")
+              ##debugprint "defaults[thatsound[0]]: ", defaults[thatsound[0]]
               cmd += (tickargs defaults[thatsound[0]] || "")
 
-              debugprint "cmd: ", cmd
+              ##debugprint "cmd: ", cmd
 
               if effects[thatsound[0]] != nil
                 effects[thatsound[0]].split(";").each do |effect|
-                  debugprint "adding effect ", effect
+                  ##debugprint "adding effect ", effect
                   cmd = "with_fx " + effect + " do " + cmd + " end "
                 end #each effect
               else
-                debugprint "no effects"
+                ##debugprint "no effects"
               end #if effects
-              debugprint "cmd: ", cmd
+              ##debugprint "cmd: ", cmd
 
               #eval cmd 
 
-
+            elsif thatnote[0] == :rest  
+              ##debugprint "got a rest, setting cmd to empty string"
+              cmd = ""
               
             else
-              debugprint "thatnote[0] is a list/ring"
+              ##debugprint "thatnote[0] is a list/ring"
               thatnote[0].each do |onenote|
-                debugprint "onenote: ", onenote
+                ##debugprint "onenote: ", onenote
                 pitch_stretch_ratio = midi_to_hz(60 + onenote) / midi_to_hz(60)
 
-                cmd = "handle = sample " + formattedsamplename(effectivesound) + ", pitch_stretch: " + (thatsound[1].to_i * pitch_stretch_ratio).to_s + ", rpitch: " + onenote.to_s
+                cmd = "handle = transposesample " + formattedsamplename(effectivesound) + ", pitch_stretch: " + thatsound[1].to_s + ", rpitch: " + onenote.to_s
                 cmd += (tickargs defaults[thatsound[0]] || "")
                 cmd += (extraargs[thatsound] || "")
 
 
 
-                
+                # don't think I need this any more, moved outside of note testing
 
-                if effects[thatsound[0]] != nil
-                  effects[thatsound[0]].split(";").each do |effect|
-                    debugprint "adding effect ", effect
-                    cmd = "with_fx " + effect + " do " + cmd + " end "
-                  end #each effect
-                  debugprint "cooked cmd with effects: ", cmd
-                else
-                  debugprint "no effects"
-                end #if effects
-                debugprint "cmd: ", cmd
-                #eval cmd 
+                # if effects[thatsound[0]] != nil
+                #   effects[thatsound[0]].split(";").each do |effect|
+                #     ##debugprint "adding effect ", effect
+                #     cmd = "with_fx " + effect + " do " + cmd + " end "
+                #   end #each effect
+                #   ##debugprint "cooked cmd with effects: ", cmd
+                # else
+                #   ##debugprint "no effects"
+                # end #if effects
+                # ##debugprint "cmd: ", cmd
+                # #eval cmd 
 
 
               end #each note
@@ -1809,192 +2238,199 @@ define :executecmdlist do |mytimeline, mymelody, myextraargs, thatphrasedensity=
           
           else
             
-            debugprint "no note, play sample stark naked"
-            debugprint "thatsound: ", thatsound
-            debugprint "thatsound[0]: ", thatsound[0]
-            debugprint "myextraargs: ", myextraargs
-            debugprint "mymelody[thatsound[0]]: ", mymelody[thatsound[0]]
-            debugprint "defaults: ", defaults
-            debugprint "thatphrasedensity: ", thatphrasedensity
+            ##debugprint "no note, play sample stark naked"
+            ##debugprint "thatsound: ", thatsound
+            ##debugprint "thatsound[0]: ", thatsound[0]
+            ##debugprint "myextraargs: ", myextraargs
+            ##debugprint "mymelody[thatsound[0]]: ", mymelody[thatsound[0]]
+            ##debugprint "defaults: ", defaults
+            ##debugprint "thatphrasedensity: ", thatphrasedensity
             
             #need to add code for pitch shifting samples
             cmd = "handle = sample " + formattedsamplename(effectivesound)
             cmd += (tickargs defaults[thatsound[0]] || "")
 
-            debugprint "cmd: ", cmd
+            ##debugprint "cmd: ", cmd
 
 
-            if effects[thatsound[0]] != nil
-              effects[thatsound[0]].split(";").each do |effect|
-                debugprint "adding effect ", effect
-                cmd = "with_fx " + effect + " do " + cmd + " end "
-              end #each effect
-              debugprint "cooked cmd with effects: ", cmd
-            end #if effects
-            debugprint "cmd: ", cmd
-            #eval cmd 
-
-            if notedensities[thatsound[0]] != nil  
-              # debugprint "got a notedensity"
-              if tickorchoose[0] == "tick"
-                tempdensity = notedensities[thatsound[0]].tick
-              else 
-                tempdensity = notedensities[thatsound[0]].choose 
-              end #if tick or choose
-              debugprint "tempdensity: ", tempdensity
-
-              cmd =  "in_thread do ; density " + tempdensity.to_s + " do ; " + cmd   if tempdensity > 1  
-            end #if got a notedensity
-
-
-                    
-           
           end #if got a note
+
+          if effects[thatsound[0]] != nil
+            effects[thatsound[0]].split(";").each do |effect|
+              ##debugprint "adding effect ", effect
+              cmd = "with_fx " + effect + " do " + cmd + " end "
+            end #each effect
+            ##debugprint "cooked cmd with effects: ", cmd
+          end #if effects
+          ##debugprint "cmd: ", cmd
+          #eval cmd 
+
+          if notedensities[thatsound[0]] != nil  
+            # ##debugprint "got a notedensity"
+            if tickorchoose[0] == "tick"
+              tempdensity = notedensities[thatsound[0]].tick
+            else 
+              tempdensity = notedensities[thatsound[0]].choose 
+            end #if tick or choose
+            ##debugprint "tempdensity: ", tempdensity
+
+            cmd =  "in_thread do ; density " + tempdensity.to_s + " do ; " + cmd   if tempdensity > 1  
+          end #if got a notedensity
+         
         end #if synth or sample
       else
-        debugprint "got a rest, not playing sound"
+        ##debugprint "got a rest, not playing sound"
+        gotarest = true  
+        mymelody[thatsound[0]] = mymelody[thatsound[0]].rotate #rotate note just played
       end #if not a rest
 
       if notedensities[thatsound[0]] || envelopes[thatsound[0]] || lfos[thatsound[0]] || trancegates[thatsound[0]]
-        debugprint "got a wrapper, scoping handle"
+        ##debugprint "got a wrapper, scoping handle"
         cmd = "handle = nil ; " + cmd
       else 
-        debugprint "no wrapper"
+        ##debugprint "no wrapper"
       end #if got a wrapper
-      debugprint "cmd: ", cmd
+      ##debugprint "cmd: ", cmd
 
 
-      debugprint "final cmd: ", cmd 
+      ##debugprint "final cmd: ", cmd 
       thatcmdlist << cmd 
-      debugprint "thatcmdlist: ", thatcmdlist 
+      ##debugprint "thatcmdlist: ", thatcmdlist 
 
       
 
-      debugprint "testing for envelopes, lfos, trancegates"
-      debugprint "thatsound: ", thatsound
-      debugprint "chosensound: ", chosensound
-      debugprint "envelopes[thatsound[0]]: ", envelopes[thatsound[0]]
-      debugprint "lfos[thatsound[0]]: ", lfos[thatsound[0]]
-      debugprint "trancegates[thatsound[0]]: ", trancegates[thatsound[0]]
+      ##debugprint "testing for envelopes, lfos, trancegates"
+      ##debugprint "thatsound: ", thatsound
+      ##debugprint "chosensound: ", chosensound
+      ##debugprint "envelopes[thatsound[0]]: ", envelopes[thatsound[0]]
+      ##debugprint "lfos[thatsound[0]]: ", lfos[thatsound[0]]
+      ##debugprint "trancegates[thatsound[0]]: ", trancegates[thatsound[0]]
       
       
       if envelopes[thatsound[0]] != nil
-        debugprint "got at least one envelope for ", thatsound[0]
+        ##debugprint "got at least one envelope for ", thatsound[0]
         envelopes[thatsound[0]].each do |envelope|
-          debugprint "envelope: ", envelope
+          ##debugprint "envelope: ", envelope
           cmd = "env handle ," + envelope
-          debugprint "cmd: ", cmd
+          ##debugprint "cmd: ", cmd
           thatcmdlist << cmd
         end #each envelope
       else
-        debugprint "no envelopes"
+        ##debugprint "no envelopes"
       end #if there's an envelope
       
       if lfos[thatsound[0]] != nil
-        debugprint "got at least one lfo for ", thatsound[0]
+        ##debugprint "got at least one lfo for ", thatsound[0]
         lfos[thatsound[0]].each do |lfo|
-          debugprint "lfo: ", lfo
+          ##debugprint "lfo: ", lfo
           cmd = "lfo handle ," + lfo
-          debugprint "cmd: ", cmd
+          ##debugprint "cmd: ", cmd
           thatcmdlist << cmd
         end #each lfo
       else
-        debugprint "no lfos"
+        ##debugprint "no lfos"
       end #if there's an envelope
      
        if trancegates[thatsound[0]] != nil
-        debugprint "got a trancegate for ", chosensound
+        ##debugprint "got a trancegate for ", chosensound
         cmd =  "trancegate handle ," + trancegates[thatsound[0]]
-        debugprint cmd
+        ##debugprint cmd
         thatcmdlist <<  cmd
       else 
-        debugprint "no trancegates"
+        ##debugprint "no trancegates"
       end #if there's an envelope
 
 
 
 
 
-
+      ##debugprint "notedensities[thatsound[0]]: ", notedensities[thatsound[0]]
       if notedensities[thatsound[0]] != nil && tempdensity > 1  
-        debugprint "got a notedensity", notedensities[thatsound[0][0]]
+        ##debugprint "got a notedensity: ", notedensities[thatsound[0]]
 
         cmd = "sleep " + sleepytime.to_s  
-        debugprint "cmd: ", cmd
-        thatcmdlist << cmd  
+        ##debugprint "cmd: ", cmd
+        thatcmdlist << cmd  if (thatnote || ["tricksy hobbit!"])[0] != :rest  #kludge for nil thatnote
         cmd = "end #notedensity"
-        debugprint "cmd: ", cmd
+        ##debugprint "cmd: ", cmd
         thatcmdlist << cmd 
         cmd = "stop"
-        debugprint "cmd: ", cmd
+        ##debugprint "cmd: ", cmd
         thatcmdlist << cmd  
         cmd = "end #thread"
-        debugprint "cmd: ", cmd
+        ##debugprint "cmd: ", cmd
         thatcmdlist << cmd  
       else
-        debugprint "no note density > 1"
+        ##debugprint "no note density > 1"
       end #if got density
 
 
-      debugprint "that sound time: ", thatsound[1]
+      ##debugprint "that sound time: ", thatsound[1]
       maxtime = [thatsound[1], maxtime].max
-      debugprint "maxtime: ", maxtime
+      ##debugprint "maxtime: ", maxtime
       sleepytime = maxtime if mytimeline.length == nextloop
 
 
 
 
-      debugprint "bottom of thatsound loop"
+      ##debugprint "bottom of thatsound loop"
 
     end #each thatsound
 
-    debugprint "sleepytime: ", sleepytime
+    ##debugprint "gotanonrest: ", gotanonrest
+
+    ##debugprint "sleepytime: ", sleepytime
     cmd = "sleep " + sleepytime.to_s  
-    thatcmdlist << cmd 
+    thatcmdlist << cmd if gotanonrest
 
 
 
     #former spot for notedensity closure
 
     if thatphrasedensity < 2 #and notedensities[thattime[0][0]] != nil 
-      debugprint "not in density mode, executing commands per time"
-      debugprint "thatcmdlist: ", thatcmdlist
+      ##debugprint "not in density mode, executing commands per time"
+      ##debugprint "thatcmdlist: ", thatcmdlist
+      #FOO
+      ##debugprint "current_bpm: ", current_bpm
       eval thatcmdlist.join("\n")
       enchiladalist.append thatcmdlist
-      thatcmdlist = []
+      thatcmdlist = ["synctoslidingbpm"]
     else 
-      debugprint "density mode, not executing yet"
+      ##debugprint "density mode, not executing yet"
+      thatcmdlist << "synctoslidingbpm"
     end #if not in phrasedensity mode
 
-    debugprint "bottom of thattime/thatkey loop"
+    ##debugprint "bottom of thattime/thatkey loop"
 
   end #thattime/thatkey
 
-  debugprint "outside of thattime loop, about to test for thatphrasedensity"
+  ##debugprint "outside of thattime loop, about to test for thatphrasedensity"
 
   if thatphrasedensity > 1
-    debugprint "got a phrasedensity: ", thatphrasedensity
+    ##debugprint "got a phrasedensity: ", thatphrasedensity
     thatcmdlist << "end #phrasedensity"
     thatcmdlist << "stop"
     thatcmdlist << "end #in_thread"
-    debugprint "about to execute phrasedentity commands"
+    ##debugprint "about to execute phrasedentity commands"
+    ##debugprint "thatcmdlist: ", thatcmdlist.join("\n")
     eval thatcmdlist.join("\n")
     enchiladalist.append thatcmdlist
 
     thatcmdlist = []
   # elsif notedensities != nil  
-  #   debugprint "got a notedensity, closing thread"
+  #   ##debugprint "got a notedensity, closing thread"
   #   thatcmdlist << "stop"
   #   thatcmdlist << "end #in_thread"
   #   eval thatcmdlist.join("\n")
   #   thatcmdlist = []
   else
-    debugprint "no phrasedensity"
+    ##debugprint "no phrasedensity, killing sliding bpm"
+    killslidingbpm
   end #if thatphrasedensity or notedensities
 
-  debugprint "after testing thatphrasedensity / notedensities"
+  ##debugprint "after testing thatphrasedensity / notedensities"
 
-  debugprint "thatcmdlist: ", thatcmdlist, expandlist: true
+  ##debugprint "thatcmdlist: ", thatcmdlist, expandlist: true
 
   enchiladalist #return value
 
@@ -2021,9 +2457,9 @@ end #define executecmdlist
 
 
 define :cooktime do |timestring, humanizeamt=0.0|
-  debugprint "top of cooktime"
-  debugprint "timestring: ", timestring
-  debugprint "humanizeamt: ", humanizeamt
+  ##debugprint "top of cooktime"
+  ##debugprint "timestring: ", timestring
+  ##debugprint "humanizeamt: ", humanizeamt
   timetillnext = 0
   duration = ""
   takerest = false
@@ -2032,57 +2468,57 @@ define :cooktime do |timestring, humanizeamt=0.0|
   humanizeamt ||= 0.0  
 
   timestring = (convertdrumnotation timestring)[0]
-  debugprint "timestring after converting drum notation: ", timestring
+  ##debugprint "timestring after converting drum notation: ", timestring
 
   timestring.each_char do |letter|
-    debugprint "letter: ", letter
+    ##debugprint "letter: ", letter
     case letter.downcase
     when " "
-      debugprint "got a whitespace, breaking"
+      ##debugprint "got a whitespace, breaking"
       break
     when "r"
-      debugprint "r, rest"
+      ##debugprint "r, rest"
       takerest = true
     when "b"
-      debugprint "b, bar"
+      ##debugprint "b, bar"
       timetillnext += 16.0  
     when "w"
-      debugprint "w, whole note"
+      ##debugprint "w, whole note"
       timetillnext += 4.0
     when "h"
-      debugprint "h, half note"
+      ##debugprint "h, half note"
       timetillnext += 2.0
     when "q"
-      debugprint "q, quarter note"
+      ##debugprint "q, quarter note"
       timetillnext += 1.0
     when "e"
-      debugprint "e, eighth note"
+      ##debugprint "e, eighth note"
       timetillnext += 0.5
     when "s"
-      debugprint "s, sixteenth note"
+      ##debugprint "s, sixteenth note"
       timetillnext += 0.25
     when "d"
-      debugprint "d, dotted"
+      ##debugprint "d, dotted"
       dots = dots + 1
     when "t"
-      debugprint "t, triplet"
+      ##debugprint "t, triplet"
       triplets = 2.0 / 3
     when /\d/
-      debugprint "duration digit"
+      ##debugprint "duration digit"
       duration += letter
     else
-      debugprint letter + " is garbage, ignored"
+      ##debugprint letter + " is garbage, ignored"
     end #case letter
   end #each letter
   
   
-  debugprint "raw duration: ", duration.to_s
+  ##debugprint "raw duration: ", duration.to_s
   if duration.length > 0
     duration = duration.to_i
   else
     duration = 1
   end #if duration length > 0
-  debugprint "cooked duration: ", duration.to_s
+  ##debugprint "cooked duration: ", duration.to_s
   
   timetillnext = (timetillnext * duration * triplets * (2 - (0.5 ** dots))) + rrand(-humanizeamt, humanizeamt)
   [timetillnext, takerest] #return 2 values
@@ -2103,13 +2539,13 @@ end #define cooktime
 # cooktimes "e,q,e" returns [0.5, 1, 0.5]
 
 define :cooktimes do |timestring, humanizeamt=0.0, delimiter=",", **kwargs|
-  eval overridekwargs(kwargs, method(__method__).parameters)
+  eval overridekwargs(kwargs, method(__method__).parameters) if boolish kwargs
   results = []
   timestring.split(delimiter).each do |thistime|
-    debugprint "thistime: ", thistime
+    ##debugprint "thistime: ", thistime
     results << cooktime(thistime, humanizeamt) 
   end #each thistime
-  debugprint "results: ", results
+  ##debugprint "results: ", results
   results #return value
 end #define cooktimes  
 
@@ -2139,7 +2575,7 @@ end #define rowstocolumns
 
 define  :paddedrowstocolumns do |*thesearrays|
 
-  debugprint "top of paddedrowstocolumns"
+  ##debugprint "top of paddedrowstocolumns"
   if thesearrays.length == 1  
     thesearrays = thesearrays[0] #get rid of outer wrapping array
   end #if wrapped in an outer array
@@ -2177,7 +2613,7 @@ end #define paddedrowstocolumns
 # You can optionally pass in parameters to control the sound, e.g., amp, cutoff, etc. 
 
 define :playdegreematrix do |thiskey, thisscale, degreematrix, **kwargs |
-  eval overridekwargs(kwargs, method(__method__).parameters)
+  eval overridekwargs(kwargs, method(__method__).parameters) if boolish kwargs
   cleanargs = stripparams kwargs, method(__method__).parameters
   degreematrix.each do |matrixitem|
     thistime, thisdegree, takerest, shiftregister = matrixitem
@@ -2202,10 +2638,10 @@ end
 
 
 define  :findclosingbracket do |drumnotation, brackets="[]", **kwargs|
-  eval overridekwargs(kwargs, method(__method__).parameters)
+  eval overridekwargs(kwargs, method(__method__).parameters) if boolish kwargs
   cleanargs = stripparams kwargs, method(__method__).parameters
-  # debugprint "top of findclosingbracket"
-  # debugprint "drumnotation: ", drumnotation
+  # ##debugprint "top of findclosingbracket"
+  # ##debugprint "drumnotation: ", drumnotation
 
   return nil if drumnotation[0] != brackets[0]
 
@@ -2216,37 +2652,37 @@ define  :findclosingbracket do |drumnotation, brackets="[]", **kwargs|
 
   #code assumes that string starts with open bracket
   drumnotation.chars.each_with_index do |thischar, i|
-    # debugprint "thischar: ", thischar
-    debugprint "i: ", i
+    # ##debugprint "thischar: ", thischar
+    ##debugprint "i: ", i
 
     if thischar == openbracket
-      # debugprint "got an open bracket"
+      # ##debugprint "got an open bracket"
       bracketcount += 1
     elsif thischar == closebracket 
-      # debugprint "got a close bracket"
+      # ##debugprint "got a close bracket"
       bracketcount -= 1
     end #if got openbracket or closebracket
     position = i
     break if bracketcount == 0
   end #each thischar, position
 
-  # debugprint "position: ", position
+  # ##debugprint "position: ", position
   position #return value
 end #define findclosingbracket
 
 
 
 define  :splitbracketchunks do |drumnotation, brackets="[]", **kwargs|
-  eval overridekwargs(kwargs, method(__method__).parameters)
-  debugprint "top of splitbracketchunks"
-  debugprint "drumnotation: ", drumnotation
+  eval overridekwargs(kwargs, method(__method__).parameters) if boolish kwargs
+  ##debugprint "top of splitbracketchunks"
+  ##debugprint "drumnotation: ", drumnotation
   openbracket = brackets[0]
   closebracket = brackets[1]
 
   return [] if !boolish drumnotation 
 
   if drumnotation.count(brackets[0]) != drumnotation.count(brackets[1])
-    debugprint "ERROR: unbalanced brackets"
+    ##debugprint "ERROR: unbalanced brackets"
     return []
   end if #unbalanced brackets
 
@@ -2254,47 +2690,47 @@ define  :splitbracketchunks do |drumnotation, brackets="[]", **kwargs|
   chunks  = []
 
   while drumnotation.include? openbracket
-    debugprint "got an open bracket"
+    ##debugprint "got an open bracket"
     bracketspot = drumnotation.index(openbracket)
     if bracketspot > 0
-      debugprint "nonbracketed code in front of bracket"
+      ##debugprint "nonbracketed code in front of bracket"
       chunks << drumnotation.slice(0..(bracketspot - 1))
-      debugprint "chunks: ", chunks
+      ##debugprint "chunks: ", chunks
       drumnotation = drumnotation.slice(bracketspot, drumnotation.length + 1)
-      debugprint "drumnotation: ", drumnotation
+      ##debugprint "drumnotation: ", drumnotation
     end # if bracketspot > 0
     chunks << drumnotation.slice(0, findclosingbracket(drumnotation, brackets) + 1)
     drumnotation = drumnotation.slice(findclosingbracket(drumnotation, brackets) + 1, drumnotation.length + 1)
-    debugprint "drumnotation: ", drumnotation
-    debugprint "chunks: ", chunks
+    ##debugprint "drumnotation: ", drumnotation
+    ##debugprint "chunks: ", chunks
   end #while drumnotation.include? openbracket
   chunks << drumnotation  if boolish drumnotation  
-  debugprint "chunks: ", chunks
+  ##debugprint "chunks: ", chunks
   chunks #return value
 end #define splitbracketchunks
 
 define  :countchunks do |drumnotation, brackets="[]", **kwargs|  
-  eval overridekwargs(kwargs, method(__method__).parameters)
+  eval overridekwargs(kwargs, method(__method__).parameters) if boolish kwargs
 
-  debugprint "top of countchunks"
-  debugprint "drumnotation: ", drumnotation
+  ##debugprint "top of countchunks"
+  ##debugprint "drumnotation: ", drumnotation
 
   return 0 if !boolish drumnotation  
   chunkcount = 0
   chunks = splitbracketchunks drumnotation, brackets  
-  debugprint "chunks: ", chunks
+  ##debugprint "chunks: ", chunks
   chunks.each do |thischunk|
-    debugprint "thischunk: ", thischunk
+    ##debugprint "thischunk: ", thischunk
     if thischunk.include? brackets[0]
-      debugprint "counting a bracket chunk, adding 1"
+      ##debugprint "counting a bracket chunk, adding 1"
       chunkcount += 1
     else
-      debugprint "thischunk.length: ", thischunk.length
+      ##debugprint "thischunk.length: ", thischunk.length
       chunkcount += thischunk.length
     end #if chunk has bracket
   end #each thischunk
 
-  debugprint "chunkcount: ", chunkcount
+  ##debugprint "chunkcount: ", chunkcount
 
    chunkcount #return value
 end #define countchunks
@@ -2310,12 +2746,12 @@ end #define countchunks
 
 
 define  :equalish do |value1, value2, roundingerror =0.00000001, **kwargs|
-  eval overridekwargs(kwargs, method(__method__).parameters)
-  # debugprint "top of equalish"
-  # debugprint "value1: ", value1
-  # debugprint "value2: ", value2
-  # debugprint "roundingerror: ", roundingerror
-  # debugprint "(value1.to_f - value2.to_f).abs < roundingerror: ", (value1.to_f - value2.to_f).abs < roundingerror
+  eval overridekwargs(kwargs, method(__method__).parameters) if boolish kwargs
+  # ##debugprint "top of equalish"
+  # ##debugprint "value1: ", value1
+  # ##debugprint "value2: ", value2
+  # ##debugprint "roundingerror: ", roundingerror
+  # ##debugprint "(value1.to_f - value2.to_f).abs < roundingerror: ", (value1.to_f - value2.to_f).abs < roundingerror
   (value1.to_f - value2.to_f).abs < roundingerror #return value
 end #define equalish
 
@@ -2343,19 +2779,19 @@ end #define equalish
 # if you pass in non-drumnotation (e.g., "dq,dq,q"), it is returned unchanged, with an amplist of all ones
 
 define :convertdrumnotation do |drumnotation, barlength = 4.0, baseamp=1.0, maxamp=2.0, restchar="-", brackets="[]", **kwargs|
-  eval overridekwargs(kwargs, method(__method__).parameters)
+  eval overridekwargs(kwargs, method(__method__).parameters) if boolish kwargs
   #TODO: smart calculation of basechunk with comma-delimited drum notation
-  debugprint "top of convertdrumnotation"
+  ##debugprint "top of convertdrumnotation"
 
   drumnotation ||= ""
 
   openbracket = brackets[0]
   closebracket = brackets[1]
-  debugprint "drumnotation: ", drumnotation
-  debugprint "barlength: ", barlength
+  ##debugprint "drumnotation: ", drumnotation
+  ##debugprint "barlength: ", barlength
 
   # barlength *= drumnotation.split(",").length
-  # debugprint "barlength padded: ", barlength
+  # ##debugprint "barlength padded: ", barlength
   barlength = barlength.to_f
   beatlist=""
   amplist=[]
@@ -2371,66 +2807,66 @@ define :convertdrumnotation do |drumnotation, barlength = 4.0, baseamp=1.0, maxa
   basechunk = nil  
 
   if /[seqhwdt]/.match(drumnotation)
-    debugprint "not drum notation, returning unchanged"
+    ##debugprint "not drum notation, returning unchanged"
     beatlist = drumnotation
     amplist = knit(baseamp, beatlist.split(",").length).to_a
   elsif drumnotation.include? ","
     #add commaprocessing here
-    debugprint "comma-delimited list, processing individual bar groups"
+    ##debugprint "comma-delimited list, processing individual bar groups"
     drumnotation.split(",").each do |bargroup|
-      debugprint "bargroup: ", bargroup
+      ##debugprint "bargroup: ", bargroup
       bgbeatlist, bgamplist = convertdrumnotation bargroup, barlength, baseamp, maxamp, restchar, brackets, **kwargs
-      debugprint "bgbeatlist: ", bgbeatlist
-      debugprint "bgamplist: ", bgamplist
+      ##debugprint "bgbeatlist: ", bgbeatlist
+      ##debugprint "bgamplist: ", bgamplist
       beatlist += comma + bgbeatlist
       comma = ","
       amplist.append bgamplist
-      debugprint "bgbeatlist: ", bgbeatlist
-      debugprint "bgamplist: ", bgamplist
+      ##debugprint "bgbeatlist: ", bgbeatlist
+      ##debugprint "bgamplist: ", bgamplist
     end #each bargroup
 
   else
-    debugprint "got some kind of beat notation, computing chunksize" 
+    ##debugprint "got some kind of beat notation, computing chunksize" 
     chunkcount = countchunks drumnotation, brackets 
-    debugprint "chunkcount: ", chunkcount
-    debugprint "barlength: ", barlength
+    ##debugprint "chunkcount: ", chunkcount
+    ##debugprint "barlength: ", barlength
     basechunk = barlength.to_f / chunkcount.to_f 
-    debugprint "basechunk: ", basechunk
+    ##debugprint "basechunk: ", basechunk
     basechunksymbol = basechunk.to_s  
     chunkmatch = chunkmap.keys.select {|x| x if equalish x, basechunk}
-    debugprint "chunkmatch: ", chunkmatch
+    ##debugprint "chunkmatch: ", chunkmatch
 
 
     if boolish chunkmatch #not an empty set
-      debugprint "got a chunkmatch"
+      ##debugprint "got a chunkmatch"
       basechunksymbol = chunkmap[chunkmatch[0]]
     elsif divisibleby(chunkcount, 3)  ##found a triplet in chunk map
-      debugprint "chunk length divisible by 3, searching for matching triplet chunk"
+      ##debugprint "chunk length divisible by 3, searching for matching triplet chunk"
       chunkmatch = chunkmap.keys.select {|x| x if equalish x, basechunk * 3.0 / 2.0}
-      debugprint "chunkmatch: ", chunkmatch
+      ##debugprint "chunkmatch: ", chunkmatch
       if boolish chunkmatch #not an empty set
-        debugprint "got a triplet chunkmatch"
+        ##debugprint "got a triplet chunkmatch"
         basechunksymbol = "t" + chunkmap[chunkmatch[0]]
       else 
-        debugprint "no triplet chunkmatch"
+        ##debugprint "no triplet chunkmatch"
       end #if boolish triplet chunkmatch 
     else
-      debugprint "no chunkmatch, no triplet, leaving chunk alone"
+      ##debugprint "no chunkmatch, no triplet, leaving chunk alone"
       basechunksymbol = basechunk.to_s
     end #if found chunk in chunkmap, either plain or in triplets
-    debugprint "basechunksymbol: ", basechunksymbol 
+    ##debugprint "basechunksymbol: ", basechunksymbol 
 
 
-    debugprint "checking for brackets"
+    ##debugprint "checking for brackets"
     if drumnotation.include? openbracket
-      debugprint "got an openbracket, calling splitbracketchunks"
+      ##debugprint "got an openbracket, calling splitbracketchunks"
       chunks = splitbracketchunks(drumnotation, brackets)
-      debugprint "chunks: ", chunks
+      ##debugprint "chunks: ", chunks
       chunks.each do |thischunk|
-        debugprint "thischunk: ", thischunk
+        ##debugprint "thischunk: ", thischunk
         chunklength = thischunk.length  
         if thischunk.include? openbracket  
-          debugprint "got an openbracket in thischunk"
+          ##debugprint "got an openbracket in thischunk"
           chunklength = 1
           thischunk = thischunk.chop.reverse.chop.reverse #trim leading and trailing brackets
         end #if thischunk.include? openbracket 
@@ -2443,47 +2879,47 @@ define :convertdrumnotation do |drumnotation, barlength = 4.0, baseamp=1.0, maxa
       end #each thischunk
 
     else
-      debugprint "drum notation without brackets, processing"
+      ##debugprint "drum notation without brackets, processing"
 
       drumnotation.each_char do |thischar|
-        debugprint "processing a character"
-        debugprint "thischar: ", thischar
+        ##debugprint "processing a character"
+        ##debugprint "thischar: ", thischar
 
         if thischar == restchar  
-          debugprint "got a rest"
+          ##debugprint "got a rest"
           thisbeat = comma + "r" + basechunksymbol  
           thisamp = 0
         elsif "0123456789".include? thischar 
-          debugprint "got a digit"
+          ##debugprint "got a digit"
           thisbeat = comma + basechunksymbol 
           thisamp = maxamp * thischar.to_f  / 9.0 
         else
-          debugprint "not a rest or a digit"
+          ##debugprint "not a rest or a digit"
           thisbeat = comma + basechunksymbol  
           thisamp = baseamp
         end #if got a rest or a digit
 
-        debugprint "thisbeat: ", thisbeat
+        ##debugprint "thisbeat: ", thisbeat
 
-        debugprint "about to add thisbeat to beatlist"
+        ##debugprint "about to add thisbeat to beatlist"
         beatlist +=  thisbeat
-        debugprint "beatlist: ", beatlist
+        ##debugprint "beatlist: ", beatlist
         amplist << thisamp
-        debugprint "amplist: ", amplist
+        ##debugprint "amplist: ", amplist
 
         comma=","
 
 
       end #each thischar
-      debugprint "after processing each char"  
-      debugprint "beatlist: ", beatlist
-      debugprint "amplist: ", amplist
+      ##debugprint "after processing each char"  
+      ##debugprint "beatlist: ", beatlist
+      ##debugprint "amplist: ", amplist
     end #if bracketed or raw drum notation 
   end #if actually got drum notation
 
-  debugprint "after processing drumnotation"
-  debugprint "beatlist: ", beatlist
-  debugprint "amplist: ", amplist
+  ##debugprint "after processing drumnotation"
+  ##debugprint "beatlist: ", beatlist
+  ##debugprint "amplist: ", amplist
   [beatlist, amplist.flatten] #return values
 end #define convertdrumnotation
 
@@ -2497,8 +2933,8 @@ end #define convertdrumnotation
 
 
 define  :tuples do |howmanytuples, beatsize=quarter, **kwargs|
-  eval overridekwargs(kwargs, method(__method__).parameters)
-  debugprint "top of tuples"
+  eval overridekwargs(kwargs, method(__method__).parameters) if boolish kwargs
+  ##debugprint "top of tuples"
   howmanybeats = 64  
   while howmanybeats > howmanytuples
     howmanybeats /= 2 
@@ -2513,7 +2949,7 @@ end #define tuples
 # falsies -- a list of values that evaluate to false. Defaults to [nil, false, 0, "", [], {}]
 
 
-define :boolish do |testvalue, falsies=[nil, false, 0, 0.0, "", "0", [], [].ring, {}], **kwargs|
+define :boolish do |testvalue, falsies=[nil, false, 0, 0.0, "", "0", [], [].ring, [[]], {}], **kwargs|
   eval overridekwargs(kwargs, method(__method__).parameters)
 
   !falsies.include? testvalue 
@@ -2524,26 +2960,30 @@ end
 # argstring: the string to manipulate 
 # Returns a cooked string, e.g.: "amp:2, cutoff: [20| 40| 60]"
 define  :hidearraycommas do |argstring|
-  debugprint "top of hidearraycommas"
-  debugprint "argstring: ", argstring
+  # ##debugprint "top of hidearraycommas"
+  # ##debugprint "argstring: ", argstring
 
 
   workingstring = argstring 
   resultstring = ""
+  if workingstring !~ /\[(.*?\,.*?)\]/
+    # ##debugprint "no comma, passing string through"
+    resultstring = argstring 
+  end #if got a comma
   while workingstring =~ /\[(.*?\,.*?)\]/ #has [.*,.*]  somewhere in string (with lazy matching) 
-    debugprint "got a match"
+    # ##debugprint "got a match"
     before = $`
     foundarray = $~.to_s  
     after = $' 
-    debugprint "before: ", before
-    debugprint "foundarray: ", foundarray
-    debugprint "after: ", after
+    # ##debugprint "before: ", before
+    # ##debugprint "foundarray: ", foundarray
+    # ##debugprint "after: ", after
 
     foundarray.gsub! ",", "|" 
     resultstring += before + foundarray
     workingstring  = after 
-    debugprint "resultstring: ", resultstring
-    debugprint "workingstring: ", workingstring
+    # ##debugprint "resultstring: ", resultstring
+    # ##debugprint "workingstring: ", workingstring
   end #while got an array with commas
   resultstring #return value
 end #define hidearraycommas
@@ -2554,26 +2994,26 @@ end #define hidearraycommas
 # argstring: the string to manipulate 
 # Returns a cooked string, e.g.: "amp:2, cutoff: [20, 40, 60]"
 define  :showarraycommas do |argstring|
-  debugprint "top of hidearraycommas"
-  debugprint "argstring: ", argstring
+  ##debugprint "top of hidearraycommas"
+  # ##debugprint "argstring: ", argstring
 
 
   workingstring = argstring 
   resultstring = ""
   while workingstring =~ /\[(.*?|.*?)\]/ #has [.*,.*]  somewhere in string (with lazy matching) 
-    debugprint "got a match"
+    # ##debugprint "got a match"
     before = $`
     foundarray = $~.to_s  
     after = $' 
-    debugprint "before: ", before
-    debugprint "foundarray: ", foundarray
-    debugprint "after: ", after
+    # ##debugprint "before: ", before
+    # ##debugprint "foundarray: ", foundarray
+    # ##debugprint "after: ", after
 
     foundarray.gsub! "|", "," 
     resultstring += before + foundarray
     workingstring  = after 
-    debugprint "resultstring: ", resultstring
-    debugprint "workingstring: ", workingstring
+    # ##debugprint "resultstring: ", resultstring
+    # ##debugprint "workingstring: ", workingstring
   end #while got an array with commas
   resultstring #return value
 end #define hidearraycommas
@@ -2587,41 +3027,50 @@ end #define hidearraycommas
 # args: the arguments to turn into a hash.  If anything but a string, will return args unprocessed.  
 
 
-define  :argstohash do |args, **kwargs|
-  eval overridekwargs(kwargs, method(__method__).parameters)
-  debugprint "top of argstohash"
+define  :argstohash do |args|
+  # ##debugprint "top of argstohash"
   args ||= {}
+  # ##debugprint "args: ", args
 
   if args.is_a? String  
-    debugprint "got a string"
+    # ##debugprint "got a string"
     args = hidearraycommas args  
+    # ##debugprint "args after hidearraycommas: ", args
     argsarray = args.split(",")
     argshash = {}
     argsarray.each do |item|
       if (item || "") != ""
-        debugprint "got an item: ", item  
-        key, val = item.split(":")
-        debugprint "key: ", key
-        debugprint "val: ", val
+        # ##debugprint "got an item: ", item  
+        key, val = item.split(/\:\s*/)
+        # ##debugprint "key: ", key
+        # ##debugprint "val: ", val
         key.delete_prefix!(" ") while key[0] == " "
         val.delete_prefix!(" ") while val[0] == " "
+        key = key.to_sym
         if val =~ /\[.*\]/
-          debugprint "val is an array, converting"
+          # ##debugprint "val is an array, converting"
           val = showarraycommas val
           val = eval val  #converts string "[1, 2, 3]" to array [1, 2, 3]
+        elsif ["true", "false"].include? val  
+          # ##debugprint "got a boolean, cooking"
+          val = eval val  
+        elsif val =~ /^[\d\.\-\s]*$/
+          # ##debugprint "got a number, cooking"
+          val = eval val  
         else
-          debugprint "val is not an array"
+          # ##debugprint "val is not an array"
         end #if val is an array
         argshash[key] = val  
       else
-        debugprint "skipping blank item"
+        # ##debugprint "skipping blank item"
       end #if got an item
     end #each item
     args = argshash  
   else 
-    debugprint "not a string, returning unchanged"
+    # ##debugprint "not a string, returning unchanged"
   end #case args
 
+  # ##debugprint "final args: ", args
   args #return value
 end #define argstohash
 
@@ -2632,21 +3081,21 @@ end #define argstohash
 # args: the arguments to turn into a hash.  If anything but a string, will return args unprocessed.  
  
 define  :argstostring do |args, **kwargs|
-  eval overridekwargs(kwargs, method(__method__).parameters)
+  eval overridekwargs(kwargs, method(__method__).parameters) if boolish kwargs
   cleanargs = stripparams kwargs, method(__method__).parameters
-  debugprint "top of argstostring"
+  ##debugprint "top of argstostring"
 
   args ||= ""
 
   if args.is_a? Hash  
-    debugprint "got a hash"
+    ##debugprint "got a hash"
     argstring = ""
     args.each do |key, val|
       argstring += ", " + key.to_s + ": " + val.to_s  
     end #each key, val
     args = argstring  
   else 
-    debugprint "not a hash, returning unchanged"
+    ##debugprint "not a hash, returning unchanged"
   end #case args
 
   args #return value
@@ -2664,10 +3113,15 @@ end #define argstostring
 # returns args as a hash.
 
 define  :setarg do |arg, val, args, **kwargs|
-  eval overridekwargs(kwargs, method(__method__).parameters)
-  debugprint "top of setarg"
+  eval overridekwargs(kwargs, method(__method__).parameters) if boolish kwargs
+  ##debugprint "top of setarg"
+  ##debugprint "arg: ", arg
+  ##debugprint "val: ", val
+  ##debugprint "args: ", args
   args = argstohash args  
+  ##debugprint "args after argstohash: ", args
   args[arg] = val   
+  ##debugprint "args after assigning arg: ", args
   args #return value
 end #define setarg
 
@@ -2677,23 +3131,29 @@ end #define setarg
 # Useful for constructing command strings to feed to eval.  
 
 define  :tickargs do |args|
-  debugprint "top of tickargs"
+  # ##debugprint "top of tickargs"
   argstring = ""
 
   args = argstohash args  
+  # ##debugprint "args: ", args
   args.each do |key, val|
-    debugprint "key: ", key
-    debugprint "val: ", val
+    # ##debugprint "key: ", key
+    # ##debugprint "val: ", val
+    if val.is_a? String 
+      # ##debugprint "val is a string"
+      val = '"' + val + '"'
+      # ##debugprint "val: ", val
+    end #if val is a string
     if listorring val  
-      debugprint "got an array, ticking"
+      # ##debugprint "got an array, ticking"
       argstring += ", " + key.to_s + ": " + val.look.to_s  
       val.tick
     else
-      debugprint "not an array`"
+      # ##debugprint "not an array"
       argstring += ", " + key.to_s + ": " + val.to_s  
     end
-    args = argstring  
   end #each key, val
+  args = argstring  
   args #return value
 end #define tickargs
 
@@ -2722,59 +3182,59 @@ end #define tickargs
 
 
 define  :stuttersample do |thissample, stutters=[1], reverses=[false], stutterchunks=nil, num_beats=4.0, stretchmode="pitch", **kwargs|
-  eval overridekwargs(kwargs, method(__method__).parameters)
+  eval overridekwargs(kwargs, method(__method__).parameters) if boolish kwargs
   cleanargs = stripparams kwargs, method(__method__).parameters
-  debugprint "top of stuttersample"
-  debugprint "cleanargs: ", cleanargs
+  ##debugprint "top of stuttersample"
+  ##debugprint "cleanargs: ", cleanargs
 
   if !["pitch", "beat"].include? stretchmode
     stretchmode = "pitch"
   end
   cleanargs = setarg stretchmode + "_stretch", num_beats, cleanargs
-  debugprint "cleanargs: ", cleanargs
+  ##debugprint "cleanargs: ", cleanargs
   # stretchmode = ", " + stretchmode + "_stretch: " + num_beats.to_s 
-  # debugprint "stretchmode: ", stretchmode 
+  # ##debugprint "stretchmode: ", stretchmode 
 
   stutterchunks = stutterchunks.ring if stutterchunks 
 
   cmd = ""
 
   thissamplename = formattedsamplename(thissample)
-  debugprint "thissamplename: ", thissamplename
+  ##debugprint "thissamplename: ", thissamplename
 
   chunksleepytime = num_beats / stutters.length.to_f 
 
   if !listorring (stutters ||= [1])
-    debugprint "making stutters an array"
+    ##debugprint "making stutters an array"
     stutters = [stutters]
   end
 
 
   stutters.each_with_index do |chunk, i|
-    debugprint "chunk: ", chunk
-    debugprint "i: ", i
+    ##debugprint "chunk: ", chunk
+    ##debugprint "i: ", i
     if stutterchunks
-      debugprint "got stutterchunks"
+      ##debugprint "got stutterchunks"
       i = stutterchunks[i]   
     else
-      debugprint "no stutterchunks"
+      ##debugprint "no stutterchunks"
     end #if stutterchunk
-    debugprint "i: ", i
+    ##debugprint "i: ", i
     thisrate = ( reverses[i] ? -1 : 1) #if true, reverse
     chunkargs = tickargs cleanargs
     if cleanargs.keys.include? :rpitch
-      debugprint "transposing sample"
+      ##debugprint "transposing sample"
       cmd = "transposesample " + thissamplename + ", num_slices: " + stutters.length.to_s + ", slice: " + i.to_s + ", pitch_stretch: 1, rate: " + thisrate.to_s + (argstostring chunkargs)
       #transposesample thissamplename, num_slices: stutters.length, slice: i, pitch_stretch: 1, rate: thisrate, **chunkargs
     else
-      debugprint "normal sample"
-      cmd = "sample " + thissamplename + stretchmode + ", num_slices: " + stutters.length.to_s + ", slice: " + i.to_s + ", rate: " + thisrate.to_s + (argstostring chunkargs)
+      ##debugprint "normal sample"
+      cmd = "sample " + thissamplename + ", num_slices: " + stutters.length.to_s + ", slice: " + i.to_s + ", rate: " + thisrate.to_s + (argstostring chunkargs)
       # sample thissample, num_slices: stutters.length, slice: i, rate: thisrate, **chunkargs
     end #if got rpitch
-    debugprint "chunksleepytime: ", chunksleepytime
+    ##debugprint "chunksleepytime: ", chunksleepytime
     cmd += " ; sleep " + chunksleepytime.to_s
     cmd = "density " + chunk.to_s + " do " + cmd + " end"
-    debugprint "cmd: ", cmd
+    ##debugprint "cmd: ", cmd
     eval cmd
     #sleep chunksleepytime
     
@@ -2782,6 +3242,240 @@ define  :stuttersample do |thissample, stutters=[1], reverses=[false], stutterch
 
   nil   #return value
 end #define stuttersample
+
+
+
+
+
+
+
+
+
+
+
+
+
+# slidebpm
+# changes bpm gradually or stepwise over time, e.g., accelerando or ritardo. 
+# args:
+# targetpbm: the bpm(s) you want to end up at. Can be an array, and it will do them sequentially.  
+# slidetime: how long it takes to get to each targetbpm, in beats.  
+# steptime: how long each step is. Small numbers makes the transition smoother, 
+# larger numbers give you the "little nash rambler" effect.  
+# startbpm: the starting bpm. If not supplied, defaults to whatever the current bpm is. 
+# cuename: the name of the cue for other threads to sync to; defaults to :bpmsync
+# setname: flag for other threads to snif to see if we're sliding; defaults to :slidingbpm
+# killswitch: flag to see if we need to kill the thread; defaults to :killslidingbpm 
+
+
+define  :slidebpm do |targetbpm, slidetime=16, steptime=0.0625, startbpm=nil, cuename=:bpmsync, setname=:slidingbpm, killswitch=:killslidingbpm, **kwargs|
+  eval overridekwargs(kwargs, method(__method__).parameters)
+  cleanargs = stripparams kwargs, method(__method__).parameters
+  ##debugprint "top of slidebpm"
+
+  set setname,  true  
+  set :killslidingbpm, false  
+
+  steptime = steptime.to_f
+  slidetime = slidetime.to_f  
+
+  if !ringorlist  targetbpm 
+    targetbpm = [targetbpm]
+  end #if not ring or list already
+
+  ##debugprint "targetbpm: ", targetbpm
+  ##debugprint "slidetime: ", slidetime
+  ##debugprint "steptime: ", steptime
+  ##debugprint "startbpm: ", startbpm 
+
+  thisbpm = startbpm || current_bpm
+  ##debugprint "thisbpm: ", thisbpm
+
+
+  targetbpm.each do |tbpm|
+    ##debugprint "tbpm: ", tbpm
+    killnow = get(killswitch)
+    ##debugprint "killnow: ", killnow
+     if killnow
+      ##debugprint "killing now" 
+      stop 
+    else 
+      ##debugprint "normal processing"
+    end  
+
+    stepsize = (tbpm - thisbpm) * steptime / slidetime 
+    ##debugprint "stepsize: ", stepsize
+    while !equalish(thisbpm, tbpm)  
+      thisbpm += stepsize
+      ##debugprint "thisbpm: ", thisbpm
+      use_bpm thisbpm
+      cue cuename
+      sleep steptime
+    end #while
+  end #each tbpm
+
+  set setname, nil  
+
+  nil #return value
+end #define slidebpm
+
+
+# synctoslidingbpm: syncs current thread to sliding bpm managed by slidebpm. 
+# args:
+# cuename: the syncing cue managed by slidebpm, defaults to :bpmsync
+# setname: the set flag managed by slidebpm, defaults to :slidingbpm. Only syncs when not nil/false. 
+
+define  :synctoslidingbpm do |cuename=:bpmsync, setname=:slidingbpm, **kwargs|
+  eval overridekwargs(kwargs, method(__method__).parameters)
+  cleanargs = stripparams kwargs, method(__method__).parameters
+  ##debugprint "top of bpmsync"
+  setflag = get[setname]
+  if setflag 
+    sync_bpm cuename 
+  end #if currently sliding
+
+  nil #return value
+
+end #define synctoslidingbpm
+
+
+
+# killslidingbpm 
+# kills the thread managing the sliding bpm. 
+# Warning: if it's not called in the thread, it will execute a naked stop, which will kill your playback.  
+# args: 
+# killswitch: the name of the flag variable used with set/get to pass the kill message. Defaults to :killslidingbpm.  
+
+
+
+define  :killslidingbpm do |killswitch=:killslidingbpm, **kwargs|
+  eval overridekwargs(kwargs, method(__method__).parameters)
+  ##debugprint "top of killslidingbpm"
+  set killswitch, true   
+  true #return value
+end #define killslidingbpm
+
+# inttoroman   
+# converts an integer to a roman number string.  
+# args:  
+# num: the number to convert   
+
+
+define :inttoroman do |num|
+  romanarray = {
+    1000 => "m",
+    900 => "cm",
+    500 => "d",
+    400 => "cd",
+    100 => "c",
+    90 => "xc",
+    50 => "l",
+    40 => "xl",
+    10 => "x",
+    9 => "ix",
+    5 => "v",
+    4 => "iv",
+    1 => "i"
+  }
+  result = ""
+  romanarray.each do |arab, roman|
+    whole_part, num = num.divmod(arab)
+    result += (roman * whole_part)
+  end #each arab, roma
+  result #return value
+end #define inttoroman
+
+# romantoint 
+# turns a roman numeral into an integer.  
+# args: 
+# thisroman: the roman numeral to change to int; a string. 
+# returns: an int. If the roman numeral is garbage, returns 0.  
+
+
+define :romantoint do |thisroman|
+  ##debugprint "top of romantoint"
+  ##debugprint "thisroman: ", thisroman
+  thisroman = thisroman.downcase
+  specials = {'iv' => 4, 'ix' => 9, 'xl' => 40, 'xc' => 90, 'cd' => 400, 'cm' => 900}
+  normals = {'i' => 1, 'v' => 5, 'x' => 10, 'l' => 50, 'c' => 100, 'd' => 500, 'm' => 1000}
+  result = 0
+  specialhits = thisroman.scan(/iv|ix|xl|xc|cd|cm/)
+  ##debugprint "specialhits: ", specialhits
+  if boolish specialhits
+    ##debugprint "got a special case"
+    specialhits.each do |hit| 
+      ##debugprint "hit: ", hit
+      result += specials[hit]
+      ##debugprint "result: ", result
+      ##debugprint "whacking hit"
+      thisroman.gsub! hit, ""
+      ##debugprint "thisroman: ", thisroman
+    end
+  else
+    ##debugprint "no special case"
+  end #if got a special
+  ##debugprint "processing normals"
+  thisroman.each_char do |c| 
+    result += normals[c] 
+  end
+  ##debugprint "result: ", result
+  result #return value
+end #define romantoint
+
+
+
+# notetodegree
+# converts a midi note to the scale degree in the given scale.  
+# args:
+# thisnote: the note to convert to a degree.  
+# rootnote: the root of the scale; defaults to :c4
+# thisscale: the name of the scale; defaults to :major  
+# returns: a scale degree, as symbol (e.g. :ii, :av, :dix), or nil if not found.  
+
+define  :notetodegree do |thisnote, rootnote=:c4, thisscale=:major, **kwargs|
+  eval overridekwargs(kwargs, method(__method__).parameters)
+  ##debugprint "top of notetodegree"
+  thisdegree = nil  
+  thisnote = thisnote.to_i  
+  ##debugprint "thisnote: ", thisnote
+  ##debugprint "rootnote: ", rootnote
+  ##debugprint "thisscale: ", thisscale
+  workingscale = cleanchordorscale(scale(rootnote, thisscale, 2))
+  ##debugprint "workingscale: ", workingscale
+  while thisnote > workingscale.max do 
+    ##debugprint "note too high: ", thisnote
+    thisnote -= 12
+  end #while too high
+
+  while thisnote < workingscale.min do  
+   ##debugprint "note too low: ", thisnote
+    thisnote += 12
+  end #while too low
+
+  ##debugprint "thisnote: ", thisnote
+
+  if workingscale.include? thisnote  
+    ##debugprint "thisnote in scale"
+    thisdegree = inttoroman(workingscale.index(thisnote) + 1)
+  elsif workingscale.include? (thisnote + 1)
+    ##debugprint "thisnote diminshed in scale"
+    thisdegree = "d" + inttoroman(workingscale.index(thisnote + 1) + 1)
+  elsif workingscale.include? (thisnote - 1)
+     ##debugprint "thisnote augmented in scale"
+    thisdegree = "a" + inttoroman(workingscale.index(thisnote - 1) + 1)
+   elsif workingscale.include? (thisnote + 2)
+    ##debugprint "thisnote double diminshed in scale"
+    thisdegree = "d" + inttoroman(workingscale.index(thisnote + 2) + 1)
+  elsif workingscale.include? (thisnote - 2)
+     ##debugprint "thisnote doubleaugmented in scale"
+    thisdegree = "a" + inttoroman(workingscale.index(thisnote - 2) + 1)
+   else
+      ##debugprint "can't find thisnote anywhere in scale"
+ end
+
+  thisdegree = thisdegree.to_sym if thisdegree #convert to symbol unless nil  
+  thisdegree #return value
+end #define notetodegree
 
 
 
@@ -2827,6 +3521,13 @@ end #define stuttersample
 ##|   By default, ticks through a list, supporting (e.g.) linear drum patterns, but 2nd level nestings are chosen randomly (round robins).
 ##| humanizeamt: either a float, or a hash of floats per instrument. 
 ##| Sets the amount (in beats) to provide range for humanizing times. Defaults to 0.0. A good value is 0.5.   
+##| currentroot: the root note used to cook degree symbols into absolute pitches. 
+##| currentscale: the scale used to cook detree symbols into absolute pitches. 
+##| synthlayers: an array of arrays; each nested array is a group of synth names to clone. 
+##| Cloning includes arrangement, defaults, effects, envelopes, lfos, trancegates, notedensities, phrasedensities. 
+##| If you wish to apply variations for any of these, provide an explicit value for that synth; it will not be overridden.
+##| To have no effect on a synth voice where the other voices have an effect, give it a key matching the synth name with a value of false,
+##| e.g. lfos[:blade] = false
 ##|   While, in theory, there's no limit to how many instruments you can arrange,
 ##|   in practice you'll get lags and dropouts with too many. 
 ##|   Try using with_sched_ahead_time or use_sched_ahead_time if you experience this.
@@ -2881,17 +3582,17 @@ end #define stuttersample
 # densitystretchmode = {tabla => "pitch"}
 # use_sample_bpm amen, num_beats: 16
 # with_sched_ahead_time 1.5 do
-#   arrange verse, 2, defaults , effects , envelopes , lfos, trancegates, phrasedensities: phrasedensities, notedensities: notedensities, humanizeamt: humanizeamt
+#  arrange verse, 2, defaults , effects , envelopes , lfos, trancegates, phrasedensities: phrasedensities, notedensities: notedensities, humanizeamt: humanizeamt, currentroot: :c4, currentscale: :minor, synthlayers: [[:bass_foundation, :pluck]]
 # end
 
 
-define :arrange do |arrangement, repetitions=1, defaults=nil, effects=nil, envelopes=nil, lfos=nil, trancegates=nil, notedensities=nil, phrasedensities=nil, codeblocks=nil, tickorchoose=["tick","choose"], humanizeamt=0.0, **kwargs|
-  eval overridekwargs(kwargs, method(__method__).parameters)
+define :arrange do |arrangement, repetitions=1, defaults=nil, effects=nil, envelopes=nil, lfos=nil, trancegates=nil, notedensities=nil, phrasedensities=nil, codeblocks=nil, tickorchoose=["tick","choose"], humanizeamt=0.0, currentroot=:c4, currentscale=:major, synthlayers=[[]], **kwargs|
+  eval overridekwargs(kwargs, method(__method__).parameters) if boolish kwargs
 
   
-  debugprint ""
-  debugprint ""
-  debugprint "top of arrange"
+  ##debugprint ""
+  ##debugprint ""
+  ##debugprint "top of arrange"
 
   timeline = {} #for the timing of notes
   melody = {} #for specified notes
@@ -2907,113 +3608,137 @@ define :arrange do |arrangement, repetitions=1, defaults=nil, effects=nil, envel
   codeblocks ||= []
   codeblocks = [codeblocks] if !listorring codeblocks #wrap naked strings in array
   repetitions  ||= 1
+  currentroot ||= :c4  
+  currentscale ||= :major 
+  synthlayers ||= [[]]
 
-  mastercmdlist = ["handle = nil\n"] #initialize handle in generated script, to avoid scoping bugs
+  if !ringorlist synthlayers[0]
+    ##debugprint "wrappying synthlayers"
+    synthlayers = [synthlayers]
+  else
+    ##debugprint "synthlayers already wrapped"
+  end #if synthlayers not wrapped
+
   cmd = ""
   thissleepytime = 0
   maxsleepytime = 0
 
-  debugprint "arrangement: ", arrangement
-  debugprint "repetitions: ", repetitions
-  debugprint "defaults: ", defaults
-  debugprint "effects: ", effects
-  debugprint "envelopes: ", envelopes
-  debugprint "lfos: ", lfos
-  debugprint "trancegates: ", trancegates
-  debugprint "notedensities: ", notedensities
-  debugprint "phrasedensities: ", phrasedensities
-  debugprint "tickorchoose: ", tickorchoose
+  ##debugprint "arrangement: ", arrangement
+  ##debugprint "repetitions: ", repetitions
+  ##debugprint "defaults: ", defaults
+  ##debugprint "effects: ", effects
+  ##debugprint "envelopes: ", envelopes
+  ##debugprint "lfos: ", lfos
+  ##debugprint "trancegates: ", trancegates
+  ##debugprint "notedensities: ", notedensities
+  ##debugprint "phrasedensities: ", phrasedensities
+  ##debugprint "tickorchoose: ", tickorchoose
+  ##debugprint "currentroot: ", currentroot
+  ##debugprint "currentscale: ", currentscale
+  ##debugprint "synthlayers: ", synthlayers
+
+  if boolish synthlayers  
+    ##debugprint "got synthlayers, cloning"
+    [arrangement, defaults, effects, envelopes, lfos, trancegates, notedensities, phrasedensities].each do |thishash|
+      ##debugprint "thishash: ", thishash
+      thishash = clonekeys thishash, synthlayers
+      ##debugprint "thishash after cloning: ", thishash
+    end #each thishash
+  end #if boolish synthlayers
+
+
+
 
   if humanizeamt.is_a? Numeric
-    debugprint "humanizeamt is a number"
+    ##debugprint "humanizeamt is a number"
     globalhumanizeamt = humanizeamt
     humanizeamt = {nil => humanizeamt}
   elsif humanizeamt.is_a? Hash 
-    debugprint "humanize is a hash"
+    ##debugprint "humanize is a hash"
     globalhumanizeamt = humanizeamt[nil] || 0.0 
   else 
-    debugprint "humanize is garbage"
+    ##debugprint "humanize is garbage"
     globalhumanizeamt = 0.0  
     humanizeamt = {nil => globalhumanizeamt}
   end #if humanize is number or hash
-  debugprint "humanizeamt: ", humanizeamt
-  debugprint "globalhumanizeamt: ", globalhumanizeamt
+  ##debugprint "humanizeamt: ", humanizeamt
+  ##debugprint "globalhumanizeamt: ", globalhumanizeamt
   
 
 
 
-  debugprint "quoting first args in envelopes, initializing extra args for envelopes"
+  ##debugprint "quoting first args in envelopes, initializing extra args for envelopes"
   envelopes.each do |key, valuelist|
-    debugprint "key: ", key
-    debugprint "valuelist: ", valuelist
+    ##debugprint "key: ", key
+    ##debugprint "valuelist: ", valuelist
     valuelist = [valuelist] if valuelist.is_a? String
     scrubbedlist = []
     valuelist.each do |value|
-      debugprint "value: ", value 
+      ##debugprint "value: ", value 
       mylist = value.split(",")
-      debugprint "mylist: ", mylist
+      ##debugprint "mylist: ", mylist
       bareparam = mylist[0].gsub('"', '').gsub("'", '') #strip out quotes
-      debugprint "mylist[0]", mylist[0]
+      ##debugprint "mylist[0]", mylist[0]
       if mylist[0] !~ /["'].*["']/
-        debugprint "no quotes"
+        ##debugprint "no quotes"
         mylist[0] = '"' + mylist[0] + '"'
       end #if no quote
       cleanlist = mylist.join(",")
-      debugprint "cleanlist: ", cleanlist
+      ##debugprint "cleanlist: ", cleanlist
       scrubbedlist << cleanlist
-      debugprint "scrubbedlist: ", scrubbedlist
+      ##debugprint "scrubbedlist: ", scrubbedlist
       startvalue = ( mylist.length > 5 ? mylist[5] : "0")
-      debugprint "startvalue: ", startvalue
-      debugprint "bareparam: ", bareparam
+      ##debugprint "startvalue: ", startvalue
+      ##debugprint "bareparam: ", bareparam
       extraargs[key] = "" if extraargs[key] == nil
       extraargs[key] += ", " + bareparam + ": " + startvalue + ", " + bareparam + "_slide_shape: 3"
-      debugprint "extraargs: ", extraargs
+      ##debugprint "extraargs: ", extraargs
     end #each value
-    debugprint "about to update scrubbedlist"
+    ##debugprint "about to update scrubbedlist"
     envelopes[key] = scrubbedlist
-    debugprint "scrubbedlist: ", scrubbedlist
+    ##debugprint "scrubbedlist: ", scrubbedlist
   end #each key value pair
-  debugprint "envelopes: ", envelopes
+  ##debugprint "envelopes: ", envelopes
 
 
 
-  debugprint "quoting first args in lfos, initializing extra args for lfos"
+  ##debugprint "quoting first args in lfos, initializing extra args for lfos"
   lfos.each do |key, valuelist|
-    debugprint "key: ", key 
+    ##debugprint "key: ", key 
     valuelist = [valuelist] if valuelist.is_a? String
-    debugprint "valuelist: ", valuelist  
+    ##debugprint "valuelist: ", valuelist  
     scrubbedlist = []
     valuelist.each do |value|
-      debugprint "value: ", value
+      ##debugprint "value: ", value
       mylist = value.split(",")
       bareparam = mylist[0].gsub('"', '').gsub("'", '') #strip out quotes
-      debugprint "mylist[0]: ", mylist[0]
+      ##debugprint "mylist[0]: ", mylist[0]
       if mylist[0] !~ /["'].*["']/
-        debugprint "no quotes"
+        ##debugprint "no quotes"
         mylist[0].prepend('"').concat('"')
-        debugprint "quoted mylist[0]: ", mylist[0]
+        ##debugprint "quoted mylist[0]: ", mylist[0]
       end #if no quote
       scrubbedlist << mylist.join(",")
       startvalue = ( mylist.length > 3 ? mylist[3] : "0")
-      debugprint "startvalue: ", startvalue
-      debugprint "ringorlist startvalue: ", ringorlist(startvalue)
+      ##debugprint "startvalue: ", startvalue
+      ##debugprint "ringorlist startvalue: ", ringorlist(startvalue)
       if ringorlist startvalue
         #could either be array literal [0,1] or ring literal (ring 0,1) or a variable
         #in any case, we want first value, so we'll play a game w/eval
         cmd = "startvalue = " + startvalue + "[0]"
-        debugprint "cmd: ", cmd
+        ##debugprint "cmd: ", cmd
         eval cmd 
       end #if
       extraargs[key] = "" if extraargs[key] == nil
       extraargs[key] += ", " + bareparam + ": " + startvalue + ", " + bareparam + "_slide_shape: 3"
     end #each value
-    debugprint " final scrubbed list: ", scrubbedlist
+    ##debugprint " final scrubbed list: ", scrubbedlist
     lfos[key]  = scrubbedlist
   end #each valuelist
-  debugprint "lfos: ", lfos
+  ##debugprint "lfos: ", lfos
 
 
-  debugprint "initializing extra args for trancegates"
+  ##debugprint "initializing extra args for trancegates"
   trancegates.each do |key, value|
     #can't have multiple trancegates per voice, not an array
     mylist = value.split(",")
@@ -3021,82 +3746,83 @@ define :arrange do |arrangement, repetitions=1, defaults=nil, effects=nil, envel
     extraargs[key] = "" if extraargs[key] == nil
     extraargs[key] += ", amp: " + startvalue 
   end #each
-  debugprint "trancegates: ", trancegates.to_s
+  ##debugprint "trancegates: ", trancegates.to_s
   
 
-  debugprint "processing notedensities"
+  ##debugprint "processing notedensities"
   notetimelines = {}
   notedensities.each do |key, value|
-    debugprint "key: ", key 
-    debugprint "value: ", value 
+    ##debugprint "key: ", key 
+    ##debugprint "value: ", value 
     if ringorlist (value)
-      debugprint "already a ring or list"
+      ##debugprint "already a ring or list"
       value = value.flatten.ring 
     elsif value.is_a? Number 
-      debugprint "value is a single number"
+      ##debugprint "value is a single number"
       value = [value].ring 
     elsif value.is_a? String 
-      debugprint "value is a comma-delimited string"
+      ##debugprint "value is a comma-delimited string"
       value = value.split(",").ring 
     else
-      debugprint "value is unsupported garbage, setting to one"
+      ##debugprint "value is unsupported garbage, setting to one"
       value = [1].ring 
     end #if value is varous types
-    debugprint "cooked value: ", value
+    ##debugprint "cooked value: ", value
     notedensities[key] = value 
   end #each notedensity key value
 
 
 
-  debugprint "processing phrasedensities"
+  ##debugprint "processing phrasedensities"
   phrasetimelines = {}
   phrasedensities.each do |key, value|
-    debugprint "key: ", key 
-    debugprint "value: ", value 
+    ##debugprint "key: ", key 
+    ##debugprint "value: ", value 
     if ringorlist (value)
-      debugprint "ring or list, picking first value"
+      ##debugprint "ring or list, picking first value"
       value = value[0]
     elsif value.is_a? Numeric 
-      debugprint "value is a single number, leaving untouched"
+      ##debugprint "value is a single number, leaving untouched"
     else
-      debugprint "value is unsupported garbage, setting to one"
+      ##debugprint "value is unsupported garbage, setting to one"
       value = 1 
     end #if value is varous types
-    debugprint "cooked value: ", value
+    ##debugprint "cooked value: ", value
     phrasedensities[key] = value 
     phrasetimelines[key] = {}
   end #each phrasedensities key value
 
 
 
-  debugprint "defaults: ", defaults
-  debugprint "effects: ", effects
-  debugprint "envelopes: ", envelopes
-  debugprint "lfos: ", lfos
-  debugprint "trancegates: ", trancegates
-  debugprint "notedensities: ", notedensities
-  debugprint "phrasedensities: ", phrasedensities
-  debugprint "extraargs: ", extraargs
+  ##debugprint "defaults: ", defaults
+  ##debugprint "effects: ", effects
+  ##debugprint "envelopes: ", envelopes
+  ##debugprint "lfos: ", lfos
+  ##debugprint "trancegates: ", trancegates
+  ##debugprint "notedensities: ", notedensities
+  ##debugprint "phrasedensities: ", phrasedensities
+  ##debugprint "extraargs: ", extraargs
 
 
 
   
-  debugprint "arrangement: ", arrangement
+  ##debugprint "arrangement: ", arrangement
   
   instruments = nil
   arrangement.each do |synthorsample, instr_times|
     thissleepytime = 0
-    debugprint " "
-    debugprint " "
-    debugprint "synthorsample ", synthorsample.to_s
-    debugprint "instr_times before: ", instr_times.to_s
+    instr_times = instr_times.downcase
+    ##debugprint " "
+    ##debugprint " "
+    ##debugprint "synthorsample ", synthorsample.to_s
+    ##debugprint "instr_times before: ", instr_times.to_s
     instr_times, instr_amps = convertdrumnotation instr_times
     instr_amps = instr_amps.delete_if do |item| item == 0 end  
-    debugprint "instr_times after: ", instr_times
-    debugprint "instr_amps: ", instr_amps
-    debugprint "defaults[synthorsample] before: ", defaults[synthorsample]
+    ##debugprint "instr_times after: ", instr_times
+    ##debugprint "instr_amps: ", instr_amps
+    ##debugprint "defaults[synthorsample] before: ", defaults[synthorsample]
     defaults[synthorsample] = setarg "amp", instr_amps, defaults[synthorsample]
-    debugprint "defaults[synthorsample] after: ", defaults[synthorsample]
+    ##debugprint "defaults[synthorsample] after: ", defaults[synthorsample]
 
 
 
@@ -3117,22 +3843,35 @@ define :arrange do |arrangement, repetitions=1, defaults=nil, effects=nil, envel
     chordtone = nil
     chordcounter = 0
 
+    forcetonemode = (instr_times =~ /\s/) #if there's a space anywhere in the string, force notes
+                                      #this avoids the problem where some have notes but others don't
+    ##debugprint "forcetonemode: ", forcetonemode
+
     instr_times.split(",").each_with_index do |thisnote, howmanytimes| 
       duration = ""
-      debugprint "thisnote: ", thisnote.to_s
-      debugprint "howmanytimes: ", howmanytimes
-      debugprint "thistime: ", thistime.to_s
+      ##debugprint "thisnote: ", thisnote.to_s
+      ##debugprint "howmanytimes: ", howmanytimes
+      ##debugprint "thistime: ", thistime.to_s
       oldtone = thistone
       oldchord = thischord
       oldmode = thismode
+      ##debugprint "splitting thisnote"
       thisdur, thistone, thischord, thismode = thisnote.split(" ")
+      ##debugprint "thisdur: ", thisdur
+      ##debugprint "thistone: ", thistone
+      ##debugprint "thischord: ", thischord
+      ##debugprint "thismode: ", thismode
+      if forcetonemode 
+        ##debugprint "forcing default tone 0"
+        thistone ||= "0"
+      end #if forcetonemode && !thistone
       if thischord == nil and oldmode != nil and ["arp", "asc", "des", "ran"].include? oldmode[0..2].downcase
-        debugprint "grabbing old tone, chord, mode"
+        ##debugprint "grabbing old tone, chord, mode"
         thistone = oldtone
         thischord = oldchord
         thismode = oldmode
       else
-        debugprint "new mode, initializing chordcounter"
+        ##debugprint "new mode, initializing chordcounter"
         chordcounter = howmanytimes
       end #if subbing in old chord and mode
       
@@ -3141,82 +3880,82 @@ define :arrange do |arrangement, repetitions=1, defaults=nil, effects=nil, envel
       modemode = thismode != nil
       firsttone = nil
       
-      debugprint "thisdur: ", thisdur.to_s
-      debugprint "thistone: ", thistone.to_s
-      debugprint "thischord: ", thischord.to_s
-      debugprint "thismode: ", thismode.to_s
-      debugprint "tonemode: ", tonemode.to_s
-      debugprint "chordmode: ", chordmode.to_s
-      debugprint "modemode: ", modemode.to_s
+      ##debugprint "thisdur: ", thisdur.to_s
+      ##debugprint "thistone: ", thistone.to_s
+      ##debugprint "thischord: ", thischord.to_s
+      ##debugprint "thismode: ", thismode.to_s
+      ##debugprint "tonemode: ", tonemode.to_s
+      ##debugprint "chordmode: ", chordmode.to_s
+      ##debugprint "modemode: ", modemode.to_s
 
-      debugprint "about to call cooktime"
-      debugprint "synthorsample: ", synthorsample
+      ##debugprint "about to call cooktime"
+      ##debugprint "synthorsample: ", synthorsample
       #TODO: add logic to pass amp param to sample/play commands
       timetillnext, takerest = cooktime thisdur, humanizeamt[synthorsample] || globalhumanizeamt
-      debugprint "timetillnext: ", timetillnext
-      debugprint "takerest: ", takerest
+      ##debugprint "timetillnext: ", timetillnext
+      ##debugprint "takerest: ", takerest
       if takerest
-        debugprint "got a rest, forcing note to :rest"
+        ##debugprint "got a rest, forcing note to :rest"
         thistone = :rest 
       end #if takerest
 
       
-      debugprint "timetillnext: ", timetillnext.to_s
+      ##debugprint "timetillnext: ", timetillnext.to_s
       thissleepytime += timetillnext 
-      debugprint "thissleepytime: ", thissleepytime 
+      ##debugprint "thissleepytime: ", thissleepytime 
 
 
       if chordmode and !takerest
-        debugprint "chordmode"
-        debugprint "thistone: ", thistone.to_s
+        ##debugprint "chordmode"
+        ##debugprint "thistone: ", thistone.to_s
         if chordtone == nil
-          debugprint "first tone!"
+          ##debugprint "first tone!"
           chordtone = thistone
         end #if firsttone nil
         
         chordtone = ( chordtone[0] == ":" ? chordtone.delete_prefix(":").to_sym : chordtone.to_i )
         thischord.gsub!(":", "") #to strip out leading colons
-        debugprint "chordtone: ", chordtone.to_s
+        ##debugprint "chordtone: ", chordtone.to_s
         if chord_names.to_a.include? thischord
-          debugprint "chord"
+          ##debugprint "chord"
           thistone = cleanchordorscale(chord chordtone, thischord)
         else
-          debugprint "scale"
+          ##debugprint "scale"
           thistone = cleanchordorscale(scale chordtone, thischord)
         end #if chord or scale
-        debugprint "thistone: ", thistone.to_s
+        ##debugprint "thistone: ", thistone.to_s
         if modemode
-          debugprint "modemode"
-          debugprint "mode ", thismode[0..2]
+          ##debugprint "modemode"
+          ##debugprint "mode ", thismode[0..2]
           workingchord = thistone # to make chord persist across arpeggiation
-          debugprint "workingchord: ", workingchord
-          debugprint "howmanytimes: ", howmanytimes
-          debugprint "chordcounter: ", chordcounter
-          debugprint "howmanytimes - chordcounter: ", howmanytimes - chordcounter
+          ##debugprint "workingchord: ", workingchord
+          ##debugprint "howmanytimes: ", howmanytimes
+          ##debugprint "chordcounter: ", chordcounter
+          ##debugprint "howmanytimes - chordcounter: ", howmanytimes - chordcounter
           case thismode[0..2].downcase
           when "ran"
-            debugprint "random"
+            ##debugprint "random"
             with_random_seed Time.now.to_i do
               workingchord = workingchord.to_a.shuffle 
             end
-            debugprint "workingchord: ", workingchord
+            ##debugprint "workingchord: ", workingchord
             thistone = workingchord[howmanytimes - chordcounter]
           when "asc"
-            debugprint "ascending arpeggio"
+            ##debugprint "ascending arpeggio"
             thistone = workingchord[howmanytimes - chordcounter]
           when "arp"
-            debugprint "ascending arpeggio"
+            ##debugprint "ascending arpeggio"
             thistone = workingchord[howmanytimes - chordcounter]
           when "des"
-            debugprint "descending arpeggio"
+            ##debugprint "descending arpeggio"
             thistone = workingchord.to_a.reverse[howmanytimes - chordcounter]
           else
-            debugprint "chord mode, leave chord intact"
+            ##debugprint "chord mode, leave chord intact"
           end #if in random mode
         end #if mode mode
-        debugprint "thistone: ", thistone.to_s
+        ##debugprint "thistone: ", thistone.to_s
       else
-        debugprint "not chordmode or taking a rest"
+        ##debugprint "not chordmode or taking a rest"
       end #if chordmode or !takerest
       
       
@@ -3224,35 +3963,38 @@ define :arrange do |arrangement, repetitions=1, defaults=nil, effects=nil, envel
       
       
       
-      if !takerest
-        debugprint "not a rest, scheduling note in appropriate timeline"
-        debugprint "phrasedensities: ", phrasedensities
-        debugprint "synthorsample: ", synthorsample
-        debugprint "phrasedensities[synthorsample]: ", phrasedensities[synthorsample]
-        workingtimeline = timeline
-        if (phrasedensities[synthorsample] || 0) > 1  
-          debugprint "got a phrase density, switching working timeline to phrase timeline"
-          phrasetimelines[synthorsample] ||= {}
-          workingtimeline = phrasetimelines[synthorsample]
-        end #if got phrasedensity 
+      ##debugprint "scheduling note in appropriate timeline"
+      ##debugprint "phrasedensities: ", phrasedensities
+      ##debugprint "synthorsample: ", synthorsample
+      ##debugprint "phrasedensities[synthorsample]: ", phrasedensities[synthorsample]
+      workingtimeline = timeline
+      if (phrasedensities[synthorsample] || 0) > 1  
+        ##debugprint "got a phrase density, switching working timeline to phrase timeline"
+        phrasetimelines[synthorsample] ||= {}
+        workingtimeline = phrasetimelines[synthorsample]
+      end #if got phrasedensity 
+      ##debugprint "workingtimeline: ", workingtimeline
+      ##debugprint "phrasetimelines: ", phrasetimelines
 
-        (workingtimeline[thistime] ||= []) << [synthorsample, timetillnext]
-    end #if !takerest
+      (workingtimeline[thistime] ||= []) << [synthorsample, timetillnext]
+      ##debugprint "workingtimeline: ", workingtimeline
+      ##debugprint "workingtimeline[thistime]: ", workingtimeline[thistime]
+
       
-      debugprint "timeline: ", timeline.to_s
-      debugprint "thistone: ", thistone.to_s
+      ##debugprint "timeline: ", timeline.to_s
+      ##debugprint "thistone: ", thistone.to_s
       if tonemode
         tonelist  << thistone
-        debugprint "tonelist: ", tonelist.to_s
+        ##debugprint "tonelist: ", tonelist.to_s
         tonelist.each_with_index do |x, i|
-          debugprint "tonelist[" + i.to_s + "]: ", x\
+          ##debugprint "tonelist[" + i.to_s + "]: ", x\
         end #each
       # else
-      #   debugprint "this is a rest, carry thistime to next item in loop to delay start of note"
+      #   ##debugprint "this is a rest, carry thistime to next item in loop to delay start of note"
       end #if tonemode
 
       # else
-      #   debugprint "taking a rest"
+      #   ##debugprint "taking a rest"
         
       # end #if !takerest
       
@@ -3269,21 +4011,21 @@ define :arrange do |arrangement, repetitions=1, defaults=nil, effects=nil, envel
 
 
     if tonelist.length > 0
-      debugprint "got tones, adding to melody hash"
-      debugprint "melody: ", melody
-      debugprint "synthorsample: ", synthorsample
-      debugprint "tonelist: ", tonelist
+      ##debugprint "got tones, adding to melody hash"
+      ##debugprint "melody: ", melody
+      ##debugprint "synthorsample: ", synthorsample
+      ##debugprint "tonelist: ", tonelist
       melody[synthorsample] = tonelist
-      debugprint "melody: ", melody
+      ##debugprint "melody: ", melody
     end
     
     if thissleepytime > maxsleepytime
-      debugprint "thissleepytime > maxsleepytime"  
+      ##debugprint "thissleepytime > maxsleepytime"  
       maxsleepytime = thissleepytime  
     else
-      debugprint"no need to update maxsleepytime"
+      ##debugprint"no need to update maxsleepytime"
     end
-    debugprint "maxsleepytime: ", maxsleepytime
+    ##debugprint "maxsleepytime: ", maxsleepytime
 
   end #each instrument
   
@@ -3293,75 +4035,83 @@ define :arrange do |arrangement, repetitions=1, defaults=nil, effects=nil, envel
 
   #preload samples to hopefully improve performance
   arrangement.keys.each do |thisitem| 
-  debugprint "testing for sample: ", thisitem
+  ##debugprint "testing for sample: ", thisitem
   if all_sample_names.to_a.include? thisitem
-    debugprint  thisitem.to_s, " is a sample symbol, loading"
+    ##debugprint  thisitem.to_s, " is a sample symbol, loading"
     load_sample thisitem
   elsif thisitem.is_a? String
     if File.exist? thisitem
-      debugprint thisitem, " is a sample path, loading"
+      ##debugprint thisitem, " is a sample path, loading"
       load_sample thisitem
     else
-      debugprint thisitem " is a string, but not a file"
-    end #inner if
+      ##debugprint thisitem " is a string, but not a file"
+    end #if file exists
   else
-    debugprint thisitem.to_s, " is not a sample"
+    ##debugprint thisitem.to_s, " is not a sample"
   end #if it's a sample
-end #all instruments
 
 
-# put in code to call executecmdlist
+  # put in code to call executecmdlist
 
   grandenchiladalist = []
-  debugprint "processing repetitions ", repetitions
+  ##debugprint "processing repetitions ", repetitions
   repetitions.times do
-    debugprint "repetition: ", tick
-    # eval mastercmdlist.join("\n")
+    ##debugprint "repetition: ", tick
 
-    debugprint "executing codeblocks, if any"
+    ##debugprint "executing codeblocks, if any"
     codeblocks.each do |thisblock|
       if listorring thisblock 
         thisblock = thisblock.join " ; "
       end #if listorring thisblock 
       thisblock = "in_thread do ; " + thisblock + " ; stop ; end"
-      debugprint "thisblock: ", thisblock
+      ##debugprint "thisblock: ", thisblock
       eval thisblock 
     end #each codeblock
+    grandenchiladalist.append codeblocks  
 
 
 
-    debugprint "executing phrase density commands if any"
+    ##debugprint "executing phrase density commands if any"
+    ##debugprint "phrasedensities: ", phrasedensities
+    ##debugprint "phrasetimelines: ", phrasetimelines
     phrasedensities.each do |thissynthorsample, ignore|
-      debugprint"executing phrase density commands for ", thissynthorsample
-      scratchlist = executecmdlist phrasetimelines[thissynthorsample], melody, extraargs, (phrasedensities[thissynthorsample] || 0), defaults, effects, envelopes, lfos, trancegates, notedensities, tickorchoose
-      grandenchiladalist.append scratchlist
-      debugprint "after executing phrase density commands"
+      if boolish phrasetimelines[thissynthorsample]
+        ##debugprint"executing phrase density commands for ", thissynthorsample
+        ##debugprint "phrasetimelines[thissynthorsample]: ", phrasetimelines[thissynthorsample]
+        scratchlist = executecmdlist phrasetimelines[thissynthorsample], melody, extraargs, (phrasedensities[thissynthorsample] || 0), defaults, effects, envelopes, lfos, trancegates, notedensities, tickorchoose, currentroot, currentscale
+        grandenchiladalist.append scratchlist
+        ##debugprint "after executing phrase density commands"
+      else 
+        ##debugprint "no timeline, orphan density"
+      end 
     end #each phrase density
 
-    # debugprint "mastercmdlist: ", mastercmdlist, expandlist = true  
-    # debugprint "after printing mastercmdlist"
-    debugprint "executing normal commands"
-    scratchlist = executecmdlist timeline, melody, extraargs, 0, defaults, effects, envelopes, lfos, trancegates, notedensities, tickorchoose
-    grandenchiladalist.append scratchlist
-    debugprint "after executing normal commands"
 
-    # debugprint "about to sleep maxsleepytime: ", maxsleepytime
-    # sleep maxsleepytime
+    end
 
-    debugprint "grandenchiladalist: ", grandenchiladalist, expandlist=true 
+
+    if boolish timeline
+      ##debugprint "executing normal commands"
+      scratchlist = executecmdlist timeline, melody, extraargs, 0, defaults, effects, envelopes, lfos, trancegates, notedensities, tickorchoose, currentroot, currentscale
+      grandenchiladalist.append scratchlist
+      ##debugprint "after executing normal commands"
+    else 
+      ##debugprint "no normal timeline, not executing"
+    end #if boolish timeline
+
+
+    ##debugprint "grandenchiladalist: ", grandenchiladalist, expandlist=true 
 
   end #repetitions
 
  
-  debugprint "about to reset mastercmdlist"
-  mastercmdlist = "" #to avoid doubling on repetitions
+ 
 
 
 
-
-  debugprint "bottom of arrange"
-  debugprint ""
-  debugprint ""
+  ##debugprint "bottom of arrange"
+  ##debugprint ""
+  ##debugprint ""
 
 end #define arrange
 
@@ -3384,9 +4134,9 @@ end #define arrange
 # playline :sn_dolf, "-x", true
 
 define  :playline do |synthorsample, notation, threaded=true, **kwargs|
-  eval overridekwargs(kwargs, method(__method__).parameters)
+  eval overridekwargs(kwargs, method(__method__).parameters) if boolish kwargs
   cleanargs = stripparams kwargs, method(__method__).parameters
-  debugprint "top of playline"
+  ##debugprint "top of playline"
   arrangement = {synthorsample => notation}
   if threaded
     in_thread do  
@@ -3400,8 +4150,278 @@ define  :playline do |synthorsample, notation, threaded=true, **kwargs|
 end #define playline
 
 
+# randomseed  
+# generate a random random seed seed.  Say that three times fast!  
+# args:
+# modulo: the number to use in modulo math; defaults to 65536 (64k). Sets the max number of possible seeds. 
+
+define  :randomseed do |modulo = 65536, **kwargs|
+  eval overridekwargs(kwargs, method(__method__).parameters)
+  ##debugprint "top of genchord"
+  return Time.now.to_i % modulo
+end #define randomseed
+
+
+
+# genchord  
+# generates chords and scales generatively, utilizing neo-reimannian theory.  
+# args:  
+# lastroot: the root note last used for chords & scales; defaults to :c4
+# lastchord: the chord name last used; defaults to :major 
+# lastscale: the scale name last used; defaults to :ionian
+# lastshift: the shift last used; defaults to :diatonic. Valid values:  
+# :diatonic -- stays within the scale mode we started in.  
+# :blue -- shifts to the parallel minor (e.g., from :c4 :major to :ds4 :major, :c4 :minor, etc)
+# in other words, :blue shifts add 3 flats to the scale.
+# :yellow -- shifts to the parallel major of the relative minor (e.g., from :c4 :major to :a3 :major, :cs4 :minor, etc)
+# in other words, :yellow shifts add 3 sharps to the scale. 
+# return value: an array with 4 values:  
+# [thisroot, thischord, thisscale, thisshift]
+# On iterative calls, keep passing these values back in to generate the chords and scales.  
+# sample code: 
+# bar = 16.0
+# whole = 4.0
+# half =2.0
+# quarter =1.0
+# eighth =0.5
+# sixteenth =0.25
+# dotted =1.5
+# triplet =2.0 / 3
+# halftone = 1
+# second = 2
+# wholetone = 2
+# min3 = 3
+# maj3 = 4
+# fourth = 5
+# tritone = 6
+# fifth = 7
+# min6 = 8
+# maj6 = 9
+# min7 = 10
+# maj7 = 11
+# octave = 12
+# set :thisroot, :c4
+# set :firstroot, :c4
+# set :thischord, :major
+# set :thisscale, :ionian
+# set :thisshift, :diatonic
+# set :thispent, (get[:thischord].to_s + "_pentatonic").to_sym
+# live_loop :manage, delay: 0.01 do
+#   sleep bar * 3.99
+#   ##debugprint "resetting chord and scale values"
+#   thisroot, thischord, thisscale, thisshift = genchord get[:thisroot], get[:thischord], get[:thisscale], get[:thisshift]
+#   thisroot -= octave if thisroot > get[:firstroot] + fifth #to keep from drifting ever upward
+#   set :thisroot, thisroot
+#   set :thischord, thischord
+#   set :thisscale, thisscale
+#   set :thisshift, thisshift
+#   set :thispent, (thischord.to_s + "_pentatonic").to_sym
+#   sleep bar * 0.01
+# end
+# with_synth :fm do
+#   live_loop :sheen, sync: :manage do
+#     leadroot = get[:thisroot] + octave + octave
+#     ##| ##debugprint "leadroot: ", leadroot
+#     [:i, :iii, :v, :vii].shuffle.each do |thisdegree|
+#       thisnote = degree thisdegree, leadroot, get[:thisscale]
+#       mydivisor = (midi_to_hz get[:thisroot]) / (midi_to_hz thisnote)
+#       play thisnote, amp: 0.3, duration: half, divisor: mydivisor, attack: sixteenth, decay: sixteenth, depth: 2
+#       sleep half
+#     end
+#   end
+# end
+# with_synth :bass_foundation do
+#   live_loop :bass, sync: :manage do
+#     bassroot = get[:thisroot] + (octave * -2)
+#     ##| ##debugprint "bassroot: ", bassroot
+#     [:i, :iii, :v, :vi].each do |thisdegree|
+#       play (degree thisdegree, bassroot, get[:thisscale]), duration: whole * 2, attack: sixteenth
+#       sleep whole * 2
+#     end
+#   end
+# end
+# with_fx :echo, phase: eighth * dotted, decay: whole do
+#   with_fx :panslicer, phase: sixteenth do
+#     with_synth :pluck do
+#       live_loop :pluck, sync: :manage do
+#         pluckroot = get[:thisroot] + octave
+#         ##| ##debugprint "pluckroot: ", pluckroot
+#         ##| ##debugprint "thispent: ", get[:thispent]
+#         play (scale pluckroot, get[:thispent]).choose, amp: 1.5
+#         sleep quarter
+#       end
+#     end
+#   end
+# end
+# with_synth :zawa do
+#   live_loop :piano, sync: :manage do
+#     pianoroot = get[:thisroot]
+#     with_fx :nlpf, cutoff: :e2 do
+#       with_fx :nlpf, cutoff: pianoroot + octave + fifth do
+#         ##| ##debugprint "pianoroot: ", pianoroot
+#         [:viii, :vii, :vi, :v, :vi, :v, :iv, :iii, :vii, :vi, :v, :iv, :v, :iv, :iii, :ii, :ix, :viii, :vii, :vi, :vii, :vi, :v, :iv, :viii, :vii, :vi, :v, :vi, :v, :iv, :iii].each do |thisdegree|
+#           play (degree thisdegree, pianoroot, get[:thisscale]),  amp: 4
+#           sleep quarter
+#         end
+#       end
+#     end
+#   end
+# end
+# with_fx :flanger, phase: 2 do
+#   with_fx :echo, phase: half * dotted, decay: bar * 2 do
+#     with_synth :winwood_lead do
+#       live_loop :chord do
+#         chordroot = get[:thisroot]
+#         [:i, :iii, :v, :vi].each do |thisdegree|
+#           1.times do
+#             play_chord (chord_degree thisdegree, chordroot, get[:thisscale], 4), duration: half , amp: 0.4
+#             sleep whole * 2
+#           end
+#         end
+#       end
+#     end
+#   end
+# end
+# live_loop :whoosh, sync: :manage, delay: sixteenth do
+#   sample :ambi_dark_woosh, amp: 1
+#   sleep [half * dotted, half * dotted, half].tick
+# end
+# live_loop :cymbal, sync: :manage do
+#   sample :drum_splash_hard, rate: -1, beat_stretch: half, amp: 0.5
+#   sleep [whole * dotted, whole * dotted, whole].tick
+# end
+# live_loop :kick, sync: :manage do
+#   [sixteenth, quarter, quarter, quarter, eighth, sixteenth, eighth * dotted, eighth * dotted, eighth * dotted, eighth * dotted, eighth, eighth].each do |thismuch|
+#     sample :bd_808, amp: 6
+#     sleep thismuch
+#   end
+# end
+
+
+
+define  :genchord do |lastroot=:c4, lastchord=:major, lastscale=:ionian, lastshift=:diatonic, **kwargs|
+  eval overridekwargs(kwargs, method(__method__).parameters)
+  cleanargs = stripparams kwargs, method(__method__).parameters
+  ##debugprint "top of genchord"
+  #defend against nil params
+  ##debugprint "lastroot: ", lastroot ||= :c4
+  ##debugprint "lastchord: ", lastchord ||= :major
+  ##debugprint "lastscale: ", lastscale ||= :ionian  
+  ##debugprint "lastshift: ", lastshift ||= :diatonic
+
+  never = 0
+  rare = 1
+  slim = 3 
+  middlin = 5
+  likely = 8
+  favorite = 10
+
+  shifts = {:diatonic => 0, :blue => 3, :yellow => -3}
+  shiftodds={
+    :diatonic => 
+      {:diatonic => likely, :blue => middlin, :yellow => middlin}, 
+    :blue=> 
+      {:diatonic => likely, :blue => slim, :yellow => middlin}, 
+    :yellow=> 
+      {:diatonic => likely, :blue => likely, :yellow => slim}
+  }[lastshift]
+  shiftpicks = []
+  shiftodds.each do |key, val|
+    ##debugprint "key: ", key
+    ##debugprint "val: ", val
+    shiftpicks.concat(knit(key, val).to_a) 
+  end  
+  ##debugprint "shiftpicks: ", shiftpicks
+  thisshift = nil  
+  with_random_seed randomseed do  
+    thisshift = shiftpicks.choose  
+  end
+  ##debugprint "thisshift: ", thisshift
+
+  thisroot = lastroot + shifts[thisshift]
+  ##debugprint "thisroot: ", thisroot
+
+  
+  degreeodds = {
+    :diatonic => {:ii => rare, :iii => rare, :iv => middlin, :v => likely, :vi => favorite}, 
+    :blue => {:i => favorite, :ii => middlin, :iii => middlin, :iv => likely, :v => favorite}, 
+    :yellow => {:i => 2, :ii => 1, :iii => 5, :iv => 3, :v => 4}
+    }[thisshift]
+
+  degrees = []
+  degreeodds.each do |key, val|
+    ##debugprint "key: ", key
+    ##debugprint "val: ", val
+    degrees.concat(knit(key, val).to_a)     
+  end #each key, val
+  thisdegree = nil  
+  with_random_seed randomseed do  
+    thisdegree = degrees.choose
+  end  
+  ##debugprint "thisdegree: ", thisdegree
+  thisroot = degree thisdegree, thisroot, :ionian 
+  ##debugprint "thisroot after degree shift: ", thisroot
+
+  if [:i, :iv, :v].include? thisdegree  
+    ##debugprint "got a major"
+    thischord = :major   
+  else
+    ##debugprint "got a minor"
+    thischord = :minor  
+  end #if got a major
+  ##debugprint "thischord: ", thischord
+
+  scaleodds = {
+      :major => {
+        :diatonic => {
+          :ionian => favorite, :lydian => slim, :mixolydian => likely
+        }, #major/diatonic
+        :blue => {
+          :ionian => middlin, :lydian => favorite, :mixolydian => slim
+        }, #major/blue
+        :yellow => {
+          :ionian => middlin, :lydian => slim, :mixolydian => favorite
+        }#major/yellow
+      }, #end of major choices
+      :minor => {
+        :diatonic => {
+          :aeolian => favorite, :dorian => likely, :phrygian => slim
+        }, #minor/diatonic
+        :blue => {
+          :aeolian => middlin, :dorian => favorite, :phrygian => slim
+        }, #minor/blue
+        :yellow => {
+          :aeolian => middlin, :dorian => slim, :phrygian => likely
+        }#minor/yellow
+      }# end of minor choices
+    }[thischord][thisshift]  #end of scale odds
+    ##debugprint "scaleodds: ", scaleodds
+
+    scales = []
+
+    scaleodds.each do |key, val|
+      ##debugprint "key: ", key
+      ##debugprint "val: ", val
+      scales.concat(knit(key, val).to_a)        
+    end #each key, val
+    ##debugprint "scales: ", scales
+    thisscale = nil  
+    with_random_seed randomseed do  
+      thisscale = scales.choose  
+    end
+    ##debugprint "thisscale: ", thisscale
+  
+  [thisroot, thischord, thisscale, thisshift] #return value
+end #define genchord
+
+
+
+
+
+
+
 define  :yummyhelp do |helptopic=nil|
-  debugprint "top of yummyhelp"
+  ##debugprint "top of yummyhelp"
  
     helplist = {}
     helplist[nil] = %q(
@@ -3412,10 +4432,11 @@ define  :yummyhelp do |helptopic=nil|
   arrayhashtohasharray  |arrayhash, makering=true|
   boolish  |testvalue, falsies=[nil, false, 0, 0.0, "", "0", [], [].ring, {}], **kwargs|
   cleanchordorscale  |myitem|
-  convertdrumnotation  |drumnotation, barlength = 4.0, baseamp=1.0, maxamp=2.0, restchar="-", brackets="[]", **kwargs|
+  clonekeys |thishash, keystoclone, falseflag=true, **kwargs|
+  closestnote |thisnote, thisscale, **kwargs|  convertdrumnotation  |drumnotation, barlength = 4.0, baseamp=1.0, maxamp=2.0, restchar="-", brackets="[]", **kwargs|
   cooktime  |timestring, humanizeamt=0.0|
   cooktimes  |timestring, delimiter=",", humanizeamt=0.0, **kwargs|
-  debugprint  |label, value=nil, expandlist=false, indents=0, indenttext="  ", logtofile=true, filename="c:/users/harry/desktop/scripting/sonicpi/debuglog.txt", **kwargs|
+  ##debugprint  |label, value=nil, expandlist=false, indents=0, indenttext="  ", logtofile=true, filename="c:/users/harry/desktop/scripting/sonicpi/debuglog.txt", **kwargs|
   degreestoabsolutenotes  |thisarrangement, thiskey=:c4, thisscale=:major, **kwargs|
   divisibleby  |numerator, denominator|
   env  |handle, param, attack=0.25, decay=0, sustain=1, release=0.25, startlevel=0, peaklevel=1, sustainlevel=0.5, **kwargs|
@@ -3423,25 +4444,37 @@ define  :yummyhelp do |helptopic=nil|
   euclidiate  |beats,duration,rotations=0,beatvalue=sixteenth, notes=nil, **kwargs|
   funkyrandom  |totaltime=16, shortestbeat=0.25, restodds=8, **kwargs|
   funkify  |thissound, totaltime=16, shortestbeat=sixteenth, thesenotes=[:c4], densities=[1], tickorchoose="tick", **kwargs|
-  humanize do |thesebeats, humanizeamt=0.5, **kwargs|
+  genchord |lastroot=:c4, lastchord=:major, lastscale=:ionian, lastshift=:diatonic, **kwargs|
+  harmonic |thisnote, thisharmonic|
+  humanize |thesebeats, humanizeamt=0.5, **kwargs|
+  inttoroman |num|
+  killslidingbpm |killswitch=:killslidingbpm, **kwargs|
   listorring  |thisitem|
   lfo  |handle, param, duration, period=[0.5], span=(ring 0, 1), lfotype="triangle",  delay=0, rampupperiods=0, rampdowntime=0, lfocurve=0, **kwargs|
+  notetodegree |thisnote, rootnote=:c4, thisscale=:major, **kwargs|
   overridekwargs  |kwargs, params, ignorenewargs=true, arglistname="kwargs"|
   paddedrowstocolumns |*thesearrays|
   playdegreematrix  |thiskey, thisscale, degreematrix, **kwargs |
   playline |synthorsample, notation, threaded=true, **kwargs|
-  rowstocolumns  |*thesearrays|
+  portamentomelody |thisarrangement, thissynth = :sine, note_slide = 0.0625, **kwargs|
+  randomseed |modulo = 65536, **kwargs|
   ringorlist  |thisitem|
+  romantoint |thisroman|
+  rowstocolumns  |*thesearrays|
   samplebpm  |thissample, beats=4|
   setarg |arg, val, args, **kwargs|
+  slidebpm |targetbpm, slidetime=16, steptime=0.0625, startbpm=nil, cuename=:bpmsync, setname=:slidingbpm, killswitch=:killslidingbpm, **kwargs|
+  slidemelody |thisarrangement, thissynth = :sine, note_slide = 0.0625, **kwargs|
   spreadtobeats  |thisspread, beatvalue=sixteenth, notes=nil, **kwargs|
+  stringtonestedarray |thisstring, delims=", ", **kwargs|
   stripparams  |kwargs, params|
   striptrailingnils  |thisarray, **kwargs|
   strum  |thesenotes, totaltime=1, strumspeed=0.05, **kwargs|
   stuttersample  |thissample, stutters=[1], beatspersample=1.0, reverses=[false], **kwargs|
   swing  |straightbeats, swingseed=6.0, humanizeamt=0.0, **kwargs|
+  synctoslidingbpm |cuename=:bpmsync, setname=:slidingbpm, **kwargs|
   tickable  |thisitem|
-  tickargs do |args, **kwargs|
+  tickargs |args, **kwargs|
   trancegate  |handle, duration, period=[0.5], gutter=[0.1], delay=0, maxvol= [1], minvol=[0], lfotype="square",  curve=0, **kwargs|
   transposesample  |thissample, pitch_stretch=16, rpitch=0, time_dis=0.01, window_size=0.1, pitch_dis=0.01, **kwargs|
   tuples |howmanytuples, beatsize|
@@ -3517,6 +4550,8 @@ tickorchoose: defaults to a 2-value array ["tick", "choose"]. Top level behavior
   By default, ticks through a list, supporting (e.g.) linear drum patterns, but 2nd level nestings are chosen randomly (round robins).
 humanizeamt: either a float, or a hash of floats per instrument. 
 Sets the amount (in beats) to provide range for humanizing times. Defaults to 0.0. A good value is 0.5.   
+currentroot: the root note used to cook degree symbols into absolute pitches. 
+currentscale: the scale used to cook detree symbols into absolute pitches. 
   While, in theory, there's no limit to how many instruments you can arrange,
   in practice you'll get lags and dropouts with too many. 
   Try using with_sched_ahead_time or use_sched_ahead_time if you experience this.
@@ -3571,7 +4606,7 @@ notedensities = {tabla => [1, 2, 1, 2, 1] }
 densitystretchmode = {tabla => "pitch"}
 use_sample_bpm amen, num_beats: 16
 with_sched_ahead_time 1.5 do
-  arrange verse, 2, defaults , effects , envelopes , lfos, trancegates, phrasedensities: phrasedensities, notedensities: notedensities, humanizeamt: humanizeamt
+  arrange verse, 2, defaults , effects , envelopes , lfos, trancegates, phrasedensities: phrasedensities, notedensities: notedensities, humanizeamt: humanizeamt, currentroot: :c4, currentscale: :minor, synthlayers: [[:bass_foundation, :pluck]]
 end
 )
     helplist["arrayhashtohasharray"] = %q(
@@ -3596,6 +4631,37 @@ end
   cleanchordorscale
   turns a chord or scale into a plain array.  
   myitem: item to clean.  
+  )
+    helplist["clonekeys"] = %q(
+clonekeys  
+duplicate key/val pairs in a hash to match a master key.   
+args:  
+thishash: the hash to add cloned key/val pairs to.  
+keystoclone: an array of keys. The first key that has a non-nil, non-false value paired to it   
+will be treated as the master key.  
+Can also be an array of arrays. If so, each array will be processed separately. 
+falseflag: boolean flag (defaulting to true), indicating whether to purge keys whose paired value is false. 
+This supports not cloning certain values by pre-loading the hash with key/false pairs. Such keys will not be cloned.
+In turn, this supports layering synth voices in arrange. 
+Example code:  
+clonekeys {1 => false, 2=> :foo 5=> :bar}, [1, 2, 3, 4]
+returns: {2=> :foo, 3 => :foo, 4=> :foo, 5 => :bar}
+clonekeys {1 => false, 2=> :foo}, [1, 2, 3, 4], false
+returns: {1=> false, 2=> :foo, 3 => :foo, 4=> :foo, 5=> :bar}
+clonekeys {1 => false, 2=> :foo, 5=> :bar}, [[1, 2, 3, 4], [5, 6, 7]]
+returns: {2 => :foo, 3=> :foo, 4 => :foo, 5=> :bar, 6=> :bar, 7=> :bar}
+)
+    helplist["closestnote"] = %q(
+closestnote
+finds the note closest to the given note in the given scale.  
+args:
+thisnote: the note to start with.  
+thisscale: the scale to search.  
+Example code: 
+use_random_seed Time.now.to_i
+thisnote = rand_i(89) #full piano range
+##debugprint "thisnote: ", thisnote
+##debugprint "closestnote: ",  closestnote(thisnote, thisscale)
   )
     helplist["convertdrumnotation"] = %q(
 convertdrumnotation
@@ -3652,7 +4718,7 @@ e.g.:
 cooktimes "e,q,e" returns [0.5, 1, 0.5]
   )
     helplist["debugprint"] = %q(
-debugprint
+##debugprint
   a utility function to optionally print out debugging messages,
   controlled by the debugmode variable. If not set, defaults to false and prints nothing.
   label: a text string to explain what the value means.
@@ -3667,7 +4733,7 @@ debugprint
 takes an arrangement using degrees instead of absolute notes, and converts them to degrees.  
 Used to feed into arrange.  
 args:
-thisarrangement:arrangement fed into arrange -- see docs for arrange for details
+thisarrangement: arrangement fed into arrange -- see docs for arrange for details
 thiskey: the musical key. Defaults to :c4. 
 thisscale: the musical scale: defalts to major.
   )
@@ -3737,12 +4803,191 @@ thesenotes: a list or ring of notes, used with synths only. Defaults to [:c4].
 densities: a list or ring of densities, applied per note/sleep.
 tickorchoose: tick or choose. Used to define how to traverse densities and thesenotes .
   )
+    helplist["genchord"] = %q(
+genchord  
+generates chords and scales generatively, utilizing neo-reimannian theory.  
+args:  
+lastroot: the root note last used for chords & scales; defaults to :c4
+lastchord: the chord name last used; defaults to :major 
+lastscale: the scale name last used; defaults to :ionian
+lastshift: the shift last used; defaults to :diatonic. Valid values:  
+:diatonic -- stays within the scale mode we started in.  
+:blue -- shifts to the parallel minor (e.g., from :c4 :major to :ds4 :major, :c4 :minor, etc)
+in other words, :blue shifts add 3 flats to the scale.
+:yellow -- shifts to the parallel major of the relative minor (e.g., from :c4 :major to :a3 :major, :cs4 :minor, etc)
+in other words, :yellow shifts add 3 sharps to the scale. 
+return value: an array with 4 values:  
+[thisroot, thischord, thisscale, thisshift]
+On iterative calls, keep passing these values back in to generate the chords and scales.  
+sample code: 
+bar = 16.0
+whole = 4.0
+half =2.0
+quarter =1.0
+eighth =0.5
+sixteenth =0.25
+dotted =1.5
+triplet =2.0 / 3
+halftone = 1
+second = 2
+wholetone = 2
+min3 = 3
+maj3 = 4
+fourth = 5
+tritone = 6
+fifth = 7
+min6 = 8
+maj6 = 9
+min7 = 10
+maj7 = 11
+octave = 12
+set :thisroot, :c4
+set :firstroot, :c4
+set :thischord, :major
+set :thisscale, :ionian
+set :thisshift, :diatonic
+set :thispent, (get[:thischord].to_s + "_pentatonic").to_sym
+live_loop :manage, delay: 0.01 do
+  sleep bar * 3.99
+  ##debugprint "resetting chord and scale values"
+  thisroot, thischord, thisscale, thisshift = genchord get[:thisroot], get[:thischord], get[:thisscale], get[:thisshift]
+  thisroot -= octave if thisroot > get[:firstroot] + fifth #to keep from drifting ever upward
+  set :thisroot, thisroot
+  set :thischord, thischord
+  set :thisscale, thisscale
+  set :thisshift, thisshift
+  set :thispent, (thischord.to_s + "_pentatonic").to_sym
+  sleep bar * 0.01
+end
+with_synth :fm do
+  live_loop :sheen, sync: :manage do
+    leadroot = get[:thisroot] + octave + octave
+    ##| ##debugprint "leadroot: ", leadroot
+    [:i, :iii, :v, :vii].shuffle.each do |thisdegree|
+      thisnote = degree thisdegree, leadroot, get[:thisscale]
+      mydivisor = (midi_to_hz get[:thisroot]) / (midi_to_hz thisnote)
+      play thisnote, amp: 0.3, duration: half, divisor: mydivisor, attack: sixteenth, decay: sixteenth, depth: 2
+      sleep half
+    end
+  end
+end
+with_synth :bass_foundation do
+  live_loop :bass, sync: :manage do
+    bassroot = get[:thisroot] + (octave * -2)
+    ##| ##debugprint "bassroot: ", bassroot
+    [:i, :iii, :v, :vi].each do |thisdegree|
+      play (degree thisdegree, bassroot, get[:thisscale]), duration: whole * 2, attack: sixteenth
+      sleep whole * 2
+    end
+  end
+end
+with_fx :echo, phase: eighth * dotted, decay: whole do
+  with_fx :panslicer, phase: sixteenth do
+    with_synth :pluck do
+      live_loop :pluck, sync: :manage do
+        pluckroot = get[:thisroot] + octave
+        ##| ##debugprint "pluckroot: ", pluckroot
+        ##| ##debugprint "thispent: ", get[:thispent]
+        play (scale pluckroot, get[:thispent]).choose, amp: 1.5
+        sleep quarter
+      end
+    end
+  end
+end
+with_synth :zawa do
+  live_loop :piano, sync: :manage do
+    pianoroot = get[:thisroot]
+    with_fx :nlpf, cutoff: :e2 do
+      with_fx :nlpf, cutoff: pianoroot + octave + fifth do
+        ##| ##debugprint "pianoroot: ", pianoroot
+        [:viii, :vii, :vi, :v, :vi, :v, :iv, :iii, :vii, :vi, :v, :iv, :v, :iv, :iii, :ii, :ix, :viii, :vii, :vi, :vii, :vi, :v, :iv, :viii, :vii, :vi, :v, :vi, :v, :iv, :iii].each do |thisdegree|
+          play (degree thisdegree, pianoroot, get[:thisscale]),  amp: 4
+          sleep quarter
+        end
+      end
+    end
+  end
+end
+with_fx :flanger, phase: 2 do
+  with_fx :echo, phase: half * dotted, decay: bar * 2 do
+    with_synth :winwood_lead do
+      live_loop :chord do
+        chordroot = get[:thisroot]
+        [:i, :iii, :v, :vi].each do |thisdegree|
+          1.times do
+            play_chord (chord_degree thisdegree, chordroot, get[:thisscale], 4), duration: half , amp: 0.4
+            sleep whole * 2
+          end
+        end
+      end
+    end
+  end
+end
+live_loop :whoosh, sync: :manage, delay: sixteenth do
+  sample :ambi_dark_woosh, amp: 1
+  sleep [half * dotted, half * dotted, half].tick
+end
+live_loop :cymbal, sync: :manage do
+  sample :drum_splash_hard, rate: -1, beat_stretch: half, amp: 0.5
+  sleep [whole * dotted, whole * dotted, whole].tick
+end
+live_loop :kick, sync: :manage do
+  [sixteenth, quarter, quarter, quarter, eighth, sixteenth, eighth * dotted, eighth * dotted, eighth * dotted, eighth * dotted, eighth, eighth].each do |thismuch|
+    sample :bd_808, amp: 6
+    sleep thismuch
+  end
+end
+)
+    helplist["harmonic"] = %q(
+harmonic
+calculate the midi note corresponding to the harmonic provided. 
+args:
+thisnote: the midi note with the fundamental
+thisharmonic: the harmonic to calculate. Can be fractional!
+returns: midi note corresponding to the harmonic. 
+example:
+harmonics = [7, 9, 11, 13, 15, 17, 19, 21]
+rootnotes = [:c3, :c2, :c1, :c0].reverse
+4.times do
+  with_fx :flanger, phase: 4, wave: 0, mix: 0.25 do
+    with_fx :krush, mix: 0.25 do
+      with_synth_defaults amp: 0.5, attack: 0.125, duration: 0.25, release: 0.125 do
+        with_synth  :beep do
+          rootnotes.each do |rootnote|
+            harmonics.each do |harm|
+              #play rootnote
+              play :c4
+              play :g4
+              play :c5
+              play (harmonic rootnote, harm)
+              sleep 0.125
+            end
+          end
+        end
+      end
+    end
+  end
+end
+)
     helplist["humanize"] = %q(
 humanize: add some looseness to a beat. 
 A wrapper for swing with a swingseed of 8. 
 thesebeats: an array of time values defining the beat. 
 humanizeamt: the amount of looseness. Defaults to 0.5.  
   )
+    helplist["inttoroman"] = %q(
+inttoroman   
+converts an integer to a roman number string.  
+args:  
+num: the number to convert   
+)
+    helplist["killslidingbpm"] = %q(
+killslidingbpm 
+kills the thread managing the sliding bpm. 
+Warning: if it's not called in the thread, it will execute a naked stop, which will kill your playback.  
+args: 
+killswitch: the name of the flag variable used with set/get to pass the kill message. Defaults to :killslidingbpm.  
+)
     helplist["listorring"] = %q(
 listorring: wrapper for ringorlist
 )
@@ -3791,6 +5036,15 @@ lfo handle, "amp", 10, "q,q,e,e,e,e", "0,1,0,0.5,0,0.5", "square"
 handle = sample :ambi_drone, pitch_stretch: 4
 lfo handle, "amp", 4, "e,e,s,s,s,s", "0,1,0,0.5,0,0.5", "square"
   )
+    helplist["notetodegree"] = %q(
+notetodegre  
+converts a midi note to the scale degree in the given scale.  
+args:
+thisnote: the note to convert to a degree.  
+rootnote: the root of the scale; defaults to :c4
+thisscale: the name of the scale; defaults to :major  
+returns: a scale degree, as symbol (e.g. :ii, :av, :dix), or nil if not found.  
+)
     helplist["overridekwargs"] = %q(
 overridekwargs
 a useful method to help emulate the native ruby ability to specify params by either position or name. 
@@ -3843,19 +5097,38 @@ snarelines = ["-x", "-x-x", "[[-x][-x]][xxx]"]
   sleep 4
 end
 )
-    helplist["rowstocolumns"] = %q(
-rowstocolumns
-takes an array of arrays, and transforms rows to columns. Can take any number of arrays.  
-*thesearrays: the arrays to flip
-if arrays are of unequal length, values will be filled with nils
-if you want to pad the shorter arrays, use paddedrowstocolumns instead
-  )
+    helplist["portamentomelody"] = %q(
+portamentomelody  
+play a melody on a synth portamento, by manipulating the pitch over time.  
+args: 
+thisarrangement: the melody in mini-notation (see arrange for details); e.g.: "qd :c5, qd :ds5, q :g5"
+thissynth: the name of the synth to play the note; defaults to :sine.  
+note_slide: the portamento time; if set to longer than the shortest note, will be length of shortest note.  
+)
+    helplist["randomseed"] = %q(
+generate a random random seed seed.  Say that three times fast!  
+args:
+modulo: the number to use in modulo math; defaults to 65536 (64k). 
+)
     helplist["ringorlist"] = %q(
 ringorlist -- simple utility function to test whether an item is a ring or a list.
 arg: thisitem
 true if either, false if anything else.
 Added a couple of synonyms, listorring and tickable. 
   )
+    helplist["romantoint"] = %q(
+turns a roman numeral into an integer.  
+args: 
+thisroman: the roman numeral to change to int; a string. 
+returns: an int. If the roman numeral is garbage, returns 0.  
+)
+    helplist["rowstocolumns"] = %q(
+rowstocolumns
+takes an array of arrays, and transforms rows to columns. Can take any number of arrays.  
+*thesearrays: the arrays to flip
+if arrays are of unequal length, values will be filled with nils
+if you want to pad the shorter arrays, use paddedrowstocolumns instead
+)
     helplist["samplebpm"] = %q(
 samplebpm -- utility to return the bpm of any sample loop.
 thissample: the sample to extract the bpm from.
@@ -3863,8 +5136,7 @@ beats: the number of beats used to calculate bpm. Defaults to 4
 example:
 puts samplebpm :loop_amen
 puts samplebpm :loop_amen_full, 16
-  )
-
+)
     helplist["setarg"] = %q(
 setarg 
 sets an arg to a val in args.  
@@ -3876,7 +5148,21 @@ which results in "thisarg: 'thisstring'"
 args: the string or hash containing all the args. 
 returns args as a hash.
   )
-
+    helplist["slidebpm"] = %q(
+changes bpm gradually or stepwise over time, e.g., accelerando or ritardo. 
+args:
+targetpbm: the bpm(s) you want to end up at. Can be an array, and it will do them sequentially.  
+slidetime: how long it takes to get to each targetbpm, in beats.  
+steptime: how long each step is. Small numbers makes the transition smoother, 
+larger numbers give you the "little nash rambler" effect.  
+startbpm: the starting bpm. If not supplied, defaults to whatever the current bpm is. 
+cuename: the name of the cue for other threads to sync to; defaults to :bpmsync
+setname: flag for other threads to snif to see if we're sliding; defaults to :slidingbpm
+killswitch: flag to see if we need to kill the thread; defaults to :killslidingbpm 
+)
+    helplist["slidemelody"] = %q(
+wrapper for portamentomelody
+)
     helplist["spreadtobeats"] = %q(
 spreadtobeats -- a utility function designed to take a spread, 
 and convert it to a string of comma-delimited beat values to feed into arrange.
@@ -3887,6 +5173,17 @@ Must be same length as the number of true values in spread.
 Example:
 spreadtobeats spread(3, 8, 2), 0.5 
   )
+    helplist["stringtonestedarray"] = %q(
+stringtonestedarray  
+takes a string with nested delimiters, and transforms it into a nested array.  
+Useful for parsing mini-notation,
+args:  
+thisstring: the string to transform.  
+delims: the delimiters, either in a string or array; defaults to ", ". If in a string, each char is a separate delimiter.  
+example code:  
+stringtonestedarray "qd :c4, qd :ds4, :q :g4"
+returns: [["qd", ":c4"], ["qd", ":ds4"], ["qd", ":g4"]]
+)
     helplist["stripparams"] = %q(
 stripparams
 a utility function to delete params from kwargs.
@@ -3940,6 +5237,12 @@ Try odd numbers, fractions, for weird lurching swings.
 humanizeamt: how much humanizing to add in. Defaults to 0. 
 0.5 is a good value to add a little humanizing you feel but don't hear. 
   )
+    helplist["synctoslidingbpm"] = %q(
+synctoslidingbpm: syncs current thread to sliding bpm managed by slidebpm. 
+args:
+cuename: the syncing cue managed by slidebpm, defaults to :bpmsync
+setname: the set flag managed by slidebpm, defaults to :slidingbpm. Only syncs when not nil/false. 
+)
     helplist["tickable"] = %q(
 tickable: wrapper for ringorlist
 )
@@ -3976,18 +5279,14 @@ transposesample
 transposes a sample up or down by specified rpitch, while pitch_stretching to keep tempo.
 args:
 thissample: the sample to transpose. 
-pitch_stretch: Number of beats to stretch the sample to, defaults to 16. 
-rpitch: relative pitch to transpose to, defaults to 0. 
-time_dis: defaults to 0.01. See docs for sample. 
-window_size: defaults to 0.1. See docs for sample.  
-pitch_dis: defaults to 0.01. See docs for sample.
+autostretch: whether to apply any pitch_stretch to the sample. Defaults to true. 
+It is your responsibility to provide options for pitch_stretch, time_dis, etc. 
 You may need to fiddle with time_dis, window_size and pitch_dis to tweak the sound.
 example:
-mysample = "D:\\Loops\\Afroplug - Soul and Jazz Guitar Loops\\looperman-l-6258600-0353860-spilled-coffee.wav"
-[90, 120, 150].each do |thisbpm|
-  [0, -5, 3, 7].each do |thispitch|
+mysample = :bass_hit_c
+  [0, 3, 7, -2].each do |thispitch|
     use_bpm thisbpm
-    transposesample mysample, 16, thispitch
+    handle = transposesample mysample, thispitch, autostretch=false
     sleep 16
   end
   sleep 2
@@ -4010,7 +5309,7 @@ Use the method name for detailed help.
     helplist["yh"] = %q(
 yh: wrapper for yummyhelp
 )
-  debugprint helplist[helptopic] #return value
+  ##debugprint helplist[helptopic] #return value
 end #define yummyhelp
 
 
@@ -4020,7 +5319,7 @@ end #define yummyhelp
 
 
 define  :yh do |helptopic, **kwargs|
-  eval overridekwargs(kwargs, method(__method__).parameters)
+  eval overridekwargs(kwargs, method(__method__).parameters) if boolish kwargs
   yummyhelp helptopic, **kwargs
    #return value
 end #define yh
