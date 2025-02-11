@@ -99,7 +99,7 @@ define :debugprint do |label, value="tricksy hobbit!", expandlist=false, indents
         end #if array or ring
         # puts "after conditional print"
         label.each do |nestedlabel|
-          ##debugprint nestedlabel, value, expandlist, indents + 1, indenttext, logtofile, filename
+          ##debugprint nestedlabel, fakenil, expandlist, indents + 1, indenttext, logtofile, filename
         end #each label item
       elsif value.is_a? Hash  
         # puts  "value is a hash" + "\n"
@@ -345,6 +345,156 @@ define :slidemelody do |thisarrangement, thissynth = :sine, note_slide = 0.0625,
 end  
 
 
+
+
+
+
+# vibrato
+# quickly oscillate pitch up & down
+# args: 
+# handle: node controlling the samples/synths; could be a chord node
+# range: how much to move the volume up & down; defaults to 0.5
+# rate: the rate of tremolo, in beats; defaults to sixteenth. 
+# duration: how long the tremolo lasts; defaults to whole. 
+
+define  :vibrato do |handle, pitch=0.25, rate=sixteenth, depth=0.25, duration=whole,  **kwargs|
+  eval overridekwargs(kwargs, method(__method__).parameters)
+  cleanargs = stripparams kwargs, method(__method__).parameters
+  ##debugprint "top of vibrato"
+  ##debugprint "handle: ", handle
+  ##debugprint "pitch: ", pitch
+  ##debugprint "rate: ", rate
+  ##debugprint "depth: ", depth
+  ##debugprint "duration: ", duration
+  halfrate = rate / 2.0  
+  elapsedtime = 0
+  ##debugprint "about to thread"
+  direction = 1  
+  in_thread do 
+    while elapsedtime < duration do  
+      vtargs = ""
+
+      ##debugprint "elapsedtime: ", elapsedtime
+      if handle.is_a? SonicPi::ChordGroup  
+        ##debugprint "got a chord group"
+        pitch = pitch.to_a
+        ##debugprint "pitch: ", pitch
+        handle.sub_nodes.each do |subhandle|
+          ##debugprint "subhandle: ", subhandle
+          newpitch = pitch.tick.to_i + (depth * direction) 
+          ##debugprint "newpitch: ", newpitch
+          control subhandle, note: newpitch, note_slide: halfrate 
+        end #each subhandle
+      else 
+        ##debugprint "got a single note"
+        newpitch = pitch.to_i + (depth * direction)
+        ##debugprint "newpitch: ", newpitch
+        control handle , note: newpitch , note_slide: halfrate
+
+      end #if chordgroup or single note
+
+      sleep halfrate
+      direction *= -1
+      elapsedtime += halfrate 
+    end #while elapsedtime < duration  
+    ##debugprint "bottom of time loop"
+
+    ##debugprint "elapsedtime: ", elapsedtime
+    if handle.is_a? SonicPi::ChordGroup
+      ##debugprint "got a chord group"
+      pitch = pitch.to_a
+      ##debugprint "pitch: ", pitch
+      handle.sub_nodes.each do |subhandle|
+        ##debugprint "subhandle: ", subhandle
+        newpitch = pitch.tick.to_i 
+        ##debugprint "newpitch: ", newpitch
+        control subhandle, note: newpitch, note_slide: halfrate 
+      end #each subhandle
+    else 
+      ##debugprint "got a single note"
+      control handle, note: pitch, note_slide: halfrate
+      ##debugprint "after control"
+
+    end #if chordgroup or single note
+
+    ##debugprint "after resetting tone and amp"
+
+    stop 
+  end #in_thread 
+
+ handle #return value
+end #define tremolo
+
+
+
+
+# tremolo
+# quickly oscillate volume up & down
+# args: 
+# handle: node controlling the samples/synths; could be a chord node
+# amp: the base volume of the sound; defaults to 1. 
+# depth: how much to move the volume up & down; defaults to 0.5
+# rate: the rate of tremolo, in beats; defaults to sixteenth. 
+# duration: how long the tremolo lasts; defaults to whole. 
+
+define  :tremolo do |handle, amp=1, depth=1, rate=sixteenth, duration=whole, **kwargs|
+  eval overridekwargs(kwargs, method(__method__).parameters)
+  cleanargs = stripparams kwargs, method(__method__).parameters
+  ##debugprint "top of tremolo"
+  ##debugprint "handle: ", handle
+  ##debugprint "amp: ", amp
+  ##debugprint "depth: ", depth
+  ##debugprint "rate: ", rate
+  ##debugprint "duration: ", duration
+  halfrate = rate / 2.0  
+  elapsedtime = 0
+
+  ##debugprint "about to thread"
+  direction = 1  
+  in_thread do 
+    while elapsedtime < duration  do  
+
+      ##debugprint "elapsedtime: ", elapsedtime
+      if handle.is_a? SonicPi::ChordGroup  
+        ##debugprint "got a chord group"
+        pitch = pitch.to_a
+        ##debugprint "pitch: ", pitch
+        handle.sub_nodes.each do |subhandle|
+          ##debugprint "subhandle: ", subhandle
+          control subhandle, amp: (amp + (depth * direction)), amp_slide:  halfrate
+        end #each subhandle
+      else 
+        ##debugprint "got a single note"
+        control handle, amp: (amp + (depth * direction)), amp_slide:  halfrate
+      end #if chordgroup or single note
+      sleep halfrate 
+      direction *= -1
+      elapsedtime += halfrate 
+    end #while elapsedtime < duration  
+    ##debugprint "bottom of time loop"
+
+    if handle.is_a? SonicPi::ChordGroup  
+      ##debugprint "got a chord group"
+      pitch = pitch.to_a
+      ##debugprint "pitch: ", pitch
+      handle.sub_nodes.each do |subhandle|
+        ##debugprint "subhandle: ", subhandle
+z        control subhandle, amp: amp, amp_slide:  halfrate
+      end #each subhandle
+    else 
+      ##debugprint "got a single note"
+      control handle, amp: amp, amp_slide:  halfrate
+    end #if chordgroup or single note
+
+    stop 
+  end #in_thread 
+
+ handle #return value
+end #define tremolo
+
+
+
+
 ##| ringorlist -- simple utility function to test whether an item is a ring or a list.
 ##| arg: thisitem 
 ##|   true if either, false if anything else.
@@ -388,8 +538,13 @@ define :overridekwargs do |kwargs, params, ignorenewargs=true, arglistname="kwar
     # ##debugprint  "argname: " + argname[0].to_s
     # ##debugprint "params include argname? " + (params.include? argname[0]).to_s
     # ##debugprint "ignore new? " + ignorenewargs.to_s
-    if params.include? argname[0] or params.include? argname[0].to_s  or params.include? argname[0].to_sym or !ignorenewargs
-      kwargcmdlist += argname[0].to_s + " = " + arglistname.to_s + "[:" + argname[0].to_s + "]\n" 
+    cleanname = argname[0]
+    if argname[0] == nil  
+      cleanname = "garbage"
+    end #if nil argname[0]
+
+    if params.include? cleanname or params.include? cleanname.to_s  or params.include? cleanname.to_sym or !ignorenewargs
+      kwargcmdlist += cleanname.to_s + " = " + arglistname.to_s + "[:" + cleanname.to_s + "]\n" 
     else
       # ##debugprint argname[0].to_s + " is not a valid param -- did you make a typo?"
     end
@@ -4477,8 +4632,8 @@ define  :yummyhelp do |helptopic=nil|
   tickargs |args, **kwargs|
   trancegate  |handle, duration, period=[0.5], gutter=[0.1], delay=0, maxvol= [1], minvol=[0], lfotype="square",  curve=0, **kwargs|
   transposesample  |thissample, pitch_stretch=16, rpitch=0, time_dis=0.01, window_size=0.1, pitch_dis=0.01, **kwargs|
-  tuples |howmanytuples, beatsize|
-  yummyhelp  |helpitem=nil, **kwargs|
+  tremolo |handle, amp=1, depth=1, rate=sixteenth, duration=whole, **kwargs|  tuples |howmanytuples, beatsize|
+  vibrato |handle, pitch=0.25, rate=sixteenth, depth=0.25, duration=whole,  **kwargs|  yummyhelp  |helpitem=nil, **kwargs|
   yh  |helpitem=nil, **kwargs|
 )
 
@@ -5293,6 +5448,16 @@ mysample = :bass_hit_c
 end
 Code returns a handle (node) for further manipulation, e.g. lfos, envelopes, trancegates. 
 )
+  helplist["tremolo"] = %q(
+tremolo
+quickly oscillate volume up & down
+args: 
+handle: node controlling the samples/synths; could be a chord node
+amp: the base volume of the sound; defaults to 1. 
+depth: how much to move the volume up & down; defaults to 0.5
+rate: the rate of tremolo, in beats; defaults to sixteenth. 
+duration: how long the tremolo lasts; defaults to whole. 
+)
   helplist["tuples"] = %q(
 tuples  
 returns an array of times based on tupling the specified beats .
@@ -5301,6 +5466,15 @@ howmanytuples: an integer specifying how many tuples you want.
 beatsize: the size of the beats to be tupled. Defaults to quarter (1). 
 example code:  tuples(5, half) returns [1.6, 1.6, 1.6, 1.6, 1.6]
   )
+  helplist["vibrato"] = %q(
+vibrato
+quickly oscillate pitch up & down
+args: 
+handle: node controlling the samples/synths; could be a chord node
+range: how much to move the volume up & down; defaults to 0.5
+rate: the rate of tremolo, in beats; defaults to sixteenth. 
+duration: how long the tremolo lasts; defaults to whole. 
+)
   helplist["yummyhelp"] = %q(
 yummyhelp: provide quick docs for yummyfillings.
 Without args, it lists every method with args.

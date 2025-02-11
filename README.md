@@ -11,11 +11,60 @@ There are also utilities and testing methods to make programming simpler and mor
 
 ## Version history: 
 
-1.0.1, fixed 2 bugs in convertdrumnotation
+### 1.1.1: 
 
-1.0.2, fixed bug in samplebpm
+#### added methods: 
 
-1.0.3, added adsr & levels args to env
+vibrato
+tremolo
+
+#### fixed bugs:
+
+bug in debugprint handling nil values (again!)
+
+
+### 1.1.0:
+
+#### added methods:
+
+clonekeys  
+closestnote  
+degreestoabsolutenotes  
+genchord  
+harmonic  
+inttoroman  
+killslidingbpm  
+notetodegree  
+portamentomelody  
+randomseed  
+romantoint  
+slidebpm  
+slidemelody  
+stringtonestedarray  
+synctoslidingbpm  
+
+#### bug fixes:
+
+fixed bug in debugprint when expanding hashes  
+fixed bug in debugprint when printing nils (this was harder than I thought it would be)  
+fixed bug in transposesample  
+fixed bug in arrange for pitch shifted samples inside phrasedensities  
+
+#### enhancements:
+
+added support for melodies in scale degrees to arrange    
+added support for synth layering in arrange  
+added support for different (or no) stretch methods in transposesample  
+
+### 1.0.3, added adsr & levels args to env
+
+### 1.0.2, fixed bug in samplebpm
+
+### 1.0.1, fixed 2 bugs in convertdrumnotation
+
+
+
+### 1.0.0 original release
 
 
 ## Methods grouped by purpose
@@ -35,7 +84,9 @@ There are also utilities and testing methods to make programming simpler and mor
 | strum            | strums the chord passed in. Convenience wrapper for arpeggiate.                  |   
 | stuttersample    | plays a sample, chopping it up and stuttering/reversing sections.                |
 | synctoslidingbpm | syncs current thread to the thread managing sliding bpm; see slidebpm            |   
-| transposesample  | transposes a sample, hiding the nasty math involved in pitch_stretch and rpitch. |    
+| transposesample  | transposes a sample, hiding the nasty math involved in pitch_stretch and rpitch  |    
+| tremolo          | rapidly oscillate volume                                                         |
+  vibrato          | rapidly oscillate pitch                                                          |
 
 ### Sound manipulation
 
@@ -166,6 +217,10 @@ There are also utilities and testing methods to make programming simpler and mor
  | tickargs do  | args, \*\*kwargs | 
  | trancegate   | handle, duration, period=[0.5], gutter=[0.1], delay=0, maxvol= [1], minvol=[0], lfotype="square",  curve=0, \*\*kwargs | 
  | transposesample   | thissample, rpitch=0, autostretch=true, \*\*kwargs | 
+ |  tremolo | handle, amp=1, depth=1, rate=sixteenth, duration=whole, **kwargs |  
+ | tuples |howmanytuples, beatsize |
+ |  vibrato | handle, pitch=0.25, rate=sixteenth, depth=0.25, duration=whole,  **kwargs|  
+ | yummyhelp  |helpitem=nil, **kwargs|
  | tuples  | howmanytuples, beatsize | 
  | yummyhelp   | helpitem=nil, \*\*kwargs | 
  | yh   | helpitem=nil, \*\*kwargs | 
@@ -1061,6 +1116,17 @@ end
 ```
 Code returns a handle (node) for further manipulation, e.g. lfos, envelopes, trancegates.   
 
+#### tremolo
+
+quickly oscillate volume up & down  
+args:   
+handle: node controlling the samples/synths; could be a chord node  
+amp: the base volume of the sound; defaults to 1.   
+depth: how much to move the volume up & down; defaults to 0.5  
+rate: the rate of tremolo, in beats; defaults to sixteenth.   
+duration: how long the tremolo lasts; defaults to whole.   
+
+
 #### tuples
 
   returns an array of times (floats) based on tupling the specified beats.  
@@ -1071,6 +1137,14 @@ Code returns a handle (node) for further manipulation, e.g. lfos, envelopes, tra
 ```
   tuples(5, 2) returns [1.6, 1.6, 1.6, 1.6, 1.6]
 ```
+#### vibrato
+
+quickly oscillate pitch up & down  
+args:   
+handle: node controlling the samples/synths; could be a chord node  
+range: how much to move the volume up & down; defaults to 0.5  
+rate: the rate of tremolo, in beats; defaults to sixteenth.   
+duration: how long the tremolo lasts; defaults to whole.   
 
 #### yummyhelp
 
