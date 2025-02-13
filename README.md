@@ -11,6 +11,12 @@ There are also utilities and testing methods to make programming simpler and mor
 
 ## Version history: 
 
+### 1.1.1.2
+
+#### fixed bugs:
+
+fixed bug in vibrato with chords
+
 ### 1.1.1.1: 
 
 #### enhanced: 

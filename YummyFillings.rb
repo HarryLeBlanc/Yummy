@@ -369,7 +369,7 @@ define  :vibrato do |handle, rate=sixteenth, depth=0.25, duration=whole,  **kwar
   elapsedtime = 0
   ##debugprint "about to thread"
   direction = 1  
-  pitch = handle.args["note"]
+  pitch = handle.args["note"] unless handle.is_a? SonicPi::ChordGroup
   ##debugprint "pitch: ", pitch
   in_thread do 
     while elapsedtime < duration do  
@@ -382,7 +382,8 @@ define  :vibrato do |handle, rate=sixteenth, depth=0.25, duration=whole,  **kwar
         ##debugprint "pitch: ", pitch
         handle.sub_nodes.each do |subhandle|
           ##debugprint "subhandle: ", subhandle
-          newpitch = pitch.tick.to_i + (depth * direction) 
+          ##debugprint "subhandle methods: ", subhandle.class.instance_methods
+          newpitch = subhandle.args["note"] + (depth * direction) 
           ##debugprint "newpitch: ", newpitch
           control subhandle, note: newpitch, note_slide: halfrate 
         end #each subhandle
@@ -407,7 +408,7 @@ define  :vibrato do |handle, rate=sixteenth, depth=0.25, duration=whole,  **kwar
       ##debugprint "pitch: ", pitch
       handle.sub_nodes.each do |subhandle|
         ##debugprint "subhandle: ", subhandle
-        newpitch = pitch.tick.to_i 
+        newpitch = subhandle.args["note"] 
         ##debugprint "newpitch: ", newpitch
         control subhandle, note: newpitch, note_slide: halfrate 
       end #each subhandle
