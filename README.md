@@ -11,6 +11,12 @@ There are also utilities and testing methods to make programming simpler and mor
 
 ## Version history: 
 
+### 1.1.1.1: 
+
+#### enhanced: 
+
+vibrato -- eliminated need to pass in pitch, now detects it from the node
+
 ### 1.1.1: 
 
 #### added methods: 
@@ -219,7 +225,7 @@ added support for different (or no) stretch methods in transposesample
  | transposesample   | thissample, rpitch=0, autostretch=true, \*\*kwargs | 
  |  tremolo | handle, amp=1, depth=1, rate=sixteenth, duration=whole, **kwargs |  
  | tuples |howmanytuples, beatsize |
- |  vibrato | handle, pitch=0.25, rate=sixteenth, depth=0.25, duration=whole,  **kwargs|  
+ |  vibrato | handle, rate=sixteenth, depth=0.25, duration=whole,  **kwargs|  
  | yummyhelp  |helpitem=nil, **kwargs|
  | tuples  | howmanytuples, beatsize | 
  | yummyhelp   | helpitem=nil, \*\*kwargs | 
@@ -1142,7 +1148,7 @@ duration: how long the tremolo lasts; defaults to whole.
 quickly oscillate pitch up & down  
 args:   
 handle: node controlling the samples/synths; could be a chord node  
-range: how much to move the volume up & down; defaults to 0.5  
+depth: how much to move the volume up & down; defaults to 0.5  
 rate: the rate of tremolo, in beats; defaults to sixteenth.   
 duration: how long the tremolo lasts; defaults to whole.   
 

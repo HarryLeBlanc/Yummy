@@ -357,12 +357,11 @@ end
 # rate: the rate of tremolo, in beats; defaults to sixteenth. 
 # duration: how long the tremolo lasts; defaults to whole. 
 
-define  :vibrato do |handle, pitch=0.25, rate=sixteenth, depth=0.25, duration=whole,  **kwargs|
+define  :vibrato do |handle, rate=sixteenth, depth=0.25, duration=whole,  **kwargs|
   eval overridekwargs(kwargs, method(__method__).parameters)
   cleanargs = stripparams kwargs, method(__method__).parameters
   ##debugprint "top of vibrato"
   ##debugprint "handle: ", handle
-  ##debugprint "pitch: ", pitch
   ##debugprint "rate: ", rate
   ##debugprint "depth: ", depth
   ##debugprint "duration: ", duration
@@ -370,6 +369,8 @@ define  :vibrato do |handle, pitch=0.25, rate=sixteenth, depth=0.25, duration=wh
   elapsedtime = 0
   ##debugprint "about to thread"
   direction = 1  
+  pitch = handle.args["note"]
+  ##debugprint "pitch: ", pitch
   in_thread do 
     while elapsedtime < duration do  
       vtargs = ""
@@ -5471,7 +5472,7 @@ vibrato
 quickly oscillate pitch up & down
 args: 
 handle: node controlling the samples/synths; could be a chord node
-range: how much to move the volume up & down; defaults to 0.5
+depth: how much to move the volume up & down; defaults to 0.5
 rate: the rate of tremolo, in beats; defaults to sixteenth. 
 duration: how long the tremolo lasts; defaults to whole. 
 )
