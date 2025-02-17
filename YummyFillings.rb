@@ -459,11 +459,14 @@ define  :tremolo do |handle, amp=1, depth=1, rate=sixteenth, duration=whole, **k
       ##debugprint "elapsedtime: ", elapsedtime
       if handle.is_a? SonicPi::ChordGroup  
         ##debugprint "got a chord group"
+        subamp = amp / handle.sub_nodes.count.to_f
+        subdepth = depth / handle.sub_nodes.count.to_f
+        ##debugprint "subamp: ", subamp
         pitch = pitch.to_a
         ##debugprint "pitch: ", pitch
         handle.sub_nodes.each do |subhandle|
           ##debugprint "subhandle: ", subhandle
-          control subhandle, amp: (amp + (depth * direction)), amp_slide:  halfrate
+          control subhandle, amp: (subamp + (subdepth * direction)), amp_slide:  halfrate
         end #each subhandle
       else 
         ##debugprint "got a single note"
@@ -477,11 +480,13 @@ define  :tremolo do |handle, amp=1, depth=1, rate=sixteenth, duration=whole, **k
 
     if handle.is_a? SonicPi::ChordGroup  
       ##debugprint "got a chord group"
+      subamp = amp / handle.sub_nodes.count.to_f
+      ##debugprint "subamp: ", subamp
       pitch = pitch.to_a
       ##debugprint "pitch: ", pitch
       handle.sub_nodes.each do |subhandle|
         ##debugprint "subhandle: ", subhandle
-z        control subhandle, amp: amp, amp_slide:  halfrate
+        control subhandle, amp: subamp, amp_slide:  halfrate
       end #each subhandle
     else 
       ##debugprint "got a single note"
@@ -914,7 +919,11 @@ end #define closestnote
 ##| A method to sequentially play the chord or scale or array/ring of notes passed in.
 ##|   Args:
 ##|   thesenotes: the ring/list of notes to play, maybe a chord or scale, or just a user-defined list.
-##|   thesedelays: either a single value, or an array of values, to sleep after playing each note.
+##|   thesedelays: either a single value, or an array of values, to sleep after playing each note; defaults to [quarter]. 
+##|   vibrato: either, false, true (which uses defaults for vibrato), 
+##|   a hash of args to pass to vibrato, or a string containing args for vibrato.
+##|   tremolo: either false, true (which uses defaults for tremolo) , 
+##|   a hash of args to pass to tremolo, or a string containing args for tremolo.
 ##|   synthdefaults: any additional args are assumed to be synth defaults, and will be used to change defaults per note.
 ##|   Again, if a single value on each item, will be used on all notes. If a ring/list, will be ticked through for each note.
 ##|   Example:
@@ -922,18 +931,28 @@ end #define closestnote
 
 
 
-define :arpeggiate do |thesenotes, thesedelays, **synthdefaults|
+define :arpeggiate do |thesenotes, thesedelays=[quarter], vibrato=false, tremolo=false, **kwargs|
+  eval overridekwargs(kwargs, method(__method__).parameters)  if boolish kwargs
+  cleanargs = stripparams kwargs, method(__method__).parameters
   ##debugprint "top of arpeggiate"
+  ##debugprint "thesenotes: ", thesenotes
+  ##debugprint "thesedelays: ", thesedelays
+  ##debugprint "vibrato: ", vibrato
+  ##debugprint "tremolo: ", tremolo
   ##debugprint "remapping synth defaults"
-  if synthdefaults == nil  
+  if !boolish cleanargs   
+    ##debugprint "no cleanargs"
     synthdefaultarray = [nil].ring
   else
-    synthdefaultarray = arrayhashtohasharray synthdefaults
+    ##debugprint "got cleanargs: ", cleanargs
+    synthdefaultarray = arrayhashtohasharray cleanargs
   end
   ##debugprint "testing for singleton delays"
   if !ringorlist thesedelays
     thesedelays = [thesedelays].ring
   end
+
+  handle = nil  
   
   ##debugprint "main loop"
   thesenotes.length.times do |i|
@@ -941,16 +960,45 @@ define :arpeggiate do |thesenotes, thesedelays, **synthdefaults|
     ##debugprint "thesedelays.ring[i]: ", thesedelays.ring[i]
     if synthdefaultarray[i] == nil 
      ##debugprint "playing note raw"
-      play thesenotes.ring[i]
+      handle = play thesenotes.ring[i]
     else
       ##debugprint "playing note with synth defaults"
       with_synth_defaults synthdefaultarray[i] do
         ##debugprint "playing note"
-        play thesenotes.ring[i]
+        handle = play thesenotes.ring[i]
       end #synth defaults
     end #if got synth defaults
 
-    ##debugprint "sleeping"
+    if vibrato   
+      ##debugprint "vibrato"
+      if !vibrato.is_a? Hash  
+        ##debugprint "setting vibrato empty hash"
+        vibrato = {}
+      else
+        ##debugprint "vibrato already a hash"
+      end #if vibrato not a hash
+      ##debugprint "about to call vibrato"
+      vibrato handle, **vibrato
+    else 
+      ##debugprint "no vibrato"
+    end #if vibrato
+
+     if tremolo   
+      ##debugprint "tremolo"
+      if !tremolo.is_a? Hash  
+        ##debugprint "setting tremolo empty hash"
+        tremolo = {}
+      else 
+        ##debugprint "tremolo already a hash"
+      end #if tremolo not a hash
+      ##debugprint "about to call tremolo"
+      tremolo handle, **tremolo
+    else
+      ##debugprint "no tremolo"
+    end #if tremolo
+       
+
+    ##debugprint "sleeping ", thesedelays[i]
     sleep thesedelays.ring[i]
   end #loop
 end #define
@@ -967,12 +1015,14 @@ end #define
 
 
 
-define :strum do |thesenotes, totaltime=1, strumspeed=0.05, **kwargs|
+define :strum do |thesenotes, totaltime=1, strumspeed=0.05, vibrato=false, tremolo= false, **kwargs|
   eval overridekwargs(kwargs, method(__method__).parameters)  if boolish kwargs
   ##debugprint "top of strum"
   ##debugprint "strumspeed: ", strumspeed
   thesenotes = cleanchordorscale thesenotes
   ##debugprint "clean version of thesenotes: ", thesenotes
+  ##debugprint "vibrato: ", vibrato
+  ##debugprint "tremolo: ", tremolo
   thesedelays = []
   finaldelay = totaltime
   if !ringorlist strumspeed
@@ -990,7 +1040,7 @@ define :strum do |thesenotes, totaltime=1, strumspeed=0.05, **kwargs|
   
   ##debugprint "final version of thesedelays: ", thesedelays
   
-  arpeggiate thesenotes, thesedelays, **kwargs
+  arpeggiate thesenotes, thesedelays, vibrato, tremolo, **kwargs
   sleep totaltime
 end
 
@@ -4305,6 +4355,9 @@ define  :playline do |synthorsample, notation, threaded=true, **kwargs|
   end #if threaded    
   true #return value
 end #define playline
+
+
+
 
 
 # randomseed  

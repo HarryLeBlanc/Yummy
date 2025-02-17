@@ -11,6 +11,12 @@ There are also utilities and testing methods to make programming simpler and mor
 
 ## Version history: 
 
+### 1.1.1.3
+
+#### fixed bugs:
+
+fixed bug in tremolo with chords 
+
 ### 1.1.1.2
 
 #### fixed bugs:
@@ -226,7 +232,7 @@ added support for different (or no) stretch methods in transposesample
  | swing   | straightbeats, swingseed=6.0, humanizeamt=0.0, \*\*kwargs | 
  | synctoslidingbpm | cuename=:bpmsync, setname=:slidingbpm, **kwargs |
  | tickable   | thisitem | 
- | tickargs do  | args, \*\*kwargs | 
+ | tickargs  | args, \*\*kwargs | 
  | trancegate   | handle, duration, period=[0.5], gutter=[0.1], delay=0, maxvol= [1], minvol=[0], lfotype="square",  curve=0, \*\*kwargs | 
  | transposesample   | thissample, rpitch=0, autostretch=true, \*\*kwargs | 
  |  tremolo | handle, amp=1, depth=1, rate=sixteenth, duration=whole, **kwargs |  

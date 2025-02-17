@@ -1741,3 +1741,5579 @@ newpitch: 64.0
 subhandle: #<SonicPi::SynthNode @id=1750, @name=sonic-pi-beep @state=running>
 newpitch: 67.0
 after resetting tone and amp
+top of arpeggiate
+remapping synth defaults
+testing for singleton delays
+main loop
+synthdefaultarray[i]: nil 
+thesedelays.ring[i]: 1.0
+playing note raw
+sleeping
+synthdefaultarray[i]: nil 
+thesedelays.ring[i]: 1.0
+playing note raw
+sleeping
+synthdefaultarray[i]: nil 
+thesedelays.ring[i]: 1.0
+playing note raw
+sleeping
+top of strum
+strumspeed: 0.05
+clean version of thesenotes: [60, 64, 67]
+vibrato: 
+tremolo: 
+strumspeed: (ring 0.05)
+thesedelays: [0.05, 0.05, 0.8499999999999999]
+final version of thesedelays: [0.05, 0.05, 0.8499999999999999]
+top of arpeggiate
+remapping synth defaults
+testing for singleton delays
+main loop
+synthdefaultarray[i]: nil 
+thesedelays.ring[i]: 0.05
+playing note raw
+sleeping
+synthdefaultarray[i]: nil 
+thesedelays.ring[i]: 0.05
+playing note raw
+sleeping
+synthdefaultarray[i]: nil 
+thesedelays.ring[i]: 0.8499999999999999
+playing note raw
+sleeping
+top of arpeggiate
+remapping synth defaults
+testing for singleton delays
+main loop
+synthdefaultarray[i]: {:vibrato=>true}
+thesedelays.ring[i]: 1.0
+playing note with synth defaults
+playing note
+sleeping
+synthdefaultarray[i]: {:vibrato=>true}
+thesedelays.ring[i]: 1.0
+playing note with synth defaults
+playing note
+sleeping
+synthdefaultarray[i]: {:vibrato=>true}
+thesedelays.ring[i]: 1.0
+playing note with synth defaults
+playing note
+sleeping
+top of arpeggiate
+remapping synth defaults
+testing for singleton delays
+main loop
+synthdefaultarray[i]: {:vibrato=>true}
+thesedelays.ring[i]: 1.0
+playing note with synth defaults
+playing note
+sleeping 1.0
+synthdefaultarray[i]: {:vibrato=>true}
+thesedelays.ring[i]: 1.0
+playing note with synth defaults
+playing note
+sleeping nil 
+synthdefaultarray[i]: {:vibrato=>true}
+thesedelays.ring[i]: 1.0
+playing note with synth defaults
+playing note
+sleeping nil 
+top of arpeggiate
+thesenotes: (ring <SonicPi::Chord :C :maj [60, 64, 67])
+thesedelays: [1.0]
+vibrato: 
+tremolo: 
+remapping synth defaults
+testing for singleton delays
+main loop
+synthdefaultarray[i]: {:vibrato=>true}
+thesedelays.ring[i]: 1.0
+playing note with synth defaults
+playing note
+no vibrato
+no tremolo
+sleeping 1.0
+synthdefaultarray[i]: {:vibrato=>true}
+thesedelays.ring[i]: 1.0
+playing note with synth defaults
+playing note
+no vibrato
+no tremolo
+sleeping nil 
+synthdefaultarray[i]: {:vibrato=>true}
+thesedelays.ring[i]: 1.0
+playing note with synth defaults
+playing note
+no vibrato
+no tremolo
+sleeping nil 
+top of arpeggiate
+thesenotes: (ring <SonicPi::Chord :C :maj [60, 64, 67])
+thesedelays: [1.0]
+playvibrato: 
+playtremolo: 
+remapping synth defaults
+testing for singleton delays
+main loop
+synthdefaultarray[i]: {:vibrato=>true}
+thesedelays.ring[i]: 1.0
+playing note with synth defaults
+playing note
+no vibrato
+no tremolo
+sleeping 1.0
+synthdefaultarray[i]: {:vibrato=>true}
+thesedelays.ring[i]: 1.0
+playing note with synth defaults
+playing note
+no vibrato
+no tremolo
+sleeping nil 
+synthdefaultarray[i]: {:vibrato=>true}
+thesedelays.ring[i]: 1.0
+playing note with synth defaults
+playing note
+no vibrato
+no tremolo
+sleeping nil 
+top of arpeggiate
+thesenotes: (ring <SonicPi::Chord :C :maj [60, 64, 67])
+thesedelays: [1.0]
+playvibrato: 
+playtremolo: 
+remapping synth defaults
+top of arpeggiate
+thesenotes: (ring <SonicPi::Chord :C :maj [60, 64, 67])
+thesedelays: [1.0]
+playvibrato: 
+playtremolo: 
+remapping synth defaults
+got cleanargs: {:vibrato=>true}
+testing for singleton delays
+main loop
+synthdefaultarray[i]: {:vibrato=>true}
+thesedelays.ring[i]: 1.0
+playing note with synth defaults
+playing note
+no vibrato
+no tremolo
+sleeping 1.0
+synthdefaultarray[i]: {:vibrato=>true}
+thesedelays.ring[i]: 1.0
+playing note with synth defaults
+playing note
+no vibrato
+no tremolo
+sleeping nil 
+synthdefaultarray[i]: {:vibrato=>true}
+thesedelays.ring[i]: 1.0
+playing note with synth defaults
+playing note
+no vibrato
+no tremolo
+sleeping nil 
+top of arpeggiate
+thesenotes: (ring <SonicPi::Chord :C :maj [60, 64, 67])
+thesedelays: [1.0]
+vibrato: true
+tremolo: 
+remapping synth defaults
+no cleanargs
+testing for singleton delays
+main loop
+synthdefaultarray[i]: nil 
+thesedelays.ring[i]: 1.0
+playing note raw
+vibrato
+setting vibrato empty hash
+about to call vibrato
+top of vibrato
+handle: #<SonicPi::SynthNode @id=1788, @name=sonic-pi-beep @state=pending>
+rate: 0.25
+depth: 0.25
+duration: 4.0
+about to thread
+pitch: 60.0
+elapsedtime: 0
+no tremolo
+got a single note
+newpitch: 60.25
+sleeping 1.0
+elapsedtime: 0.125
+got a single note
+newpitch: 59.75
+elapsedtime: 0.25
+got a single note
+newpitch: 60.25
+elapsedtime: 0.375
+got a single note
+newpitch: 59.75
+elapsedtime: 0.5
+got a single note
+newpitch: 60.25
+elapsedtime: 0.625
+got a single note
+newpitch: 59.75
+elapsedtime: 0.75
+got a single note
+newpitch: 60.25
+elapsedtime: 0.875
+got a single note
+newpitch: 59.75
+elapsedtime: 1.0
+got a single note
+newpitch: 60.25
+synthdefaultarray[i]: nil 
+thesedelays.ring[i]: 1.0
+playing note raw
+vibrato
+vibrato already a hash
+about to call vibrato
+top of vibrato
+handle: #<SonicPi::SynthNode @id=1789, @name=sonic-pi-beep @state=pending>
+rate: 0.25
+depth: 0.25
+duration: 4.0
+about to thread
+pitch: 64.0
+elapsedtime: 0
+no tremolo
+sleeping nil 
+got a single note
+newpitch: 64.25
+elapsedtime: 0.125
+got a single note
+newpitch: 63.75
+elapsedtime: 1.125
+got a single note
+newpitch: 59.75
+elapsedtime: 1.25
+got a single note
+newpitch: 60.25
+elapsedtime: 0.25
+got a single note
+newpitch: 64.25
+elapsedtime: 0.375
+got a single note
+newpitch: 63.75
+elapsedtime: 1.375
+got a single note
+newpitch: 59.75
+elapsedtime: 1.5
+got a single note
+newpitch: 60.25
+elapsedtime: 0.5
+got a single note
+newpitch: 64.25
+elapsedtime: 0.625
+got a single note
+newpitch: 63.75
+elapsedtime: 1.625
+got a single note
+newpitch: 59.75
+elapsedtime: 1.75
+got a single note
+newpitch: 60.25
+elapsedtime: 0.75
+got a single note
+newpitch: 64.25
+elapsedtime: 0.875
+got a single note
+newpitch: 63.75
+elapsedtime: 1.875
+got a single note
+newpitch: 59.75
+elapsedtime: 2.0
+got a single note
+newpitch: 60.25
+synthdefaultarray[i]: nil 
+elapsedtime: 1.0
+thesedelays.ring[i]: 1.0
+got a single note
+playing note raw
+newpitch: 64.25
+vibrato
+vibrato already a hash
+about to call vibrato
+top of vibrato
+handle: #<SonicPi::SynthNode @id=1790, @name=sonic-pi-beep @state=pending>
+rate: 0.25
+depth: 0.25
+duration: 4.0
+about to thread
+pitch: 67.0
+elapsedtime: 0
+no tremolo
+got a single note
+sleeping nil 
+newpitch: 67.25
+elapsedtime: 0.125
+elapsedtime: 1.125
+got a single note
+got a single note
+newpitch: 66.75
+newpitch: 63.75
+elapsedtime: 2.125
+got a single note
+newpitch: 59.75
+elapsedtime: 2.25
+got a single note
+newpitch: 60.25
+elapsedtime: 1.25
+got a single note
+got a single note
+newpitch: 67.25
+newpitch: 64.25
+elapsedtime: 0.375
+got a single note
+elapsedtime: 1.375
+got a single note
+newpitch: 66.75
+newpitch: 63.75
+elapsedtime: 2.375
+got a single note
+newpitch: 59.75
+elapsedtime: 2.5
+got a single note
+newpitch: 60.25
+elapsedtime: 1.5
+elapsedtime: 0.5
+got a single note
+got a single note
+newpitch: 64.25
+newpitch: 67.25
+elapsedtime: 1.625
+elapsedtime: 0.625
+got a single note
+got a single note
+newpitch: 63.75
+newpitch: 66.75
+elapsedtime: 2.625
+got a single note
+newpitch: 59.75
+elapsedtime: 2.75
+got a single note
+newpitch: 60.25
+elapsedtime: 0.75
+got a single note
+newpitch: 67.25
+got a single note
+newpitch: 64.25
+elapsedtime: 0.875
+got a single note
+got a single note
+newpitch: 63.75
+newpitch: 66.75
+elapsedtime: 2.875
+got a single note
+newpitch: 59.75
+elapsedtime: 3.0
+got a single note
+newpitch: 60.25
+elapsedtime: 2.0
+got a single note
+got a single note
+newpitch: 64.25
+newpitch: 67.25
+elapsedtime: 1.125
+elapsedtime: 2.125
+got a single note
+newpitch: 66.75
+got a single note
+newpitch: 63.75
+elapsedtime: 3.125
+got a single note
+newpitch: 59.75
+elapsedtime: 3.25
+got a single note
+newpitch: 60.25
+elapsedtime: 2.25
+got a single note
+newpitch: 67.25
+
+newpitch: 64.25
+elapsedtime: 1.375
+elapsedtime: 2.375
+got a single note
+got a single note
+newpitch: 66.75
+newpitch: 63.75
+elapsedtime: 3.375
+got a single note
+newpitch: 59.75
+elapsedtime: 3.5
+got a single note
+newpitch: 60.25
+elapsedtime: 1.5
+elapsedtime: 2.5
+got a single note
+got a single note
+newpitch: 67.25
+newpitch: 64.25
+elapsedtime: 2.625
+got a single note
+got a single note
+newpitch: 66.75
+newpitch: 63.75
+elapsedtime: 3.625
+got a single note
+newpitch: 59.75
+elapsedtime: 3.75
+got a single note
+newpitch: 60.25
+elapsedtime: 1.75
+elapsedtime: 2.75
+got a single note
+got a single note
+newpitch: 67.25
+newpitch: 64.25
+elapsedtime: 1.875
+got a single note
+got a single note
+newpitch: 63.75
+newpitch: 66.75
+elapsedtime: 3.875
+got a single note
+newpitch: 59.75
+bottom of time loop
+elapsedtime: 4.0
+got a single note
+after control
+after resetting tone and amp
+elapsedtime: 3.0
+got a single note
+got a single note
+newpitch: 64.25
+newpitch: 67.25
+elapsedtime: 3.125
+elapsedtime: 2.125
+got a single note
+got a single note
+newpitch: 63.75
+newpitch: 66.75
+elapsedtime: 2.25
+elapsedtime: 3.25
+got a single note
+got a single note
+newpitch: 67.25
+newpitch: 64.25
+elapsedtime: 3.375
+elapsedtime: 2.375
+got a single note
+newpitch: 63.75
+got a single note
+newpitch: 66.75
+elapsedtime: 2.5
+elapsedtime: 3.5
+got a single note
+got a single note
+newpitch: 67.25
+newpitch: 64.25
+elapsedtime: 2.625
+got a single note
+got a single note
+newpitch: 63.75
+newpitch: 66.75
+elapsedtime: 2.75
+got a single note
+got a single note
+newpitch: 64.25
+newpitch: 67.25
+elapsedtime: 2.875
+elapsedtime: 3.875
+got a single note
+got a single note
+newpitch: 66.75
+newpitch: 63.75
+bottom of time loop
+got a single note
+elapsedtime: 4.0
+newpitch: 67.25
+got a single note
+after control
+after resetting tone and amp
+elapsedtime: 3.125
+got a single note
+newpitch: 66.75
+elapsedtime: 3.25
+got a single note
+newpitch: 67.25
+elapsedtime: 3.375
+got a single note
+newpitch: 66.75
+elapsedtime: 3.5
+got a single note
+newpitch: 67.25
+elapsedtime: 3.625
+got a single note
+newpitch: 66.75
+elapsedtime: 3.75
+got a single note
+newpitch: 67.25
+elapsedtime: 3.875
+got a single note
+newpitch: 66.75
+bottom of time loop
+elapsedtime: 4.0
+got a single note
+after control
+after resetting tone and amp
+top of strum
+strumspeed: 0.05
+clean version of thesenotes: [60, 64, 67]
+vibrato: true
+tremolo: 
+strumspeed: (ring 0.05)
+thesedelays: [0.05, 0.05, 0.8499999999999999]
+final version of thesedelays: [0.05, 0.05, 0.8499999999999999]
+top of arpeggiate
+thesenotes: [60, 64, 67]
+thesedelays: [0.05, 0.05, 0.8499999999999999]
+vibrato: true
+tremolo: 
+remapping synth defaults
+no cleanargs
+testing for singleton delays
+main loop
+synthdefaultarray[i]: nil 
+thesedelays.ring[i]: 0.05
+playing note raw
+vibrato
+setting vibrato empty hash
+about to call vibrato
+top of vibrato
+handle: #<SonicPi::SynthNode @id=1793, @name=sonic-pi-beep @state=pending>
+rate: 0.25
+depth: 0.25
+duration: 4.0
+about to thread
+pitch: 60.0
+elapsedtime: 0
+no tremolo
+got a single note
+sleeping 0.05
+newpitch: 60.25
+synthdefaultarray[i]: nil 
+elapsedtime: 0.125
+got a single note
+thesedelays.ring[i]: 0.05
+newpitch: 59.75
+playing note raw
+vibrato
+vibrato already a hash
+about to call vibrato
+top of vibrato
+handle: #<SonicPi::SynthNode @id=1794, @name=sonic-pi-beep @state=pending>
+rate: 0.25
+depth: 0.25
+duration: 4.0
+about to thread
+pitch: 64.0
+elapsedtime: 0
+no tremolo
+got a single note
+sleeping 0.05
+newpitch: 64.25
+synthdefaultarray[i]: nil 
+elapsedtime: 0.25
+elapsedtime: 0.125
+thesedelays.ring[i]: 0.8499999999999999
+got a single note
+got a single note
+playing note raw
+newpitch: 60.25
+newpitch: 63.75
+vibrato
+vibrato already a hash
+about to call vibrato
+top of vibrato
+handle: #<SonicPi::SynthNode @id=1795, @name=sonic-pi-beep @state=pending>
+rate: 0.25
+depth: 0.25
+duration: 4.0
+about to thread
+pitch: 67.0
+elapsedtime: 0
+no tremolo
+got a single note
+sleeping 0.8499999999999999
+newpitch: 67.25
+elapsedtime: 0.375
+elapsedtime: 0.125
+elapsedtime: 0.25
+got a single note
+got a single note
+newpitch: 59.75
+
+newpitch: 64.25
+newpitch: 66.75
+elapsedtime: 0.5
+elapsedtime: 0.375
+elapsedtime: 0.25
+got a single note
+got a single note
+got a single note
+newpitch: 60.25
+newpitch: 67.25
+newpitch: 63.75
+elapsedtime: 0.375
+got a single note
+newpitch: 66.75
+elapsedtime: 0.5
+got a single note
+newpitch: 64.25
+elapsedtime: 0.625
+got a single note
+newpitch: 63.75
+elapsedtime: 0.5
+got a single note
+newpitch: 67.25
+elapsedtime: 0.625
+got a single note
+newpitch: 66.75
+elapsedtime: 0.625
+got a single note
+newpitch: 59.75
+elapsedtime: 0.75
+got a single note
+newpitch: 60.25
+elapsedtime: 0.75
+got a single note
+newpitch: 64.25
+elapsedtime: 0.875
+got a single note
+newpitch: 63.75
+elapsedtime: 0.75
+got a single note
+newpitch: 67.25
+elapsedtime: 0.875
+got a single note
+newpitch: 66.75
+elapsedtime: 0.875
+got a single note
+newpitch: 59.75
+elapsedtime: 1.0
+got a single note
+newpitch: 60.25
+elapsedtime: 1.0
+got a single note
+newpitch: 64.25
+elapsedtime: 1.125
+got a single note
+newpitch: 63.75
+elapsedtime: 1.0
+got a single note
+newpitch: 67.25
+elapsedtime: 1.125
+got a single note
+newpitch: 66.75
+elapsedtime: 1.125
+got a single note
+newpitch: 59.75
+elapsedtime: 1.25
+got a single note
+newpitch: 60.25
+elapsedtime: 1.25
+got a single note
+newpitch: 64.25
+elapsedtime: 1.375
+got a single note
+newpitch: 63.75
+elapsedtime: 1.25
+got a single note
+newpitch: 67.25
+elapsedtime: 1.375
+got a single note
+newpitch: 66.75
+elapsedtime: 1.375
+got a single note
+newpitch: 59.75
+elapsedtime: 1.5
+got a single note
+newpitch: 60.25
+elapsedtime: 1.5
+got a single note
+newpitch: 64.25
+elapsedtime: 1.625
+got a single note
+newpitch: 63.75
+elapsedtime: 1.5
+got a single note
+newpitch: 67.25
+elapsedtime: 1.625
+got a single note
+newpitch: 66.75
+elapsedtime: 1.625
+got a single note
+newpitch: 59.75
+elapsedtime: 1.75
+got a single note
+newpitch: 60.25
+elapsedtime: 1.75
+got a single note
+newpitch: 64.25
+elapsedtime: 1.875
+got a single note
+newpitch: 63.75
+elapsedtime: 1.75
+got a single note
+newpitch: 67.25
+elapsedtime: 1.875
+got a single note
+newpitch: 66.75
+elapsedtime: 1.875
+got a single note
+newpitch: 59.75
+elapsedtime: 2.0
+got a single note
+newpitch: 60.25
+elapsedtime: 2.0
+got a single note
+newpitch: 64.25
+elapsedtime: 2.125
+got a single note
+newpitch: 63.75
+elapsedtime: 2.0
+got a single note
+newpitch: 67.25
+elapsedtime: 2.125
+got a single note
+newpitch: 66.75
+elapsedtime: 2.125
+got a single note
+newpitch: 59.75
+elapsedtime: 2.25
+got a single note
+newpitch: 60.25
+elapsedtime: 2.25
+got a single note
+newpitch: 64.25
+elapsedtime: 2.375
+got a single note
+newpitch: 63.75
+elapsedtime: 2.25
+got a single note
+newpitch: 67.25
+elapsedtime: 2.375
+got a single note
+newpitch: 66.75
+elapsedtime: 2.375
+got a single note
+newpitch: 59.75
+elapsedtime: 2.5
+got a single note
+newpitch: 60.25
+elapsedtime: 2.5
+got a single note
+newpitch: 64.25
+elapsedtime: 2.625
+got a single note
+newpitch: 63.75
+elapsedtime: 2.5
+got a single note
+newpitch: 67.25
+elapsedtime: 2.625
+got a single note
+newpitch: 66.75
+elapsedtime: 2.625
+got a single note
+newpitch: 59.75
+elapsedtime: 2.75
+got a single note
+newpitch: 60.25
+elapsedtime: 2.75
+got a single note
+newpitch: 64.25
+elapsedtime: 2.875
+got a single note
+newpitch: 63.75
+elapsedtime: 2.75
+got a single note
+newpitch: 67.25
+elapsedtime: 2.875
+got a single note
+newpitch: 66.75
+elapsedtime: 2.875
+got a single note
+newpitch: 59.75
+elapsedtime: 3.0
+got a single note
+newpitch: 60.25
+elapsedtime: 3.0
+got a single note
+newpitch: 64.25
+elapsedtime: 3.125
+got a single note
+newpitch: 63.75
+elapsedtime: 3.0
+got a single note
+newpitch: 67.25
+elapsedtime: 3.125
+got a single note
+newpitch: 66.75
+elapsedtime: 3.125
+got a single note
+newpitch: 59.75
+elapsedtime: 3.25
+got a single note
+newpitch: 60.25
+elapsedtime: 3.25
+got a single note
+newpitch: 64.25
+elapsedtime: 3.375
+got a single note
+newpitch: 63.75
+elapsedtime: 3.25
+got a single note
+newpitch: 67.25
+elapsedtime: 3.375
+got a single note
+newpitch: 66.75
+elapsedtime: 3.375
+got a single note
+newpitch: 59.75
+elapsedtime: 3.5
+got a single note
+newpitch: 60.25
+elapsedtime: 3.5
+got a single note
+newpitch: 64.25
+elapsedtime: 3.625
+got a single note
+newpitch: 63.75
+elapsedtime: 3.5
+got a single note
+newpitch: 67.25
+elapsedtime: 3.625
+got a single note
+newpitch: 66.75
+elapsedtime: 3.625
+got a single note
+newpitch: 59.75
+elapsedtime: 3.75
+got a single note
+newpitch: 60.25
+elapsedtime: 3.75
+got a single note
+newpitch: 64.25
+elapsedtime: 3.875
+got a single note
+newpitch: 63.75
+elapsedtime: 3.75
+got a single note
+newpitch: 67.25
+elapsedtime: 3.875
+got a single note
+newpitch: 66.75
+elapsedtime: 3.875
+got a single note
+newpitch: 59.75
+bottom of time loop
+elapsedtime: 4.0
+got a single note
+after control
+after resetting tone and amp
+bottom of time loop
+elapsedtime: 4.0
+got a single note
+after control
+after resetting tone and amp
+bottom of time loop
+elapsedtime: 4.0
+got a single note
+after control
+after resetting tone and amp
+top of arpeggiate
+thesenotes: (ring <SonicPi::Chord :C :m7 [60, 63, 67, 70])
+thesedelays: [0.1, 0.1, 0.1, 0.7]
+vibrato: 
+tremolo: true
+remapping synth defaults
+got cleanargs: {:amp=>1.5, :duration=>[0.1, 0.1, 0.1, 0.7]}
+testing for singleton delays
+main loop
+synthdefaultarray[i]: {:amp=>1.5, :duration=>0.1}
+thesedelays.ring[i]: 0.1
+playing note with synth defaults
+playing note
+no vibrato
+tremolo
+setting tremolo empty hash
+about to call tremolo
+top of tremolo
+handle: #<SonicPi::SynthNode @id=1798, @name=sonic-pi-beep @state=pending>
+amp: 1
+depth: 1
+rate: 0.25
+duration: 4.0
+about to thread
+elapsedtime: 0
+sleeping 0.1
+got a single note
+elapsedtime: 0.125
+synthdefaultarray[i]: {:amp=>1.5, :duration=>0.1}
+got a single note
+thesedelays.ring[i]: 0.1
+playing note with synth defaults
+playing note
+no vibrato
+tremolo
+tremolo already a hash
+about to call tremolo
+top of tremolo
+handle: #<SonicPi::SynthNode @id=1799, @name=sonic-pi-beep @state=pending>
+amp: 1
+depth: 1
+rate: 0.25
+duration: 4.0
+about to thread
+elapsedtime: 0
+sleeping 0.1
+got a single note
+elapsedtime: 0.125
+synthdefaultarray[i]: {:amp=>1.5, :duration=>0.1}
+got a single note
+got a single note
+thesedelays.ring[i]: 0.1
+playing note with synth defaults
+playing note
+no vibrato
+tremolo
+tremolo already a hash
+about to call tremolo
+top of tremolo
+handle: #<SonicPi::SynthNode @id=1800, @name=sonic-pi-beep @state=pending>
+amp: 1
+depth: 1
+rate: 0.25
+duration: 4.0
+about to thread
+elapsedtime: 0
+sleeping 0.1
+got a single note
+elapsedtime: 0.25
+synthdefaultarray[i]: {:amp=>1.5, :duration=>0.7}
+elapsedtime: 0.125
+elapsedtime: 0.375
+got a single note
+got a single note
+: 0.7
+got a single note
+playing note with synth defaults
+playing note
+no vibrato
+tremolo
+tremolo already a hash
+about to call tremolo
+top of tremolo
+handle: #<SonicPi::SynthNode @id=1801, @name=sonic-pi-beep @state=pending>
+amp: 1
+depth: 1
+rate: 0.25
+duration: 4.0
+about to thread
+elapsedtime: 0
+sleeping 0.7
+got a single note
+elapsedtime: 0.25
+
+elapsedtime: 0.125
+got a single note
+got a single note
+got a single note
+got a single note
+elapsedtime: 0.25
+got a single note
+elapsedtime: 0.375
+got a single note
+elapsedtime: 0.375
+got a single note
+elapsedtime: 0.5
+got a single note
+elapsedtime: 0.5
+got a single note
+elapsedtime: 0.625
+got a single note
+elapsedtime: 0.625
+got a single note
+elapsedtime: 0.75
+got a single note
+elapsedtime: 0.5
+got a single note
+elapsedtime: 0.625
+got a single note
+elapsedtime: 0.625
+got a single note
+elapsedtime: 0.75
+got a single note
+elapsedtime: 0.75
+got a single note
+elapsedtime: 0.875
+got a single note
+elapsedtime: 0.875
+got a single note
+elapsedtime: 1.0
+got a single note
+elapsedtime: 0.75
+got a single note
+elapsedtime: 0.875
+got a single note
+elapsedtime: 0.875
+got a single note
+elapsedtime: 1.0
+got a single note
+elapsedtime: 1.0
+got a single note
+elapsedtime: 1.125
+got a single note
+elapsedtime: 1.125
+got a single note
+elapsedtime: 1.25
+got a single note
+elapsedtime: 1.0
+got a single note
+elapsedtime: 1.125
+got a single note
+elapsedtime: 1.125
+got a single note
+elapsedtime: 1.25
+got a single note
+elapsedtime: 1.25
+got a single note
+elapsedtime: 1.375
+got a single note
+elapsedtime: 1.375
+got a single note
+elapsedtime: 1.5
+got a single note
+elapsedtime: 1.25
+got a single note
+elapsedtime: 1.375
+got a single note
+elapsedtime: 1.375
+got a single note
+elapsedtime: 1.5
+got a single note
+elapsedtime: 1.5
+got a single note
+elapsedtime: 1.625
+got a single note
+elapsedtime: 1.625
+got a single note
+elapsedtime: 1.75
+got a single note
+elapsedtime: 1.5
+got a single note
+elapsedtime: 1.625
+got a single note
+elapsedtime: 1.625
+got a single note
+elapsedtime: 1.75
+got a single note
+elapsedtime: 1.75
+got a single note
+elapsedtime: 1.875
+got a single note
+elapsedtime: 1.875
+got a single note
+elapsedtime: 2.0
+got a single note
+elapsedtime: 1.75
+got a single note
+elapsedtime: 1.875
+got a single note
+elapsedtime: 1.875
+got a single note
+elapsedtime: 2.0
+got a single note
+elapsedtime: 2.0
+got a single note
+elapsedtime: 2.125
+got a single note
+elapsedtime: 2.125
+got a single note
+elapsedtime: 2.25
+got a single note
+elapsedtime: 2.0
+got a single note
+elapsedtime: 2.125
+got a single note
+elapsedtime: 2.125
+got a single note
+elapsedtime: 2.25
+got a single note
+elapsedtime: 2.25
+got a single note
+elapsedtime: 2.375
+got a single note
+elapsedtime: 2.375
+got a single note
+elapsedtime: 2.5
+got a single note
+elapsedtime: 2.25
+got a single note
+elapsedtime: 2.375
+got a single note
+elapsedtime: 2.375
+got a single note
+elapsedtime: 2.5
+got a single note
+elapsedtime: 2.5
+got a single note
+elapsedtime: 2.625
+got a single note
+elapsedtime: 2.625
+got a single note
+elapsedtime: 2.75
+got a single note
+elapsedtime: 2.5
+got a single note
+elapsedtime: 2.625
+got a single note
+elapsedtime: 2.625
+got a single note
+elapsedtime: 2.75
+got a single note
+elapsedtime: 2.75
+got a single note
+elapsedtime: 2.875
+got a single note
+elapsedtime: 2.875
+got a single note
+elapsedtime: 3.0
+got a single note
+elapsedtime: 2.75
+got a single note
+elapsedtime: 2.875
+got a single note
+elapsedtime: 2.875
+got a single note
+elapsedtime: 3.0
+got a single note
+elapsedtime: 3.0
+got a single note
+elapsedtime: 3.125
+got a single note
+elapsedtime: 3.125
+got a single note
+elapsedtime: 3.25
+got a single note
+elapsedtime: 3.0
+got a single note
+elapsedtime: 3.125
+got a single note
+elapsedtime: 3.125
+got a single note
+elapsedtime: 3.25
+got a single note
+elapsedtime: 3.25
+got a single note
+elapsedtime: 3.375
+got a single note
+elapsedtime: 3.375
+got a single note
+elapsedtime: 3.5
+got a single note
+elapsedtime: 3.25
+got a single note
+elapsedtime: 3.375
+got a single note
+elapsedtime: 3.375
+got a single note
+elapsedtime: 3.5
+got a single note
+elapsedtime: 3.5
+got a single note
+elapsedtime: 3.625
+got a single note
+elapsedtime: 3.625
+got a single note
+elapsedtime: 3.75
+got a single note
+elapsedtime: 3.5
+got a single note
+elapsedtime: 3.625
+got a single note
+elapsedtime: 3.625
+got a single note
+elapsedtime: 3.75
+got a single note
+elapsedtime: 3.75
+got a single note
+elapsedtime: 3.875
+got a single note
+elapsedtime: 3.875
+got a single note
+bottom of time loop
+got a single note
+elapsedtime: 3.75
+got a single note
+elapsedtime: 3.875
+got a single note
+elapsedtime: 3.875
+got a single note
+bottom of time loop
+got a single note
+bottom of time loop
+got a single note
+bottom of time loop
+got a single note
+top of arpeggiate
+thesenotes: (ring <SonicPi::Chord :C :m7 [60, 63, 67, 70])
+thesedelays: [0.1, 0.1, 0.1, 0.7]
+vibrato: 
+tremolo: true
+remapping synth defaults
+got cleanargs: {:amp=>0.75, :duration=>[0.1, 0.1, 0.1, 0.7]}
+testing for singleton delays
+main loop
+synthdefaultarray[i]: {:amp=>0.75, :duration=>0.1}
+thesedelays.ring[i]: 0.1
+playing note with synth defaults
+playing note
+no vibrato
+tremolo
+setting tremolo empty hash
+about to call tremolo
+top of tremolo
+handle: #<SonicPi::SynthNode @id=1804, @name=sonic-pi-beep @state=pending>
+amp: 1
+depth: 1
+rate: 0.25
+duration: 4.0
+about to thread
+elapsedtime: 0
+sleeping 0.1
+got a single note
+elapsedtime: 0.125
+synthdefaultarray[i]: {:amp=>0.75, :duration=>0.1}
+got a single note
+thesedelays.ring[i]: 0.1
+playing note with synth defaults
+playing note
+no vibrato
+tremolo
+tremolo already a hash
+about to call tremolo
+top of tremolo
+handle: #<SonicPi::SynthNode @id=1805, @name=sonic-pi-beep @state=pending>
+amp: 1
+depth: 1
+rate: 0.25
+duration: 4.0
+about to thread
+elapsedtime: 0
+sleeping 0.1
+got a single note
+elapsedtime: 0.25
+synthdefaultarray[i]: {:amp=>0.75, :duration=>0.1}
+got a single note
+thesedelays.ring[i]: 0.1
+playing note with synth defaults
+playing note
+no vibrato
+tremolo
+tremolo already a hash
+about to call tremolo
+top of tremolo
+handle: #<SonicPi::SynthNode @id=1806, @name=sonic-pi-beep @state=pending>
+amp: 1
+depth: 1
+rate: 0.25
+duration: 4.0
+about to thread
+elapsedtime: 0
+sleeping 0.1
+got a single note
+synthdefaultarray[i]: {:amp=>0.75, :duration=>0.7}
+elapsedtime: 0.125
+got a single note
+thesedelays.ring[i]: 0.7
+got a single note
+playing note with synth defaults
+playing note
+no vibrato
+tremolo
+tremolo already a hash
+about to call tremolo
+top of tremolo
+handle: #<SonicPi::SynthNode @id=1807, @name=sonic-pi-beep @state=pending>
+amp: 1
+depth: 1
+rate: 0.25
+duration: 4.0
+about to thread
+elapsedtime: 0
+sleeping 0.7
+got a single note
+elapsedtime: 0.125
+elapsedtime: 0.125
+got a single note
+got a single note
+got a single note
+elapsedtime: 0.375
+elapsedtime: 0.25
+got a single note
+got a single note
+elapsedtime: 0.25
+got a single note
+elapsedtime: 0.375
+got a single note
+elapsedtime: 0.375
+got a single note
+elapsedtime: 0.5
+got a single note
+elapsedtime: 0.5
+got a single note
+elapsedtime: 0.625
+got a single note
+elapsedtime: 0.625
+got a single note
+elapsedtime: 0.75
+got a single note
+elapsedtime: 0.5
+got a single note
+elapsedtime: 0.625
+got a single note
+elapsedtime: 0.625
+got a single note
+elapsedtime: 0.75
+got a single note
+elapsedtime: 0.75
+got a single note
+elapsedtime: 0.875
+got a single note
+elapsedtime: 0.875
+got a single note
+elapsedtime: 1.0
+got a single note
+elapsedtime: 0.75
+got a single note
+elapsedtime: 0.875
+got a single note
+elapsedtime: 0.875
+got a single note
+elapsedtime: 1.0
+got a single note
+elapsedtime: 1.0
+got a single note
+elapsedtime: 1.125
+got a single note
+elapsedtime: 1.125
+got a single note
+elapsedtime: 1.25
+got a single note
+elapsedtime: 1.0
+got a single note
+elapsedtime: 1.125
+got a single note
+elapsedtime: 1.125
+got a single note
+elapsedtime: 1.25
+got a single note
+elapsedtime: 1.25
+got a single note
+elapsedtime: 1.375
+got a single note
+elapsedtime: 1.375
+got a single note
+elapsedtime: 1.5
+got a single note
+elapsedtime: 1.25
+got a single note
+elapsedtime: 1.375
+got a single note
+elapsedtime: 1.375
+got a single note
+elapsedtime: 1.5
+got a single note
+elapsedtime: 1.5
+got a single note
+elapsedtime: 1.625
+got a single note
+elapsedtime: 1.625
+got a single note
+elapsedtime: 1.75
+got a single note
+elapsedtime: 1.5
+got a single note
+elapsedtime: 1.625
+got a single note
+elapsedtime: 1.625
+got a single note
+elapsedtime: 1.75
+got a single note
+elapsedtime: 1.75
+got a single note
+elapsedtime: 1.875
+got a single note
+elapsedtime: 1.875
+got a single note
+elapsedtime: 2.0
+got a single note
+elapsedtime: 1.75
+got a single note
+elapsedtime: 1.875
+got a single note
+elapsedtime: 1.875
+got a single note
+elapsedtime: 2.0
+got a single note
+elapsedtime: 2.0
+got a single note
+elapsedtime: 2.125
+got a single note
+elapsedtime: 2.125
+got a single note
+elapsedtime: 2.25
+got a single note
+elapsedtime: 2.0
+got a single note
+elapsedtime: 2.125
+got a single note
+elapsedtime: 2.125
+got a single note
+elapsedtime: 2.25
+got a single note
+elapsedtime: 2.25
+got a single note
+elapsedtime: 2.375
+got a single note
+elapsedtime: 2.375
+got a single note
+elapsedtime: 2.5
+got a single note
+elapsedtime: 2.25
+got a single note
+elapsedtime: 2.375
+got a single note
+elapsedtime: 2.375
+got a single note
+elapsedtime: 2.5
+got a single note
+elapsedtime: 2.5
+got a single note
+elapsedtime: 2.625
+got a single note
+elapsedtime: 2.625
+got a single note
+elapsedtime: 2.75
+got a single note
+elapsedtime: 2.5
+got a single note
+elapsedtime: 2.625
+got a single note
+elapsedtime: 2.625
+got a single note
+elapsedtime: 2.75
+got a single note
+elapsedtime: 2.75
+got a single note
+elapsedtime: 2.875
+got a single note
+elapsedtime: 2.875
+got a single note
+elapsedtime: 3.0
+got a single note
+elapsedtime: 2.75
+got a single note
+elapsedtime: 2.875
+got a single note
+elapsedtime: 2.875
+got a single note
+elapsedtime: 3.0
+got a single note
+elapsedtime: 3.0
+got a single note
+elapsedtime: 3.125
+got a single note
+elapsedtime: 3.125
+got a single note
+elapsedtime: 3.25
+got a single note
+elapsedtime: 3.0
+got a single note
+elapsedtime: 3.125
+got a single note
+elapsedtime: 3.125
+got a single note
+elapsedtime: 3.25
+got a single note
+elapsedtime: 3.25
+got a single note
+elapsedtime: 3.375
+got a single note
+elapsedtime: 3.375
+got a single note
+elapsedtime: 3.5
+got a single note
+elapsedtime: 3.25
+got a single note
+elapsedtime: 3.375
+got a single note
+elapsedtime: 3.375
+got a single note
+elapsedtime: 3.5
+got a single note
+elapsedtime: 3.5
+got a single note
+elapsedtime: 3.625
+got a single note
+elapsedtime: 3.625
+got a single note
+elapsedtime: 3.75
+got a single note
+elapsedtime: 3.5
+got a single note
+elapsedtime: 3.625
+got a single note
+elapsedtime: 3.625
+got a single note
+elapsedtime: 3.75
+got a single note
+elapsedtime: 3.75
+got a single note
+elapsedtime: 3.875
+got a single note
+elapsedtime: 3.875
+got a single note
+bottom of time loop
+got a single note
+elapsedtime: 3.75
+got a single note
+elapsedtime: 3.875
+got a single note
+elapsedtime: 3.875
+got a single note
+bottom of time loop
+got a single note
+bottom of time loop
+got a single note
+bottom of time loop
+got a single note
+top of arpeggiate
+thesenotes: (ring <SonicPi::Chord :C :m7 [60, 63, 67, 70])
+thesedelays: [0.1, 0.1, 0.1, 0.7]
+vibrato: true
+tremolo: 
+remapping synth defaults
+got cleanargs: {:amp=>0.75, :duration=>[0.1, 0.1, 0.1, 0.7]}
+testing for singleton delays
+main loop
+synthdefaultarray[i]: {:amp=>0.75, :duration=>0.1}
+thesedelays.ring[i]: 0.1
+playing note with synth defaults
+playing note
+vibrato
+setting vibrato empty hash
+about to call vibrato
+top of vibrato
+handle: #<SonicPi::SynthNode @id=1810, @name=sonic-pi-beep @state=pending>
+rate: 0.25
+depth: 0.25
+duration: 4.0
+about to thread
+pitch: 60.0
+elapsedtime: 0
+no tremolo
+got a single note
+sleeping 0.1
+newpitch: 60.25
+synthdefaultarray[i]: {:amp=>0.75, :duration=>0.1}
+elapsedtime: 0.125
+thesedelays.ring[i]: 0.1
+got a single note
+playing note with synth defaults
+playing note
+newpitch: 59.75
+vibrato
+vibrato already a hash
+about to call vibrato
+top of vibrato
+handle: #<SonicPi::SynthNode @id=1811, @name=sonic-pi-beep @state=pending>
+rate: 0.25
+depth: 0.25
+duration: 4.0
+about to thread
+pitch: 63.0
+elapsedtime: 0
+no tremolo
+got a single note
+newpitch: 63.25
+elapsedtime: 0.25
+]: {:amp=>0.75, :duration=>0.1}
+elapsedtime: 0.125
+got a single note
+thesedelays.ring[i]: 0.1
+got a single note
+newpitch: 60.25
+playing note with synth defaults
+newpitch: 62.75
+playing note
+vibrato
+vibrato already a hash
+about to call vibrato
+top of vibrato
+handle: #<SonicPi::SynthNode @id=1812, @name=sonic-pi-beep @state=pending>
+rate: 0.25
+depth: 0.25
+duration: 4.0
+about to thread
+pitch: 67.0
+elapsedtime: 0
+no tremolo
+sleeping 0.1
+got a single note
+newpitch: 67.25
+synthdefaultarray[i]: {:amp=>0.75, :duration=>0.7}
+elapsedtime: 0.375
+elapsedtime: 0.25
+thesedelays.ring[i]: 0.7
+got a single note
+playing note with synth defaults
+newpitch: 59.75
+playing note
+newpitch: 63.25
+vibrato
+vibrato already a hash
+about to call vibrato
+top of vibrato
+handle: #<SonicPi::SynthNode @id=1813, @name=sonic-pi-beep @state=pending>
+rate: 0.25
+depth: 0.25
+duration: 4.0
+about to thread
+pitch: 70.0
+elapsedtime: 0
+no tremolo
+got a single note
+sleeping 0.7
+newpitch: 70.25
+elapsedtime: 0.125
+elapsedtime: 0.375
+elapsedtime: 0.5
+got a single note
+got a single note
+got a single note
+newpitch: 66.75
+newpitch: 62.75
+newpitch: 60.25
+elapsedtime: 0.25
+elapsedtime: 0.125
+got a single note
+got a single note
+newpitch: 67.25
+newpitch: 69.75
+elapsedtime: 0.25
+got a single note
+newpitch: 70.25
+elapsedtime: 0.375
+got a single note
+newpitch: 69.75
+elapsedtime: 0.375
+got a single note
+newpitch: 66.75
+elapsedtime: 0.5
+got a single note
+newpitch: 67.25
+elapsedtime: 0.5
+got a single note
+newpitch: 63.25
+elapsedtime: 0.625
+got a single note
+newpitch: 62.75
+elapsedtime: 0.625
+got a single note
+newpitch: 59.75
+elapsedtime: 0.75
+got a single note
+newpitch: 60.25
+elapsedtime: 0.5
+got a single note
+newpitch: 70.25
+elapsedtime: 0.625
+got a single note
+newpitch: 69.75
+elapsedtime: 0.625
+got a single note
+newpitch: 66.75
+elapsedtime: 0.75
+got a single note
+newpitch: 67.25
+elapsedtime: 0.75
+got a single note
+newpitch: 63.25
+elapsedtime: 0.875
+got a single note
+newpitch: 62.75
+elapsedtime: 0.875
+got a single note
+newpitch: 59.75
+elapsedtime: 1.0
+got a single note
+newpitch: 60.25
+elapsedtime: 0.75
+got a single note
+newpitch: 70.25
+elapsedtime: 0.875
+got a single note
+newpitch: 69.75
+elapsedtime: 0.875
+got a single note
+newpitch: 66.75
+elapsedtime: 1.0
+got a single note
+newpitch: 67.25
+elapsedtime: 1.0
+got a single note
+newpitch: 63.25
+elapsedtime: 1.125
+got a single note
+newpitch: 62.75
+elapsedtime: 1.125
+got a single note
+newpitch: 59.75
+elapsedtime: 1.25
+got a single note
+newpitch: 60.25
+elapsedtime: 1.0
+got a single note
+newpitch: 70.25
+elapsedtime: 1.125
+got a single note
+newpitch: 69.75
+elapsedtime: 1.125
+got a single note
+newpitch: 66.75
+elapsedtime: 1.25
+got a single note
+newpitch: 67.25
+elapsedtime: 1.25
+got a single note
+newpitch: 63.25
+elapsedtime: 1.375
+got a single note
+newpitch: 62.75
+elapsedtime: 1.375
+got a single note
+newpitch: 59.75
+elapsedtime: 1.5
+got a single note
+newpitch: 60.25
+elapsedtime: 1.25
+got a single note
+newpitch: 70.25
+elapsedtime: 1.375
+got a single note
+newpitch: 69.75
+elapsedtime: 1.375
+got a single note
+newpitch: 66.75
+elapsedtime: 1.5
+got a single note
+newpitch: 67.25
+elapsedtime: 1.5
+got a single note
+newpitch: 63.25
+elapsedtime: 1.625
+got a single note
+newpitch: 62.75
+elapsedtime: 1.625
+got a single note
+newpitch: 59.75
+elapsedtime: 1.75
+got a single note
+newpitch: 60.25
+elapsedtime: 1.5
+got a single note
+newpitch: 70.25
+elapsedtime: 1.625
+got a single note
+newpitch: 69.75
+elapsedtime: 1.625
+got a single note
+newpitch: 66.75
+elapsedtime: 1.75
+got a single note
+newpitch: 67.25
+elapsedtime: 1.75
+got a single note
+newpitch: 63.25
+elapsedtime: 1.875
+got a single note
+newpitch: 62.75
+elapsedtime: 1.875
+got a single note
+newpitch: 59.75
+elapsedtime: 2.0
+got a single note
+newpitch: 60.25
+elapsedtime: 1.75
+got a single note
+newpitch: 70.25
+elapsedtime: 1.875
+got a single note
+newpitch: 69.75
+elapsedtime: 1.875
+got a single note
+newpitch: 66.75
+elapsedtime: 2.0
+got a single note
+newpitch: 67.25
+elapsedtime: 2.0
+got a single note
+newpitch: 63.25
+elapsedtime: 2.125
+got a single note
+newpitch: 62.75
+elapsedtime: 2.125
+got a single note
+newpitch: 59.75
+elapsedtime: 2.25
+got a single note
+newpitch: 60.25
+elapsedtime: 2.0
+got a single note
+newpitch: 70.25
+elapsedtime: 2.125
+got a single note
+newpitch: 69.75
+elapsedtime: 2.125
+got a single note
+newpitch: 66.75
+elapsedtime: 2.25
+got a single note
+newpitch: 67.25
+elapsedtime: 2.25
+got a single note
+newpitch: 63.25
+elapsedtime: 2.375
+got a single note
+newpitch: 62.75
+elapsedtime: 2.375
+got a single note
+newpitch: 59.75
+elapsedtime: 2.5
+got a single note
+newpitch: 60.25
+elapsedtime: 2.25
+got a single note
+newpitch: 70.25
+elapsedtime: 2.375
+got a single note
+newpitch: 69.75
+elapsedtime: 2.375
+got a single note
+newpitch: 66.75
+elapsedtime: 2.5
+got a single note
+newpitch: 67.25
+elapsedtime: 2.5
+got a single note
+newpitch: 63.25
+elapsedtime: 2.625
+got a single note
+newpitch: 62.75
+elapsedtime: 2.625
+got a single note
+newpitch: 59.75
+elapsedtime: 2.75
+got a single note
+newpitch: 60.25
+elapsedtime: 2.5
+got a single note
+newpitch: 70.25
+elapsedtime: 2.625
+got a single note
+newpitch: 69.75
+elapsedtime: 2.625
+got a single note
+newpitch: 66.75
+elapsedtime: 2.75
+got a single note
+newpitch: 67.25
+elapsedtime: 2.75
+got a single note
+newpitch: 63.25
+elapsedtime: 2.875
+got a single note
+newpitch: 62.75
+elapsedtime: 2.875
+got a single note
+newpitch: 59.75
+elapsedtime: 3.0
+got a single note
+newpitch: 60.25
+elapsedtime: 2.75
+got a single note
+newpitch: 70.25
+elapsedtime: 2.875
+got a single note
+newpitch: 69.75
+elapsedtime: 2.875
+got a single note
+newpitch: 66.75
+elapsedtime: 3.0
+got a single note
+newpitch: 67.25
+elapsedtime: 3.0
+got a single note
+newpitch: 63.25
+elapsedtime: 3.125
+got a single note
+newpitch: 62.75
+elapsedtime: 3.125
+got a single note
+newpitch: 59.75
+elapsedtime: 3.25
+got a single note
+newpitch: 60.25
+elapsedtime: 3.0
+got a single note
+newpitch: 70.25
+elapsedtime: 3.125
+got a single note
+newpitch: 69.75
+elapsedtime: 3.125
+got a single note
+newpitch: 66.75
+elapsedtime: 3.25
+got a single note
+newpitch: 67.25
+elapsedtime: 3.25
+got a single note
+newpitch: 63.25
+elapsedtime: 3.375
+got a single note
+newpitch: 62.75
+elapsedtime: 3.375
+got a single note
+newpitch: 59.75
+elapsedtime: 3.5
+got a single note
+newpitch: 60.25
+elapsedtime: 3.25
+got a single note
+newpitch: 70.25
+elapsedtime: 3.375
+got a single note
+newpitch: 69.75
+elapsedtime: 3.375
+got a single note
+newpitch: 66.75
+elapsedtime: 3.5
+got a single note
+newpitch: 67.25
+elapsedtime: 3.5
+got a single note
+newpitch: 63.25
+elapsedtime: 3.625
+got a single note
+newpitch: 62.75
+elapsedtime: 3.625
+got a single note
+newpitch: 59.75
+elapsedtime: 3.75
+got a single note
+newpitch: 60.25
+elapsedtime: 3.5
+got a single note
+newpitch: 70.25
+elapsedtime: 3.625
+got a single note
+newpitch: 69.75
+elapsedtime: 3.625
+got a single note
+newpitch: 66.75
+elapsedtime: 3.75
+got a single note
+newpitch: 67.25
+elapsedtime: 3.75
+got a single note
+newpitch: 63.25
+elapsedtime: 3.875
+got a single note
+newpitch: 62.75
+elapsedtime: 3.875
+got a single note
+newpitch: 59.75
+bottom of time loop
+elapsedtime: 4.0
+got a single note
+after control
+after resetting tone and amp
+elapsedtime: 3.75
+got a single note
+newpitch: 70.25
+elapsedtime: 3.875
+got a single note
+newpitch: 69.75
+elapsedtime: 3.875
+got a single note
+newpitch: 66.75
+bottom of time loop
+elapsedtime: 4.0
+got a single note
+after control
+after resetting tone and amp
+bottom of time loop
+elapsedtime: 4.0
+got a single note
+after control
+after resetting tone and amp
+bottom of time loop
+elapsedtime: 4.0
+got a single note
+after control
+after resetting tone and amp
+top of tremolo
+handle: (ring <SonicPi::Chord :C :m7 [60, 63, 67, 70])
+amp: 1
+depth: 1
+rate: 0.25
+duration: 4.0
+about to thread
+elapsedtime: 0
+got a single note
+elapsedtime: 0.125
+got a single note
+elapsedtime: 0.25
+got a single note
+elapsedtime: 0.375
+got a single note
+elapsedtime: 0.5
+got a single note
+elapsedtime: 0.625
+got a single note
+elapsedtime: 0.75
+got a single note
+elapsedtime: 0.875
+got a single note
+elapsedtime: 1.0
+got a single note
+elapsedtime: 1.125
+got a single note
+elapsedtime: 1.25
+got a single note
+elapsedtime: 1.375
+got a single note
+elapsedtime: 1.5
+got a single note
+elapsedtime: 1.625
+got a single note
+elapsedtime: 1.75
+got a single note
+elapsedtime: 1.875
+got a single note
+elapsedtime: 2.0
+got a single note
+elapsedtime: 2.125
+got a single note
+elapsedtime: 2.25
+got a single note
+elapsedtime: 2.375
+got a single note
+elapsedtime: 2.5
+got a single note
+elapsedtime: 2.625
+got a single note
+elapsedtime: 2.75
+got a single note
+elapsedtime: 2.875
+got a single note
+elapsedtime: 3.0
+got a single note
+elapsedtime: 3.125
+got a single note
+elapsedtime: 3.25
+got a single note
+elapsedtime: 3.375
+got a single note
+elapsedtime: 3.5
+got a single note
+elapsedtime: 3.625
+got a single note
+elapsedtime: 3.75
+got a single note
+elapsedtime: 3.875
+got a single note
+bottom of time loop
+got a single note
+top of tremolo
+handle: #<SonicPi::ChordGroup @id=1815 @subnodes=[#<SonicPi::SynthNode @id=1817, @name=sonic-pi-beep @state=pending>, #<SonicPi::SynthNode @id=1818, @name=sonic-pi-beep @state=pending>, #<SonicPi::SynthNode @id=1819, @name=sonic-pi-beep @state=pending>, #<SonicPi::SynthNode @id=1820, @name=sonic-pi-beep @state=pending>]>
+amp: 1
+depth: 1
+rate: 0.25
+duration: 4.0
+about to thread
+elapsedtime: 0
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=1817, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=1818, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=1819, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=1820, @name=sonic-pi-beep @state=pending>
+elapsedtime: 0.125
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=1817, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=1818, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=1819, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=1820, @name=sonic-pi-beep @state=pending>
+elapsedtime: 0.25
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=1817, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=1818, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=1819, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=1820, @name=sonic-pi-beep @state=pending>
+elapsedtime: 0.375
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=1817, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=1818, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=1819, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=1820, @name=sonic-pi-beep @state=pending>
+elapsedtime: 0.5
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=1817, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=1818, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=1819, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=1820, @name=sonic-pi-beep @state=pending>
+elapsedtime: 0.625
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=1817, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=1818, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=1819, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=1820, @name=sonic-pi-beep @state=running>
+elapsedtime: 0.75
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=1817, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=1818, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=1819, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=1820, @name=sonic-pi-beep @state=running>
+elapsedtime: 0.875
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=1817, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=1818, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=1819, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=1820, @name=sonic-pi-beep @state=running>
+elapsedtime: 1.0
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=1817, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=1818, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=1819, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=1820, @name=sonic-pi-beep @state=running>
+elapsedtime: 1.125
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=1817, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=1818, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=1819, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=1820, @name=sonic-pi-beep @state=running>
+elapsedtime: 1.25
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=1817, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=1818, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=1819, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=1820, @name=sonic-pi-beep @state=running>
+elapsedtime: 1.375
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=1817, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=1818, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=1819, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=1820, @name=sonic-pi-beep @state=running>
+elapsedtime: 1.5
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=1817, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=1818, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=1819, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=1820, @name=sonic-pi-beep @state=running>
+elapsedtime: 1.625
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=1817, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1818, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1819, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1820, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 1.75
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=1817, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1818, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1819, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1820, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 1.875
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=1817, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1818, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1819, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1820, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 2.0
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=1817, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1818, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1819, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1820, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 2.125
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=1817, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1818, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1819, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1820, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 2.25
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=1817, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1818, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1819, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1820, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 2.375
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=1817, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1818, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1819, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1820, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 2.5
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=1817, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1818, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1819, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1820, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 2.625
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=1817, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1818, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1819, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1820, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 2.75
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=1817, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1818, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1819, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1820, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 2.875
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=1817, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1818, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1819, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1820, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 3.0
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=1817, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1818, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1819, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1820, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 3.125
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=1817, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1818, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1819, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1820, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 3.25
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=1817, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1818, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1819, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1820, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 3.375
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=1817, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1818, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1819, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1820, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 3.5
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=1817, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1818, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1819, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1820, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 3.625
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=1817, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1818, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1819, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1820, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 3.75
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=1817, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1818, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1819, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1820, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 3.875
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=1817, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1818, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1819, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1820, @name=sonic-pi-beep @state=destroyed>
+bottom of time loop
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=1817, @name=sonic-pi-beep @state=destroyed>
+top of tremolo
+handle: #<SonicPi::ChordGroup @id=1822 @subnodes=[#<SonicPi::SynthNode @id=1824, @name=sonic-pi-beep @state=pending>, #<SonicPi::SynthNode @id=1825, @name=sonic-pi-beep @state=pending>, #<SonicPi::SynthNode @id=1826, @name=sonic-pi-beep @state=pending>, #<SonicPi::SynthNode @id=1827, @name=sonic-pi-beep @state=pending>]>
+amp: 1
+depth: 1
+rate: 0.25
+duration: 4.0
+about to thread
+elapsedtime: 0
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=1824, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=1825, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=1826, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=1827, @name=sonic-pi-beep @state=pending>
+elapsedtime: 0.125
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=1824, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=1825, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=1826, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=1827, @name=sonic-pi-beep @state=pending>
+elapsedtime: 0.25
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=1824, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=1825, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=1826, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=1827, @name=sonic-pi-beep @state=pending>
+elapsedtime: 0.375
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=1824, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=1825, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=1826, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=1827, @name=sonic-pi-beep @state=pending>
+elapsedtime: 0.5
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=1824, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=1825, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=1826, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=1827, @name=sonic-pi-beep @state=pending>
+elapsedtime: 0.625
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=1824, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=1825, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=1826, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=1827, @name=sonic-pi-beep @state=running>
+elapsedtime: 0.75
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=1824, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=1825, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=1826, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=1827, @name=sonic-pi-beep @state=running>
+elapsedtime: 0.875
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=1824, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=1825, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=1826, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=1827, @name=sonic-pi-beep @state=running>
+elapsedtime: 1.0
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=1824, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=1825, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=1826, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=1827, @name=sonic-pi-beep @state=running>
+elapsedtime: 1.125
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=1824, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=1825, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=1826, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=1827, @name=sonic-pi-beep @state=running>
+elapsedtime: 1.25
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=1824, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=1825, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=1826, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=1827, @name=sonic-pi-beep @state=running>
+elapsedtime: 1.375
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=1824, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=1825, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=1826, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=1827, @name=sonic-pi-beep @state=running>
+elapsedtime: 1.5
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=1824, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=1825, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=1826, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=1827, @name=sonic-pi-beep @state=running>
+elapsedtime: 1.625
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=1824, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=1825, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=1826, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=1827, @name=sonic-pi-beep @state=running>
+elapsedtime: 1.75
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=1824, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1825, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1826, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1827, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 1.875
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=1824, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1825, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1826, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1827, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 2.0
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=1824, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1825, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1826, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1827, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 2.125
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=1824, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1825, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1826, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1827, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 2.25
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=1824, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1825, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1826, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1827, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 2.375
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=1824, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1825, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1826, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1827, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 2.5
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=1824, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1825, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1826, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1827, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 2.625
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=1824, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1825, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1826, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1827, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 2.75
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=1824, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1825, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1826, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1827, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 2.875
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=1824, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1825, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1826, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1827, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 3.0
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=1824, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1825, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1826, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1827, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 3.125
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=1824, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1825, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1826, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1827, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 3.25
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=1824, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1825, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1826, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1827, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 3.375
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=1824, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1825, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1826, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1827, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 3.5
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=1824, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1825, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1826, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1827, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 3.625
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=1824, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1825, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1826, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1827, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 3.75
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=1824, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1825, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1826, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1827, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 3.875
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=1824, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1825, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1826, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1827, @name=sonic-pi-beep @state=destroyed>
+bottom of time loop
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=1824, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1825, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1826, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=1827, @name=sonic-pi-beep @state=destroyed>
+top of tremolo
+handle: #<SonicPi::ChordGroup @id=9 @subnodes=[#<SonicPi::SynthNode @id=11, @name=sonic-pi-beep @state=pending>, #<SonicPi::SynthNode @id=12, @name=sonic-pi-beep @state=pending>, #<SonicPi::SynthNode @id=13, @name=sonic-pi-beep @state=pending>, #<SonicPi::SynthNode @id=14, @name=sonic-pi-beep @state=pending>]>
+amp: 1
+depth: 1
+rate: 0.25
+duration: 4.0
+about to thread
+elapsedtime: 0
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=11, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=12, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=13, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=14, @name=sonic-pi-beep @state=pending>
+elapsedtime: 0.125
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=11, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=12, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=13, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=14, @name=sonic-pi-beep @state=pending>
+elapsedtime: 0.25
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=11, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=12, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=13, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=14, @name=sonic-pi-beep @state=pending>
+elapsedtime: 0.375
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=11, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=12, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=13, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=14, @name=sonic-pi-beep @state=pending>
+elapsedtime: 0.5
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=11, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=12, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=13, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=14, @name=sonic-pi-beep @state=pending>
+elapsedtime: 0.625
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=11, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=12, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=13, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=14, @name=sonic-pi-beep @state=running>
+elapsedtime: 0.75
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=11, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=12, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=13, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=14, @name=sonic-pi-beep @state=running>
+elapsedtime: 0.875
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=11, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=12, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=13, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=14, @name=sonic-pi-beep @state=running>
+elapsedtime: 1.0
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=11, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=12, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=13, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=14, @name=sonic-pi-beep @state=running>
+elapsedtime: 1.125
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=11, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=12, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=13, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=14, @name=sonic-pi-beep @state=running>
+elapsedtime: 1.25
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=11, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=12, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=13, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=14, @name=sonic-pi-beep @state=running>
+elapsedtime: 1.375
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=11, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=12, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=13, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=14, @name=sonic-pi-beep @state=running>
+elapsedtime: 1.5
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=11, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=12, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=13, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=14, @name=sonic-pi-beep @state=running>
+elapsedtime: 1.625
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=11, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=12, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=13, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=14, @name=sonic-pi-beep @state=running>
+elapsedtime: 1.75
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=11, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=12, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=13, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=14, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 1.875
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=11, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=12, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=13, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=14, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 2.0
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=11, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=12, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=13, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=14, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 2.125
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=11, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=12, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=13, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=14, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 2.25
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=11, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=12, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=13, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=14, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 2.375
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=11, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=12, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=13, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=14, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 2.5
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=11, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=12, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=13, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=14, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 2.625
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=11, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=12, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=13, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=14, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 2.75
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=11, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=12, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=13, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=14, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 2.875
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=11, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=12, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=13, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=14, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 3.0
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=11, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=12, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=13, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=14, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 3.125
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=11, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=12, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=13, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=14, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 3.25
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=11, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=12, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=13, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=14, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 3.375
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=11, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=12, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=13, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=14, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 3.5
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=11, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=12, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=13, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=14, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 3.625
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=11, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=12, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=13, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=14, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 3.75
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=11, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=12, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=13, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=14, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 3.875
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=11, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=12, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=13, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=14, @name=sonic-pi-beep @state=destroyed>
+bottom of time loop
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=11, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=12, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=13, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=14, @name=sonic-pi-beep @state=destroyed>
+top of tremolo
+handle: #<SonicPi::ChordGroup @id=22 @subnodes=[#<SonicPi::SynthNode @id=23, @name=sonic-pi-beep @state=pending>, #<SonicPi::SynthNode @id=24, @name=sonic-pi-beep @state=pending>, #<SonicPi::SynthNode @id=25, @name=sonic-pi-beep @state=pending>, #<SonicPi::SynthNode @id=26, @name=sonic-pi-beep @state=pending>]>
+amp: 1
+depth: 1
+rate: 0.25
+duration: 4.0
+about to thread
+elapsedtime: 0
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=23, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=24, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=25, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=26, @name=sonic-pi-beep @state=pending>
+elapsedtime: 0.125
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=23, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=24, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=25, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=26, @name=sonic-pi-beep @state=pending>
+elapsedtime: 0.25
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=23, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=24, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=25, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=26, @name=sonic-pi-beep @state=pending>
+elapsedtime: 0.375
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=23, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=24, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=25, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=26, @name=sonic-pi-beep @state=pending>
+elapsedtime: 0.5
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=23, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=24, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=25, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=26, @name=sonic-pi-beep @state=pending>
+elapsedtime: 0.625
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=23, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=24, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=25, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=26, @name=sonic-pi-beep @state=running>
+elapsedtime: 0.75
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=23, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=24, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=25, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=26, @name=sonic-pi-beep @state=running>
+elapsedtime: 0.875
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=23, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=24, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=25, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=26, @name=sonic-pi-beep @state=running>
+elapsedtime: 1.0
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=23, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=24, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=25, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=26, @name=sonic-pi-beep @state=running>
+elapsedtime: 1.125
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=23, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=24, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=25, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=26, @name=sonic-pi-beep @state=running>
+elapsedtime: 1.25
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=23, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=24, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=25, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=26, @name=sonic-pi-beep @state=running>
+elapsedtime: 1.375
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=23, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=24, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=25, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=26, @name=sonic-pi-beep @state=running>
+elapsedtime: 1.5
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=23, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=24, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=25, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=26, @name=sonic-pi-beep @state=running>
+elapsedtime: 1.625
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=23, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=24, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=25, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=26, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 1.75
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=23, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=24, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=25, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=26, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 1.875
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=23, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=24, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=25, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=26, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 2.0
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=23, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=24, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=25, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=26, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 2.125
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=23, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=24, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=25, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=26, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 2.25
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=23, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=24, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=25, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=26, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 2.375
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=23, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=24, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=25, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=26, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 2.5
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=23, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=24, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=25, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=26, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 2.625
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=23, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=24, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=25, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=26, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 2.75
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=23, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=24, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=25, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=26, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 2.875
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=23, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=24, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=25, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=26, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 3.0
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=23, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=24, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=25, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=26, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 3.125
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=23, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=24, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=25, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=26, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 3.25
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=23, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=24, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=25, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=26, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 3.375
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=23, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=24, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=25, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=26, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 3.5
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=23, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=24, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=25, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=26, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 3.625
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=23, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=24, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=25, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=26, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 3.75
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=23, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=24, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=25, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=26, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 3.875
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=23, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=24, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=25, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=26, @name=sonic-pi-beep @state=destroyed>
+bottom of time loop
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=23, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=24, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=25, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=26, @name=sonic-pi-beep @state=destroyed>
+top of tremolo
+handle: #<SonicPi::SynthNode @id=30, @name=sonic-pi-beep @state=pending>
+amp: 1
+depth: 1
+rate: 0.25
+duration: 4.0
+about to thread
+elapsedtime: 0
+got a single note
+elapsedtime: 0.125
+got a single note
+elapsedtime: 0.25
+got a single note
+elapsedtime: 0.375
+got a single note
+elapsedtime: 0.5
+got a single note
+elapsedtime: 0.625
+got a single note
+elapsedtime: 0.75
+got a single note
+elapsedtime: 0.875
+got a single note
+elapsedtime: 1.0
+got a single note
+top of tremolo
+handle: #<SonicPi::ChordGroup @id=36 @subnodes=[#<SonicPi::SynthNode @id=37, @name=sonic-pi-beep @state=pending>, #<SonicPi::SynthNode @id=38, @name=sonic-pi-beep @state=pending>, #<SonicPi::SynthNode @id=39, @name=sonic-pi-beep @state=pending>, #<SonicPi::SynthNode @id=40, @name=sonic-pi-beep @state=pending>]>
+amp: 1
+depth: 1
+rate: 0.25
+duration: 4.0
+about to thread
+elapsedtime: 0
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=37, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=38, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=39, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=40, @name=sonic-pi-beep @state=pending>
+elapsedtime: 0.125
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=37, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=38, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=39, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=40, @name=sonic-pi-beep @state=pending>
+elapsedtime: 0.25
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=37, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=38, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=39, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=40, @name=sonic-pi-beep @state=pending>
+elapsedtime: 1.125
+got a single note
+elapsedtime: 1.25
+got a single note
+elapsedtime: 0.375
+elapsedtime: 1.375
+got a chord group
+got a single note
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=37, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=38, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=39, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=40, @name=sonic-pi-beep @state=pending>
+elapsedtime: 1.5
+elapsedtime: 0.5
+got a single note
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=37, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=38, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=39, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=40, @name=sonic-pi-beep @state=pending>
+elapsedtime: 0.625
+elapsedtime: 1.625
+got a chord group
+got a single note
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=37, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=38, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=39, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=40, @name=sonic-pi-beep @state=running>
+elapsedtime: 0.75
+elapsedtime: 1.75
+got a chord group
+got a single note
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=37, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=38, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=39, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=40, @name=sonic-pi-beep @state=running>
+elapsedtime: 1.875
+got a single note
+elapsedtime: 0.875
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=37, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=38, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=39, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=40, @name=sonic-pi-beep @state=running>
+elapsedtime: 1.0
+elapsedtime: 2.0
+got a chord group
+got a single note
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=37, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=38, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=39, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=40, @name=sonic-pi-beep @state=running>
+elapsedtime: 1.125
+elapsedtime: 2.125
+got a chord group
+got a single note
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=37, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=38, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=39, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=40, @name=sonic-pi-beep @state=running>
+elapsedtime: 1.25
+elapsedtime: 2.25
+got a chord group
+got a single note
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=37, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=38, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=39, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=40, @name=sonic-pi-beep @state=running>
+elapsedtime: 2.375
+elapsedtime: 1.375
+got a single note
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=37, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=38, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=39, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=40, @name=sonic-pi-beep @state=running>
+elapsedtime: 2.5
+got a single note
+elapsedtime: 1.5
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=37, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=38, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=39, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=40, @name=sonic-pi-beep @state=running>
+elapsedtime: 2.625
+elapsedtime: 1.625
+got a single note
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=37, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=38, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=39, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=40, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 1.75
+elapsedtime: 2.75
+got a chord group
+got a single note
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=37, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=38, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=39, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=40, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 2.875
+elapsedtime: 1.875
+got a single note
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=37, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=38, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=39, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=40, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 3.0
+got a single note
+elapsedtime: 2.0
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=37, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=38, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=39, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=40, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 2.125
+elapsedtime: 3.125
+got a chord group
+got a single note
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=37, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=38, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=39, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=40, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 2.25
+elapsedtime: 3.25
+got a chord group
+got a single note
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=37, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=38, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=39, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=40, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 3.375
+got a single note
+elapsedtime: 2.375
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=37, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 3.5
+got a single note
+subhandle: #<SonicPi::SynthNode @id=38, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=39, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=40, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 2.5
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=37, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=38, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=39, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=40, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 2.625
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=37, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=38, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=39, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=40, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 3.625
+got a single note
+elapsedtime: 3.75
+got a single note
+elapsedtime: 2.75
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=37, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=38, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=39, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=40, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 2.875
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=37, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=38, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=39, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=40, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 3.875
+got a single note
+bottom of time loop
+got a single note
+elapsedtime: 3.0
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=37, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=38, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=39, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=40, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 3.125
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=37, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=38, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=39, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=40, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 3.25
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=37, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=38, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=39, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=40, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 3.375
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=37, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=38, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=39, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=40, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 3.5
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=37, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=38, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=39, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=40, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 3.625
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=37, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=38, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=39, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=40, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 3.75
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=37, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=38, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=39, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=40, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 3.875
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=37, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=38, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=39, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=40, @name=sonic-pi-beep @state=destroyed>
+bottom of time loop
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=37, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=38, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=39, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=40, @name=sonic-pi-beep @state=destroyed>
+top of tremolo
+handle: #<SonicPi::SynthNode @id=44, @name=sonic-pi-beep @state=pending>
+amp: 1
+depth: 1
+rate: 0.25
+duration: 4.0
+about to thread
+elapsedtime: 0
+got a single note
+elapsedtime: 0.125
+got a single note
+elapsedtime: 0.25
+got a single note
+elapsedtime: 0.375
+got a single note
+elapsedtime: 0.5
+got a single note
+elapsedtime: 0.625
+got a single note
+elapsedtime: 0.75
+got a single note
+elapsedtime: 0.875
+got a single note
+elapsedtime: 1.0
+got a single note
+elapsedtime: 1.125
+got a single note
+elapsedtime: 1.25
+got a single note
+elapsedtime: 1.375
+got a single note
+elapsedtime: 1.5
+got a single note
+elapsedtime: 1.625
+got a single note
+elapsedtime: 1.75
+got a single note
+elapsedtime: 1.875
+got a single note
+elapsedtime: 2.0
+got a single note
+elapsedtime: 2.125
+got a single note
+top of tremolo
+handle: #<SonicPi::ChordGroup @id=50 @subnodes=[#<SonicPi::SynthNode @id=51, @name=sonic-pi-beep @state=pending>, #<SonicPi::SynthNode @id=52, @name=sonic-pi-beep @state=pending>, #<SonicPi::SynthNode @id=53, @name=sonic-pi-beep @state=pending>, #<SonicPi::SynthNode @id=54, @name=sonic-pi-beep @state=pending>]>
+amp: 1
+depth: 1
+rate: 0.25
+duration: 4.0
+about to thread
+elapsedtime: 0
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=51, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=52, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=53, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=54, @name=sonic-pi-beep @state=pending>
+elapsedtime: 0.125
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=51, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=52, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=53, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=54, @name=sonic-pi-beep @state=pending>
+elapsedtime: 0.25
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=51, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=52, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=53, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=54, @name=sonic-pi-beep @state=pending>
+elapsedtime: 2.25
+got a single note
+elapsedtime: 2.375
+got a single note
+elapsedtime: 0.375
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=51, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=52, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=53, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=54, @name=sonic-pi-beep @state=pending>
+elapsedtime: 0.5
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=51, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=52, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=53, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=54, @name=sonic-pi-beep @state=pending>
+elapsedtime: 2.5
+got a single note
+elapsedtime: 2.625
+got a single note
+elapsedtime: 0.625
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=51, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=52, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=53, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=54, @name=sonic-pi-beep @state=running>
+elapsedtime: 0.75
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=51, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=52, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=53, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=54, @name=sonic-pi-beep @state=running>
+elapsedtime: 0.875
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=51, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=52, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=53, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=54, @name=sonic-pi-beep @state=running>
+elapsedtime: 2.75
+got a single note
+elapsedtime: 2.875
+got a single note
+elapsedtime: 3.0
+elapsedtime: 1.0
+got a single note
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=51, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=52, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=53, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=54, @name=sonic-pi-beep @state=running>
+elapsedtime: 1.125
+elapsedtime: 3.125
+got a chord group
+got a single note
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=51, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=52, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=53, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=54, @name=sonic-pi-beep @state=running>
+elapsedtime: 1.25
+elapsedtime: 3.25
+got a chord group
+got a single note
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=51, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=52, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=53, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=54, @name=sonic-pi-beep @state=running>
+elapsedtime: 3.375
+got a single note
+elapsedtime: 1.375
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=51, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=52, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=53, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=54, @name=sonic-pi-beep @state=running>
+elapsedtime: 3.5
+elapsedtime: 1.5
+got a single note
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=51, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=52, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=53, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=54, @name=sonic-pi-beep @state=running>
+elapsedtime: 3.625
+elapsedtime: 1.625
+got a single note
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=51, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=52, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=53, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=54, @name=sonic-pi-beep @state=running>
+elapsedtime: 3.75
+got a single note
+elapsedtime: 1.75
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=51, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=52, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=53, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=54, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 3.875
+got a single note
+elapsedtime: 1.875
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=51, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=52, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=53, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=54, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 2.0
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=51, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=52, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=53, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=54, @name=sonic-pi-beep @state=destroyed>
+bottom of time loop
+got a single note
+elapsedtime: 2.125
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=51, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=52, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=53, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=54, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 2.25
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=51, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=52, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=53, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=54, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 2.375
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=51, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=52, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=53, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=54, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 2.5
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=51, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=52, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=53, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=54, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 2.625
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=51, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=52, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=53, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=54, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 2.75
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=51, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=52, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=53, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=54, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 2.875
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=51, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=52, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=53, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=54, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 3.0
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=51, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=52, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=53, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=54, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 3.125
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=51, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=52, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=53, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=54, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 3.25
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=51, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=52, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=53, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=54, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 3.375
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=51, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=52, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=53, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=54, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 3.5
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=51, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=52, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=53, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=54, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 3.625
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=51, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=52, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=53, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=54, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 3.75
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=51, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=52, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=53, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=54, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 3.875
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=51, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=52, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=53, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=54, @name=sonic-pi-beep @state=destroyed>
+bottom of time loop
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=51, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=52, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=53, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=54, @name=sonic-pi-beep @state=destroyed>
+top of tremolo
+handle: #<SonicPi::SynthNode @id=58, @name=sonic-pi-beep @state=pending>
+amp: 1
+depth: 1
+rate: 0.25
+duration: 4.0
+about to thread
+elapsedtime: 0
+got a single note
+elapsedtime: 0.125
+got a single note
+elapsedtime: 0.25
+got a single note
+elapsedtime: 0.375
+got a single note
+elapsedtime: 0.5
+got a single note
+elapsedtime: 0.625
+got a single note
+elapsedtime: 0.75
+got a single note
+elapsedtime: 0.875
+got a single note
+elapsedtime: 1.0
+got a single note
+elapsedtime: 1.125
+got a single note
+elapsedtime: 1.25
+got a single note
+elapsedtime: 1.375
+got a single note
+elapsedtime: 1.5
+got a single note
+elapsedtime: 1.625
+got a single note
+elapsedtime: 1.75
+got a single note
+elapsedtime: 1.875
+got a single note
+elapsedtime: 2.0
+got a single note
+elapsedtime: 2.125
+got a single note
+elapsedtime: 2.25
+got a single note
+elapsedtime: 2.375
+got a single note
+elapsedtime: 2.5
+got a single note
+elapsedtime: 2.625
+got a single note
+elapsedtime: 2.75
+got a single note
+elapsedtime: 2.875
+got a single note
+elapsedtime: 3.0
+got a single note
+elapsedtime: 3.125
+got a single note
+elapsedtime: 3.25
+got a single note
+elapsedtime: 3.375
+got a single note
+elapsedtime: 3.5
+got a single note
+elapsedtime: 3.625
+got a single note
+elapsedtime: 3.75
+got a single note
+elapsedtime: 3.875
+got a single note
+bottom of time loop
+got a single note
+top of tremolo
+handle: #<SonicPi::ChordGroup @id=66 @subnodes=[#<SonicPi::SynthNode @id=67, @name=sonic-pi-beep @state=pending>, #<SonicPi::SynthNode @id=68, @name=sonic-pi-beep @state=pending>, #<SonicPi::SynthNode @id=69, @name=sonic-pi-beep @state=pending>, #<SonicPi::SynthNode @id=70, @name=sonic-pi-beep @state=pending>]>
+amp: 1
+depth: 1
+rate: 0.25
+duration: 4.0
+about to thread
+elapsedtime: 0
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=67, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=68, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=69, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=70, @name=sonic-pi-beep @state=pending>
+elapsedtime: 0.125
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=67, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=68, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=69, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=70, @name=sonic-pi-beep @state=pending>
+elapsedtime: 0.25
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=67, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=68, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=69, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=70, @name=sonic-pi-beep @state=pending>
+elapsedtime: 0.375
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=67, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=68, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=69, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=70, @name=sonic-pi-beep @state=pending>
+elapsedtime: 0.5
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=67, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=68, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=69, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=70, @name=sonic-pi-beep @state=pending>
+elapsedtime: 0.625
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=67, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=68, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=69, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=70, @name=sonic-pi-beep @state=running>
+elapsedtime: 0.75
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=67, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=68, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=69, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=70, @name=sonic-pi-beep @state=running>
+elapsedtime: 0.875
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=67, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=68, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=69, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=70, @name=sonic-pi-beep @state=running>
+elapsedtime: 1.0
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=67, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=68, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=69, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=70, @name=sonic-pi-beep @state=running>
+elapsedtime: 1.125
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=67, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=68, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=69, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=70, @name=sonic-pi-beep @state=running>
+elapsedtime: 1.25
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=67, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=68, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=69, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=70, @name=sonic-pi-beep @state=running>
+elapsedtime: 1.375
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=67, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=68, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=69, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=70, @name=sonic-pi-beep @state=running>
+elapsedtime: 1.5
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=67, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=68, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=69, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=70, @name=sonic-pi-beep @state=running>
+elapsedtime: 1.625
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=67, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=68, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=69, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=70, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 1.75
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=67, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=68, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=69, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=70, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 1.875
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=67, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=68, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=69, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=70, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 2.0
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=67, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=68, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=69, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=70, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 2.125
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=67, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=68, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=69, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=70, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 2.25
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=67, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=68, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=69, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=70, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 2.375
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=67, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=68, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=69, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=70, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 2.5
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=67, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=68, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=69, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=70, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 2.625
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=67, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=68, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=69, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=70, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 2.75
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=67, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=68, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=69, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=70, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 2.875
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=67, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=68, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=69, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=70, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 3.0
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=67, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=68, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=69, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=70, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 3.125
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=67, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=68, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=69, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=70, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 3.25
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=67, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=68, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=69, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=70, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 3.375
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=67, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=68, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=69, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=70, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 3.5
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=67, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=68, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=69, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=70, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 3.625
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=67, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=68, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=69, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=70, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 3.75
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=67, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=68, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=69, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=70, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 3.875
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=67, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=68, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=69, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=70, @name=sonic-pi-beep @state=destroyed>
+bottom of time loop
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=67, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=68, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=69, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=70, @name=sonic-pi-beep @state=destroyed>
+resetting chord and scale values
+top of genchord
+lastroot: :c4
+lastchord: :major
+lastscale: :ionian
+lastshift: :diatonic
+key: :diatonic
+val: 8
+key: :blue
+val: 5
+key: :yellow
+val: 5
+shiftpicks: [:diatonic, :diatonic, :diatonic, :diatonic, :diatonic, :diatonic, :diatonic, :diatonic, :blue, :blue, :blue, :blue, :blue, :yellow, :yellow, :yellow, :yellow, :yellow]
+top of genchord
+thisshift: :blue
+thisroot: 63
+key: :i
+val: 10
+key: :ii
+val: 5
+key: :iii
+val: 5
+key: :iv
+val: 8
+key: :v
+val: 10
+top of genchord
+thisdegree: :iv
+thisroot after degree shift: 68
+got a major
+thischord: :major
+scaleodds: {:ionian=>5, :lydian=>10, :mixolydian=>3}
+key: :ionian
+val: 5
+key: :lydian
+val: 10
+key: :mixolydian
+val: 3
+scales: [:ionian, :ionian, :ionian, :ionian, :ionian, :lydian, :lydian, :lydian, :lydian, :lydian, :lydian, :lydian, :lydian, :lydian, :lydian, :mixolydian, :mixolydian, :mixolydian]
+top of genchord
+thisscale: :lydian
+resetting chord and scale values
+top of genchord
+lastroot: 56
+lastchord: :major
+lastscale: :lydian
+lastshift: :blue
+key: :diatonic
+val: 8
+key: :blue
+val: 3
+key: :yellow
+val: 5
+shiftpicks: [:diatonic, :diatonic, :diatonic, :diatonic, :diatonic, :diatonic, :diatonic, :diatonic, :blue, :blue, :blue, :yellow, :yellow, :yellow, :yellow, :yellow]
+top of genchord
+thisshift: :blue
+thisroot: 59
+key: :i
+val: 10
+key: :ii
+val: 5
+key: :iii
+val: 5
+key: :iv
+val: 8
+key: :v
+val: 10
+top of genchord
+thisdegree: :iv
+thisroot after degree shift: 64
+got a major
+thischord: :major
+scaleodds: {:ionian=>5, :lydian=>10, :mixolydian=>3}
+key: :ionian
+val: 5
+key: :lydian
+val: 10
+key: :mixolydian
+val: 3
+scales: [:ionian, :ionian, :ionian, :ionian, :ionian, :lydian, :lydian, :lydian, :lydian, :lydian, :lydian, :lydian, :lydian, :lydian, :lydian, :mixolydian, :mixolydian, :mixolydian]
+top of genchord
+thisscale: :lydian
+resetting chord and scale values
+top of genchord
+lastroot: 64
+lastchord: :major
+lastscale: :lydian
+lastshift: :blue
+key: :diatonic
+val: 8
+key: :blue
+val: 3
+key: :yellow
+val: 5
+shiftpicks: [:diatonic, :diatonic, :diatonic, :diatonic, :diatonic, :diatonic, :diatonic, :diatonic, :blue, :blue, :blue, :yellow, :yellow, :yellow, :yellow, :yellow]
+top of genchord
+thisshift: :diatonic
+thisroot: 64
+key: :ii
+val: 1
+key: :iii
+val: 1
+key: :iv
+val: 5
+key: :v
+val: 8
+key: :vi
+val: 10
+top of genchord
+thisdegree: :v
+thisroot after degree shift: 71
+got a major
+thischord: :major
+scaleodds: {:ionian=>10, :lydian=>3, :mixolydian=>8}
+key: :ionian
+val: 10
+key: :lydian
+val: 3
+key: :mixolydian
+val: 8
+scales: [:ionian, :ionian, :ionian, :ionian, :ionian, :ionian, :ionian, :ionian, :ionian, :ionian, :lydian, :lydian, :lydian, :mixolydian, :mixolydian, :mixolydian, :mixolydian, :mixolydian, :mixolydian, :mixolydian, :mixolydian]
+top of genchord
+thisscale: :ionian
+resetting chord and scale values
+top of genchord
+lastroot: 59
+lastchord: :major
+lastscale: :ionian
+lastshift: :diatonic
+key: :diatonic
+val: 8
+key: :blue
+val: 5
+key: :yellow
+val: 5
+shiftpicks: [:diatonic, :diatonic, :diatonic, :diatonic, :diatonic, :diatonic, :diatonic, :diatonic, :blue, :blue, :blue, :blue, :blue, :yellow, :yellow, :yellow, :yellow, :yellow]
+top of genchord
+thisshift: :diatonic
+thisroot: 59
+key: :ii
+val: 1
+key: :iii
+val: 1
+key: :iv
+val: 5
+key: :v
+val: 8
+key: :vi
+val: 10
+top of genchord
+thisdegree: :v
+thisroot after degree shift: 66
+got a major
+thischord: :major
+scaleodds: {:ionian=>10, :lydian=>3, :mixolydian=>8}
+key: :ionian
+val: 10
+key: :lydian
+val: 3
+key: :mixolydian
+val: 8
+scales: [:ionian, :ionian, :ionian, :ionian, :ionian, :ionian, :ionian, :ionian, :ionian, :ionian, :lydian, :lydian, :lydian, :mixolydian, :mixolydian, :mixolydian, :mixolydian, :mixolydian, :mixolydian, :mixolydian, :mixolydian]
+top of genchord
+thisscale: :ionian
+resetting chord and scale values
+top of genchord
+lastroot: 66
+lastchord: :major
+lastscale: :ionian
+lastshift: :diatonic
+key: :diatonic
+val: 8
+key: :blue
+val: 5
+key: :yellow
+val: 5
+shiftpicks: [:diatonic, :diatonic, :diatonic, :diatonic, :diatonic, :diatonic, :diatonic, :diatonic, :blue, :blue, :blue, :blue, :blue, :yellow, :yellow, :yellow, :yellow, :yellow]
+top of genchord
+thisshift: :blue
+thisroot: 69
+key: :i
+val: 10
+key: :ii
+val: 5
+key: :iii
+val: 5
+key: :iv
+val: 8
+key: :v
+val: 10
+top of genchord
+thisdegree: :iii
+thisroot after degree shift: 73
+got a minor
+thischord: :minor
+scaleodds: {:aeolian=>5, :dorian=>10, :phrygian=>3}
+key: :aeolian
+val: 5
+key: :dorian
+val: 10
+key: :phrygian
+val: 3
+scales: [:aeolian, :aeolian, :aeolian, :aeolian, :aeolian, :dorian, :dorian, :dorian, :dorian, :dorian, :dorian, :dorian, :dorian, :dorian, :dorian, :phrygian, :phrygian, :phrygian]
+top of genchord
+thisscale: :dorian
+resetting chord and scale values
+top of genchord
+lastroot: 61
+lastchord: :minor
+lastscale: :dorian
+lastshift: :blue
+key: :diatonic
+val: 8
+key: :blue
+val: 3
+key: :yellow
+val: 5
+shiftpicks: [:diatonic, :diatonic, :diatonic, :diatonic, :diatonic, :diatonic, :diatonic, :diatonic, :blue, :blue, :blue, :yellow, :yellow, :yellow, :yellow, :yellow]
+top of genchord
+thisshift: :diatonic
+thisroot: 61
+key: :ii
+val: 1
+key: :iii
+val: 1
+key: :iv
+val: 5
+key: :v
+val: 8
+key: :vi
+val: 10
+top of genchord
+thisdegree: :iv
+thisroot after degree shift: 66
+got a major
+thischord: :major
+scaleodds: {:ionian=>10, :lydian=>3, :mixolydian=>8}
+key: :ionian
+val: 10
+key: :lydian
+val: 3
+key: :mixolydian
+val: 8
+scales: [:ionian, :ionian, :ionian, :ionian, :ionian, :ionian, :ionian, :ionian, :ionian, :ionian, :lydian, :lydian, :lydian, :mixolydian, :mixolydian, :mixolydian, :mixolydian, :mixolydian, :mixolydian, :mixolydian, :mixolydian]
+top of genchord
+thisscale: :ionian
+resetting chord and scale values
+top of genchord
+lastroot: 66
+lastchord: :major
+lastscale: :ionian
+lastshift: :diatonic
+key: :diatonic
+val: 8
+key: :blue
+val: 5
+key: :yellow
+val: 5
+shiftpicks: [:diatonic, :diatonic, :diatonic, :diatonic, :diatonic, :diatonic, :diatonic, :diatonic, :blue, :blue, :blue, :blue, :blue, :yellow, :yellow, :yellow, :yellow, :yellow]
+top of genchord
+thisshift: :blue
+thisroot: 69
+key: :i
+val: 10
+key: :ii
+val: 5
+key: :iii
+val: 5
+key: :iv
+val: 8
+key: :v
+val: 10
+top of genchord
+thisdegree: :iii
+thisroot after degree shift: 73
+got a minor
+thischord: :minor
+scaleodds: {:aeolian=>5, :dorian=>10, :phrygian=>3}
+key: :aeolian
+val: 5
+key: :dorian
+val: 10
+key: :phrygian
+val: 3
+scales: [:aeolian, :aeolian, :aeolian, :aeolian, :aeolian, :dorian, :dorian, :dorian, :dorian, :dorian, :dorian, :dorian, :dorian, :dorian, :dorian, :phrygian, :phrygian, :phrygian]
+top of genchord
+thisscale: :dorian
+resetting chord and scale values
+top of genchord
+lastroot: 61
+lastchord: :minor
+lastscale: :dorian
+lastshift: :blue
+key: :diatonic
+val: 8
+key: :blue
+val: 3
+key: :yellow
+val: 5
+shiftpicks: [:diatonic, :diatonic, :diatonic, :diatonic, :diatonic, :diatonic, :diatonic, :diatonic, :blue, :blue, :blue, :yellow, :yellow, :yellow, :yellow, :yellow]
+top of genchord
+thisshift: :blue
+thisroot: 64
+key: :i
+val: 10
+key: :ii
+val: 5
+key: :iii
+val: 5
+key: :iv
+val: 8
+key: :v
+val: 10
+top of genchord
+thisdegree: :iv
+thisroot after degree shift: 69
+got a major
+thischord: :major
+scaleodds: {:ionian=>5, :lydian=>10, :mixolydian=>3}
+key: :ionian
+val: 5
+key: :lydian
+val: 10
+key: :mixolydian
+val: 3
+scales: [:ionian, :ionian, :ionian, :ionian, :ionian, :lydian, :lydian, :lydian, :lydian, :lydian, :lydian, :lydian, :lydian, :lydian, :lydian, :mixolydian, :mixolydian, :mixolydian]
+top of genchord
+thisscale: :lydian
+65.40639132514966
+[60, 64, 67, 70]
+65.40639132514966
+[60, 64, 67, 70]
+65.40639132514966
+[60, 64, 67, 70]
+65.40639132514966
+[60, 64, 67, 70]
+65.40639132514966
+[60, 64, 67, 70]
+65.40639132514966
+[60, 64, 67, 70]
+65.40639132514966
+[60, 64, 67, 70]
+65.40639132514966
+[60, 64, 67, 70]
+65.40639132514966
+[60, 64, 67, 70]
+65.40639132514966
+[60, 64, 67, 70]
+65.40639132514966
+[60, 64, 67, 70]
+65.40639132514966
+[60, 64, 67, 70]
+65.40639132514966
+[60, 64, 67, 70]
+:c2
+65.40639132514966
+[60, 64, 67, 70]
+:c2
+65.40639132514966
+[60, 64, 67, 70]
+:c2
+65.40639132514966
+[60, 64, 67, 70]
+:c2
+65.40639132514966
+[60, 64, 67, 70]
+:c2
+65.40639132514966
+[60, 64, 67, 70]
+:ds2
+77.78174593052023
+[63, 67, 70, 73]
+:g2
+97.99885899543733
+[67, 71, 74, 77]
+:as1
+58.27047018976124
+[58, 62, 65, 68]
+:c2
+65.40639132514966
+[60, 64, 67, 70]
+:ds2
+77.78174593052023
+[63, 67, 70, 73]
+:g2
+97.99885899543733
+[67, 71, 74, 77]
+:as1
+58.27047018976124
+[58, 62, 65, 68]
+:c2
+65.40639132514966
+[60, 64, 67, 70]
+:ds2
+77.78174593052023
+[63, 67, 70, 73]
+:g2
+97.99885899543733
+[67, 71, 74, 77]
+:as1
+58.27047018976124
+[58, 62, 65, 68]
+:c2
+65.40639132514966
+[61, 65, 68, 71]
+:ds2
+77.78174593052023
+[64, 68, 71, 74]
+:g2
+97.99885899543733
+[68, 72, 75, 78]
+:as1
+58.27047018976124
+[59, 63, 66, 69]
+:c2
+65.40639132514966
+[60, 64, 67, 70]
+:ds2
+77.78174593052023
+[63, 67, 70, 73]
+:g2
+97.99885899543733
+[67, 71, 74, 77]
+:as1
+58.27047018976124
+[58, 62, 65, 68]
+:c2
+65.40639132514966
+[60, 64, 67, 70]
+:ds2
+77.78174593052023
+[63, 67, 70, 73]
+:g2
+97.99885899543733
+[67, 71, 74, 77]
+:as1
+58.27047018976124
+[58, 62, 65, 68]
+:c2
+65.40639132514966
+[60, 64, 67, 70]
+:ds2
+77.78174593052023
+[63, 67, 70, 73]
+:g2
+97.99885899543733
+[67, 71, 74, 77]
+:as1
+58.27047018976124
+[58, 62, 65, 68]
+:c2
+65.40639132514966
+[60, 64, 67, 70]
+:c2
+65.40639132514966
+[60, 64, 67, 70]
+:c2
+65.40639132514966
+[60, 64, 67, 70]
+:c2
+65.40639132514966
+[60, 64, 67, 70]
+:ds2
+77.78174593052023
+[63, 67, 70, 73]
+:g2
+97.99885899543733
+[67, 71, 74, 77]
+:as1
+58.27047018976124
+[58, 62, 65, 68]
+:c2
+65.40639132514966
+[60, 64, 67, 70]
+:ds2
+77.78174593052023
+[63, 67, 70, 73]
+:c2
+65.40639132514966
+[60, 64, 67, 70]
+:ds2
+77.78174593052023
+[63, 67, 70, 73]
+:g2
+97.99885899543733
+[67, 71, 74, 77]
+:as1
+58.27047018976124
+[58, 62, 65, 68]
+:c2
+65.40639132514966
+[60, 64, 67, 70]
+:ds2
+77.78174593052023
+[63, 67, 70, 73]
+:g2
+97.99885899543733
+[67, 71, 74, 77]
+:as1
+58.27047018976124
+[58, 62, 65, 68]
+:c2
+65.40639132514966
+[60, 64, 67, 70]
+:c2
+65.40639132514966
+[60, 64, 67, 70]
+:ds2
+77.78174593052023
+[63, 67, 70, 73]
+:g2
+97.99885899543733
+[67, 71, 74, 77]
+:as1
+58.27047018976124
+[58, 62, 65, 68]
+:c2
+65.40639132514966
+[60, 64, 67, 70]
+:ds2
+77.78174593052023
+[63, 67, 70, 73]
+:g2
+97.99885899543733
+[67, 71, 74, 77]
+:c2
+65.40639132514966
+[60, 64, 67, 70]
+:ds2
+77.78174593052023
+[63, 67, 70, 73]
+:g2
+97.99885899543733
+[67, 71, 74, 77]
+:as1
+58.27047018976124
+[58, 62, 65, 68]
+:c2
+65.40639132514966
+[60, 64, 67, 70]
+:c2
+65.40639132514966
+[60, 64, 67, 70]
+:ds2
+77.78174593052023
+[63, 67, 70, 73]
+:g2
+97.99885899543733
+[67, 71, 74, 77]
+:c2
+65.40639132514966
+[60, 64, 67, 70]
+:c2
+65.40639132514966
+[60, 64, 67, 70]
+:c2
+65.40639132514966
+[60, 64, 67, 70]
+:c2
+65.40639132514966
+[60, 64, 67, 70]
+:c2
+65.40639132514966
+[60, 64, 67, 70]
+:ds2
+77.78174593052023
+[63, 67, 70, 73]
+:c2
+65.40639132514966
+[60, 64, 67, 70]
+:ds2
+77.78174593052023
+[63, 67, 70, 73]
+:g2
+97.99885899543733
+[67, 71, 74, 77]
+:c2
+65.40639132514966
+[60, 64, 67, 70]
+:ds2
+77.78174593052023
+[63, 67, 70, 73]
+:g2
+97.99885899543733
+[67, 71, 74, 77]
+:as1
+58.27047018976124
+[58, 62, 65, 68]
+:c2
+65.40639132514966
+[60, 64, 67, 70]
+:ds2
+77.78174593052023
+[63, 67, 70, 73]
+:g2
+97.99885899543733
+[67, 71, 74, 77]
+:c2
+65.40639132514966
+[60, 64, 67, 70]
+:ds2
+77.78174593052023
+[63, 67, 70, 73]
+:g2
+97.99885899543733
+[67, 71, 74, 77]
+:as1
+58.27047018976124
+[58, 62, 65, 68]
+top of tremolo
+handle: #<SonicPi::ChordGroup @id=15 @subnodes=[#<SonicPi::SynthNode @id=16, @name=sonic-pi-beep @state=pending>, #<SonicPi::SynthNode @id=17, @name=sonic-pi-beep @state=pending>, #<SonicPi::SynthNode @id=18, @name=sonic-pi-beep @state=pending>, #<SonicPi::SynthNode @id=19, @name=sonic-pi-beep @state=pending>]>
+amp: 1
+depth: 1
+rate: 0.25
+duration: 4.0
+about to thread
+elapsedtime: 0
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=16, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=17, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=18, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=19, @name=sonic-pi-beep @state=pending>
+elapsedtime: 0.125
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=16, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=17, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=18, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=19, @name=sonic-pi-beep @state=pending>
+elapsedtime: 0.25
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=16, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=17, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=18, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=19, @name=sonic-pi-beep @state=pending>
+elapsedtime: 0.375
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=16, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=17, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=18, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=19, @name=sonic-pi-beep @state=pending>
+elapsedtime: 0.5
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=16, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=17, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=18, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=19, @name=sonic-pi-beep @state=pending>
+elapsedtime: 0.625
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=16, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=17, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=18, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=19, @name=sonic-pi-beep @state=running>
+elapsedtime: 0.75
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=16, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=17, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=18, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=19, @name=sonic-pi-beep @state=running>
+elapsedtime: 0.875
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=16, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=17, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=18, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=19, @name=sonic-pi-beep @state=running>
+elapsedtime: 1.0
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=16, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=17, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=18, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=19, @name=sonic-pi-beep @state=running>
+elapsedtime: 1.125
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=16, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=17, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=18, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=19, @name=sonic-pi-beep @state=running>
+elapsedtime: 1.25
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=16, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=17, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=18, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=19, @name=sonic-pi-beep @state=running>
+elapsedtime: 1.375
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=16, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=17, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=18, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=19, @name=sonic-pi-beep @state=running>
+elapsedtime: 1.5
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=16, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=17, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=18, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=19, @name=sonic-pi-beep @state=running>
+elapsedtime: 1.625
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=16, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=17, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=18, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=19, @name=sonic-pi-beep @state=running>
+elapsedtime: 1.75
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=16, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=17, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=18, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=19, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 1.875
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=16, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=17, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=18, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=19, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 2.0
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=16, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=17, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=18, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=19, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 2.125
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=16, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=17, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=18, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=19, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 2.25
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=16, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=17, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=18, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=19, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 2.375
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=16, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=17, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=18, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=19, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 2.5
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=16, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=17, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=18, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=19, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 2.625
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=16, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=17, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=18, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=19, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 2.75
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=16, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=17, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=18, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=19, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 2.875
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=16, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=17, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=18, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=19, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 3.0
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=16, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=17, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=18, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=19, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 3.125
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=16, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=17, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=18, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=19, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 3.25
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=16, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=17, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=18, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=19, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 3.375
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=16, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=17, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=18, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=19, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 3.5
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=16, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=17, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=18, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=19, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 3.625
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=16, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=17, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=18, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=19, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 3.75
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=16, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=17, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=18, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=19, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 3.875
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=16, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=17, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=18, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=19, @name=sonic-pi-beep @state=destroyed>
+bottom of time loop
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=16, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=17, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=18, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=19, @name=sonic-pi-beep @state=destroyed>
+top of tremolo
+handle: #<SonicPi::ChordGroup @id=27 @subnodes=[#<SonicPi::SynthNode @id=28, @name=sonic-pi-beep @state=pending>, #<SonicPi::SynthNode @id=29, @name=sonic-pi-beep @state=pending>, #<SonicPi::SynthNode @id=30, @name=sonic-pi-beep @state=pending>, #<SonicPi::SynthNode @id=31, @name=sonic-pi-beep @state=pending>]>
+amp: 1
+depth: 1
+rate: 0.25
+duration: 4.0
+about to thread
+elapsedtime: 0
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=28, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=29, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=30, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=31, @name=sonic-pi-beep @state=pending>
+elapsedtime: 0.125
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=28, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=29, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=30, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=31, @name=sonic-pi-beep @state=pending>
+elapsedtime: 0.25
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=28, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=29, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=30, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=31, @name=sonic-pi-beep @state=pending>
+elapsedtime: 0.375
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=28, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=29, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=30, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=31, @name=sonic-pi-beep @state=pending>
+elapsedtime: 0.5
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=28, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=29, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=30, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=31, @name=sonic-pi-beep @state=pending>
+elapsedtime: 0.625
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=28, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=29, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=30, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=31, @name=sonic-pi-beep @state=running>
+elapsedtime: 0.75
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=28, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=29, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=30, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=31, @name=sonic-pi-beep @state=running>
+elapsedtime: 0.875
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=28, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=29, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=30, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=31, @name=sonic-pi-beep @state=running>
+elapsedtime: 1.0
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=28, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=29, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=30, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=31, @name=sonic-pi-beep @state=running>
+elapsedtime: 1.125
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=28, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=29, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=30, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=31, @name=sonic-pi-beep @state=running>
+elapsedtime: 1.25
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=28, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=29, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=30, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=31, @name=sonic-pi-beep @state=running>
+elapsedtime: 1.375
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=28, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=29, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=30, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=31, @name=sonic-pi-beep @state=running>
+elapsedtime: 1.5
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=28, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=29, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=30, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=31, @name=sonic-pi-beep @state=running>
+elapsedtime: 1.625
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=28, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=29, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=30, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=31, @name=sonic-pi-beep @state=running>
+elapsedtime: 1.75
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=28, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=29, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=30, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=31, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 1.875
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=28, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=29, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=30, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=31, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 2.0
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=28, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=29, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=30, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=31, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 2.125
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=28, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=29, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=30, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=31, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 2.25
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=28, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=29, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=30, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=31, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 2.375
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=28, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=29, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=30, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=31, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 2.5
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=28, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=29, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=30, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=31, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 2.625
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=28, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=29, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=30, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=31, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 2.75
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=28, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=29, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=30, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=31, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 2.875
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=28, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=29, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=30, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=31, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 3.0
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=28, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=29, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=30, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=31, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 3.125
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=28, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=29, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=30, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=31, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 3.25
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=28, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=29, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=30, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=31, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 3.375
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=28, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=29, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=30, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=31, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 3.5
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=28, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=29, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=30, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=31, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 3.625
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=28, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=29, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=30, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=31, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 3.75
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=28, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=29, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=30, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=31, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 3.875
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=28, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=29, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=30, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=31, @name=sonic-pi-beep @state=destroyed>
+bottom of time loop
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=28, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=29, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=30, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=31, @name=sonic-pi-beep @state=destroyed>
+top of tremolo
+handle: #<SonicPi::ChordGroup @id=39 @subnodes=[#<SonicPi::SynthNode @id=40, @name=sonic-pi-beep @state=pending>, #<SonicPi::SynthNode @id=41, @name=sonic-pi-beep @state=pending>, #<SonicPi::SynthNode @id=42, @name=sonic-pi-beep @state=pending>, #<SonicPi::SynthNode @id=43, @name=sonic-pi-beep @state=pending>]>
+amp: 1
+depth: 1
+rate: 0.25
+duration: 4.0
+about to thread
+elapsedtime: 0
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=40, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=41, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=42, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=43, @name=sonic-pi-beep @state=pending>
+elapsedtime: 0.125
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=40, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=41, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=42, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=43, @name=sonic-pi-beep @state=pending>
+elapsedtime: 0.25
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=40, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=41, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=42, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=43, @name=sonic-pi-beep @state=pending>
+elapsedtime: 0.375
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=40, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=41, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=42, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=43, @name=sonic-pi-beep @state=pending>
+elapsedtime: 0.5
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=40, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=41, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=42, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=43, @name=sonic-pi-beep @state=pending>
+elapsedtime: 0.625
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=40, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=41, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=42, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=43, @name=sonic-pi-beep @state=running>
+elapsedtime: 0.75
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=40, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=41, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=42, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=43, @name=sonic-pi-beep @state=running>
+elapsedtime: 0.875
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=40, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=41, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=42, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=43, @name=sonic-pi-beep @state=running>
+elapsedtime: 1.0
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=40, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=41, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=42, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=43, @name=sonic-pi-beep @state=running>
+elapsedtime: 1.125
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=40, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=41, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=42, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=43, @name=sonic-pi-beep @state=running>
+elapsedtime: 1.25
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=40, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=41, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=42, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=43, @name=sonic-pi-beep @state=running>
+elapsedtime: 1.375
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=40, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=41, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=42, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=43, @name=sonic-pi-beep @state=running>
+elapsedtime: 1.5
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=40, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=41, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=42, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=43, @name=sonic-pi-beep @state=running>
+elapsedtime: 1.625
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=40, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=41, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=42, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=43, @name=sonic-pi-beep @state=running>
+elapsedtime: 1.75
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=40, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=41, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=42, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=43, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 1.875
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=40, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=41, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=42, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=43, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 2.0
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=40, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=41, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=42, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=43, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 2.125
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=40, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=41, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=42, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=43, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 2.25
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=40, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=41, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=42, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=43, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 2.375
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=40, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=41, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=42, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=43, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 2.5
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=40, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=41, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=42, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=43, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 2.625
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=40, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=41, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=42, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=43, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 2.75
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=40, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=41, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=42, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=43, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 2.875
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=40, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=41, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=42, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=43, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 3.0
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=40, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=41, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=42, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=43, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 3.125
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=40, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=41, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=42, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=43, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 3.25
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=40, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=41, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=42, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=43, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 3.375
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=40, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=41, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=42, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=43, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 3.5
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=40, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=41, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=42, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=43, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 3.625
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=40, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=41, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=42, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=43, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 3.75
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=40, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=41, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=42, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=43, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 3.875
+got a chord group
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=40, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=41, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=42, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=43, @name=sonic-pi-beep @state=destroyed>
+bottom of time loop
+got a chord group
+subamp: 0.25
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=40, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=41, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=42, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=43, @name=sonic-pi-beep @state=destroyed>
+top of tremolo
+handle: #<SonicPi::ChordGroup @id=51 @subnodes=[#<SonicPi::SynthNode @id=52, @name=sonic-pi-beep @state=pending>, #<SonicPi::SynthNode @id=53, @name=sonic-pi-beep @state=pending>, #<SonicPi::SynthNode @id=54, @name=sonic-pi-beep @state=pending>, #<SonicPi::SynthNode @id=55, @name=sonic-pi-beep @state=pending>]>
+amp: 1
+depth: 1
+rate: 0.25
+duration: 4.0
+about to thread
+elapsedtime: 0
+got a chord group
+subamp: 0.25
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=52, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=53, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=54, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=55, @name=sonic-pi-beep @state=pending>
+elapsedtime: 0.125
+got a chord group
+subamp: 0.25
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=52, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=53, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=54, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=55, @name=sonic-pi-beep @state=pending>
+elapsedtime: 0.25
+got a chord group
+subamp: 0.25
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=52, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=53, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=54, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=55, @name=sonic-pi-beep @state=pending>
+elapsedtime: 0.375
+got a chord group
+subamp: 0.25
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=52, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=53, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=54, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=55, @name=sonic-pi-beep @state=pending>
+elapsedtime: 0.5
+got a chord group
+subamp: 0.25
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=52, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=53, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=54, @name=sonic-pi-beep @state=pending>
+subhandle: #<SonicPi::SynthNode @id=55, @name=sonic-pi-beep @state=pending>
+elapsedtime: 0.625
+got a chord group
+subamp: 0.25
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=52, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=53, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=54, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=55, @name=sonic-pi-beep @state=running>
+elapsedtime: 0.75
+got a chord group
+subamp: 0.25
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=52, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=53, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=54, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=55, @name=sonic-pi-beep @state=running>
+elapsedtime: 0.875
+got a chord group
+subamp: 0.25
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=52, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=53, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=54, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=55, @name=sonic-pi-beep @state=running>
+elapsedtime: 1.0
+got a chord group
+subamp: 0.25
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=52, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=53, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=54, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=55, @name=sonic-pi-beep @state=running>
+elapsedtime: 1.125
+got a chord group
+subamp: 0.25
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=52, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=53, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=54, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=55, @name=sonic-pi-beep @state=running>
+elapsedtime: 1.25
+got a chord group
+subamp: 0.25
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=52, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=53, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=54, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=55, @name=sonic-pi-beep @state=running>
+elapsedtime: 1.375
+got a chord group
+subamp: 0.25
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=52, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=53, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=54, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=55, @name=sonic-pi-beep @state=running>
+elapsedtime: 1.5
+got a chord group
+subamp: 0.25
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=52, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=53, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=54, @name=sonic-pi-beep @state=running>
+subhandle: #<SonicPi::SynthNode @id=55, @name=sonic-pi-beep @state=running>
+elapsedtime: 1.625
+got a chord group
+subamp: 0.25
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=52, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=53, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=54, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=55, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 1.75
+got a chord group
+subamp: 0.25
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=52, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=53, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=54, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=55, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 1.875
+got a chord group
+subamp: 0.25
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=52, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=53, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=54, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=55, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 2.0
+got a chord group
+subamp: 0.25
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=52, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=53, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=54, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=55, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 2.125
+got a chord group
+subamp: 0.25
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=52, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=53, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=54, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=55, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 2.25
+got a chord group
+subamp: 0.25
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=52, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=53, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=54, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=55, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 2.375
+got a chord group
+subamp: 0.25
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=52, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=53, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=54, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=55, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 2.5
+got a chord group
+subamp: 0.25
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=52, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=53, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=54, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=55, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 2.625
+got a chord group
+subamp: 0.25
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=52, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=53, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=54, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=55, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 2.75
+got a chord group
+subamp: 0.25
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=52, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=53, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=54, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=55, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 2.875
+got a chord group
+subamp: 0.25
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=52, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=53, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=54, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=55, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 3.0
+got a chord group
+subamp: 0.25
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=52, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=53, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=54, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=55, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 3.125
+got a chord group
+subamp: 0.25
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=52, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=53, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=54, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=55, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 3.25
+got a chord group
+subamp: 0.25
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=52, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=53, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=54, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=55, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 3.375
+got a chord group
+subamp: 0.25
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=52, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=53, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=54, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=55, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 3.5
+got a chord group
+subamp: 0.25
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=52, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=53, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=54, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=55, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 3.625
+got a chord group
+subamp: 0.25
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=52, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=53, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=54, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=55, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 3.75
+got a chord group
+subamp: 0.25
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=52, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=53, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=54, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=55, @name=sonic-pi-beep @state=destroyed>
+elapsedtime: 3.875
+got a chord group
+subamp: 0.25
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=52, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=53, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=54, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=55, @name=sonic-pi-beep @state=destroyed>
+bottom of time loop
+got a chord group
+subamp: 0.25
+pitch: []
+subhandle: #<SonicPi::SynthNode @id=52, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=53, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=54, @name=sonic-pi-beep @state=destroyed>
+subhandle: #<SonicPi::SynthNode @id=55, @name=sonic-pi-beep @state=destroyed>
