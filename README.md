@@ -11,6 +11,15 @@ There are also utilities and testing methods to make programming simpler and mor
 
 ## Version history: 
 
+
+### 1.1.1.4
+
+#### fixed bugs:
+
+fixed bug in arrange (too many repetitions)  
+fixed bug in arrange (erroneously scheduling samples when should rest)  
+
+
 ### 1.1.1.3
 
 #### fixed bugs:
@@ -291,7 +300,7 @@ The last param \*\*kwargs allows support for params to be named as well as posit
     Please note that "major" and "minor" are both chords and scales.
     To force scale, use "ionian" and "aeolian" instead.
     e.g. "q :e4 maj,q :a4 min,e :d4 maj desc,e,e,e"  
-  repetitions: a number of times to repeat the entire phrase with all instruments
+  repetitions: a number of times to repeat the entire phrase with all instruments  
   defaults: a hash of default settings per voice, where the key to the hash is the sample or synth e.g. {bass => "note_slide_curve: 3"}  
   the value of the key/val pair can either be a comma-delimited string ("amp: 2, cutoff: 60"), or a hash. 
   If you use a hash, you can supply an array of values for any key, and the values will be ticked through at runtime.

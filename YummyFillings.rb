@@ -2363,104 +2363,113 @@ define :executecmdlist do |mytimeline, mymelody, myextraargs, thatphrasedensity=
           ##debugprint "sample mode"
           ##debugprint "mymelody: ", mymelody
           ##debugprint "thatsound: ", thatsound
+          ##debugprint "mymelody: ", mymelody
           ##debugprint "mymelody[thatsound[0]]: ", mymelody[thatsound[0]]
-          if mymelody[thatsound[0]] != nil
-            # TODO: add logic to test for note 0
-            ##debugprint "got a melody, picking thatnote"
-            thatnote = mymelody[thatsound[0]]
-            ##debugprint "thatnote: ", thatnote
-            ##debugprint "mymelody[thatsound[0]]: ", mymelody[thatsound[0]]
-            mymelody[thatsound[0]] = mymelody[thatsound[0]].rotate #rotate note just played
-            #need to add smarts for rings with fewer entries than notes played
-            ##debugprint "thatnote: ", thatnote
-            ##debugprint "thatnote[0]: ", thatnote[0]
-            
-            
-            if thatnote[0].is_a? String  
-              ##debugprint "thatnote[0] is a string or symbol"
-              thatnote[0] = thatnote[0].to_s #force to string  
-              if thatnote[0] =~ /:.*/
-                ##debugprint "got a colon, turning to symbol"
-                thatnote = thatnote[0].delete_prefix(":").to_sym
-              else
-                ##debugprint "no colon, turning to int"
-                thatnote = thatnote[0].to_i
-              end
+          #FOO
+          thatnote = mymelody[thatsound[0]] || "tricksy hobbit!"
+          ##debugprint "thatnote[0]: ", thatnote[0]
+          if thatnote[0] == :rest 
+            ##debugprint "got a rest, setting cmd to blank"
+            cmd = ""
+          else
+            if mymelody[thatsound[0]] != nil
+              # TODO: add logic to test for note 0
+              ##debugprint "got a melody, picking thatnote"
+              thatnote = mymelody[thatsound[0]]
+              ##debugprint "thatnote: ", thatnote
+              ##debugprint "mymelody[thatsound[0]]: ", mymelody[thatsound[0]]
+              mymelody[thatsound[0]] = mymelody[thatsound[0]].rotate #rotate note just played
+              #need to add smarts for rings with fewer entries than notes played
+              ##debugprint "thatnote: ", thatnote
+              ##debugprint "thatnote[0]: ", thatnote[0]
               
-              ##debugprint "formattedsamplename(effectivesound): ", formattedsamplename(effectivesound)
-              ##debugprint "thatsound[1]: ", thatsound[1]
-              cmd = "handle = transposesample "+ formattedsamplename(effectivesound) + ", pitch_stretch: "  + thatsound[1].to_s + ", rpitch: " + thatnote.to_s + (mymelody[thatsound] || "")
-              ##debugprint "defaults[thatsound[0]]: ", defaults[thatsound[0]]
+              
+              if thatnote[0].is_a? String  
+                ##debugprint "thatnote[0] is a string or symbol"
+                thatnote[0] = thatnote[0].to_s #force to string  
+                if thatnote[0] =~ /:.*/
+                  ##debugprint "got a colon, turning to symbol"
+                  thatnote = thatnote[0].delete_prefix(":").to_sym
+                else
+                  ##debugprint "no colon, turning to int"
+                  thatnote = thatnote[0].to_i
+                end
+                
+                ##debugprint "formattedsamplename(effectivesound): ", formattedsamplename(effectivesound)
+                ##debugprint "thatsound[1]: ", thatsound[1]
+                cmd = "handle = transposesample "+ formattedsamplename(effectivesound) + ", pitch_stretch: "  + thatsound[1].to_s + ", rpitch: " + thatnote.to_s + (mymelody[thatsound] || "")
+                ##debugprint "defaults[thatsound[0]]: ", defaults[thatsound[0]]
+                cmd += (tickargs defaults[thatsound[0]] || "")
+
+                ##debugprint "cmd: ", cmd
+
+                if effects[thatsound[0]] != nil
+                  effects[thatsound[0]].split(";").each do |effect|
+                    ##debugprint "adding effect ", effect
+                    cmd = "with_fx " + effect + " do " + cmd + " end "
+                  end #each effect
+                else
+                  ##debugprint "no effects"
+                end #if effects
+                ##debugprint "cmd: ", cmd
+
+                #eval cmd 
+
+              elsif thatnote[0] == :rest  
+                ##debugprint "got a rest, setting cmd to empty string"
+                cmd = ""
+                
+              else
+                ##debugprint "thatnote[0] is a list/ring"
+                thatnote[0].each do |onenote|
+                  ##debugprint "onenote: ", onenote
+                  pitch_stretch_ratio = midi_to_hz(60 + onenote) / midi_to_hz(60)
+
+                  cmd = "handle = transposesample " + formattedsamplename(effectivesound) + ", pitch_stretch: " + thatsound[1].to_s + ", rpitch: " + onenote.to_s
+                  cmd += (tickargs defaults[thatsound[0]] || "")
+                  cmd += (extraargs[thatsound] || "")
+
+
+
+                  # don't think I need this any more, moved outside of note testing
+
+                  # if effects[thatsound[0]] != nil
+                  #   effects[thatsound[0]].split(";").each do |effect|
+                  #     ##debugprint "adding effect ", effect
+                  #     cmd = "with_fx " + effect + " do " + cmd + " end "
+                  #   end #each effect
+                  #   ##debugprint "cooked cmd with effects: ", cmd
+                  # else
+                  #   ##debugprint "no effects"
+                  # end #if effects
+                  # ##debugprint "cmd: ", cmd
+                  # #eval cmd 
+
+
+                end #each note
+
+                
+              end #if thatnote[0] is a string
+            
+            else
+              
+              ##debugprint "no note, play sample stark naked"
+              ##debugprint "thatsound: ", thatsound
+              ##debugprint "thatsound[0]: ", thatsound[0]
+              ##debugprint "myextraargs: ", myextraargs
+              ##debugprint "mymelody[thatsound[0]]: ", mymelody[thatsound[0]]
+              ##debugprint "defaults: ", defaults
+              ##debugprint "thatphrasedensity: ", thatphrasedensity
+              
+              #need to add code for pitch shifting samples
+              cmd = "handle = sample " + formattedsamplename(effectivesound)
               cmd += (tickargs defaults[thatsound[0]] || "")
 
               ##debugprint "cmd: ", cmd
 
-              if effects[thatsound[0]] != nil
-                effects[thatsound[0]].split(";").each do |effect|
-                  ##debugprint "adding effect ", effect
-                  cmd = "with_fx " + effect + " do " + cmd + " end "
-                end #each effect
-              else
-                ##debugprint "no effects"
-              end #if effects
-              ##debugprint "cmd: ", cmd
 
-              #eval cmd 
-
-            elsif thatnote[0] == :rest  
-              ##debugprint "got a rest, setting cmd to empty string"
-              cmd = ""
-              
-            else
-              ##debugprint "thatnote[0] is a list/ring"
-              thatnote[0].each do |onenote|
-                ##debugprint "onenote: ", onenote
-                pitch_stretch_ratio = midi_to_hz(60 + onenote) / midi_to_hz(60)
-
-                cmd = "handle = transposesample " + formattedsamplename(effectivesound) + ", pitch_stretch: " + thatsound[1].to_s + ", rpitch: " + onenote.to_s
-                cmd += (tickargs defaults[thatsound[0]] || "")
-                cmd += (extraargs[thatsound] || "")
-
-
-
-                # don't think I need this any more, moved outside of note testing
-
-                # if effects[thatsound[0]] != nil
-                #   effects[thatsound[0]].split(";").each do |effect|
-                #     ##debugprint "adding effect ", effect
-                #     cmd = "with_fx " + effect + " do " + cmd + " end "
-                #   end #each effect
-                #   ##debugprint "cooked cmd with effects: ", cmd
-                # else
-                #   ##debugprint "no effects"
-                # end #if effects
-                # ##debugprint "cmd: ", cmd
-                # #eval cmd 
-
-
-              end #each note
-
-              
-            end #if thatnote[0] is a string
-          
-          else
-            
-            ##debugprint "no note, play sample stark naked"
-            ##debugprint "thatsound: ", thatsound
-            ##debugprint "thatsound[0]: ", thatsound[0]
-            ##debugprint "myextraargs: ", myextraargs
-            ##debugprint "mymelody[thatsound[0]]: ", mymelody[thatsound[0]]
-            ##debugprint "defaults: ", defaults
-            ##debugprint "thatphrasedensity: ", thatphrasedensity
-            
-            #need to add code for pitch shifting samples
-            cmd = "handle = sample " + formattedsamplename(effectivesound)
-            cmd += (tickargs defaults[thatsound[0]] || "")
-
-            ##debugprint "cmd: ", cmd
-
-
-          end #if got a note
+            end #if got a note
+          end #if got a rest
 
           if effects[thatsound[0]] != nil
             effects[thatsound[0]].split(";").each do |effect|
@@ -2597,7 +2606,6 @@ define :executecmdlist do |mytimeline, mymelody, myextraargs, thatphrasedensity=
     if thatphrasedensity < 2 #and notedensities[thattime[0][0]] != nil 
       ##debugprint "not in density mode, executing commands per time"
       ##debugprint "thatcmdlist: ", thatcmdlist
-      #FOO
       ##debugprint "current_bpm: ", current_bpm
       eval thatcmdlist.join("\n")
       enchiladalist.append thatcmdlist
@@ -2664,9 +2672,9 @@ end #define executecmdlist
 
 
 define :cooktime do |timestring, humanizeamt=0.0|
-  ##debugprint "top of cooktime"
-  ##debugprint "timestring: ", timestring
-  ##debugprint "humanizeamt: ", humanizeamt
+  # ##debugprint "top of cooktime"
+  # ##debugprint "timestring: ", timestring
+  # ##debugprint "humanizeamt: ", humanizeamt
   timetillnext = 0
   duration = ""
   takerest = false
@@ -2675,57 +2683,57 @@ define :cooktime do |timestring, humanizeamt=0.0|
   humanizeamt ||= 0.0  
 
   timestring = (convertdrumnotation timestring)[0]
-  ##debugprint "timestring after converting drum notation: ", timestring
+  # ##debugprint "timestring after converting drum notation: ", timestring
 
   timestring.each_char do |letter|
-    ##debugprint "letter: ", letter
+    # ##debugprint "letter: ", letter
     case letter.downcase
     when " "
-      ##debugprint "got a whitespace, breaking"
+      # ##debugprint "got a whitespace, breaking"
       break
     when "r"
-      ##debugprint "r, rest"
+      # ##debugprint "r, rest"
       takerest = true
     when "b"
-      ##debugprint "b, bar"
+      # ##debugprint "b, bar"
       timetillnext += 16.0  
     when "w"
-      ##debugprint "w, whole note"
+      # ##debugprint "w, whole note"
       timetillnext += 4.0
     when "h"
-      ##debugprint "h, half note"
+      # ##debugprint "h, half note"
       timetillnext += 2.0
     when "q"
-      ##debugprint "q, quarter note"
+      # ##debugprint "q, quarter note"
       timetillnext += 1.0
     when "e"
-      ##debugprint "e, eighth note"
+      # ##debugprint "e, eighth note"
       timetillnext += 0.5
     when "s"
-      ##debugprint "s, sixteenth note"
+      # ##debugprint "s, sixteenth note"
       timetillnext += 0.25
     when "d"
-      ##debugprint "d, dotted"
+      # ##debugprint "d, dotted"
       dots = dots + 1
     when "t"
-      ##debugprint "t, triplet"
+      # ##debugprint "t, triplet"
       triplets = 2.0 / 3
     when /\d/
-      ##debugprint "duration digit"
+      # ##debugprint "duration digit"
       duration += letter
     else
-      ##debugprint letter + " is garbage, ignored"
+      # ##debugprint letter + " is garbage, ignored"
     end #case letter
   end #each letter
   
   
-  ##debugprint "raw duration: ", duration.to_s
+  # ##debugprint "raw duration: ", duration.to_s
   if duration.length > 0
     duration = duration.to_i
   else
     duration = 1
   end #if duration length > 0
-  ##debugprint "cooked duration: ", duration.to_s
+  # ##debugprint "cooked duration: ", duration.to_s
   
   timetillnext = (timetillnext * duration * triplets * (2 - (0.5 ** dots))) + rrand(-humanizeamt, humanizeamt)
   [timetillnext, takerest] #return 2 values
@@ -2988,14 +2996,14 @@ end #define equalish
 define :convertdrumnotation do |drumnotation, barlength = 4.0, baseamp=1.0, maxamp=2.0, restchar="-", brackets="[]", **kwargs|
   eval overridekwargs(kwargs, method(__method__).parameters) if boolish kwargs
   #TODO: smart calculation of basechunk with comma-delimited drum notation
-  ##debugprint "top of convertdrumnotation"
+  # ##debugprint "top of convertdrumnotation"
 
   drumnotation ||= ""
 
   openbracket = brackets[0]
   closebracket = brackets[1]
-  ##debugprint "drumnotation: ", drumnotation
-  ##debugprint "barlength: ", barlength
+  # ##debugprint "drumnotation: ", drumnotation
+  # ##debugprint "barlength: ", barlength
 
   # barlength *= drumnotation.split(",").length
   # ##debugprint "barlength padded: ", barlength
@@ -3014,66 +3022,66 @@ define :convertdrumnotation do |drumnotation, barlength = 4.0, baseamp=1.0, maxa
   basechunk = nil  
 
   if /[seqhwdt]/.match(drumnotation)
-    ##debugprint "not drum notation, returning unchanged"
+    # ##debugprint "not drum notation, returning unchanged"
     beatlist = drumnotation
     amplist = knit(baseamp, beatlist.split(",").length).to_a
   elsif drumnotation.include? ","
     #add commaprocessing here
-    ##debugprint "comma-delimited list, processing individual bar groups"
+    # ##debugprint "comma-delimited list, processing individual bar groups"
     drumnotation.split(",").each do |bargroup|
-      ##debugprint "bargroup: ", bargroup
+      # ##debugprint "bargroup: ", bargroup
       bgbeatlist, bgamplist = convertdrumnotation bargroup, barlength, baseamp, maxamp, restchar, brackets, **kwargs
-      ##debugprint "bgbeatlist: ", bgbeatlist
-      ##debugprint "bgamplist: ", bgamplist
+      # ##debugprint "bgbeatlist: ", bgbeatlist
+      # ##debugprint "bgamplist: ", bgamplist
       beatlist += comma + bgbeatlist
       comma = ","
       amplist.append bgamplist
-      ##debugprint "bgbeatlist: ", bgbeatlist
-      ##debugprint "bgamplist: ", bgamplist
+      # ##debugprint "bgbeatlist: ", bgbeatlist
+      # ##debugprint "bgamplist: ", bgamplist
     end #each bargroup
 
   else
-    ##debugprint "got some kind of beat notation, computing chunksize" 
+    # ##debugprint "got some kind of beat notation, computing chunksize" 
     chunkcount = countchunks drumnotation, brackets 
-    ##debugprint "chunkcount: ", chunkcount
-    ##debugprint "barlength: ", barlength
+    # ##debugprint "chunkcount: ", chunkcount
+    # ##debugprint "barlength: ", barlength
     basechunk = barlength.to_f / chunkcount.to_f 
-    ##debugprint "basechunk: ", basechunk
+    # ##debugprint "basechunk: ", basechunk
     basechunksymbol = basechunk.to_s  
     chunkmatch = chunkmap.keys.select {|x| x if equalish x, basechunk}
-    ##debugprint "chunkmatch: ", chunkmatch
+    # ##debugprint "chunkmatch: ", chunkmatch
 
 
     if boolish chunkmatch #not an empty set
-      ##debugprint "got a chunkmatch"
+      # ##debugprint "got a chunkmatch"
       basechunksymbol = chunkmap[chunkmatch[0]]
     elsif divisibleby(chunkcount, 3)  ##found a triplet in chunk map
-      ##debugprint "chunk length divisible by 3, searching for matching triplet chunk"
+      # ##debugprint "chunk length divisible by 3, searching for matching triplet chunk"
       chunkmatch = chunkmap.keys.select {|x| x if equalish x, basechunk * 3.0 / 2.0}
-      ##debugprint "chunkmatch: ", chunkmatch
+      # ##debugprint "chunkmatch: ", chunkmatch
       if boolish chunkmatch #not an empty set
-        ##debugprint "got a triplet chunkmatch"
+        # ##debugprint "got a triplet chunkmatch"
         basechunksymbol = "t" + chunkmap[chunkmatch[0]]
       else 
-        ##debugprint "no triplet chunkmatch"
+        # ##debugprint "no triplet chunkmatch"
       end #if boolish triplet chunkmatch 
     else
-      ##debugprint "no chunkmatch, no triplet, leaving chunk alone"
+      # ##debugprint "no chunkmatch, no triplet, leaving chunk alone"
       basechunksymbol = basechunk.to_s
     end #if found chunk in chunkmap, either plain or in triplets
-    ##debugprint "basechunksymbol: ", basechunksymbol 
+    # ##debugprint "basechunksymbol: ", basechunksymbol 
 
 
-    ##debugprint "checking for brackets"
+    # ##debugprint "checking for brackets"
     if drumnotation.include? openbracket
-      ##debugprint "got an openbracket, calling splitbracketchunks"
+      # ##debugprint "got an openbracket, calling splitbracketchunks"
       chunks = splitbracketchunks(drumnotation, brackets)
-      ##debugprint "chunks: ", chunks
+      # ##debugprint "chunks: ", chunks
       chunks.each do |thischunk|
-        ##debugprint "thischunk: ", thischunk
+        # ##debugprint "thischunk: ", thischunk
         chunklength = thischunk.length  
         if thischunk.include? openbracket  
-          ##debugprint "got an openbracket in thischunk"
+          # ##debugprint "got an openbracket in thischunk"
           chunklength = 1
           thischunk = thischunk.chop.reverse.chop.reverse #trim leading and trailing brackets
         end #if thischunk.include? openbracket 
@@ -3086,47 +3094,47 @@ define :convertdrumnotation do |drumnotation, barlength = 4.0, baseamp=1.0, maxa
       end #each thischunk
 
     else
-      ##debugprint "drum notation without brackets, processing"
+      # ##debugprint "drum notation without brackets, processing"
 
       drumnotation.each_char do |thischar|
-        ##debugprint "processing a character"
-        ##debugprint "thischar: ", thischar
+        # ##debugprint "processing a character"
+        # ##debugprint "thischar: ", thischar
 
         if thischar == restchar  
-          ##debugprint "got a rest"
+          # ##debugprint "got a rest"
           thisbeat = comma + "r" + basechunksymbol  
           thisamp = 0
         elsif "0123456789".include? thischar 
-          ##debugprint "got a digit"
+          # ##debugprint "got a digit"
           thisbeat = comma + basechunksymbol 
           thisamp = maxamp * thischar.to_f  / 9.0 
         else
-          ##debugprint "not a rest or a digit"
+          # ##debugprint "not a rest or a digit"
           thisbeat = comma + basechunksymbol  
           thisamp = baseamp
         end #if got a rest or a digit
 
-        ##debugprint "thisbeat: ", thisbeat
+        # ##debugprint "thisbeat: ", thisbeat
 
-        ##debugprint "about to add thisbeat to beatlist"
+        # ##debugprint "about to add thisbeat to beatlist"
         beatlist +=  thisbeat
-        ##debugprint "beatlist: ", beatlist
+        # ##debugprint "beatlist: ", beatlist
         amplist << thisamp
-        ##debugprint "amplist: ", amplist
+        # ##debugprint "amplist: ", amplist
 
         comma=","
 
 
       end #each thischar
-      ##debugprint "after processing each char"  
-      ##debugprint "beatlist: ", beatlist
-      ##debugprint "amplist: ", amplist
+      # ##debugprint "after processing each char"  
+      # ##debugprint "beatlist: ", beatlist
+      # ##debugprint "amplist: ", amplist
     end #if bracketed or raw drum notation 
   end #if actually got drum notation
 
-  ##debugprint "after processing drumnotation"
-  ##debugprint "beatlist: ", beatlist
-  ##debugprint "amplist: ", amplist
+  # ##debugprint "after processing drumnotation"
+  # ##debugprint "beatlist: ", beatlist
+  # ##debugprint "amplist: ", amplist
   [beatlist, amplist.flatten] #return values
 end #define convertdrumnotation
 
@@ -4168,42 +4176,45 @@ define :arrange do |arrangement, repetitions=1, defaults=nil, effects=nil, envel
       
       
       
-      
-      
-      ##debugprint "scheduling note in appropriate timeline"
-      ##debugprint "phrasedensities: ", phrasedensities
-      ##debugprint "synthorsample: ", synthorsample
-      ##debugprint "phrasedensities[synthorsample]: ", phrasedensities[synthorsample]
-      workingtimeline = timeline
-      if (phrasedensities[synthorsample] || 0) > 1  
-        ##debugprint "got a phrase density, switching working timeline to phrase timeline"
-        phrasetimelines[synthorsample] ||= {}
-        workingtimeline = phrasetimelines[synthorsample]
-      end #if got phrasedensity 
-      ##debugprint "workingtimeline: ", workingtimeline
-      ##debugprint "phrasetimelines: ", phrasetimelines
-
-      (workingtimeline[thistime] ||= []) << [synthorsample, timetillnext]
-      ##debugprint "workingtimeline: ", workingtimeline
-      ##debugprint "workingtimeline[thistime]: ", workingtimeline[thistime]
+      if !takerest
 
       
-      ##debugprint "timeline: ", timeline.to_s
-      ##debugprint "thistone: ", thistone.to_s
-      if tonemode
-        tonelist  << thistone
-        ##debugprint "tonelist: ", tonelist.to_s
-        tonelist.each_with_index do |x, i|
-          ##debugprint "tonelist[" + i.to_s + "]: ", x\
-        end #each
-      # else
-      #   ##debugprint "this is a rest, carry thistime to next item in loop to delay start of note"
-      end #if tonemode
+        ##debugprint "scheduling note in appropriate timeline"
+        ##debugprint "phrasedensities: ", phrasedensities
+        ##debugprint "synthorsample: ", synthorsample
+        ##debugprint "phrasedensities[synthorsample]: ", phrasedensities[synthorsample]
+        workingtimeline = timeline
+        if (phrasedensities[synthorsample] || 0) > 1  
+          ##debugprint "got a phrase density, switching working timeline to phrase timeline"
+          phrasetimelines[synthorsample] ||= {}
+          workingtimeline = phrasetimelines[synthorsample]
+        end #if got phrasedensity 
+        ##debugprint "workingtimeline: ", workingtimeline
+        ##debugprint "phrasetimelines: ", phrasetimelines
 
-      # else
-      #   ##debugprint "taking a rest"
+        (workingtimeline[thistime] ||= []) << [synthorsample, timetillnext]
+        ##debugprint "workingtimeline: ", workingtimeline
+        ##debugprint "workingtimeline[thistime]: ", workingtimeline[thistime]
+
         
-      # end #if !takerest
+        ##debugprint "timeline: ", timeline.to_s
+        ##debugprint "thistone: ", thistone.to_s 
+        #FOO
+        if tonemode 
+          ##debugprint "tonemode"
+          tonelist  << thistone
+          ##debugprint "tonelist: ", tonelist, expandlist: true
+        # elsif takerest   
+        #   ##debugprint "takerest"
+        #   tonelist << :rest  
+        else
+          ##debugprint "this is a rest, carry thistime to next item in loop to delay start of note"
+        end #if tonemode
+
+      else 
+        ##debugprint "takerest, not scheduling note"
+      end #if !takerest
+
       
       
       
@@ -4215,7 +4226,8 @@ define :arrange do |arrangement, repetitions=1, defaults=nil, effects=nil, envel
       takerest = false
     end #each note for this instrument
 
-
+    ##debugprint "after each note for instrument"
+    ##debugprint "tonelist: ", tonelist
 
     if tonelist.length > 0
       ##debugprint "got tones, adding to melody hash"
@@ -4242,20 +4254,21 @@ define :arrange do |arrangement, repetitions=1, defaults=nil, effects=nil, envel
 
   #preload samples to hopefully improve performance
   arrangement.keys.each do |thisitem| 
-  ##debugprint "testing for sample: ", thisitem
-  if all_sample_names.to_a.include? thisitem
-    ##debugprint  thisitem.to_s, " is a sample symbol, loading"
-    load_sample thisitem
-  elsif thisitem.is_a? String
-    if File.exist? thisitem
-      ##debugprint thisitem, " is a sample path, loading"
+    ##debugprint "testing for sample: ", thisitem
+    if all_sample_names.to_a.include? thisitem
+      ##debugprint  thisitem.to_s, " is a sample symbol, loading"
       load_sample thisitem
+    elsif thisitem.is_a? String
+      if File.exist? thisitem
+        ##debugprint thisitem, " is a sample path, loading"
+        load_sample thisitem
+      else
+        ##debugprint thisitem " is a string, but not a file"
+      end #if file exists
     else
-      ##debugprint thisitem " is a string, but not a file"
-    end #if file exists
-  else
-    ##debugprint thisitem.to_s, " is not a sample"
-  end #if it's a sample
+      ##debugprint thisitem.to_s, " is not a sample"
+    end #if it's a sample
+  end #each key
 
 
   # put in code to call executecmdlist
@@ -4294,7 +4307,6 @@ define :arrange do |arrangement, repetitions=1, defaults=nil, effects=nil, envel
     end #each phrase density
 
 
-    end
 
 
     if boolish timeline
